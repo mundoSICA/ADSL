@@ -1,7 +1,7 @@
 * {margin:0; padding:0;}
 
 body{
-    background: #f2f2f2 url(img/bg.jpg);
+    background: #f2f2f2 url(../img/bg.jpg);
 	background-repeat: repeat-x;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -64,7 +64,7 @@ img{
 .header{
   width: 946px;
   height: 133px;
-  background: #F3F3F3 url(img/bgheader.jpg) repeat-x;
+  background: #F3F3F3 url(../img/bgheader.jpg) repeat-x;
 }
 
 .logo{
@@ -133,7 +133,7 @@ width: 946px;
    height: 46px;
    margin: 0px;
    padding: 0px;
-   background: #C87D10 url(img/menu_10.png);
+   background: #C87D10 url(../img/menu_10.png);
    background-repeat: repeat-x;
 }
 
@@ -154,7 +154,7 @@ width: 946px;
 	clear: both;
 	width: 875px; 
 	margin-top: 20px;
-	background: White url(img/fondobloques.jpg);
+	background: White url(../img/fondobloques.jpg);
 	color: Black;
 }
 
@@ -195,7 +195,7 @@ width: 946px;
     float: left;
 	width: 538px;
 	color: black;
-	background:   url(img/bgcont.jpg) bottom;
+	background:   url(../img/bgcont.jpg) bottom;
 	background-repeat: repeat-x;
 }
 
@@ -265,7 +265,7 @@ width: 946px;
 }
 .header2{
   width: 946px;
-  height: 280px;
+  height: 325px;
   background: #CBCBCB;
   margin-bottom: 8px;
 }
@@ -281,7 +281,7 @@ width: 946px;
 
 .contenido{
 
-   background:  white url(img/esqsup.jpg) no-repeat;
+   background:  white url(../img/esqsup.jpg) no-repeat;
 	text-align: justify;	
 	clear: both;
 	width: 850px;   
@@ -333,7 +333,7 @@ width: 946px;
 
 ul{
 	margin: 10px 0 10px 18px;
-	list-style: url('img/bullet.jpg');
+	list-style: url('../img/bullet.jpg');
 }
 
 
@@ -375,7 +375,7 @@ a#inicio {
     width: 76px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_01.png) top left no-repeat;
+    background:url(../img/menu_01.png) top left no-repeat;
 }
 
 a#inicio:hover {
@@ -387,7 +387,7 @@ a#nosotros {
     width:136px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_02.png) top left no-repeat;
+    background:url(../img/menu_02.png) top left no-repeat;
 }
 
 a#nosotros:hover {
@@ -399,7 +399,7 @@ a#talleres {
     width:85px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_03.png) top left no-repeat;
+    background:url(../img/menu_03.png) top left no-repeat;
 }
 
 a#talleres:hover {
@@ -411,7 +411,7 @@ a#calendario {
     width:99px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_04.png) top left no-repeat;
+    background:url(../img/menu_04.png) top left no-repeat;
 }
 
 a#calendario:hover {
@@ -424,7 +424,7 @@ a#material {
     width:153px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_05.png) top left no-repeat;
+    background:url(../img/menu_05.png) top left no-repeat;
 }
 
 a#material:hover {
@@ -437,7 +437,7 @@ a#blog {
     width:63px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_06.png) top left no-repeat;
+    background:url(../img/menu_06.png) top left no-repeat;
 }
 
 a#blog:hover {
@@ -449,7 +449,7 @@ a#foro {
     width:62px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_07.png) top left no-repeat;
+    background:url(../img/menu_07.png) top left no-repeat;
 }
 
 a#foro:hover {
@@ -462,7 +462,7 @@ a#proyectos {
     width:94px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_08.png) top left no-repeat;
+    background:url(../img/menu_08.png) top left no-repeat;
 }
 
 a#proyectos:hover {
@@ -474,7 +474,7 @@ a#contacto {
     width:86px;
     height:46px;
     text-indent:-9999px;
-    background:url(img/menu_09.png) top left no-repeat;
+    background:url(../img/menu_09.png) top left no-repeat;
 }
 
 a#contacto:hover {
@@ -486,9 +486,11 @@ a#contacto:hover {
    clear: both;
    width: 946px;
    height: 38px;
-   color: #736153;
-   background: url(img/separadorlogos.jpg) no-repeat;
-   font-size: 11px;
+   color: #7F7F7F;
+   background: url(../img/separadorlogos.jpg) repeat-x;
+   font-size: 20px;
+   text-align:center;
+   text-shadow:-1px -1px 1px #fff;
 }
 
 .separadorfooter2{
@@ -496,7 +498,7 @@ a#contacto:hover {
    width: 946px;
    height: 38px;
    color: #736153;
-   background: url(img/bgdivisor.jpg) repeat-x;
+   background: url(../img/bgdivisor.jpg) repeat-x;
    font-size: 11px;
 }
 
@@ -505,7 +507,7 @@ a#contacto:hover {
 .logosfooter{
    clear: both;
    width: 946px;
-   height: 120px;
+   height: 130px;
    color: #736153;
    font-size: 11px;
 }
@@ -557,7 +559,7 @@ a#contacto:hover {
 
 .colcontIzq{	
    width: 556px;	
-	background: #867865 url(img/bgcont.jpg) repeat-y;
+	background: #867865 url(../img/bgcont.jpg) repeat-y;
 	
 }
 
@@ -594,7 +596,7 @@ a#contacto:hover {
 }
 
 .esqinf{
-	background: url(img/esqinf.jpg);
+	background: url(../img/esqinf.jpg);
 	line-height: 0px;
 	padding: 0px;
 	font-size: 0px;
@@ -617,7 +619,7 @@ a#contacto:hover {
 	/*background: silver;*/
 	color: Black;
 	border: 1px solid silver;
-	background: #fff9f9 url(img/bgside.jpg) bottom;
+	background: #fff9f9 url(../img/bgside.jpg) bottom;
 	background-repeat: repeat-x;
 }
 .divisorcol{
