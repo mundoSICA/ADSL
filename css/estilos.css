@@ -547,3 +547,9 @@ ul{
 	margin-bottom: 5px;
 	background: #c6c6c6;
 }
+#javascript_requerido{
+	padding: 5px;
+	background:#F61446;
+	font-size:15px;
+	font-weight: bold;
+}

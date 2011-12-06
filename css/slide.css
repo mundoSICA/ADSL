@@ -52,6 +52,16 @@
 	Set to display block
 */
 
+.slides_container {
+	width:925px;
+	height:310px;
+	display:block;
+	/*-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+	over-float:hidden;*/
+	-moz-border-radius: 10px;
+}
 .slides_container div.slide {
 	width:925px;
 	height:310px;
@@ -125,15 +135,24 @@
 	left:0;
 	height:40px;
 	padding:5px 20px 0 0px;
-	background:#f5792a;
 	width:940px;
 	font-size:1.3em;
 	line-height:1.33;
 	color:#fff;
-	border-top:1px solid #CB560C;
 	text-shadow:1px 1px 1px #712F06;
 	font-size: 15px;
+	border:1px solid #CB560C;
+	border-bottom:1px solid #A13E00;
+	background: #F5792A;
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(top, #F5792A, #D75400);
+	background-image: -ms-linear-gradient(top, #F5792A, #D75400);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F5792A), to(#D75400));
+	background-image: -webkit-linear-gradient(top, #F5792A, #D75400);
+	background-image: -o-linear-gradient(top, #F5792A, #D75400);
+	background-image: linear-gradient(top, #F5792A, #D75400);
 }
+
 .slide_info_taller span{
 	float: left;
 	margin-left: 10px;
