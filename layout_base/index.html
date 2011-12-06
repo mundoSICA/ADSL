@@ -14,10 +14,20 @@
 	<script  type="text/javascript">
 		$(function(){
 			//Agregando enlaces externos
-			/*$('a[rel=external]').click(function() {
+			$('a[rel=external]').click(function() {
 				window.open(this.href);
 				return false;
-			});*/
+			});
+			//animacion sobre el buscador
+			$('#buscador_input').val('Buscar en ADSL');
+			$('#buscador_input').focus(function() {
+				if($(this).val() == 'Buscar en ADSL')
+					$('#buscador_input').val('');
+			});
+			$('#buscador_input').blur(function() {
+				if($(this).val() == '')
+					$('#buscador_input').val('Buscar en ADSL');
+			});
 			//slide run
 			$('#slide_talleres').slides({
 				preload: true,
@@ -62,10 +72,9 @@
       
       <div class="buscadoriconos">
           <div class="buscador">
-			<form method="get" id="searchform" action="http://adsl.org.mx" >
+			<form method="get" id="searchform" action="http://adsl.org.mx/buscador/" >
 				<div>
-					<input type="text" value="" name="s" id="s" />
-					<!-- <input type="submit" id="searchsubmit" value="Buscar" />  -->
+					<input type="text" id="buscador_input" name="s" id="s" />
 				</div>
 			</form>
           </div><!--termina buscador -->
@@ -182,9 +191,7 @@
        
 	<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>		 
   </div><!--bloqueinfo -->
-	
-    
-<!--######################################### -->
+
 <div class="bloqueinfo1">
 	   <div class="bloque1">
        <h2>Noticias Recientes</h2>
@@ -278,7 +285,7 @@
 <div class="footer">
 	     <div class="footerCont">
          
-         (CC) 2010, Academia de Software Libre<br />
+         &copy; 2010, Academia de Software Libre<br />
 Dirección: Azucenas 610 Col. Reforma Oaxaca Oax.<br />
 Teléfono: 51 51241  / E-Mail: contacto@adsl.org.mx<br />
 <!--Contenidos bajo la licencia Creativa Commons Atribución 3.0<br /> -->

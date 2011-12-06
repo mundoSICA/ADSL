@@ -1125,10 +1125,10 @@ y productor.#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O22">
       <dia:attribute name="obj_pos">
-        <dia:point val="143.265,11.075"/>
+        <dia:point val="144.415,14.575"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="143.265,8.435;219.923,11.7475"/>
+        <dia:rectangle val="144.415,11.935;221.072,15.2475"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1142,7 +1142,7 @@ y productor.#</dia:string>
             <dia:real val="3.5524719778464942"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="143.265,11.075"/>
+            <dia:point val="144.415,14.575"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#ffffff"/>
