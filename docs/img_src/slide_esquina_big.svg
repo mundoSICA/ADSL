@@ -8,64 +8,39 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
    width="210mm"
    height="297mm"
-   id="svg2"
-   version="1.1"
-   inkscape:version="0.48.0 r9654"
-   sodipodi:docname="slide_esquina_big.svg">
+   id="svg2">
   <defs
      id="defs4">
     <linearGradient
-       inkscape:collect="always"
        id="linearGradient3846">
       <stop
-         style="stop-color:#1a1a1a;stop-opacity:1;"
-         offset="0"
-         id="stop3848" />
+         id="stop3848"
+         style="stop-color:#1a1a1a;stop-opacity:1"
+         offset="0" />
       <stop
-         style="stop-color:#1a1a1a;stop-opacity:0;"
-         offset="1"
-         id="stop3850" />
+         id="stop3850"
+         style="stop-color:#1a1a1a;stop-opacity:0"
+         offset="1" />
     </linearGradient>
     <filter
-       inkscape:collect="always"
+       color-interpolation-filters="sRGB"
        id="filter3805">
       <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.25669291"
-         id="feGaussianBlur3807" />
+         id="feGaussianBlur3807"
+         stdDeviation="0.25669291" />
     </filter>
     <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3846"
-       id="linearGradient3852"
        x1="181.17632"
        y1="516.62555"
        x2="198.81622"
        y2="533.63208"
+       id="linearGradient3852"
+       xlink:href="#linearGradient3846"
        gradientUnits="userSpaceOnUse" />
   </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="2.0580357"
-     inkscape:cx="204.54717"
-     inkscape:cy="533.49377"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="691"
-     inkscape:window-x="0"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -79,55 +54,44 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Capa 1"
-     inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g3854"
-       inkscape:export-filename="/home/fitorec/SICA/git/adsl/ADSL/layout_base/slides/Slides/examples/images-with-captions/img/liston_talleres_slide.png"
-       inkscape:export-xdpi="127.35849"
-       inkscape:export-ydpi="127.35849">
+       id="g3854">
       <path
+         d="m 245.28125,477.71875 -6.15625,6.15625 8.28125,0 0,-6.15625 -2.125,0 z m -97.875,97.875 -5.9375,5.9375 0,2.34375 5.9375,0 0,-8.28125 z"
          id="rect3827"
-         d="M 245.28125 477.71875 L 239.125 483.875 L 247.40625 483.875 L 247.40625 477.71875 L 245.28125 477.71875 z M 147.40625 575.59375 L 141.46875 581.53125 L 141.46875 583.875 L 147.40625 583.875 L 147.40625 575.59375 z "
          style="fill:#493d32;fill-opacity:1;stroke:none" />
       <path
+         d="m 196.09375,477.71875 -54.6875,54.6875 0,49.125 103.8125,-103.8125 -49.125,0 z"
          id="rect3766"
-         d="M 196.09375 477.71875 L 141.40625 532.40625 L 141.40625 581.53125 L 245.21875 477.71875 L 196.09375 477.71875 z "
          style="fill:#665646;fill-opacity:1;stroke:none" />
       <g
-         id="g3815"
-         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,-327.85745,245.76249)">
+         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,-327.85745,245.76249)"
+         id="g3815">
         <text
-           xml:space="preserve"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#8f7862;fill-opacity:1;stroke:none;filter:url(#filter3805);font-family:Sans"
            x="125.06289"
            y="559.35999"
            id="text3817"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             id="tspan3819"
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#8f7862;fill-opacity:1;stroke:none;filter:url(#filter3805);font-family:Sans"><tspan
              x="125.06289"
              y="559.35999"
+             id="tspan3819"
              style="font-size:20px;font-weight:bold;fill:#8f7862;fill-opacity:1;-inkscape-font-specification:Sans Bold">Talleres</tspan></text>
         <text
-           sodipodi:linespacing="125%"
-           id="text3821"
-           y="558.93048"
            x="124.63341"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#26201a;fill-opacity:1;stroke:none;font-family:Sans"
-           xml:space="preserve"><tspan
-             style="font-size:20px;font-weight:bold;fill:#26201a;fill-opacity:1;-inkscape-font-specification:Sans Bold"
-             y="558.93048"
+           y="558.93048"
+           id="text3821"
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#26201a;fill-opacity:1;stroke:none;font-family:Sans"><tspan
              x="124.63341"
+             y="558.93048"
              id="tspan3823"
-             sodipodi:role="line">Talleres</tspan></text>
+             style="font-size:20px;font-weight:bold;fill:#26201a;fill-opacity:1;-inkscape-font-specification:Sans Bold">Talleres</tspan></text>
       </g>
       <path
-         sodipodi:nodetypes="ccccc"
-         inkscape:connector-curvature="0"
-         id="path3844"
          d="m 239.0625,483.875 -91.65625,91.65625 0,8.34375 100,-100 z"
+         id="path3844"
          style="fill:url(#linearGradient3852);fill-opacity:1;stroke:none" />
     </g>
   </g>
