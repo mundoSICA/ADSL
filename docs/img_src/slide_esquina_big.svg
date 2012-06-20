@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="210mm"
+   height="297mm"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3846">
+      <stop
+         id="stop3848"
+         style="stop-color:#1a1a1a;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3850"
+         style="stop-color:#1a1a1a;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter3805">
+      <feGaussianBlur
+         id="feGaussianBlur3807"
+         stdDeviation="0.25669291" />
+    </filter>
+    <linearGradient
+       x1="181.17632"
+       y1="516.62555"
+       x2="198.81622"
+       y2="533.63208"
+       id="linearGradient3852"
+       xlink:href="#linearGradient3846"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <g
+       id="g3854">
+      <path
+         d="m 245.28125,477.71875 -6.15625,6.15625 8.28125,0 0,-6.15625 -2.125,0 z m -97.875,97.875 -5.9375,5.9375 0,2.34375 5.9375,0 0,-8.28125 z"
+         id="rect3827"
+         style="fill:#493d32;fill-opacity:1;stroke:none" />
+      <path
+         d="m 196.09375,477.71875 -54.6875,54.6875 0,49.125 103.8125,-103.8125 -49.125,0 z"
+         id="rect3766"
+         style="fill:#665646;fill-opacity:1;stroke:none" />
+      <g
+         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,-327.85745,245.76249)"
+         id="g3815">
+        <text
+           x="125.06289"
+           y="559.35999"
+           id="text3817"
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#8f7862;fill-opacity:1;stroke:none;filter:url(#filter3805);font-family:Sans"><tspan
+             x="125.06289"
+             y="559.35999"
+             id="tspan3819"
+             style="font-size:20px;font-weight:bold;fill:#8f7862;fill-opacity:1;-inkscape-font-specification:Sans Bold">Talleres</tspan></text>
+        <text
+           x="124.63341"
+           y="558.93048"
+           id="text3821"
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#26201a;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+             x="124.63341"
+             y="558.93048"
+             id="tspan3823"
+             style="font-size:20px;font-weight:bold;fill:#26201a;fill-opacity:1;-inkscape-font-specification:Sans Bold">Talleres</tspan></text>
+      </g>
+      <path
+         d="m 239.0625,483.875 -91.65625,91.65625 0,8.34375 100,-100 z"
+         id="path3844"
+         style="fill:url(#linearGradient3852);fill-opacity:1;stroke:none" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,154 @@
+#container {
+	width:940px;
+	margin:0 auto;
+	position:relative;
+	z-index:0;
+	padding:0;
+}
+
+#slide_principal_talleres {
+	width:946px;
+	height:325px;
+	background: #FFF;
+	position:relative;
+}
+
+#liston_talleres_slide {
+	position:absolute;
+	z-index:500;
+}
+
+/*
+	Slideshow
+*/
+
+#slide_talleres {
+	position:absolute;
+	width:925px;
+	top:8px;
+	left:8px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:925px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container div.slide {
+	width:925px;
+	height:310px;
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slide_talleres .next, #slide_talleres .prev {
+	position:absolute;
+	background: url(../img/slide_prev_next.png) no-repeat;
+	opacity: 0.5;
+	top:170px;
+	left:-8px;
+	width:40px;
+	height:40px;
+	display:block;
+	z-index:105;
+}
+
+#slide_talleres .next {
+	left:892px;
+	background-position: 0 -40px;
+}
+
+#slide_talleres .next:hover, #slide_talleres .prev:hover {
+	opacity: 1;
+}
+
+.pagination {
+	position:absolute;
+	margin:-80px auto 0;
+	z-index:100;
+	text-align: center;
+	padding: 5px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+/*
+	slide_info_taller
+*/
+.slide_taller_titulo, .slide_info_taller{
+	position:absolute;
+	z-index:500;
+}
+
+.slide_info_taller {
+	top: 260px;
+	left:0;
+	height:40px;
+	padding:5px 20px 0 0px;
+	background:#f5792a;
+	width:940px;
+	font-size:1.3em;
+	line-height:1.33;
+	color:#fff;
+	border-top:1px solid #CB560C;
+	text-shadow:1px 1px 1px #712F06;
+	font-size: 15px;
+}
+.slide_info_taller span{
+	float: left;
+	margin-left: 10px;
+	width:220px;
+}
+.slide_info_taller span strong{
+	display:block;
+	font-weight: bold;
+}
+
+.slide_taller_titulo{
+	padding: 10px;
+	width: 900px;
+	font-size: 30px;
+	text-align: right;
+	color:#c87d10;
+	text-shadow:1px 1px 1px #261f18, -1px -1px 0 #FFEBA6 !important;
+}
