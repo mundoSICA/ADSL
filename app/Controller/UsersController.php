@@ -46,7 +46,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash('Has sido registrado exitosamente');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('El registro user. No pudo ser guardado');
+				$this->Session->setFlash('No te puedes registrar!, favor de revisar que tus datos sean correctos');
 			}
 		}
 		$talleres = $this->User->Taller->find('list');

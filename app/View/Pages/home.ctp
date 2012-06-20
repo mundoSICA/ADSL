@@ -1,188 +1,137 @@
 <?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       Cake.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-if (Configure::read('debug') == 0):
-	throw new NotFoundException();
-endif;
-App::uses('Debugger', 'Utility');
+	echo $this->Html->script('slides.min.jquery');
+	echo $this->Html->css('slide');
 ?>
-<iframe src="http://cakephp.org/bake-banner" width="830" height="160" style="overflow:hidden; border:none;">
-	<p>For updates and important announcements, visit http://cakefest.org</p>
-</iframe>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<a href="http://cakephp.org/changelogs/<?php echo Configure::version(); ?>"><?php echo __d('cake_dev', 'Read the changelog'); ?> </a>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-	<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-	1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/advanced-installation.html#apache-and-mod-rewrite-and-htaccess" style="color:#fff;">Help me configure it</a>
-	2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
+<div class="header2">
+<div id="slide_principal_talleres">
+			<img src="img/liston_talleres_slide.png" width="150" height="150" alt="Talleres" id="liston_talleres_slide" />
+			<div id="slide_talleres">
+				<div class="slides_container">
+				<!-- slide -->
+					<div class="slide">
+						<a href="#" title="python basico">
+							<img src="img/talleres/python-basico_slide.jpeg" width="925" height="250" alt="Slide 1" />
+						</a>
+						<h2 class="slide_taller_titulo">python basico</h2>
+						<div class="slide_info_taller">
+							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
+							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
+							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
+							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
+						</div>
+					</div>
+				<!-- slide -->
+				<!-- slide -->
+					<div class="slide">
+						<a href="#" title="Cakephp">
+							<img src="img/talleres/cakephp.png" width="925" height="250" alt="Slide 1" />
+						</a>
+						<h2 class="slide_taller_titulo">Cakephp</h2>
+						<div class="slide_info_taller">
+							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
+							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
+							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
+							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
+						</div>
+					</div>
+				<!-- slide -->
+				<!-- slide -->
+					<div class="slide">
+						<a href="#" title="introducción a Django">
+							<img src="img/talleres/django_introduccion.png" width="925" height="250" alt="Slide 1" />
+						</a>
+						<h2 class="slide_taller_titulo">introducción a Django</h2>
+						<div class="slide_info_taller">
+							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
+							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
+							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
+							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
+						</div>
+					</div>
+				<!-- slide -->
+				</div>
+				<a href="#" class="prev" title='Previo'></a> <a href="#" class="next" title='Siguiente'></a>
+			</div>
+		</div>
+	</div>
+     
+	<div class="bloqueinfo11">
+	   <div class="bloque1">
+       <h2><a href="#">Taller: Javascrip &amp; Mootools</a></h2>
+       
+       <p><img src="img/tdweb.jpg" alt="Taller Dise&ntilde;o Web" width="307" height="230" /></p>
+       
+      </div>
+       
+       
+      <div class="bloque2">
+       <h2><a href="#">Becas y formas de pago </a></h2>
+      
+    <p><img src="img/mblog.jpg" alt="Monetizando tu blog" /><br />
+    
+          <br />
+       </p>
+      </div>
+       
+      <div class="bloque1">
+      <h2><a href="http://maps.google.com.mx/maps?q=Azucenas+610,+colonia+Reforma,+Oaxaca,+Oaxaca&amp;hl=es&amp;ppyss=confirm:Gracias.+Se+han+guardado+tus+cambios+y+se+publicar%C3%A1n+una+vez+que+hayan+sido+revisados.&amp;ie=UTF8&amp;view=map&amp;cid=5132139184235277504&amp;ll=17.077482,-96.708333&amp;spn=0.011117,0.01929&amp;z=16&amp;iwloc=A" rel="external">Mapa de ubicacion</a></h2>
+      
+       <p><img src="img/tjoomla.jpg" alt="Joomla" />
 </p>
-<p>
-<?php
-	if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-	<?php
-		if (is_writable(TMP)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your tmp directory is writable.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$settings = Cache::settings();
-		if (!empty($settings)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit APP/Config/core.php ', '<em>'. $settings['engine'] . 'Engine</em>');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in APP/Config/core.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$filePresent = null;
-		if (file_exists(APP . 'Config' . DS . 'database.php')):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your database configuration file is present.');
-				$filePresent = true;
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your database configuration file is NOT present.');
-				echo '<br/>';
-				echo __d('cake_dev', 'Rename APP/Config/database.php.default to APP/Config/database.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-	}
-?>
-<p>
-	<?php
-		if ($connected && $connected->isConnected()):
-			echo '<span class="notice success">';
-	 			echo __d('cake_dev', 'Cake is able to connect to the database.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Cake is NOT able to connect to the database.');
-				echo '<br /><br />';
-				echo $connectionError->getMessage();
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php endif;?>
-<?php
-	App::uses('Validation', 'Utility');
-	if (!Validation::alphaNumeric('cakephp')) {
-		echo '<p><span class="notice">';
-			echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-		echo '</span></p>';
-	}
-?>
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, create: APP/View/Pages/home.ctp.<br />
-To change its layout, create: APP/View/Layouts/default.ctp.<br />
-You can also add some CSS styles for your pages at: APP/webroot/css.');
-?>
-</p>
+       <p><br />
+       </p>
+      </div>
+       
+	<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>		 
+  </div><!--bloqueinfo -->
 
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-		echo $this->Html->link(
-			sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-			'http://book.cakephp.org/2.0/en/',
-			array('target' => '_blank', 'escape' => false)
-		);
-	?>
-</p>
-<p>
-	<?php
-		echo $this->Html->link(
-			__d('cake_dev', 'The 15 min Blog Tutorial'),
-			'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-			array('target' => '_blank', 'escape' => false)
-		);
-	?>
-</p>
+<div class="bloqueinfo1">
+	   <div class="bloque1">
+       <h2>Noticias Recientes</h2>
+       <div class="divisorcol"></div>
+<ul>      
 
-<h3><?php echo __d('cake_dev', 'More about Cake'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
+<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
 
-<ul>
-	<li><a href="http://cakefoundation.org/"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
-	<li><a href="http://www.cakephp.org"><?php echo __d('cake_dev', 'CakePHP'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api20.cakephp.org"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://live.cakephp.org"><?php echo __d('cake_dev', 'The Show'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'The Show is a live and archived internet radio broadcast CakePHP-related topics and answer questions live via IRC, Skype, and telephone.'); ?></li></ul></li>
-	<li><a href="http://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="http://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'For the Development of CakePHP Git repository, Downloads'); ?></li></ul></li>
-	<li><a href="http://cakephp.lighthouseapp.com/"><?php echo __d('cake_dev', 'CakePHP Lighthouse'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Tickets, Wiki pages, Roadmap'); ?></li></ul></li>
+<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
+
+
+<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
+
+
+<li><a href="#">ADSL invita al taller conociendo linux inscribete ya...! cupo limitado</a></li>
+
 </ul>
+
+    </div>
+       
+       
+      <div class="bloque2">
+       <h2>&Uacute;ltimos Posts</h2>
+       <div class="divisorcol"></div>
+       <ul>      
+
+<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
+
+<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
+
+
+<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
+
+<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
+
+
+</ul>
+</div>
+
+<div class="bloque1">
+       <h2>Anuncios</h2>
+      <div class="divisorcol"></div>
+      
+       <img src="img/banner_capacitacion.jpg" alt="Asesor&iacute;a" /><br /><br />
+				<a href="http://www.mozilla-europe.org/es/firefox/" rel="external"><img src="img/banner_firefox.jpg" alt="Firefox" />
+				</a>     
+      </div>
+      
+<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>		 
+  </div><!--bloqueinfo -->

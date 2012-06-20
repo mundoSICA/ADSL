@@ -451,13 +451,12 @@ ul{
 }
 
 .footerCont a:link, .footerCont a:visited{
-	color: #a93900;
-	text-decoration: underline;
+	color: #4D4D4D;
+	text-decoration:none;
 }
 
 .footerCont a:hover, .footerCont a:active{
-	text-decoration: none;
-	color: #b8860b;
+	color: #FF6800
 }
 
 
@@ -552,4 +551,11 @@ ul{
 	background:#F61446;
 	font-size:15px;
 	font-weight: bold;
+}
+
+.formulario,
+div.acciones,
+div.users,div.index
+{
+	background: #FFF;
 }
