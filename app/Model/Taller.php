@@ -15,6 +15,7 @@ class Taller extends AppModel {
  * @var string
  */
 	public $displayField = 'nombre';
+	public $actsAs = array('Slug'=>array('max_len'=>80));
 /**
  * Validation rules
  *
