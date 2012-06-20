@@ -132,7 +132,7 @@ $cakeDescription = __d('cake_dev', 'Academia de software libre');
              <li>
 							 <?php
 									echo $this->Html->link('Registrate', 
-														array('controller'=>'users', 'action' => 'registro'),
+														array('controller'=>'users', 'action' => 'registro', 'admin'=>false),
 														array('id'=>'Botonregistrate')
 										);
 							 ?>

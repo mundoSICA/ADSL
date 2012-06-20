@@ -1,9 +1,8 @@
 <div class="talleres formulario">
 <?php echo $this->Form->create('Taller');?>
 	<fieldset>
-		<legend><?php echo 'Admin Agregar Taller'; ?></legend>
+		<legend>Agregar Taller</legend>
 	<?php
-		echo $this->Form->input('user_id');
 		echo $this->Form->input('nombre');
 		echo $this->Form->input('slug_dst');
 		echo $this->Form->input('horario');
@@ -16,7 +15,7 @@
 		echo $this->Form->input('big_slide');
 		echo $this->Form->input('slide');
 		echo $this->Form->input('Etiqueta');
-		echo $this->Form->input('User');
+		//echo $this->Form->input('User');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Enviar');?>

@@ -61,11 +61,7 @@
 <div class="acciones">
 	<h3>Acciones</h3>
 	<ul>
-		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar')); ?></li>
-		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar User', array('controller' => 'users', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Posts', array('controller' => 'posts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar')); ?> </li>
+		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar', 'admin'=> true)); ?></li>
 		<li><?php echo $this->Html->link('Listar Etiquetas', array('controller' => 'etiquetas', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
 	</ul>

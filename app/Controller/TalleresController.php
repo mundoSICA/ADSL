@@ -45,7 +45,7 @@ class TalleresController extends AppController {
 			}
 		}
 		$users = $this->Taller->User->find('list');
-		$etiquetas = $this->Taller->Etiquetum->find('list');
+		$etiquetas = $this->Taller->Etiqueta->find('list');
 		$users = $this->Taller->User->find('list');
 		$this->set(compact('users', 'etiquetas', 'users'));
 	}
@@ -72,7 +72,7 @@ class TalleresController extends AppController {
 			$this->request->data = $this->Taller->read(null, $id);
 		}
 		$users = $this->Taller->User->find('list');
-		$etiquetas = $this->Taller->Etiquetum->find('list');
+		$etiquetas = $this->Taller->Etiqueta->find('list');
 		$users = $this->Taller->User->find('list');
 		$this->set(compact('users', 'etiquetas', 'users'));
 	}
