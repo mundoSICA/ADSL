@@ -8,11 +8,11 @@ var tablas = [
 "height" : 345,
 "pos_x" : 384,
 "pos_y" : 96,
-"fill_colour" : "#FFFFFF",
+"fill_colour" : "#ABFFA3",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "user_id", "tipo": "INT( 4 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "id", "tipo": "INT( 4 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
@@ -38,7 +38,7 @@ var tablas = [
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "id", "tipo": "INT(5)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "taller_id", "tipo": "INT ( 4)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "etiqueta_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
  ]
@@ -46,16 +46,16 @@ var tablas = [
 {
 "nombre" : "users",
 "orden" : 2,
-"width" : 547,
+"width" : 789,
 "height" : 153,
-"pos_x" : 688,
-"pos_y" : 64,
-"fill_colour" : "#ADD8E6",
+"pos_x" : 672,
+"pos_y" : 48,
+"fill_colour" : "#FFA472",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
  {"nombre" : "id", "tipo": "INT(5)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "role", "tipo": "ENUM('admin','maestro','registrado')", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "role", "tipo": "ENUM('admin','maestro','registrado') DEFAULT 'registrado'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "username", "tipo": "VARCHAR(50)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "password", "tipo": "VARCHAR(50)", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "email", "tipo": "VARCHAR(100)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
@@ -72,7 +72,7 @@ var tablas = [
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "id", "tipo": "INT(5)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
@@ -86,13 +86,13 @@ var tablas = [
 "orden" : 5,
 "width" : 350,
 "height" : 153,
-"pos_x" : 832,
+"pos_x" : 816,
 "pos_y" : 256,
 "fill_colour" : "#FFFFFF",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "id", "tipo": "INT(6)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "taller_id", "tipo": "INT( 4 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "descuento", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
@@ -110,13 +110,29 @@ var tablas = [
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "content", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ ]
+},
+{
+"nombre" : "etiquetas_noticias",
+"orden" : 8,
+"width" : 258,
+"height" : 105,
+"pos_x" : 208,
+"pos_y" : 272,
+"fill_colour" : "#FFFFFF",
+"text_colour" : "#000000",
+"line_colour" : "#000000",
+"campos" : [
+ {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "noticia_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "etiqueta_id", "tipo": "INT ( 4)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
  ]
 },
 {
@@ -130,25 +146,9 @@ var tablas = [
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "id", "tipo": "INT(4)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
- ]
-},
-{
-"nombre" : "noticias_talleres",
-"orden" : 8,
-"width" : 258,
-"height" : 105,
-"pos_x" : 208,
-"pos_y" : 272,
-"fill_colour" : "#FFFFFF",
-"text_colour" : "#000000",
-"line_colour" : "#000000",
-"campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "noticia_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "etiqueta_id", "tipo": "INT ( 4)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
  ]
 }
 ]
