@@ -46,12 +46,10 @@ h1, h2, h3, h4 {
 	margin-bottom:0.5em;
 }
 h1 {
-	background:#fff;
 	color: #003d4c;
 	font-size: 100%;
 }
 h2 {
-	background:#fff;
 	color: #e32;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
@@ -101,7 +99,7 @@ p {
 	background: #fff;
 	clear: both;
 	color: #333;
-	padding: 10px 20px 40px 20px;
+	padding:0;
 	overflow: auto;
 }
 #footer {
@@ -484,23 +482,6 @@ p.error em {
 }
 .success {
 	color: #fff;
-}
-
-/** .acciones  **/
-.acciones ul {
-	margin: 0;
-	padding: 0;
-}
-.acciones li {
-	margin:0 0 0.5em 0;
-	list-style-type: none;
-	white-space: nowrap;
-	padding: 0;
-}
-.acciones ul li a {
-	font-weight: normal;
-	display: block;
-	clear: both;
 }
 
 /* Buttons and button links */

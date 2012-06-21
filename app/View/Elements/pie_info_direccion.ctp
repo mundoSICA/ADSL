@@ -1,5 +1,5 @@
 <?php
-/* Titutlo:     Elemento pie_logo_promovemos
+/* Titutlo:     Elemento pie_info_dirección
  * Autor:       @Fitorec
  * Descripcion: Este elemento es donde van los iconos de las recomendaciones del ADSL
  * Link-info:   http://book.cakephp.org/2.0/en/views.html#using-view-blocks

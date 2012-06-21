@@ -18,10 +18,12 @@ $cakeDescription = __d('cake_dev', 'Academia de software libre');
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('estilos');
+		echo $this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 		echo $this->Html->script('jquery.min');
+		echo $this->Html->script('jquery-ui-1.8.21.custom.min');
 	?>
 	<script  type="text/javascript">
 		$(function(){
@@ -40,63 +42,54 @@ $cakeDescription = __d('cake_dev', 'Academia de software libre');
 				if($(this).val() == '')
 					$('#buscador_input').val('Buscar en ADSL');
 			});
-			//slide run
-			$('#slide_talleres').slides({
-				preload: true,
-				preloadImage: 'img/loading.gif',
-				play: 5000,
-				pause: 2500,
-				//hoverPause: true,
-				animationStart: function(current){
-					$('.slide_info_taller').animate({
-						bottom:-35
-					},100);
-					$('.slide_taller_titulo').animate({
-						top:-45
-					},100);
-				},
-				animationComplete: function(current){
-					$('.slide_info_taller').animate({
-						bottom:0
-					},200);
-					$('.slide_taller_titulo').animate({
-						top:0
-					},-200);
-				},
-				slidesLoaded: function() {
-					$('.slide_info_taller').animate({
-						bottom:0
-					},200);
-					$('.slide_taller_titulo').animate({
-						top:0
-					},200);
-				}
-			});
+///////////////////////////////////////////////////////////////
+$('#dialog').dialog({
+ 'title': 'iniciar sesión',
+ autoOpen: false,
+	width: 600,
+	buttons: {
+	"Iniciar Sesión": function() {
+			$(this).dialog("close");
+	},
+	"Cancelar": function() {
+			$(this).dialog("close");
+	}
+	}
+});
+
+// Dialog Link
+$('#loginBoton').click(function(){
+	$('#dialog').dialog('open');
+			return false;
+});
+	///////////////////////////////////////////////////////////////
 		});
 	</script>
 </head>
 
 <body>
-<div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div><script type="text/javascript">$("#javascript_requerido").hide("fast");</script>
+<script type="text/javascript"></script>
+<noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
+
+<div id="dialog"></div>
 
 <div class="CajaPrincipal">
-     <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <a href="#">Login</a> </div>
+     <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <a href="#" id='loginBoton' >Login</a> </div>
     <div class="header">
       <div class="logo"><a href="<?php echo Router::url('/', true); ?>">
 				<?php
 					echo $this->Html->image('header.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
 				?></a>
 				
-		</div>
-      
-      <div class="buscadoriconos">
+	</div>
+	<div class="buscadoriconos">
           <div class="buscador">
 			<form method="get" id="searchform" action="http://adsl.org.mx/buscador/" >
 				<div>
 					<input type="text" id="buscador_input" name="q" />
 				</div>
 			</form>
-          </div><!--termina buscador -->
+	</div><!--termina buscador -->
 		<div class="iconos">
 			<a href="http://www.facebook.com/#!/profile.php?id=100001349064369" rel="external">
 				<?php
@@ -123,113 +116,20 @@ $cakeDescription = __d('cake_dev', 'Academia de software libre');
       </div>
 <!--termina header -->
 	   <div class="menu">
-	       <ul>
-             <li>
-							 <?php
-									echo $this->Html->link('Inicio', '/', array('id'=>'inicio'));
-							 ?>
-							 </li>
-             <li>
-							 <?php
-									echo $this->Html->link('Registrate', 
-														array('controller'=>'users', 'action' => 'registro', 'admin'=>false),
-														array('id'=>'Botonregistrate')
-										);
-							 ?>
-             </li>
-             <li><?php
-             echo $this->Html->link('Talleres', 
-														array('controller'=>'talleres'),
-														array('id'=>'BotonTalleres')
-										);
-             ?>
-						</li>
-             <li><a href="#" id="calendario">Calendario</a></li>
-             <li><a href="#" id="blog">Blog</a></li>  
-             <li><a href="#" id="foro">Foro</a></li>
-             <li><a href="#" id="proyectos">Proyectos</a></li>
-             <li><a href="#" id="contacto">Contactanos</a></li>
-		  </ul>
+	       <?php
+					echo $this->element('menu_superior');
+	       ?>
 	   </div>
-       <?php echo $this->Session->flash(); ?>
-			 <?php echo $this->fetch('content'); ?>
-			 
-    <div class="separadorfooter">Promovemos el uso de:</div>
-    <div class="logosfooter">
-    <a href="http://www.ubuntu.com/" rel="external">
-		<?php
-					echo $this->Html->image('ubuntu.jpg', array('alt'=>'ubuntu'));
-		?>
-	</a>
-	<a href="http://www.joomla.org/" rel="external">
-		<?php
-					echo $this->Html->image('joomla.jpg', array('alt'=>'Joomla'));
-		?>
-	</a>
-	<a href="http://www.mysql.com/" rel="external">
-		<?php
-					echo $this->Html->image('mysql.jpg', array('alt'=>'Mysql'));
-		?>
-	</a>
-	<a href="http://www.php.net/" rel="external">
-		<?php
-					echo $this->Html->image('php.jpg', array('alt'=>'PHP'));
-		?>
-	</a>
-		<?php
-					echo $this->Html->image('debian.jpg', array('alt'=>'debian'));
-		?>
-	</a>
-	<a href="http://es.opensuse.org/" rel="external">
-		<?php
-					echo $this->Html->image('suse.jpg', array('alt'=>'suse'));
-		?>
-	</a>
-	<a href="http://www.blender.org/" rel="external">
-		<?php
-					echo $this->Html->image('blender.jpg', array('alt'=>'Blender'));
-		?>
-	</a>
-    <a href="http://wordpress.org/" rel="external">
-		<?php
-					echo $this->Html->image('wordpress.jpg', array('alt'=>'wordpress'));
-		?>
-	</a>
-	<a href="http://es.openoffice.org/" rel="external">
-		<?php
-					echo $this->Html->image('openoffice.jpg', array('alt'=>'openOffice'));
-		?>
-	</a>
-	<a href="http://www.linux.org/" rel="external">
-			<?php
-					echo $this->Html->image('linux.jpg', array('alt'=>'Linux'));
-		?>
-	</a>
-	<a href="http://www.mozilla-europe.org/es/firefox/" rel="external">
-		<?php
-					echo $this->Html->image('firefox.jpg', array('alt'=>'Firefox'));
-		?>
-	</a>
-	<a href="http://www.inkscape.org/?lang=es" rel="external">
-		<?php
-					echo $this->Html->image('inkscape.jpg', array('alt'=>'Inskape'));
-		?>
-	</a>
-	</div>
-<div class="separadorfooter2"></div>    
-<div class="footer">
-	     <div class="footerCont">
-         
-         &copy; 2010- <?php date('Y'); ?>, Academia de Software Libre<br />
-Dirección: Manuel Doblado #119, Col. Centro, Oaxaca, Oax.<br />
-Tel: (951) 205 43 51  / E-Mail: <a href='mailto:contacto@adsl.org.mx'>contacto@adsl.org.mx</a><br />
-
-Sitio esta hecho con código libre y abierto <a href="https://github.com/mundoSICA/ADSL" rel="external">disponible en github</a><br />
-Sitio diseñado por: <a href="http://www.manuelhernandez.com.mx" rel="external">Manuel Hernández</a><br />
-
-         
-    </div>
-	</div>
+<div id="content">
+       <?php
+				echo $this->Session->flash();
+				echo $this->fetch('content');
+			?>
+</div>
+<?php
+	echo $this->element('pie_logos_promovemos');
+	echo $this->element('pie_info_direccion');
+?>
 </div> <!--termina CajaPrincipal -->
 <?php echo $this->element('sql_dump'); ?>
 

@@ -5,7 +5,7 @@ body{
 	background-repeat: repeat-x;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color: #EBECD0;	
+	color: #111;
 	margin: 0 0;
 	padding: 0 0;
 	text-align: center;
@@ -429,6 +429,7 @@ ul{
 	height: 130px;
 	color: #736153;
 	font-size: 11px;
+	background-color:#f2f2f2;
 }
 
 .logosfooter img{
@@ -555,7 +556,23 @@ ul{
 
 .formulario,
 div.acciones,
-div.users,div.index
-{
+div.users,div.index{
 	background: #FFF;
+}
+
+/** .acciones  **/
+.acciones ul {
+	margin: 0;
+	padding: 0;
+}
+.acciones li {
+	margin:0 0 0.5em 0;
+	list-style-type: none;
+	white-space: nowrap;
+	padding: 0;
+}
+.acciones ul li a {
+	font-weight: normal;
+	display: block;
+	clear: both;
 }
