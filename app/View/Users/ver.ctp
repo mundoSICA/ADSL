@@ -1,12 +1,10 @@
 <div class="users ver">
-<h2><?php  echo __('User');?></h2>
+<?php
+		echo $this->Html->gravatar_img($user['User']['email']);
+?>
+
+<h2><?php  echo h($user['User']['username']);?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Role'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['role']); ?>
 			&nbsp;
@@ -14,11 +12,6 @@
 		<dt><?php echo __('Username'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Email'); ?></dt>
@@ -117,7 +110,6 @@
 			<td><?php echo $taller['resumen'];?></td>
 			<td><?php echo $taller['contenido'];?></td>
 			<td><?php echo $taller['numero_total_horas'];?></td>
-			<td><?php echo $taller['big_slide'];?></td>
 			<td><?php echo $taller['slide'];?></td>
 			<td class="acciones">
 				<?php echo $this->Html->link('Ver', array('controller' => 'talleres', 'action' => 'ver', $taller['id'])); ?>

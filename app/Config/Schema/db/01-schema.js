@@ -7,7 +7,7 @@ var tablas = [
 "width" : 489,
 "height" : 345,
 "pos_x" : 384,
-"pos_y" : 96,
+"pos_y" : 80,
 "fill_colour" : "#ABFFA3",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
@@ -15,6 +15,7 @@ var tablas = [
  {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "id", "tipo": "INT( 4 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "cupo", "tipo": "INT( 2 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "horario", "tipo": "VARCHAR(200)", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "fecha_inicio", "tipo": "DATE", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
@@ -23,8 +24,7 @@ var tablas = [
  {"nombre" : "resumen", "tipo": "VARCHAR( 200 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "contenido", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "numero_total_horas", "tipo": "INT( 20 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "big_slide", "tipo": "BOOLEAN DEFAULT FALSE", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "slide", "tipo": "BOOLEAN DEFAULT FALSE", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "slide", "tipo": "BOOLEAN DEFAULT FALSE", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {
@@ -46,8 +46,8 @@ var tablas = [
 {
 "nombre" : "users",
 "orden" : 2,
-"width" : 789,
-"height" : 153,
+"width" : 859,
+"height" : 225,
 "pos_x" : 672,
 "pos_y" : 48,
 "fill_colour" : "#FFA472",
@@ -58,7 +58,10 @@ var tablas = [
  {"nombre" : "role", "tipo": "ENUM('admin','maestro','registrado') DEFAULT 'registrado'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "username", "tipo": "VARCHAR(50)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "password", "tipo": "VARCHAR(50)", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "email", "tipo": "VARCHAR(100)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
+ {"nombre" : "email", "tipo": "VARCHAR(100)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "notificaciones", "tipo": "BOOLEAN DEFAULT FALSE", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {

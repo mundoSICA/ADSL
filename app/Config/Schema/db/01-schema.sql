@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`user_id` INT( 5 ) NOT NULL,
 	`id` INT( 4 ) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
 	`nombre` VARCHAR(75) NOT NULL UNIQUE,
+	`cupo` INT( 2 ) NOT NULL,
 	`slug_dst` VARCHAR(80) NOT NULL UNIQUE,
 	`horario` VARCHAR(200) DEFAULT NULL,
 	`fecha_inicio` DATE DEFAULT NULL,
@@ -15,8 +16,7 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`resumen` VARCHAR( 200 ) DEFAULT NULL,
 	`contenido` TEXT DEFAULT NULL,
 	`numero_total_horas` INT( 20 ) DEFAULT NULL,
-	`big_slide` BOOLEAN DEFAULT FALSE NOT NULL,
-	`slide` BOOLEAN DEFAULT FALSE DEFAULT NULL
+	`slide` BOOLEAN DEFAULT FALSE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas_talleres --
@@ -34,7 +34,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`role` ENUM('admin','maestro','registrado') DEFAULT 'registrado' NOT NULL,
 	`username` VARCHAR(50) NOT NULL UNIQUE,
 	`password` VARCHAR(50) NOT NULL,
-	`email` VARCHAR(100) NOT NULL UNIQUE
+	`email` VARCHAR(100) NOT NULL UNIQUE,
+	`notificaciones` BOOLEAN DEFAULT FALSE NOT NULL,
+	`created` DATETIME NOT NULL,
+	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- posts --

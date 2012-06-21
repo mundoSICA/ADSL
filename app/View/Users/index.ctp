@@ -43,7 +43,6 @@
 <div class="acciones">
 	<h3>Acciones</h3>
 	<ul>
-		<li><?php echo $this->Html->link('Registrar Usuario', array('action' => 'registro')); ?></li>
 		<li><?php echo $this->Html->link('Listar Noticias', array('controller' => 'noticias', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Noticia', array('controller' => 'noticias', 'action' => 'agregar')); ?> </li>
 		<li><?php echo $this->Html->link('Listar Talleres', array('controller' => 'talleres', 'action' => 'index')); ?> </li>

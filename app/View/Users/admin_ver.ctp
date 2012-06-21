@@ -117,7 +117,6 @@
 			<td><?php echo $taller['resumen'];?></td>
 			<td><?php echo $taller['contenido'];?></td>
 			<td><?php echo $taller['numero_total_horas'];?></td>
-			<td><?php echo $taller['big_slide'];?></td>
 			<td><?php echo $taller['slide'];?></td>
 			<td class="acciones">
 				<?php echo $this->Html->link('Ver', array('controller' => 'talleres', 'action' => 'ver', $taller['id'])); ?>
