@@ -15,8 +15,7 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`costo` FLOAT( 4 ) DEFAULT NULL,
 	`resumen` VARCHAR( 200 ) DEFAULT NULL,
 	`contenido` TEXT DEFAULT NULL,
-	`numero_total_horas` INT( 20 ) DEFAULT NULL,
-	`slide` BOOLEAN DEFAULT FALSE NOT NULL
+	`numero_total_horas` INT( 20 ) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas_talleres --
@@ -32,9 +31,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
 	`id` INT(5) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
 	`role` ENUM('admin','maestro','registrado') DEFAULT 'registrado' NOT NULL,
-	`username` VARCHAR(50) NOT NULL UNIQUE,
-	`password` VARCHAR(50) NOT NULL,
+	`username` VARCHAR(15) NOT NULL UNIQUE,
+	`password` VARCHAR(40) NOT NULL,
 	`email` VARCHAR(100) NOT NULL UNIQUE,
+	`email_publico` BOOLEAN DEFAULT FALSE NOT NULL,
+	`twitter` VARCHAR( 20 ) DEFAULT NULL,
+	`facebook` VARCHAR( 100 ) DEFAULT NULL,
+	`url` VARCHAR( 150 ) DEFAULT NULL,
 	`notificaciones` BOOLEAN DEFAULT FALSE NOT NULL,
 	`created` DATETIME NOT NULL,
 	`modified` DATETIME NOT NULL
