@@ -17,11 +17,15 @@ echo $this->Html->link('Inicio', '/', array('id'=>'inicio'));
 	?></li>
 	<li><?php
 	echo $this->Html->link('Talleres', 
-		array('controller'=>'talleres'),
+		array('controller'=>'talleres','admin'=>false),
 		array('id'=>'BotonTalleres')
 );
 ?></li>
-	<li><a href="#" id="calendario">Calendario</a></li>
+	<li><?php
+	echo $this->Html->link('Calendario', 
+		array('controller'=>'talleres','action'=>'calendario','admin'=>false),
+		array('id'=>'BotonCalendario')
+	);?></li>
 	<li><a href="#" id="blog">Blog</a></li>  
 	<li><a href="#" id="foro">Foro</a></li>
 	<li><a href="#" id="proyectos">Proyectos</a></li>
