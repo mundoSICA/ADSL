@@ -111,17 +111,7 @@ class Taller extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
-		'big_slide' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -135,7 +125,7 @@ class Taller extends AppModel {
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
-			'conditions' => '',
+			'conditions' => array('User.role' => array('admin', 'maestro')),
 			'fields' => '',
 			'order' => ''
 		)
@@ -184,7 +174,7 @@ class Taller extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'User' => array(
+		'Alumnos' => array(
 			'className' => 'User',
 			'joinTable' => 'talleres_users',
 			'foreignKey' => 'taller_id',
@@ -200,5 +190,30 @@ class Taller extends AppModel {
 			'insertQuery' => ''
 		)
 	);
+	/**
+	 * Revisa que sea una imagen valida 925x250 en formato jpeg
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function setImg(&$d) {
+		if(isset($d['Taller']['slide']['tmp_name']) && file_exists($d['Taller']['slide']['tmp_name'])) {
+			$size = getimagesize($d['Taller']['slide']['tmp_name']);
+			if(count($size) == 7 && $size[0] == 925 && $size[1] = 250 &&  $size['mime'] == 'image/jpeg'){
+				$fileName = APP . 'webroot/img/talleres/';
+				if( isset($d['Taller']['slug_dst']) ) {//en caso que ya este definidio el slug(actualización)
+					$fileName .= $d['Taller']['slug_dst'] . '.jpg';
+				} else {//en caso que el slug no este definido optenemos el futuro Slug del nombre
+					$fileName .=  $this->slugStr($d['Taller']['nombre']) . '.jpg';
+				}
+				$return = copy($d['Taller']['slide']['tmp_name'], $fileName);
+				unset($d['Taller']['slide']);
+				return $return;
+			}
+		}
+		return false;
+	}//end function
 
 }

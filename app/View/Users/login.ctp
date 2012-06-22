@@ -1,7 +1,7 @@
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend>Registrate como usuario</legend>
+		<legend>Identicate como usario</legend>
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
@@ -9,4 +9,7 @@
 		echo $this->Form->end('Autenticarse');
 	?>
 	</fieldset>
+	<?php
+	echo $this->Html->link('registrarme', array('action'=>'registro'));
+	?>
 </div>

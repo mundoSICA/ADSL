@@ -2,26 +2,18 @@
 	<h2><?php echo __('Users');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('role');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
-			<th><?php echo $this->Paginator->sort('password');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
-			<th class="acciones">Acciones</th>
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
 	<tr>
-		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($user['User']['username']),
+											array('action' => 'ver', $user['User']['username'])
+							); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td class="acciones">
-			<?php echo $this->Html->link('Ver', array('action' => 'ver', $user['User']['id'])); ?>
-			<?php echo $this->Html->link('Editar', array('action' => 'editar', $user['User']['id'])); ?>
-			<?php echo $this->Form->postLink('Borrar', array('action' => 'borrar', $user['User']['id']), null, __('Esta seguro que desea borrar: # %s?', $user['User']['id'])); ?>
-		</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

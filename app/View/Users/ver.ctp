@@ -1,10 +1,14 @@
+<style type="text/css" media="all">
+div.datos_usuario {
+	width:550px;
+	float:left;
+}
+</style>
 <div class="users ver">
-<?php
-		echo $this->Html->gravatar_img($user['User']['email']);
-?>
-
-<h2><?php  echo h($user['User']['username']);?></h2>
+<div class='datos_usuario'>
+	<h2><?php  echo h($user['User']['username']);?></h2>
 	<dl>
+		<dt>Role</dt>
 		<dd>
 			<?php echo h($user['User']['role']); ?>
 			&nbsp;
@@ -20,6 +24,8 @@
 			&nbsp;
 		</dd>
 	</dl>
+</div><!-- en datos usuarios -->
+
 </div>
 <div class="acciones">
 	<h3>Acciones</h3>
@@ -68,62 +74,28 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="acciones">
-		<ul>
-			<li><?php echo $this->Html->link('Agregar Noticia', array('controller' => 'noticias', 'action' => 'agregar'));?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
-	<h3>Talleres Relacionados</h3>
+	<h3>Talleres inscritos</h3>
 	<?php if (!empty($user['Taller'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Nombre'); ?></th>
-		<th><?php echo __('Slug Dst'); ?></th>
+		<th><?php echo __('Taller'); ?></th>
 		<th><?php echo __('Horario'); ?></th>
-		<th><?php echo __('Fecha Inicio'); ?></th>
-		<th><?php echo __('Fecha Final'); ?></th>
-		<th><?php echo __('Costo'); ?></th>
-		<th><?php echo __('Resumen'); ?></th>
-		<th><?php echo __('Contenido'); ?></th>
-		<th><?php echo __('Numero Total Horas'); ?></th>
-		<th><?php echo __('Big Slide'); ?></th>
-		<th><?php echo __('Slide'); ?></th>
-		<th class="acciones">Acciones</th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($user['Taller'] as $taller): ?>
 		<tr>
-			<td><?php echo $taller['user_id'];?></td>
-			<td><?php echo $taller['id'];?></td>
-			<td><?php echo $taller['nombre'];?></td>
-			<td><?php echo $taller['slug_dst'];?></td>
-			<td><?php echo $taller['horario'];?></td>
-			<td><?php echo $taller['fecha_inicio'];?></td>
-			<td><?php echo $taller['fecha_final'];?></td>
-			<td><?php echo $taller['costo'];?></td>
-			<td><?php echo $taller['resumen'];?></td>
-			<td><?php echo $taller['contenido'];?></td>
-			<td><?php echo $taller['numero_total_horas'];?></td>
-			<td><?php echo $taller['slide'];?></td>
-			<td class="acciones">
-				<?php echo $this->Html->link('Ver', array('controller' => 'talleres', 'action' => 'ver', $taller['id'])); ?>
-				<?php echo $this->Html->link('Editar', array('controller' => 'talleres', 'action' => 'editar', $taller['id'])); ?>
-				<?php echo $this->Form->postLink('Borrar', array('controller' => 'talleres', 'action' => 'borrar', $taller['id']), null, __('Esta seguro que desea borrar: # %s?', $taller['id'])); ?>
+			<td><?php
+				echo $this->Html->link($taller['nombre'], 
+				array('controller' => 'talleres', 'action' => 'ver', $taller['slug_dst'])
+				);?>
 			</td>
+			<td><?php echo $taller['horario'];?></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="acciones">
-		<ul>
-			<li><?php echo $this->Html->link('Agregar Taller', array('controller' => 'talleres', 'action' => 'agregar'));?> </li>
-		</ul>
-	</div>
 </div>

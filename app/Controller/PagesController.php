@@ -31,6 +31,10 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
+function beforeFilter() {
+			$this->Auth->allow('*');
+}
+
 /**
  * Controller name
  *
@@ -50,7 +54,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('Taller');
 
 /**
  * Displays a view
@@ -79,4 +83,18 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}
+
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function home() {
+		$this->Taller->recursive = 0;
+		$this->set('talleres', $this->paginate());
+	}//end function
+
 }

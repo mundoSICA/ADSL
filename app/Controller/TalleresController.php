@@ -6,6 +6,10 @@ App::uses('AppController', 'Controller');
  * @property Taller $Taller
  */
 class TalleresController extends AppController {
+function beforeFilter() {
+			$this->Auth->allow(array('index','calendario','ver'));
+}
+//var $uses = array('TalleresUser');
 /**
  * index method
  *
@@ -16,14 +20,43 @@ class TalleresController extends AppController {
 		$this->set('talleres', $this->paginate());
 	}
 
+	public function inscribirme($slug) {
+		$id = $this->Taller->primaryKeyBySlug($slug, true);
+		if (!$this->Taller->exists()) {
+			throw new NotFoundException('Registro invalido: taller.');
+		}else{
+			$this->Taller->recursive = -1;
+			$taller = $this->Taller->read();
+			$taller['Alumnos']=array(
+						'taller_id' => $id,
+						'user_id' => $this->Session->read('Auth.User.id')
+			);
+			$this->Taller->save($taller);
+		}
+		$this->redirect(
+			array('controller'=>'users',
+						'action' => 'ver',
+						'admin' => false,
+						$this->Session->read('Auth.User.username')
+		));
+	}
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function calendario() {
+		$this->Taller->recursive = -1;
+		$this->set('talleres', $this->paginate());
+	}
 /**
  * view method
  *
  * @param string $id
  * @return void
  */
-	public function ver($id = null) {
-		$this->Taller->id = $id;
+	public function ver($slug = null) {
+		$id = $this->Taller->primaryKeyBySlug($slug, true);
 		if (!$this->Taller->exists()) {
 			throw new NotFoundException('Registro invalido: taller.');
 		}
@@ -35,19 +68,22 @@ class TalleresController extends AppController {
  * @return void
  */
 	public function admin_agregar() {
-		if ($this->request->is('post')) {
-			$this->Taller->create();
-			if ($this->Taller->save($this->request->data)) {
-				$this->Session->setFlash('El registro taller. Fue guardado');
-				$this->redirect(array('action' => 'index'));
+		if ($this->request->is('post') && isset($this->request->data['Taller']['slide']['type']) ) {
+			if( !$this->Taller->setImg(&$this->request->data) ){
+				$this->Session->setFlash(
+					'Revise que la imagen<br />para el Slide sea válida<br />(jpeg 925x250)'
+				);
+			}elseif ( $this->Taller->save($this->request->data)) {
+				$this->Session->setFlash('El taller ya fue agregado y agendado con exito!');
+				$this->redirect(array('action' => 'index', 'admin' => false));
 			} else {
 				$this->Session->setFlash('El registro taller. No pudo ser guardado');
 			}
 		}
 		$users = $this->Taller->User->find('list');
 		$etiquetas = $this->Taller->Etiqueta->find('list');
-		$users = $this->Taller->User->find('list');
-		$this->set(compact('users', 'etiquetas', 'users'));
+		$alumnos = $this->Taller->Alumnos->find('list');
+		$this->set(compact('users', 'etiquetas', 'alumnos'));
 	}
 
 /**
@@ -56,15 +92,16 @@ class TalleresController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_editar($id = null) {
-		$this->Taller->id = $id;
+	public function admin_editar($slug = null) {
+		$id = $this->Taller->primaryKeyBySlug($slug, true);
 		if (!$this->Taller->exists()) {
 			throw new NotFoundException('Registro invalido: taller.');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+			die( pr($this->request->data) );
 			if ($this->Taller->save($this->request->data)) {
 				$this->Session->setFlash('El registro taller. Fue guardado');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index','admin' => false));
 			} else {
 				$this->Session->setFlash('El registro taller. No pudo ser guardado');
 			}
@@ -73,8 +110,8 @@ class TalleresController extends AppController {
 		}
 		$users = $this->Taller->User->find('list');
 		$etiquetas = $this->Taller->Etiqueta->find('list');
-		$users = $this->Taller->User->find('list');
-		$this->set(compact('users', 'etiquetas', 'users'));
+		$alumnos = $this->Taller->Alumnos->find('list');
+		$this->set(compact('users', 'etiquetas', 'alumnos'));
 	}
 
 /**

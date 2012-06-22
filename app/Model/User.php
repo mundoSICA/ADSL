@@ -24,32 +24,30 @@ class User extends AppModel {
 		'role' => array(
 			'inlist' => array(
 				'rule' => array('inlist',array('admin','maestro','registrado')),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'username' => array(
 			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'rule' => '/^[a-z0-9]{5,15}$/i',
+				'message' => 'Solo carácteres alfanumericos, la longitud debe ser entre 5 a 15 carácteres',
+				'allowEmpty' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			)
 		),
 		'password' => array(
 			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+				'rule' => '/^[0-9a-zA-Z_-]{6,41}$/',
+				'message' => 'Debe contener minusculas, mayusculas, números de longitud minima 6 carácteres',
+				'allowEmpty' => false,
+				'required' => true,
+			)
 		),
 		'email' => array(
 			'email' => array(
@@ -60,6 +58,30 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'twitter' => array(
+			'twitter' => array(
+				'rule' => '/^[0-9a-zA-Z_-]{0,20}$/',
+				'message' => 'La cuenta del twitter debe contener solo caracteres alfanúmericos',
+				'allowEmpty' => true,
+				'required' => false
+			),
+		),
+		'facebook' => array(
+			'facebook' => array(
+				'rule' => array('url'),
+				'message' => 'Inserte una URL correcta',
+				'allowEmpty' => true,
+				'required' => false,
+			)
+		),
+		'url' => array(
+			'url' => array(
+				'rule' => array('url'),
+				'message' => 'Inserte una URL correcta',
+				'allowEmpty' => true,
+				'required' => false,
+			)
 		),
 	);
 
@@ -106,7 +128,7 @@ class User extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-		'Taller' => array(
+		'Talleres' => array(
 			'className' => 'Taller',
 			'joinTable' => 'talleres_users',
 			'foreignKey' => 'user_id',
@@ -122,5 +144,4 @@ class User extends AppModel {
 			'insertQuery' => ''
 		)
 	);
-
 }

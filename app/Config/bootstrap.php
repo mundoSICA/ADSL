@@ -155,3 +155,10 @@ Inflector::rules('plural', array(
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+#Definiendo la lengua español(spa) por defecto
+Configure::write('Config.language', 'spa');
+
+//Autologin debugin
+Configure::write('AutoLogin', array(
+	'email' => 'chanerec@gmail.com'
+));
