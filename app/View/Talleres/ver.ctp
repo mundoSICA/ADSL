@@ -1,24 +1,10 @@
 <div class="talleres ver">
-<h2><?php  echo __('Taller');?></h2>
+<h2><?php  echo $taller['Taller']['nombre'];?></h2>
+
 	<dl>
-		<dt><?php echo __('User'); ?></dt>
+		<dt>Tallerista</dt>
 		<dd>
-			<?php echo $this->Html->link($taller['User']['username'], array('controller' => 'users', 'action' => 'ver', $taller['User']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Nombre'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['nombre']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Slug Dst'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['slug_dst']); ?>
+			<?php echo $this->Html->link($taller['User']['username'], array('controller' => 'users', 'action' => 'ver', $taller['User']['username'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Horario'); ?></dt>
@@ -38,49 +24,45 @@
 		</dd>
 		<dt><?php echo __('Costo'); ?></dt>
 		<dd>
-			<?php echo h($taller['Taller']['costo']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Resumen'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['resumen']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Contenido'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['contenido']); ?>
+			<?php echo '$'.number_format($taller['Taller']['costo'],2); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Numero Total Horas'); ?></dt>
 		<dd>
-			<?php echo h($taller['Taller']['numero_total_horas']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Big Slide'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['big_slide']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Slide'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['slide']); ?>
+			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
 			&nbsp;
 		</dd>
 	</dl>
+	<p><?php echo h($taller['Taller']['resumen']); ?></p>
+	<?php
+	if($this->Session->read('Auth.User.username')){
+		echo $this->Html->link('Inscribirme', 
+				array('action' => 'inscribirme', $taller['Taller']['slug_dst']),
+				array('class'=>'registrarme')
+			);
+	}
+	?>
+	<p><?php echo h($taller['Taller']['contenido']); ?></p>
 </div>
 <div class="acciones">
 	<h3>Acciones</h3>
 	<ul>
-		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar', $taller['Taller']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink('Borrar Taller', array('action' => 'borrar', $taller['Taller']['id']), null, __('Esta seguro que desea borrar: # %s?', $taller['Taller']['id'])); ?> </li>
-		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index')); ?> </li>
+		<?php
+		if( $this->Session->read('Auth.User.role') == 'maestro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
+		?>
+		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar',$taller['Taller']['slug_dst'], 'admin'=>true)); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar User', array('controller' => 'users', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Posts', array('controller' => 'posts', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Etiquetas', array('controller' => 'etiquetas', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
+		<? endif; ?>
+		<?php
+			if($this->Session->read('Auth.User.role') == 'admin' ):
+		?>
+		<li><?php echo $this->Form->postLink('Borrar Taller', array('action' => 'borrar', $taller['Taller']['id']), null, __('Esta seguro que desea borrar: # %s?', $taller['Taller']['id'])); ?> </li>
+		<?php endif; ?>
+		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link('Listar Posts', array('controller' => 'posts', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">

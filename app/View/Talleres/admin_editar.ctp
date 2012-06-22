@@ -6,7 +6,6 @@
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('id');
 		echo $this->Form->input('nombre');
-		echo $this->Form->input('slug_dst');
 		echo $this->Form->input('horario');
 		echo $this->Form->input('fecha_inicio');
 		echo $this->Form->input('fecha_final');
@@ -14,10 +13,8 @@
 		echo $this->Form->input('resumen');
 		echo $this->Form->input('contenido');
 		echo $this->Form->input('numero_total_horas');
-		echo $this->Form->input('big_slide');
-		echo $this->Form->input('slide');
 		echo $this->Form->input('Etiqueta');
-		echo $this->Form->input('User');
+		echo $this->Form->input('Alumnos');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Enviar');?>

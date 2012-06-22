@@ -56,15 +56,17 @@ $('#dialog').dialog({
 	}
 	}
 });
-
-// Dialog Link
-$('#loginBoton').click(function(){
-	$('#dialog').dialog('open');
-			return false;
+//flash Mensaje
+$('#flashMessage').dialog({
+	buttons: {
+		"Aceptar": function() {
+				$(this).dialog("close");
+			}
+	}
 });
-	///////////////////////////////////////////////////////////////
-		});
-	</script>
+///////////////////////////////////////////////////////////////
+});
+</script>
 </head>
 
 <body>
@@ -74,7 +76,13 @@ $('#loginBoton').click(function(){
 <div id="dialog"></div>
 
 <div class="CajaPrincipal">
-     <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <a href="#" id='loginBoton' >Login</a> </div>
+     <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <?php
+     if( $this->Session->read('Auth.User') ){
+				echo $this->Html->link('Salir',array('controller'=>'users','action'=>'logout','admin'=>false), array('title'=>'Cerrar sesión'));
+			}else{
+				echo $this->Html->link('Login',array('controller'=>'users','action'=>'login'), array('title'=>'logearme'));
+			}
+     ?></div>
     <div class="header">
       <div class="logo"><a href="<?php echo Router::url('/', true); ?>">
 				<?php

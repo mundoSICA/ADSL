@@ -1,54 +1,36 @@
 <?php
 	echo $this->Html->script('slides.min.jquery');
+	echo $this->Html->script('talleres.slides');
 	echo $this->Html->css('slide');
 ?>
+<style type="text/css" media="all">
+	#content{background:rgba(0,0,0,0);}
+</style>
 <div class="header2">
 <div id="slide_principal_talleres">
 			<img src="img/liston_talleres_slide.png" width="150" height="150" alt="Talleres" id="liston_talleres_slide" />
 			<div id="slide_talleres">
 				<div class="slides_container">
-				<!-- slide -->
+				<?php foreach ($talleres as $taller): ?>
 					<div class="slide">
-						<a href="#" title="python basico">
-							<img src="img/talleres/python-basico_slide.jpeg" width="925" height="250" alt="Slide 1" />
-						</a>
-						<h2 class="slide_taller_titulo">python basico</h2>
+						<?php
+						echo $this->Html->link(
+								$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg'),
+								array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $taller['Taller']['slug_dst']),
+								array('escape' => false)
+							);
+						?>
+						<h2 class="slide_taller_titulo"><?php echo $taller['Taller']['nombre']; ?>&nbsp;</h2>
 						<div class="slide_info_taller">
-							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
-							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
-							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
-							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
+							<span class="slide_horario"><strong>Horario: </strong> 
+								<?php echo $taller['Taller']['horario']; ?>&nbsp;
+							</span>
+							<span class="slide_horas"><strong>Número de horas: </strong><?php echo $taller['Taller']['numero_total_horas']; ?>&nbsp;</span>
+							<span class="inicio"><strong>inicia: </strong><?php echo $taller['Taller']['fecha_inicio']; ?>&nbsp;</span>
+							<span class="fin"><strong>concluye: </strong><?php echo $taller['Taller']['fecha_final']; ?>&nbsp;</span>
 						</div>
 					</div>
-				<!-- slide -->
-				<!-- slide -->
-					<div class="slide">
-						<a href="#" title="Cakephp">
-							<img src="img/talleres/cakephp.png" width="925" height="250" alt="Slide 1" />
-						</a>
-						<h2 class="slide_taller_titulo">Cakephp</h2>
-						<div class="slide_info_taller">
-							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
-							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
-							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
-							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
-						</div>
-					</div>
-				<!-- slide -->
-				<!-- slide -->
-					<div class="slide">
-						<a href="#" title="introducción a Django">
-							<img src="img/talleres/django_introduccion.png" width="925" height="250" alt="Slide 1" />
-						</a>
-						<h2 class="slide_taller_titulo">introducción a Django</h2>
-						<div class="slide_info_taller">
-							<span class="slide_horario"><strong>Horario: </strong> 6pm-8pm de lunes a viernes</span>
-							<span class="slide_horas"><strong>Número de horas: </strong> 120horas</span>
-							<span class="inicio"><strong>inicia: </strong>lunes 12 de diciembre.</span>
-							<span class="fin"><strong>concluye: </strong>viernes 23 de diciembre.</span>
-						</div>
-					</div>
-				<!-- slide -->
+				<?php endforeach; ?>
 				</div>
 				<a href="#" class="prev" title='Previo'></a> <a href="#" class="next" title='Siguiente'></a>
 			</div>

@@ -22,7 +22,6 @@ class TallerFixture extends CakeTestFixture {
 		'resumen' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 200, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'contenido' => array('type' => 'text', 'null' => true, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'numero_total_horas' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'length' => 20),
-		'big_slide' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'slide' => array('type' => 'boolean', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'id' => array('column' => 'id', 'unique' => 1), 'nombre' => array('column' => 'nombre', 'unique' => 1), 'slug_dst' => array('column' => 'slug_dst', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
@@ -46,7 +45,6 @@ class TallerFixture extends CakeTestFixture {
 			'resumen' => 'Lorem ipsum dolor sit amet',
 			'contenido' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'numero_total_horas' => 1,
-			'big_slide' => 1,
 			'slide' => 1
 		),
 	);

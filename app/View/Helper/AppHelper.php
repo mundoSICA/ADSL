@@ -31,4 +31,18 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+	
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link http://es.gravatar.com/site/implement/hash/
+	 */
+	function gravatar_img($email, $size=100, $options=array()){
+		return '<div class="avatar" style="width: '.$size.'px">'.
+			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s='.$size, $options)
+			.'</div>';
+	}
 }

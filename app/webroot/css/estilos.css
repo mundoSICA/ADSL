@@ -576,3 +576,15 @@ div.users,div.index{
 	display: block;
 	clear: both;
 }
+div.avatar{
+	float: left;
+	margin-right: 20px;
+	padding:7px;
+	background:#EEE;
+	border:1px solid #DDD;
+	-moz-border-radius:10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-o-border-radius: 0 0 10px 10px;
+	border-radius:10px;
+}
+div.avatar img{border:1px solid #FFF;}
