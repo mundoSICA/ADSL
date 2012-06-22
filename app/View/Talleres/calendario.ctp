@@ -1,71 +1,45 @@
 <?php
 echo  $this->Html->script('fullcalendar.min');
+echo  $this->Html->css('fullcalendar');
+echo  $this->Html->css('fullcalendar.print');
+$out = '';
+$url_base = Router::url('/talleres/ver/');
+
+foreach ($talleres as $t) {
+	$d = explode('-',$t['Taller']['fecha_inicio']);
+	$out .= "{\n\t";
+	$out .= "title: '".$t['Taller']['nombre']."',\n\t";
+	$out .= "start: new Date(".$d[0].", ".($d[1]-1).", ".$d[2]."),\n\t";
+	$out .= "url: '".$url_base. $t['Taller']['slug_dst']. "'\n";
+	$out .= "},";
+}//
 ?>
 <script type='text/javascript'>
-
-	$(document).ready(function() {
-	
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		
+$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agusto","Septiembrw","Octubre","Noviembre","Diciembre"],
+			dayNamesShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
 			editable: true,
 			events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				},
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2)
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: false
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+4, 16, 0),
-					allDay: false
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: false
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/'
-				}
+				<?php echo $out; ?>
 			]
 		});
-		
 	});
 </script>
-<h2>Calendario de actividades.</h2>
-<div id='calendar'></div>
+<style type="text/css" media="all">
+.calendario-wrapper{
+	padding: 10px;
+}
+</style>
+<h2>Calendario de actividades del ADSL.</h2>
+<div class="calendario-wrapper">
+	<div id='calendar'></div>
+<pre><?php
+echo $out;
+?></pre>
+</div>
