@@ -18,9 +18,13 @@
 		<dd><?php echo h($taller['Taller']['fecha_final']); ?>&nbsp;</dd>
 		<dt>Número de Horas:</dt>
 		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;</dd>
-	</dl>
+	</dl><br />
 	<p><?php echo h($taller['Taller']['resumen']); ?>&nbsp;</p>
-	<?php echo $this->Html->link('Ver más', array('action' => 'ver', $taller['Taller']['slug_dst'])); ?>
+	<?php echo $this->Html->link('Ver más',
+	array('action' => 'ver', $taller['Taller']['slug_dst']),
+	array('class' => 'boton_naranja')
+	); ?>
+	<br /><br />
 <?php endforeach; ?>
 	<p>
 	<?php

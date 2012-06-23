@@ -63,7 +63,7 @@ div.datos_usuario {
 		<thead>
 			<tr>
 				<th>Taller</th>
-				<th>Fecha</th>
+				<th>Fecha Inicio</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -77,6 +77,29 @@ foreach ($user['Taller'] as $t): ?>
 		</tbody>
 	</table>
 <?php endif; ?>
+
+<?php if (!empty($user['Curso'])):?>
+<h2>Talleres en donde estoy inscrito</h2>
+<table cellpadding = "0" cellspacing = "0">
+<tr>
+	<th><?php echo __('Taller'); ?></th>
+	<th><?php echo __('Horario'); ?></th>
+</tr>
+<?php
+	$i = 0;
+	foreach ($user['Curso'] as $curso): ?>
+	<tr>
+		<td><?php
+			echo $this->Html->link($curso['nombre'],
+			array('controller' => 'talleres', 'action' => 'ver', $curso['slug_dst'])
+			);?>
+		</td>
+		<td><?php echo $curso['horario'];?></td>
+	</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
 </div><!-- en datos usuarios -->
 </div>
 <div class="acciones">
@@ -115,29 +138,6 @@ foreach ($user['Taller'] as $t): ?>
 				<?php echo $this->Html->link('Editar', array('controller' => 'noticias', 'action' => 'editar', $noticia['id'])); ?>
 				<?php echo $this->Form->postLink('Borrar', array('controller' => 'noticias', 'action' => 'borrar', $noticia['id']), null, __('Esta seguro que desea borrar: # %s?', $noticia['id'])); ?>
 			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-</div>
-<div class="related">
-	<h3>Talleres en donde esta inscrito</h3>
-	<?php if (!empty($user['Curso'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Taller'); ?></th>
-		<th><?php echo __('Horario'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($user['Curso'] as $curso): ?>
-		<tr>
-			<td><?php
-				echo $this->Html->link($curso['nombre'],
-				array('controller' => 'talleres', 'action' => 'ver', $curso['slug_dst'])
-				);?>
-			</td>
-			<td><?php echo $curso['horario'];?></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>

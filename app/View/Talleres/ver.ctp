@@ -65,19 +65,22 @@
 			&nbsp;
 		</dd>
 	</dl>
+
+	<h2>Requisitos</h2>
+	<p><?php echo $taller['Taller']['requisitos']; ?></p>
+	<h2>Resumen</h2>
 	<p><?php echo h($taller['Taller']['resumen']); ?></p>
-	<?php
-	if($this->Session->read('Auth.User.username')){
-		echo $this->Html->link('Inscribirme',
-				array('action' => 'inscribirme', $taller['Taller']['slug_dst']),
-				array('class'=>'registrarme')
-			);
-	}
-	?>
+	<h2>Descripción detallada</h2>
 	<p><?php echo h($taller['Taller']['contenido']); ?></p>
 	<!-- -->
 	<h2>Alumnos en el taller</h2>
-	<?php if (!empty($taller['User'])):?>
+<?php
+$boton_taller = false;
+if($this->Session->read('Auth.User.username') ){
+	$boton_taller = true;
+}
+$user_auth = $this->Session->read('Auth.User.username');
+if (!empty($taller['User'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th>Alumno</th>
@@ -89,6 +92,9 @@
 			<td>
 				<?php
 				echo $this->Html->link($user['username'], array('controller' => 'users', 'action' => 'ver', $user['username']));
+					if($user_auth == $user['username']){
+						$boton_taller = false;
+					}
 				 ?>
 			</td>
 		</tr>
@@ -96,6 +102,14 @@
 	</table>
 <?php endif; ?>
 	<!-- -->
+<?php
+	if($boton_taller){
+		echo $this->Html->link('Inscribirme',
+				array('action' => 'inscribirme', $taller['Taller']['slug_dst']),
+				array('class'=>'registrarme')
+			);
+	}
+?>
 </div>
 <div class="acciones">
 	<h3>Acciones</h3>
@@ -115,7 +129,6 @@
 		<?php endif; ?>
 		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Posts', array('controller' => 'posts', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">

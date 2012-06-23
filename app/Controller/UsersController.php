@@ -71,8 +71,8 @@ function beforeFilter() {
 			$this->request->data['User']['password'] = $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Has sido registrado exitosamente');
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('Has sido registrado, Ahora debes iniciar sesión');
+				$this->redirect(array('action' => 'login'));
 			} else {
 				$this->Session->setFlash('No te puedes registrar!, favor de revisar que tus datos sean correctos');
 			}

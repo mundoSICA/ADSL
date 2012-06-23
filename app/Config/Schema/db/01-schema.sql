@@ -15,7 +15,9 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`costo` FLOAT( 4 ) DEFAULT NULL,
 	`resumen` VARCHAR( 200 ) DEFAULT NULL,
 	`contenido` TEXT DEFAULT NULL,
-	`numero_total_horas` INT( 20 ) DEFAULT NULL
+	`numero_total_horas` INT( 20 ) DEFAULT NULL,
+	`requisitos` TEXT DEFAULT NULL,
+	`num_alumnos` INT( 2 ) DEFAULT 0 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas_talleres --

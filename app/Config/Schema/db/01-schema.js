@@ -4,8 +4,8 @@ var tablas = [
 {
 "nombre" : "talleres",
 "orden" : 1,
-"width" : 408,
-"height" : 321,
+"width" : 454,
+"height" : 369,
 "pos_x" : 384,
 "pos_y" : 80,
 "fill_colour" : "#ABFFA3",
@@ -23,7 +23,9 @@ var tablas = [
  {"nombre" : "costo", "tipo": "FLOAT( 4 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "resumen", "tipo": "VARCHAR( 200 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "contenido", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "numero_total_horas", "tipo": "INT( 20 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "numero_total_horas", "tipo": "INT( 20 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "requisitos", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "num_alumnos", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
  ]
 },
 {

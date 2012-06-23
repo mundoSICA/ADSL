@@ -32,12 +32,13 @@ function beforeFilter() {
 						'user_id' => $this->Session->read('Auth.User.id')
 			);
 			$this->Taller->save($taller);
+			$this->Session->setFlash('Has sido registrado en el taller<br />"'.$slug.'"<br /> con exito');
 		}
 		$this->redirect(
-			array('controller'=>'users',
+			array('controller'=>'talleres',
 						'action' => 'ver',
 						'admin' => false,
-						$this->Session->read('Auth.User.username')
+						$slug
 		));
 	}
 /**

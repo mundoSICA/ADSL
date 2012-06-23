@@ -111,6 +111,16 @@ class Taller extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'requisitos' => array(
+		'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		)
 	);
 
@@ -215,5 +225,15 @@ class Taller extends AppModel {
 		}
 		return false;
 	}//end function
-
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function pruebaRead($id) {
+		return $this->read( $id );
+	}//end function
 }
