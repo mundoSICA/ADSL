@@ -9,8 +9,12 @@
 #slide_principal_talleres {
 	width:946px;
 	height:325px;
-	background: #FFF;
 	position:relative;
+	-webkit-box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
+	-moz-box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
+	-ms-box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
+	-o-box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
+	box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
 }
 
 #liston_talleres_slide {
