@@ -1,9 +1,13 @@
+<?php
+	echo $this->Html->script('activar.top.menu.jquery');
+?>
+<script language="Javascript"  type="text/javascript">$(function() {$("#BotonPerfil").activarTopMenu();});</script>
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
 		<legend>Edicion de mi perfil</legend>
 	<?php
-		echo $this->Form->input('email');		
+		echo $this->Form->input('email');
 		echo $this->Form->input('email_publico', array('label'=> 'Deseo que mi correo electronico aparezca en mi perfil publico'));
 		echo $this->Form->input('twitter');
 		echo $this->Form->input('facebook', array('label'=> 'Facebook(link)'));

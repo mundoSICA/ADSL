@@ -98,7 +98,6 @@ function beforeFilter() {
 			throw new NotFoundException('Registro invalido: taller.');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			die( pr($this->request->data) );
 			if ($this->Taller->save($this->request->data)) {
 				$this->Session->setFlash('El registro taller. Fue guardado');
 				$this->redirect(array('action' => 'index','admin' => false));

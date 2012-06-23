@@ -1,3 +1,7 @@
+<?php
+	echo $this->Html->script('activar.top.menu.jquery');
+?>
+<script language="Javascript"  type="text/javascript">$(function() {$("#BotonTalleres").activarTopMenu();});</script>
 <div class="talleres index">
 	<h2><?php echo __('Talleres');?></h2>
 	<?php
@@ -15,7 +19,6 @@
 		<dt>Número de Horas:</dt>
 		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;</dd>
 	</dl>
-	
 	<p><?php echo h($taller['Taller']['resumen']); ?>&nbsp;</p>
 	<?php echo $this->Html->link('Ver más', array('action' => 'ver', $taller['Taller']['slug_dst'])); ?>
 <?php endforeach; ?>
@@ -25,7 +28,6 @@
 	'format' => 'Página %page% de %pages%, viendo %current% registros de un total %count%, iniciando en %start% acabando en %end%'
 	));
 	?>	</p>
-
 	<div class="paging">
 	<?php
 		echo $this->Paginator->prev('< Anterior', array(), null, array('class' => 'prev disabled'));

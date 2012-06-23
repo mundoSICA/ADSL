@@ -2,7 +2,6 @@
 /**
  * layout por defecto ADSL
  */
-
 $cakeDescription = __d('cake_dev', 'Academia de software libre');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -68,13 +67,10 @@ $('#flashMessage').dialog({
 });
 </script>
 </head>
-
 <body>
 <script type="text/javascript"></script>
 <noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
-
 <div id="dialog"></div>
-
 <div class="CajaPrincipal">
      <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <?php
      if( $this->Session->read('Auth.User') ){
@@ -88,7 +84,6 @@ $('#flashMessage').dialog({
 				<?php
 					echo $this->Html->image('header.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
 				?></a>
-				
 	</div>
 	<div class="buscadoriconos">
           <div class="buscador">
@@ -140,6 +135,5 @@ $('#flashMessage').dialog({
 ?>
 </div> <!--termina CajaPrincipal -->
 <?php echo $this->element('sql_dump'); ?>
-
 </body>
 </html>

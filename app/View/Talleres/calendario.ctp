@@ -2,6 +2,7 @@
 echo  $this->Html->script('fullcalendar.min');
 echo  $this->Html->css('fullcalendar');
 echo  $this->Html->css('fullcalendar.print');
+echo $this->Html->script('activar.top.menu.jquery');
 $out = '';
 $url_base = Router::url('/talleres/ver/');
 
@@ -16,20 +17,23 @@ foreach ($talleres as $t) {
 ?>
 <script type='text/javascript'>
 $(document).ready(function() {
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agusto","Septiembrw","Octubre","Noviembre","Diciembre"],
-			dayNamesShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
-			editable: true,
-			events: [
-				<?php echo $out; ?>
-			]
-		});
+	//activacion del top menu
+	$("#BotonCalendario").activarTopMenu();
+	//calendario
+	$('#calendar').fullCalendar({
+		header: {
+		left: 'prev,next today',
+		center: 'title',
+		right: 'month,agendaWeek,agendaDay'
+	},
+	monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agusto","Septiembrw","Octubre","Noviembre","Diciembre"],
+	dayNamesShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
+	editable: true,
+	events: [
+		<?php echo $out; ?>
+	]
 	});
+});
 </script>
 <style type="text/css" media="all">
 .calendario-wrapper{

@@ -31,7 +31,6 @@ $('#slide_talleres').slides({
 		},200);
 	}
 });
-console.log('hola');
 });
 
 
