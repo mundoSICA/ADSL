@@ -23,7 +23,7 @@ class User extends AppModel {
 	public $validate = array(
 		'role' => array(
 			'inlist' => array(
-				'rule' => array('inlist',array('admin','maestro','registrado')),
+				'rule' => array('inlist',array('admin','miembro','registrado')),
 				'message' => 'Your custom message here',
 				'allowEmpty' => true,
 				'required' => false,

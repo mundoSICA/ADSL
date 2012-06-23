@@ -125,7 +125,7 @@ class Taller extends AppModel {
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
-			'conditions' => array('User.role' => array('admin', 'maestro')),
+			'conditions' => array('User.role' => array('admin', 'miembro')),
 			'fields' => '',
 			'order' => ''
 		)

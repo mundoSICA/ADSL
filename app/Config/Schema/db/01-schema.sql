@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `etiquetas_talleres` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
 	`id` INT(5) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`role` ENUM('admin','maestro','registrado') DEFAULT 'registrado' NOT NULL,
+	`role` ENUM('admin','miembro','registrado') DEFAULT 'registrado' NOT NULL,
 	`username` VARCHAR(15) NOT NULL UNIQUE,
 	`password` VARCHAR(40) NOT NULL,
 	`email` VARCHAR(100) NOT NULL UNIQUE,

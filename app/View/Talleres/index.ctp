@@ -40,7 +40,7 @@
 	<h3>Acciones</h3>
 	<ul>
 		<?php
-			if( $this->Session->read('Auth.User.role') == 'maestro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
+			if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
 		?>
 		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar', 'admin'=> true)); ?></li>
 		<?php endif; ?>

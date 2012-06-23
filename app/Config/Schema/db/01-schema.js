@@ -54,7 +54,7 @@ var tablas = [
 "line_colour" : "#000000",
 "campos" : [
  {"nombre" : "id", "tipo": "INT(5)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "role", "tipo": "ENUM('admin','maestro','registrado') DEFAULT 'registrado'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "role", "tipo": "ENUM('admin','miembro','registrado') DEFAULT 'registrado'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "username", "tipo": "VARCHAR(15)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "password", "tipo": "VARCHAR(40)", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "email", "tipo": "VARCHAR(100)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},

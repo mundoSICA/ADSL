@@ -662,7 +662,7 @@ nombre de la organizacion#</dia:string>
             <dia:string>#role#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#ENUM('admin','maestro','registrado') DEFAULT 'registrado'#</dia:string>
+            <dia:string>#ENUM('admin','miembro','registrado') DEFAULT 'registrado'#</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#Id organización:
