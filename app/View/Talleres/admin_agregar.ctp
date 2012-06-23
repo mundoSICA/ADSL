@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend>Agregar Taller</legend>
 	<?php
+		echo $this->Form->input('user_id', array('label'=>'Tallerista'));
 		echo $this->Form->input('nombre', array('value'=>'Introducción al Software Libre'));
 		echo $this->Form->input('horario', array('value'=>'11pm-13pm de lunes a viernes'));
 		echo $this->Form->input('fecha_inicio');
@@ -18,17 +19,4 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Crear taller');?>
-</div>
-<div class="acciones">
-	<h3>Acciones</h3>
-	<ul>
-
-		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar User', array('controller' => 'users', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Posts', array('controller' => 'posts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Etiquetas', array('controller' => 'etiquetas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
-	</ul>
 </div>

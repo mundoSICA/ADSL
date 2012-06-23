@@ -57,6 +57,26 @@ div.datos_usuario {
 		</dd>
 		<?php endif; ?>
 	</dl>
+<?if( !empty($user['Taller'])): ?>
+	<h2>Talleres impartidos</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Taller</th>
+				<th>Fecha</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php
+foreach ($user['Taller'] as $t): ?>
+			<tr>
+				<td><?php echo $this->Html->link($t['nombre'],array('controller'=>'talleres','action'=>'ver',$t['slug_dst']) ); ?></td>
+				<td><?php echo $t['fecha_inicio']; ?></td>
+			</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>
 </div><!-- en datos usuarios -->
 </div>
 <div class="acciones">

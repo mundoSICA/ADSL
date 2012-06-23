@@ -14,14 +14,12 @@ div.avatar{
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th> </th>
-			<th><?php echo $this->Paginator->sort('role');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
 	<tr>
 		<td><?php echo $this->Html->gravatar_img($user['User']['email'], 50); ?></td>
-		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
 		<td><?php echo $this->Html->link(h($user['User']['username']),
 											array('action' => 'ver', $user['User']['username'])
 							); ?>&nbsp;</td>

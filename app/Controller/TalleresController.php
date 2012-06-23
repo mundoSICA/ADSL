@@ -80,7 +80,7 @@ function beforeFilter() {
 				$this->Session->setFlash('El registro taller. No pudo ser guardado');
 			}
 		}
-		$users = $this->Taller->User->find('list');
+		$users = $this->Taller->User->find('list',array('conditions'=>array('User.role'=>array('admin','miembro'))));
 		$etiquetas = $this->Taller->Etiqueta->find('list');
 		$alumnos = $this->Taller->Alumnos->find('list');
 		$this->set(compact('users', 'etiquetas', 'alumnos'));
