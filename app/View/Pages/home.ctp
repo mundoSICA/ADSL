@@ -54,7 +54,7 @@ $(function() {
        </p>
       </div>
       <div class="bloque1">
-      <h2><a href="http://maps.google.com.mx/maps?q=Azucenas+610,+colonia+Reforma,+Oaxaca,+Oaxaca&amp;hl=es&amp;ppyss=confirm:Gracias.+Se+han+guardado+tus+cambios+y+se+publicar%C3%A1n+una+vez+que+hayan+sido+revisados.&amp;ie=UTF8&amp;view=map&amp;cid=5132139184235277504&amp;ll=17.077482,-96.708333&amp;spn=0.011117,0.01929&amp;z=16&amp;iwloc=A" rel="external">Mapa de ubicacion</a></h2>
+      <h2><a href="http://maps.google.com.mx/maps?q=Azucenas+610,+colonia+Reforma,+Oaxaca,+Oaxaca&amp;hl=es&amp;ppyss=confirm:Gracias.+Se+han+guardado+tus+cambios+y+se+publicar%C3%A1n+una+vez+que+hayan+sido+revisados.&amp;ie=UTF8&amp;view=map&amp;cid=5132139184235277504&amp;ll=17.077482,-96.708333&amp;spn=0.011117,0.01929&amp;z=16&amp;iwloc=A" rel="external">Mapa de ubicación</a></h2>
        <p><img src="img/tjoomla.jpg" alt="Joomla" />
 </p>
        <p><br />

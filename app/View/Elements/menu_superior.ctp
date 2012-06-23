@@ -33,8 +33,24 @@ echo $this->Html->link('Inicio', '/', array('id'=>'BotonInicio'));
 		array('controller'=>'talleres','action'=>'calendario','admin'=>false),
 		array('id'=>'BotonCalendario')
 	);?></li>
-	<li><a href="#" id="blog">Blog</a></li>
-	<li><a href="#" id="foro">Foro</a></li>
-	<li><a href="#" id="proyectos">Proyectos</a></li>
-	<li><a href="#" id="contacto">Contactanos</a></li>
+	<li><?php
+	echo $this->Html->link('Usuarios',
+		array('controller'=>'users','action'=>'index','admin'=>false),
+		array('id'=>'BotonUsuarios')
+	);?></li>
+	<li><?php
+	echo $this->Html->link('Foro',
+		array('controller'=>'pages','action'=>'foro','admin'=>false),
+		array('id'=>'BotonForo')
+	);?></li>
+	<li><?php
+	echo $this->Html->link('Proyectos',
+		array('controller'=>'pages','action'=>'proyectos','admin'=>false),
+		array('id'=>'BotonProyectos')
+	);?></li>
+	<li><?php
+	echo $this->Html->link('Contactanos',
+		array('controller'=>'pages','action'=>'contacto','admin'=>false),
+		array('id'=>'BotonContactanos')
+	);?></li>
 </ul>

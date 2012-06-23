@@ -426,11 +426,12 @@ ul{
 
 .logosfooter{
 	clear: both;
-	width: 946px;
+	width: 906px;
 	height: 130px;
 	color: #736153;
 	font-size: 11px;
 	background-color:#f2f2f2;
+	padding: 0 20px;
 }
 
 .logosfooter img{
