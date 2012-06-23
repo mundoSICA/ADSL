@@ -43,7 +43,4 @@ $(document).ready(function() {
 <h2>Calendario de actividades del ADSL.</h2>
 <div class="calendario-wrapper">
 	<div id='calendar'></div>
-<pre><?php
-echo $out;
-?></pre>
 </div>

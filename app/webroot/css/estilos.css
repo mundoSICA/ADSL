@@ -590,7 +590,7 @@ div.avatar{
 }
 div.avatar img{border:1px solid #FFF;}
 
-
+a.boton_naranja,
 a.registrarme{
 	background: #F5792A;
 	background-repeat: repeat-x;
@@ -616,6 +616,13 @@ a.registrarme{
 	border-radius:10px;
 }
 
+a.boton_naranja{
+	font-size:15px;
+	padding:10px;
+	display:inline;
+}
+
+a.boton_naranja:hover,
 a.registrarme:hover{
 	text-decoration:none;
 	text-shadow:0 0 5px #0E3051;

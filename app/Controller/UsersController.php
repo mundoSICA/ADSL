@@ -96,10 +96,10 @@ function beforeFilter() {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$this->_prepararDatos( &$this->request->data['User'] );
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('El registro user. Fue guardado');
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('Los datos en tu perfil fueron editados');
+				$this->redirect(array('action' => 'ver', $this->Session->read('Auth.User.username')));
 			} else {
-				$this->Session->setFlash('Tus datos fueron actualizados');
+				$this->Session->setFlash('Tus datos no pudieron ser actualizados');
 			}
 		} else {
 			$this->request->data = $this->User->read(null, $id);

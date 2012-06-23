@@ -128,7 +128,7 @@ class User extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-		'Talleres' => array(
+		'Curso' => array(
 			'className' => 'Taller',
 			'joinTable' => 'talleres_users',
 			'foreignKey' => 'user_id',

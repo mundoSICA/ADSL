@@ -18,5 +18,13 @@
 		echo $this->Form->input('repetir_nuevo_password');
 	?>
 	</fieldset>
-<?php echo $this->Form->end('Enviar datos');?>
+<div class="submit">
+	<input type="submit" value="Enviar datos">
+	<?php
+		echo $this->Html->link('Ver mi perfil',
+			array('controller'=>'users', 'action'=>'ver', $this->request->data['User']['username'])
+			,array('class' => 'boton_naranja')
+		);
+	?>
+</div>
 </div>

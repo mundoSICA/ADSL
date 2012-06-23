@@ -5,6 +5,9 @@ div.datos_usuario {
 }
 </style>
 <div class="users ver">
+<?php
+	echo $this->Html->gravatar_img($user['User']['email']);
+?>
 <div class='datos_usuario'>
 	<h2><?php  echo h($user['User']['username']);?></h2>
 	<dl>
@@ -18,26 +21,48 @@ div.datos_usuario {
 			<?php echo h($user['User']['username']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Email'); ?></dt>
+		<?php if( !empty($user['User']['twitter']) ): ?>
+		<dt>Twitter</dt>
 		<dd>
-			<?php echo h($user['User']['email']); ?>
+			<?php echo
+			$this->Html->link($user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter']);
+			?>
 			&nbsp;
 		</dd>
+		<?php endif; ?>
+		<?php if( !empty($user['User']['facebook']) ): ?>
+		<dt>FaceBook</dt>
+		<dd>
+			<?php echo
+			$this->Html->link($user['User']['facebook'], $user['User']['facebook']);
+			?>
+			&nbsp;
+		</dd>
+		<?php endif; ?>
+		<?php if( !empty($user['User']['url']) ): ?>
+		<dt>Sitio</dt>
+		<dd>
+			<?php echo
+			$this->Html->link($user['User']['url'], $user['User']['url']);
+			?>
+			&nbsp;
+		</dd>
+		<?php endif; ?>
+		<?php if( $user['User']['email_publico'] == 1 ): ?>
+		<dt><?php echo __('Email'); ?></dt>
+		<dd>
+		<?php
+			echo $this->Html->link($user['User']['email'], 'mailto:'.$user['User']['email']);
+		?>&nbsp;
+		</dd>
+		<?php endif; ?>
 	</dl>
 </div><!-- en datos usuarios -->
-
 </div>
 <div class="acciones">
 	<h3>Acciones</h3>
 	<ul>
-		<li><?php echo $this->Html->link('Editar User', array('action' => 'editar', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink('Borrar User', array('action' => 'borrar', $user['User']['id']), null, __('Esta seguro que desea borrar: # %s?', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Html->link('Listar Users', array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar User', array('action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Noticias', array('controller' => 'noticias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Noticia', array('controller' => 'noticias', 'action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Talleres', array('controller' => 'talleres', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Taller', array('controller' => 'talleres', 'action' => 'agregar')); ?> </li>
+		<li><?php echo $this->Html->link('Listar usaurios', array('action' => 'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -74,11 +99,10 @@ div.datos_usuario {
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-	
 </div>
 <div class="related">
-	<h3>Talleres inscritos</h3>
-	<?php if (!empty($user['Taller'])):?>
+	<h3>Talleres en donde esta inscrito</h3>
+	<?php if (!empty($user['Curso'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Taller'); ?></th>
@@ -86,14 +110,14 @@ div.datos_usuario {
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($user['Taller'] as $taller): ?>
+		foreach ($user['Curso'] as $curso): ?>
 		<tr>
 			<td><?php
-				echo $this->Html->link($taller['nombre'], 
-				array('controller' => 'talleres', 'action' => 'ver', $taller['slug_dst'])
+				echo $this->Html->link($curso['nombre'],
+				array('controller' => 'talleres', 'action' => 'ver', $curso['slug_dst'])
 				);?>
 			</td>
-			<td><?php echo $taller['horario'];?></td>
+			<td><?php echo $curso['horario'];?></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
