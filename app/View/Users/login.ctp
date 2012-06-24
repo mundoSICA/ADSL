@@ -1,3 +1,7 @@
+<?php
+	$this->set('title_for_layout', 'ADSL  - Inicio de sesión');
+	$this->Html->meta('robots', 'noindex,nofollow', array('inline' => false));
+?>
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

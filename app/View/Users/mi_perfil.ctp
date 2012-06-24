@@ -1,5 +1,6 @@
 <?php
 	echo $this->Html->script('activar.top.menu.jquery');
+	$this->set('title_for_layout', 'ADSL  - Mi perfil');
 ?>
 <script language="Javascript"  type="text/javascript">$(function() {$("#BotonPerfil").activarTopMenu();});</script>
 <div class="users formulario">

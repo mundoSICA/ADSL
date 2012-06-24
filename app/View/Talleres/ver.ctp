@@ -2,6 +2,9 @@
 	echo $this->Html->script('slides.min.jquery');
 	echo $this->Html->script('talleres.slides');
 	echo $this->Html->css('slide');
+	$this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
+	$this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
+	
 ?>
 <div class="header2">
 <div id="slide_principal_talleres">

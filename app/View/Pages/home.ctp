@@ -3,6 +3,8 @@
 	echo $this->Html->script('talleres.slides');
 	echo $this->Html->script('activar.top.menu.jquery');
 	echo $this->Html->css('slide');
+	$this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
+	$this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
 ?>
 <script language="Javascript"  type="text/javascript">
 $(function() {

@@ -1,5 +1,11 @@
 <?php
 	echo $this->Html->script('activar.top.menu.jquery');
+	$title = explode("\n", $commit['Contribucion']['message']);
+	$title = $title[0];
+	$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
+	$msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
+	$this->Html->meta('description', $title.str_replace("\n"," ",$msg), array('inline' => false));
+	
 ?>
 <script language="Javascript"  type="text/javascript">$(function() {$("#BotonContribuciones").activarTopMenu();});</script>
 <style type="text/css" media="all">
@@ -11,10 +17,6 @@ div.datos_usuario {
 dl{width:700px;}
 div.avatar{margin-top:10px}
 </style>
-<?php
-$title = explode("\n", $commit['Contribucion']['message']);
-$title = $title[0];
-?>
 <div class="users ver">
 <?php
 	echo $this->Html->gravatar_img($commit['Contribucion']['author_email']);
@@ -45,7 +47,7 @@ $title = $title[0];
 	</dl>
 <h2>Mensaje</h2>
 <pre><?php
-	echo htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
+	echo $msg;
 ?>
 </pre>
 <?php

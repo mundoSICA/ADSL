@@ -1,18 +1,9 @@
-<?php
-/**
- * layout por defecto ADSL
- */
-$cakeDescription = __d('cake_dev', 'Academia de software libre');
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
-	</title>
+	<title><?php echo $title_for_layout; ?></title>
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('cake.generic');
@@ -65,6 +56,16 @@ $('#flashMessage').dialog({
 });
 ///////////////////////////////////////////////////////////////
 });
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-32823607-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 </script>
 </head>
 <body>
@@ -135,5 +136,15 @@ $('#flashMessage').dialog({
 ?>
 </div> <!--termina CajaPrincipal -->
 <?php echo $this->element('sql_dump'); ?>
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://mundosica.com/piwik/" : "http://mundosica.com/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://mundosica.com/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
 </body>
 </html>

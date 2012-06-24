@@ -3,6 +3,9 @@ echo  $this->Html->script('fullcalendar.min');
 echo  $this->Html->css('fullcalendar');
 echo  $this->Html->css('fullcalendar.print');
 echo $this->Html->script('activar.top.menu.jquery');
+$this->set('title_for_layout', 'ADSL - Calendario de talleres disponibles '.date('Y-m') );
+$this->Html->meta('description', 'Calendario de talleres disponibles '.date('Y-m'), array('inline' => false));
+
 $out = '';
 $url_base = Router::url('/talleres/ver/');
 

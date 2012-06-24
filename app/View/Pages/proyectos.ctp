@@ -1,5 +1,7 @@
 <?php
 	echo $this->Html->script('activar.top.menu.jquery');
+	$this->set('title_for_layout', 'ADSL  - Lista de proyectos');
+	$this->Html->meta('description', 'Listado detallado de nuestros proyectos o de los proyectos que apoyamos', array('inline' => false));
 ?>
 <style type="text/css" media="all">
 div.index{

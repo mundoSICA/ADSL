@@ -1,8 +1,13 @@
+<?php
+	$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
+	$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
+?>
 <style type="text/css" media="all">
 div.datos_usuario {
 	width:550px;
 	float:left;
 }
+dl{width:550px}
 </style>
 <div class="users ver">
 <?php

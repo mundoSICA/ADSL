@@ -1,5 +1,6 @@
 <?php
 	echo $this->Html->script('activar.top.menu.jquery');
+	$this->set('title_for_layout', 'ADSL -  Lista de contribuciones');
 ?>
 <script language="Javascript"  type="text/javascript">$(function() {$("#BotonContribuciones").activarTopMenu();});</script>
 <style type="text/css" media="all">
