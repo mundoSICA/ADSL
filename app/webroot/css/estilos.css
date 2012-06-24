@@ -588,8 +588,16 @@ div.avatar{
 	-webkit-border-radius: 0 0 10px 10px;
 	-o-border-radius: 0 0 10px 10px;
 	border-radius:10px;
+	text-align:center;
 }
 div.avatar img{border:1px solid #FFF;}
+div.avatar h5{
+	position:absolute;
+	width:50px;
+	margin-top:-10px;
+	text-align:center;
+	display:block;
+}
 
 a.boton_naranja,
 a.registrarme{

@@ -39,9 +39,9 @@ echo $this->Html->link('Inicio', '/', array('id'=>'BotonInicio'));
 		array('id'=>'BotonUsuarios')
 	);?></li>
 	<li><?php
-	echo $this->Html->link('Foro',
-		array('controller'=>'pages','action'=>'foro','admin'=>false),
-		array('id'=>'BotonForo')
+	echo $this->Html->link('Contribuciones',
+		array('controller'=>'contribuciones','action'=>'index','admin'=>false),
+		array('id'=>'BotonContribuciones')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Proyectos',

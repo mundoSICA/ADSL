@@ -44,9 +44,9 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'from' => 'contacto@adsl.org.mx',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
 	);
 
 	public $smtp = array(
@@ -59,14 +59,14 @@ class EmailConfig {
 		'password' => 'secret',
 		'client' => null,
 		'log' => false,
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
 	);
 
 	public $fast = array(
-		'from' => 'you@localhost',
-		'sender' => null,
-		'to' => null,
+		'from' => 'contacto@adsl.org.mx',
+		'sender' => 'contacto@adsl.org.mx',
+		'to' => 'chanerec@gmail.com',
 		'cc' => null,
 		'bcc' => null,
 		'replyTo' => null,
@@ -86,12 +86,12 @@ class EmailConfig {
 		'host' => 'localhost',
 		'port' => 25,
 		'timeout' => 30,
-		'username' => 'user',
+		'username' => 'ADSL contacto',
 		'password' => 'secret',
 		'client' => null,
 		'log' => true,
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
 	);
 
 }

@@ -20,6 +20,19 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`num_alumnos` INT( 2 ) DEFAULT 0 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- contribuciones --
+DROP TABLE IF EXISTS `contribuciones`;
+CREATE TABLE IF NOT EXISTS `contribuciones` (
+	`hash` VARCHAR( 40 ) PRIMARY KEY NOT NULL UNIQUE,
+	`author_name` VARCHAR(150) DEFAULT NULL,
+	`author_email` VARCHAR(150) DEFAULT NULL,
+	`message` TEXT DEFAULT NULL,
+	`added` TEXT DEFAULT NULL,
+	`modified` TEXT DEFAULT NULL,
+	`removed` TEXT DEFAULT NULL,
+	`timestamp` TIMESTAMP NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 -- etiquetas_talleres --
 DROP TABLE IF EXISTS `etiquetas_talleres`;
 CREATE TABLE IF NOT EXISTS `etiquetas_talleres` (

@@ -29,6 +29,27 @@ var tablas = [
  ]
 },
 {
+"nombre" : "contribuciones",
+"orden" : 9,
+"width" : 327,
+"height" : 225,
+"pos_x" : 816,
+"pos_y" : 384,
+"fill_colour" : "#E5E5E5",
+"text_colour" : "#000000",
+"line_colour" : "#000000",
+"campos" : [
+ {"nombre" : "hash", "tipo": "VARCHAR( 40 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": false},
+ {"nombre" : "author_name", "tipo": "VARCHAR(150)", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "author_email", "tipo": "VARCHAR(150)", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "message", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "added", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "modified", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "removed", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "timestamp", "tipo": "TIMESTAMP", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
+ ]
+},
+{
 "nombre" : "etiquetas_talleres",
 "orden" : 7,
 "width" : 258,
@@ -95,7 +116,7 @@ var tablas = [
 "width" : 350,
 "height" : 153,
 "pos_x" : 816,
-"pos_y" : 256,
+"pos_y" : 272,
 "fill_colour" : "#FFFFFF",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
