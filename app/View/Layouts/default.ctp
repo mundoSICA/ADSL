@@ -110,7 +110,7 @@ _gaq.push(['_trackPageview']);
 					echo $this->Html->image('flickr.jpg', array('alt'=>'flickr'));
 				?>
 			</a>
-			<a href="#">
+			<a href="<?php echo Router::url('/feed.xml');?>">
 				<?php
 					echo $this->Html->image('feed.jpg', array('alt'=>'Feed'));
 				?>

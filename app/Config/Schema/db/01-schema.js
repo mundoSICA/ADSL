@@ -4,10 +4,10 @@ var tablas = [
 {
 "nombre" : "talleres",
 "orden" : 1,
-"width" : 454,
-"height" : 369,
-"pos_x" : 384,
-"pos_y" : 80,
+"width" : 755,
+"height" : 441,
+"pos_x" : 368,
+"pos_y" : 64,
 "fill_colour" : "#ABFFA3",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
@@ -25,7 +25,10 @@ var tablas = [
  {"nombre" : "contenido", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "numero_total_horas", "tipo": "INT( 20 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "requisitos", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "num_alumnos", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "num_alumnos", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "status", "tipo": "ENUM('abierto', 'cerrado') DEFAULT 'abierto'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {
@@ -70,7 +73,7 @@ var tablas = [
 "orden" : 2,
 "width" : 859,
 "height" : 321,
-"pos_x" : 688,
+"pos_x" : 816,
 "pos_y" : 48,
 "fill_colour" : "#FFA472",
 "text_colour" : "#000000",
@@ -115,7 +118,7 @@ var tablas = [
 "orden" : 5,
 "width" : 350,
 "height" : 153,
-"pos_x" : 816,
+"pos_x" : 880,
 "pos_y" : 272,
 "fill_colour" : "#FFFFFF",
 "text_colour" : "#000000",

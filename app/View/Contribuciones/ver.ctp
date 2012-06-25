@@ -30,13 +30,14 @@ div.avatar{margin-top:10px}
 			$this->Html->link(
 				$commit['Contribucion']['author_name'],
 				'http://github.com/'.$commit['Contribucion']['author_name']
+				, array('rel'=>'external')
 			); ?>
 			&nbsp;
 		</dd>
 		<dt>Enlace Externo:</dt>
 		<dd><?php 
 			$url = 'https://github.com/mundoSICA/ADSL/commit/' . $commit['Contribucion']['hash'];
-			echo $this->Html->link($url, $url);
+			echo $this->Html->link($url, $url, array('rel'=>'external'));
 			?>
 			&nbsp;
 		</dd>

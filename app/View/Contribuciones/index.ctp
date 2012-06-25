@@ -10,7 +10,7 @@ div.index{width:905px;border-left:1px solid #FFF}
 	<h2>Lista de contribuciones al ADSL</h2>
 	<p>
 		El sitio del <strong>ADSL</strong> esta desarrollado con código abierto y libre, hospedado en:
-		<a href='https://github.com/mundoSICA/ADSL'>https://github.com/mundoSICA/ADSL</a>, esta sección 
+		<a href='https://github.com/mundoSICA/ADSL' rel='external'>https://github.com/mundoSICA/ADSL</a>, esta sección
 		describe la lista de las contribuciones:
 	</p>
 	<table cellpadding="0" cellspacing="0">

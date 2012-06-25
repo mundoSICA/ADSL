@@ -65,7 +65,10 @@
 		<dt><?php echo __('Numero Total Horas'); ?></dt>
 		<dd>
 			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
-			&nbsp;
+		</dd>
+		<dt>Estado actual</dt>
+		<dd>
+			<?php echo $taller['Taller']['status']; ?>&nbsp;
 		</dd>
 	</dl>
 
@@ -79,7 +82,7 @@
 	<h2>Alumnos en el taller</h2>
 <?php
 $boton_taller = false;
-if($this->Session->read('Auth.User.username') ){
+if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 'abierto' ){
 	$boton_taller = true;
 }
 $user_auth = $this->Session->read('Auth.User.username');
@@ -95,7 +98,7 @@ if (!empty($taller['User'])):?>
 			<td>
 				<?php
 				echo $this->Html->link($user['username'], array('controller' => 'users', 'action' => 'ver', $user['username']));
-					if($user_auth == $user['username']){
+					if($boton_taller && $user_auth == $user['username']){
 						$boton_taller = false;
 					}
 				 ?>

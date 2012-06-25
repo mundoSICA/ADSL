@@ -382,12 +382,13 @@ ul{
 	color:white;
 	margin-left: 10px;
 	text-decoration:none;
+	text-shadow: 0 2px 1px #5B4100;
 }
 .menu ul li a.activa,
 .menu ul li a:hover {
 	padding: 6px 8px 10px 8px;
 	background: #746457;
-	text-shadow: 1px 1px 1px #433a32;
+	text-shadow: 0 2px 1px #222;
 	border: 2px solid #7d6c4d;
 	background: #746457;
 	background-repeat: repeat-x;

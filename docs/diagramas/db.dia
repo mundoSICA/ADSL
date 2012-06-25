@@ -127,17 +127,17 @@
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O2">
       <dia:attribute name="obj_pos">
-        <dia:point val="78.668,22.9095"/>
+        <dia:point val="86.368,22.4595"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="41.0252,22.2595;78.668,29.046"/>
+        <dia:rectangle val="41.0252,21.8095;86.368,29.046"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="78.668,22.9095"/>
-        <dia:point val="41.0252,22.9095"/>
+        <dia:point val="86.368,22.4595"/>
+        <dia:point val="41.0252,22.4595"/>
         <dia:point val="41.0252,29.046"/>
         <dia:point val="47.0009,29.046"/>
       </dia:attribute>
@@ -193,22 +193,22 @@
     </dia:object>
     <dia:object type="Database - Table" version="0" id="O3">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.9682,23.94"/>
+        <dia:point val="59.1182,22.99"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="59.9682,23.94;75.1282,36.24"/>
+        <dia:rectangle val="59.1182,22.99;84.2882,37.69"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="59.9682,23.94"/>
+        <dia:point val="59.1182,22.99"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="15.16"/>
+        <dia:real val="25.170000000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="12.300000000000002"/>
+        <dia:real val="14.700000000000005"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -540,23 +540,83 @@ nombre de la organizacion#</dia:string>
             <dia:boolean val="false"/>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="table_attribute">
+          <dia:attribute name="name">
+            <dia:string>#status#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#ENUM('abierto', 'cerrado') DEFAULT 'abierto'#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Estado del taller#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="primary_key">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="nullable">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="unique">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="table_attribute">
+          <dia:attribute name="name">
+            <dia:string>#created#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#DATETIME#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Fecha de creación#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="primary_key">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="nullable">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="unique">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="table_attribute">
+          <dia:attribute name="name">
+            <dia:string>#modified#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#DATETIME#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Fecha de modificación#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="primary_key">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="nullable">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="unique">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
       </dia:attribute>
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.9682,26.14"/>
+        <dia:point val="59.1182,25.19"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="58.5252,25.49;86.4223,38.246"/>
+        <dia:rectangle val="58.5252,24.54;90.4723,38.296"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="59.9682,26.14"/>
-        <dia:point val="58.5252,26.14"/>
-        <dia:point val="58.5252,38.246"/>
-        <dia:point val="86.4223,38.246"/>
+        <dia:point val="59.1182,25.19"/>
+        <dia:point val="58.5252,25.19"/>
+        <dia:point val="58.5252,38.296"/>
+        <dia:point val="90.4723,38.296"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -610,16 +670,16 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Table" version="0" id="O5">
       <dia:attribute name="obj_pos">
-        <dia:point val="78.668,21.5095"/>
+        <dia:point val="86.368,21.0595"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="78.668,21.5095;107.303,32.2095"/>
+        <dia:rectangle val="86.368,21.0595;115.003,31.7595"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="78.668,21.5095"/>
+        <dia:point val="86.368,21.0595"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="28.635000000000002"/>
@@ -1349,16 +1409,16 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Table" version="0" id="O8">
       <dia:attribute name="obj_pos">
-        <dia:point val="86.4223,35.246"/>
+        <dia:point val="90.4723,35.296"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="86.4223,35.246;98.1173,40.346"/>
+        <dia:rectangle val="90.4723,35.296;102.167,40.396"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="86.4223,35.246"/>
+        <dia:point val="90.4723,35.296"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="11.695"/>
@@ -1520,19 +1580,19 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O9">
       <dia:attribute name="obj_pos">
-        <dia:point val="78.668,22.9095"/>
+        <dia:point val="86.368,22.4595"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="77.2731,22.2595;86.4223,37.446"/>
+        <dia:rectangle val="85.6031,21.8095;90.4723,37.496"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="78.668,22.9095"/>
-        <dia:point val="77.2731,22.9095"/>
-        <dia:point val="77.2731,37.446"/>
-        <dia:point val="86.4223,37.446"/>
+        <dia:point val="86.368,22.4595"/>
+        <dia:point val="85.6031,22.4595"/>
+        <dia:point val="85.6031,37.496"/>
+        <dia:point val="90.4723,37.496"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -1586,17 +1646,17 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O10">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.9682,26.14"/>
+        <dia:point val="59.1182,25.19"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="58.5203,25.49;72.5009,41.046"/>
+        <dia:rectangle val="58.5203,24.54;72.5009,41.046"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="59.9682,26.14"/>
-        <dia:point val="58.5203,26.14"/>
+        <dia:point val="59.1182,25.19"/>
+        <dia:point val="58.5203,25.19"/>
         <dia:point val="58.5203,41.046"/>
         <dia:point val="72.5009,41.046"/>
       </dia:attribute>
@@ -1652,19 +1712,19 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O11">
       <dia:attribute name="obj_pos">
-        <dia:point val="78.668,22.9095"/>
+        <dia:point val="86.368,22.4595"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="57.4753,22.2595;78.668,25.34"/>
+        <dia:rectangle val="57.4753,21.8095;86.368,24.39"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="78.668,22.9095"/>
-        <dia:point val="57.4753,22.9095"/>
-        <dia:point val="57.4753,25.34"/>
-        <dia:point val="59.9682,25.34"/>
+        <dia:point val="86.368,22.4595"/>
+        <dia:point val="57.4753,22.4595"/>
+        <dia:point val="57.4753,24.39"/>
+        <dia:point val="59.1182,24.39"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -2180,17 +2240,17 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Database - Reference" version="0" id="O16">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.9682,26.14"/>
+        <dia:point val="59.1182,25.19"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="58.5252,25.49;63.1802,44.3112"/>
+        <dia:rectangle val="58.5252,24.54;63.1802,44.3112"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="59.9682,26.14"/>
-        <dia:point val="58.5252,26.14"/>
+        <dia:point val="59.1182,25.19"/>
+        <dia:point val="58.5252,25.19"/>
         <dia:point val="58.5252,44.3112"/>
         <dia:point val="63.1802,44.3112"/>
       </dia:attribute>
@@ -2411,10 +2471,10 @@ nombre de la organizacion#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="89.607,34.873"/>
+        <dia:point val="92.957,34.723"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="89.607,33.563;95.0995,35.208"/>
+        <dia:rectangle val="92.957,33.413;98.4495,35.058"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -2428,7 +2488,7 @@ nombre de la organizacion#</dia:string>
             <dia:real val="1.7638888991688506"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="89.607,34.873"/>
+            <dia:point val="92.957,34.723"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#add8e6"/>

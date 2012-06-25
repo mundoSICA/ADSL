@@ -54,7 +54,7 @@ function beforeFilter() {
  *
  * @var array
  */
-	public $uses = array('Taller');
+	public $uses = array('Taller','User', 'Contribucion');
 
 /**
  * Displays a view
@@ -93,7 +93,32 @@ function beforeFilter() {
 	 * @link [URL de mayor infor]
 	 */
 	function home() {
-		$this->Taller->recursive = 0;
+		$this->Taller->recursive = -1;
+		$this->set('talleres', $this->paginate());
+	}//end function
+	
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function sitemap() {
+		$this->layout = 'xml';
+		$this->Taller->recursive = 1;
+		$talleres = $this->Taller->query(
+			'SELECT slug_dst, modified, status FROM talleres AS Taller  ORDER BY status ASC'
+		);
+		$usuarios = $this->User->query(
+			'SELECT username, modified FROM users AS User ORDER BY modified DESC'
+		);
+		$this->set(compact('talleres', 'usuarios'));
+	}//end function
+	
+	function feed() {
+		$this->Taller->recursive = -1;
 		$this->set('talleres', $this->paginate());
 	}//end function
 

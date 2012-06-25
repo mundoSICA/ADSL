@@ -17,7 +17,10 @@ CREATE TABLE IF NOT EXISTS `talleres` (
 	`contenido` TEXT DEFAULT NULL,
 	`numero_total_horas` INT( 20 ) DEFAULT NULL,
 	`requisitos` TEXT DEFAULT NULL,
-	`num_alumnos` INT( 2 ) DEFAULT 0 DEFAULT NULL
+	`num_alumnos` INT( 2 ) DEFAULT 0 DEFAULT NULL,
+	`status` ENUM('abierto', 'cerrado') DEFAULT 'abierto' NOT NULL,
+	`created` DATETIME NOT NULL,
+	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- contribuciones --

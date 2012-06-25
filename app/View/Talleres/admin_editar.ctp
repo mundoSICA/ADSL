@@ -3,9 +3,12 @@
 	<fieldset>
 		<legend><?php echo 'Admin Editar Taller'; ?></legend>
 	<?php
+		$status = array('abierto', 'cerrado');
+		$status = array_combine($status, $status);
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('id');
 		echo $this->Form->input('nombre');
+		echo $this->Form->input('status', array('options' => $status));
 		echo $this->Form->input('horario');
 		echo $this->Form->input('fecha_inicio');
 		echo $this->Form->input('fecha_final');

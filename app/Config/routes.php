@@ -30,6 +30,11 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+/*
+ * mapa de sitio y feed
+ **/
+	Router::connect('/sitemap.xml', array('controller' => 'pages', 'action' => 'sitemap'));
+	Router::connect('/feed.xml', array('controller' => 'pages', 'action' => 'feed'));
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 

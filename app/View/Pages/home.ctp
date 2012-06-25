@@ -46,7 +46,7 @@ $(function() {
 	</div>
 	<div class="bloqueinfo11">
 	   <div class="bloque1">
-       <h2><a href="#">Taller: Javascrip &amp; Mootools</a></h2>
+       <h2><a href="#">Taller: Javascript &amp; Mootools</a></h2>
        <p><img src="img/tdweb.jpg" alt="Taller Dise&ntilde;o Web" width="307" height="230" /></p>
       </div>
       <div class="bloque2">

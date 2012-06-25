@@ -17,6 +17,7 @@ class Contribucion extends AppModel {
  * @var string
  */
 	public $displayField = 'author_name';
+	public $order = array('Contribucion.timestamp' => 'DESC', 'Contribucion.author_name' => 'ASC');
 /**
  * Validation rules
  *
