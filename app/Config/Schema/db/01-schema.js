@@ -125,7 +125,7 @@ var tablas = [
 "line_colour" : "#000000",
 "campos" : [
  {"nombre" : "id", "tipo": "INT(6)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "taller_id", "tipo": "INT( 4 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "descuento", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}

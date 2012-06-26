@@ -25,11 +25,12 @@ function beforeFilter() {
 		if (!$this->Taller->exists()) {
 			throw new NotFoundException('Registro invalido: taller.');
 		}else{
-			$this->Taller->recursive = -1;
+			$this->Taller->recursive = 1;
 			$taller = $this->Taller->read();
 			$taller['Alumnos']=array(
 						'taller_id' => $id,
-						'user_id' => $this->Session->read('Auth.User.id')
+						'user_id' => $this->Session->read('Auth.User.id'),
+						'created' => date('Y-m-d H:i:s')
 			);
 			$this->Taller->save($taller);
 			$this->Session->setFlash('Has sido registrado en el taller<br />"'.$slug.'"<br /> con exito');

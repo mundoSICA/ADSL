@@ -46,9 +46,7 @@ class TalleresUser extends AppModel {
 			),
 		),
 	);
-
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 /**
  * belongsTo associations
  *
@@ -70,4 +68,23 @@ class TalleresUser extends AppModel {
 			'order' => ''
 		)
 	);
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function nuevoAlumno($alumno_id, $taller_id, $descuento=0) {
+		$id = $this->field('id', array('TalleresUser.user_id' => $alumno_id, 'TalleresUser.taller_id' => $taller_id));
+		if( $id > 0)
+			return true;
+		else{
+			$q = "INSERT INTO `talleres_users` ".
+						"(`id` ,`user_id` ,`taller_id` ,`descuento` ,`created`)"
+						." VALUES (NULL , '%d', '%d', '%d', '%s)'";
+			return $this->query( sprintf($q,$alumno_id, $taller_id, $descuento, date('Y-m-d H:i:s')));
+		}
+	}//end function
 }

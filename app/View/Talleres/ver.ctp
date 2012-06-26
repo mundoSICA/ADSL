@@ -4,7 +4,6 @@
 	echo $this->Html->css('slide');
 	$this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 	$this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
-	
 ?>
 <div class="header2">
 <div id="slide_principal_talleres">
@@ -71,7 +70,6 @@
 			<?php echo $taller['Taller']['status']; ?>&nbsp;
 		</dd>
 	</dl>
-
 	<h2>Requisitos</h2>
 	<p><?php echo $taller['Taller']['requisitos']; ?></p>
 	<h2>Resumen</h2>
@@ -79,7 +77,7 @@
 	<h2>Descripción detallada</h2>
 	<p><?php echo h($taller['Taller']['contenido']); ?></p>
 	<!-- -->
-	<h2>Alumnos en el taller</h2>
+	<h2>Alumnos inscritos en el taller</h2>
 <?php
 $boton_taller = false;
 if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 'abierto' ){
@@ -90,19 +88,26 @@ if (!empty($taller['User'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th>Alumno</th>
+		<th>Nick</th>
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($taller['Alumnos'] as $user): ?>
-		<tr>
-			<td>
-				<?php
-				echo $this->Html->link($user['username'], array('controller' => 'users', 'action' => 'ver', $user['username']));
-					if($boton_taller && $user_auth == $user['username']){
+		foreach ($taller['Alumnos'] as $user):
+			if($boton_taller && $user_auth == $user['username']){
 						$boton_taller = false;
 					}
-				 ?>
-			</td>
+		?>
+		<tr>
+				<td><?php
+				echo $this->Html->gravatar_link(
+						$user['email'],
+						$user['username']
+			);
+			?>
+				</td>
+				<td><?php
+				//echo $user['TalleresUser']['created'];
+				echo $user['username']; ?></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>

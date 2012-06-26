@@ -77,32 +77,54 @@ function beforeFilter() {
 			$commit_msg .= '<h2>'.$title[0].'</h2>';
 			$msg = str_replace($title[0],'',$msg);
 		}
-		$commit_msg .= '<strong>Autor:</strong>: '. $c['author']['username'].'<br />';
-		$commit_msg .= '<strong>Autor-Email:</strong>: '. $c['author']['email'].'<br />';
-		$commit_msg .= '<strong>Hash:</strong>: '. $c['author']['id'].'<br />';
-		$commit_msg .= '<strong>Fecha:</strong>: '. $c['timestamp'].'<br />';
+		$commit_msg .= '<strong>Autor:</strong> ' . $c['author']['username'] . '<br />';
+		$commit_msg .= '<strong>Autor-Email:</strong> ' . $c['author']['email'] . '<br />';
+		$commit_msg .= '<strong>Hash:</strong> ' . $c['id'] . '<br />';
+		$commit_msg .= '<strong>Fecha:</strong> ' . $c['timestamp'] . '<br />';
 		if( strlen($msg) > 5) {
 			$commit_msg .= '<h2>Mensaje:</h2><p>'.$msg.'</p>';
 		}
 		foreach($tipo_cambio as $t=>$t_descripcion) {
-			if( count($c[$t]) ){
+			if( count($c[$t]) ) {
 				$commit_msg .= '<h2>'.$t_descripcion.'</h2>';
 				$character = strtoupper($t[0]);
 				$commit_msg .= '<ul>';
-				foreach($c[$t] as $m)
-				{
+				foreach($c[$t] as $m) {
 					$commit_msg .= '<li>['.$character.'] '.$m."</li>\n";
 				}
 				$commit_msg .= '</ul>';
 			}
 		}///////////////////
 		$commit_msg .= '<br /><strong>Mayores informes: </strong><a href="'.$c['url'].'">'.$c['url'].'</a>';
-		$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
-		$this->Email->to = 'fitorec <chanerec@gmail.com>';
-		$this->Email->sendAs = 'both';
-		$this->Email->replyTo = $c['author']['email'];
-		$this->Email->subject = count($title)? $title[0] : 'Notificación de cambios';
-		$this->Email->send($commit_msg);
+		$commit_msg .= '<p>Este mensaje es <i>auto-generado</i>, por medio de <strong>ADSL-robot</strong>'
+										.'Si desea no recibir más notificaciones favor de enviar un email a <i>robot@adsl.org.mx</i></p>';
+		$members = array(
+										'eymard <eymard@mundosica.com>',
+										'ibangr <igarcia@mundosica.com>',
+										'Benny <soporte@mundosica.com>',
+										'Emanuel <manuel.wm@gmail.com>',
+										'R1ch <r1chd01@gmail.com>',
+										'Erick <chromery@gmail.com>',
+										'Manuel Hernandez <manuel.wm@gmail.com>',
+										'Jose Miguel <idjosemiguel@hotmail.com>',
+										'Gibrán el Gris <gibb.elgris@gmail.com>',
+										'Gibrán el Puñetero <chaibran_tg7@hotmail.com>',
+										'Edgar Duran <rnstux@gmail.com>',
+										'Ana Gines <ana.gines.hdz@gmail.com>',
+										'Luis Garcia <luism.garciam@gmail.com>',
+										'Confi <erick.cosmes@gmail.com>',
+										'fitorec <chanerec@gmail.com>'
+									);
+		foreach ($members as $member_email) {
+			$this->Email->reset();
+			$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
+			$this->Email->to = $member_email;
+			$this->Email->sendAs = 'both';
+			$this->Email->replyTo = $c['author']['email'];
+			$this->Email->subject = count($title)? $title[0] : 'Notificación de cambios';
+			$this->Email->subject .= ' - contribución repositorio ADSL';
+			$this->Email->send($commit_msg);
+		}
 		$this->Contribucion->save($newCommit);
 	}
 }

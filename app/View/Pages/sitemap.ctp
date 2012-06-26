@@ -14,7 +14,9 @@ foreach ($talleres as $taller):
 ?>
     <url>
         <loc><?php echo $talleres_url.$taller['Taller']['slug_dst']; ?></loc>
-        <lastmod><?php echo $taller['Taller']['modified']; ?></lastmod>
+        <lastmod><?php
+        $date = explode(' ', $taller['Taller']['modified']);
+        echo $date[0]; ?></lastmod>
 <?php
 					if($taller['Taller']['status'] == 'abierto'){
 						echo "\t\t<priority>1.0</priority>";
@@ -35,7 +37,9 @@ $ver_user = Router::url('/usuarios/ver/', true);
 ?>
     <url>
         <loc><?php echo $ver_user.$u['User']['username']; ?></loc>
-        <lastmod><?php echo $u['User']['modified']; ?></lastmod>
+        <lastmod><?php
+        $date = explode(' ', $u['User']['modified']);
+        echo $date[0]; ?></lastmod>
         <priority>0.5</priority>
         <changefreq>monthly</changefreq>
     </url>

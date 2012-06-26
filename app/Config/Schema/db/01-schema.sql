@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 DROP TABLE IF EXISTS `talleres_users`;
 CREATE TABLE IF NOT EXISTS `talleres_users` (
 	`id` INT(6) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`user_id` INT( 5 ) NOT NULL UNIQUE,
+	`user_id` INT( 5 ) NOT NULL,
 	`taller_id` INT( 4 ) NOT NULL,
 	`descuento` INT( 2 ) DEFAULT 0 NOT NULL,
 	`created` DATETIME NOT NULL
