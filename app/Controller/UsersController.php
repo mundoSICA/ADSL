@@ -75,6 +75,7 @@ function beforeFilter() {
 				$this->redirect(array('action' => 'login'));
 			} else {
 				$this->Session->setFlash('No te puedes registrar!, favor de revisar que tus datos sean correctos');
+				$this->request->data['User']['password'] = '';
 			}
 		}
 		$talleres = $this->User->Taller->find('list');
