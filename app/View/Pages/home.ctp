@@ -1,22 +1,24 @@
 <?php
-	echo $this->Html->script('slides.min.jquery');
-	echo $this->Html->script('talleres.slides');
-	echo $this->Html->script('activar.top.menu.jquery');
-	echo $this->Html->css('slide');
+	#sección metaDatos
 	$this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
 	$this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
+	#sección CSS
+	$this->Html->css('slide', null, array('inline' => false));
+	$this->Html->css('home','stylesheet', array('inline' => false ) );
+	#sección Javascript
+	$this->Html->script('slides.min.jquery', array('inline' => false));
+	$this->Html->script('talleres.slides', array('inline' => false));
+	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+
 ?>
-<script language="Javascript"  type="text/javascript">
+<script type="text/javascript">
 $(function() {
     $("#BotonInicio").activarTopMenu();
 });
 </script>
-<style type="text/css" media="all">
-	#content{background:rgba(0,0,0,0);}
-</style>
 <div class="header2">
 <div id="slide_principal_talleres">
-			<img src="img/liston_talleres_slide.png" width="150" height="150" alt="Talleres" id="liston_talleres_slide" />
+			<img src="img/liston_talleres_slide.png" width="150" height="150" alt="Liston Talleres" id="liston_talleres_slide" />
 			<div id="slide_talleres">
 				<div class="slides_container">
 				<?php foreach ($talleres as $taller): ?>

@@ -5,15 +5,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title><?php echo $title_for_layout; ?></title>
 	<?php
+		##seccion de meta etiquetas
 		echo $this->Html->meta('icon');
+		echo $this->fetch('meta');
+		echo "\n";
+		##Sección de CSS
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('estilos');
 		echo $this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
-		echo $this->fetch('meta');
 		echo $this->fetch('css');
-		echo $this->fetch('script');
+		echo "\n";
+		#Seccion de javascript
 		echo $this->Html->script('jquery.min');
 		echo $this->Html->script('jquery-ui-1.8.21.custom.min');
+		echo $this->fetch('script');
+		echo "\n";
 	?>
 	<script  type="text/javascript">
 		$(function(){
@@ -145,6 +151,6 @@ var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
 piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
 } catch( err ) {}
-</script><noscript><p><img src="http://mundosica.com/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
+</script><noscript><p><img src="http://mundosica.com/piwik/piwik.php?idsite=6" style="border:0" alt="mundosica-piwik" /></p></noscript>
 </body>
 </html>

@@ -3,6 +3,5 @@
  * Autor:   Fitorec
  * Date :   2012/06/24 19:54:18
  */
-header ("content-type: text/xml");
+header ('Content-Type:text/xml');
 echo $this->fetch('content');
-?>

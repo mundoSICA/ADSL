@@ -3,7 +3,7 @@
 	$this->set('title_for_layout', 'ADSL  - Registro de usuario');
 	$this->Html->meta('description', 'Registro de usuario, registrate en nuestro sitio web', array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonRegistrate").activarTopMenu();});</script>
+<script type="text/javascript">$(function() {$("#BotonRegistrate").activarTopMenu();});</script>
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

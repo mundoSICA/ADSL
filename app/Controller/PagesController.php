@@ -107,6 +107,7 @@ function beforeFilter() {
 	 */
 	function sitemap() {
 		$this->layout = 'xml';
+		$this->viewClass = 'Xml';
 		$this->Taller->recursive = 1;
 		$talleres = $this->Taller->query(
 			'SELECT slug_dst, modified, status FROM talleres AS Taller  ORDER BY status ASC'

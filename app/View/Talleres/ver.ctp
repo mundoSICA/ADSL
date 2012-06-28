@@ -7,7 +7,7 @@
 ?>
 <div class="header2">
 <div id="slide_principal_talleres">
-			<img src="../../img/liston_talleres_slide.png" width="150" height="150" alt="Talleres" id="liston_talleres_slide" />
+			<img src="../../img/liston_talleres_slide.png" width="150" height="150" alt="Liston Talleres" id="liston_talleres_slide" />
 			<div id="slide_talleres">
 				<div class="slides_container">
 					<div class="slide">

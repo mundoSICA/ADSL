@@ -27,6 +27,7 @@
 					echo $this->Html->image('php.jpg', array('alt'=>'PHP'));
 		?>
 	</a>
+	<a href="http://www.debian.org/" rel="external">
 		<?php
 					echo $this->Html->image('debian.jpg', array('alt'=>'debian'));
 		?>
