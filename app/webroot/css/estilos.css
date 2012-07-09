@@ -10,6 +10,10 @@ body{
 	padding: 0 0;
 	text-align: center;
 }
+@font-face {
+  font-family: "Averia-Bold";
+  src: url(Averia-Bold.ttf) format("truetype");
+}
 
 a:link, a:visited{
 	color: #c2570b;
@@ -64,18 +68,52 @@ img{
 	background: #F3F3F3 url(../img/bgheader.jpg) repeat-x;
 }
 
-.logo{
+#logo{
 	width: 678px;
 	height: 133px;
 	float: left;
-
+	text-align:center;
+	text-shadow: 1px 1px 0 #FFF,1px 1px 5px #999,-1px -1px 5px #999;
 }
+
+a#LinkPrincipal{
+	width: 200px;
+	height: 133px;
+	display:block;
+	float: left;
+	text-decoration:none;
+}
+#slogan{
+	float: left;
+	width:470px;
+	padding-top:50px;
+}
+#logo #slogan h1{ font-size:32px}
+#logo #slogan h2{ font-size:20px}
+#logo h1{
+	font-family: "Averia-Bold";
+	color:#5e4f45;
+	font-size:40px;
+	margin-bottom:2px;
+}
+#logo h2 {
+    border: medium none;
+    color: #B6580E;
+    display: block;
+    font-size: 12px;
+    font-family: "Averia-Bold";
+}
+a#LinkPrincipal:hover{
+	text-decoration:none;
+	text-shadow:-1px 2px 1px #FFF,1px -2px 1px #FFF,0 0 5px #999;
+}
+a#LinkPrincipal:hover h1, a#LinkPrincipal h1:hover{color:#8B6246}
+a#LinkPrincipal:hover h2, a#LinkPrincipal h2:hover{color:#D87C00;}
 
 .buscadoriconos{
 	width: 268px;
 	height: 133px;
 	float: left;
-
 }
 
 .buscador{

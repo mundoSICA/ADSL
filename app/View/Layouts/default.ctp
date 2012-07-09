@@ -87,10 +87,18 @@ _gaq.push(['_trackPageview']);
 			}
      ?></div>
     <div class="header">
-      <div class="logo"><a href="<?php echo Router::url('/', true); ?>">
+      <div id="logo">
+		  <a href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
 				<?php
-					echo $this->Html->image('header.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
-				?></a>
+					echo $this->Html->image('logo_ave.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
+				?>
+			<h1 class='adsl_logo'>ADSL</h1>
+			<h2>Academia de Software Libre</h2>
+		</a>
+		<div id="slogan">
+			<h1>Academia de Software Libre</h1>
+			<h2>Compartir, Difundir y Generar Conocimiento</h2>
+		</div>
 	</div>
 	<div class="buscadoriconos">
           <div class="buscador">
