@@ -6,7 +6,7 @@
 ?>
 <script language="Javascript"  type="text/javascript">$(function() {$("#BotonTalleres").activarTopMenu();});</script>
 <div class="talleres index">
-	<h2><?php echo __('Talleres');?></h2>
+	<h1>Lista de talleres</h1>
 	<?php
 	foreach ($talleres as $taller): ?>
 	<h2><?php echo h($taller['Taller']['nombre']); ?>&nbsp;</h2>

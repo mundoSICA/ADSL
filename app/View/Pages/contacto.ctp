@@ -7,7 +7,7 @@
 <div class="formulario contacto">
 <?php echo $this->Form->create('Page');?>
 	<fieldset>
-		<legend>Contacto ADSL</legend>
+	<h1>Formulario de contacto ADSL</h1>
 <?php
 	echo $this->Form->input('nombre');
 	echo $this->Form->input('email');

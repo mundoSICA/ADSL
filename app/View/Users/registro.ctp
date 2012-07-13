@@ -7,7 +7,7 @@
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend>Registrate como usuario</legend>
+		<h1>Registrate como usuario</h1>
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');

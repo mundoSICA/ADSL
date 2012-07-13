@@ -38,7 +38,11 @@ class AppHelper extends Helper {
 	 * @link http://es.gravatar.com/site/implement/hash/
 	 */
 	function gravatar_img($email, $size=100, $options=array()){
-		return '<div class="avatar" style="width: '.$size.'px">'.
+		if( !isset($options['alt']) ){
+			$nick = explode('@',$email);
+			$options['alt'] = $nick[0]. ' Avatar';
+		}
+		return '<div itemprop="photo" class="avatar" style="width: '.$size.'px">'.
 			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s='.$size, $options)
 			.'</div>';
 	}
@@ -52,8 +56,10 @@ class AppHelper extends Helper {
 	 */
 	function gravatar_link($email, $username=''){
 		$link = Router::url('/users/ver/'.$username);
-		return '<div class="avatar" style="width: 50px"><a href="'.$link.'">'.
-			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=50')
-			.'</a><h5>' . $username . '</h5></div>';
+		return '<div class="avatar" style="width: 50px">'.
+				'<a href="'.$link.'" itemprop="url">'.
+			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=50'
+			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'))
+			.'</a><h5 itemprop="nickname">' . $username . '</h5></div>';
 	}
 }

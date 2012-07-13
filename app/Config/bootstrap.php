@@ -2,7 +2,7 @@
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
  *
- * This file should load/create any application wide configuration settings, such as 
+ * This file should load/create any application wide configuration settings, such as
  * Caching, Logging, loading additional configuration files.
  *
  * You should also use this file to include any files that provide global functions/constants
@@ -22,7 +22,6 @@
  * @since         CakePHP(tm) v 0.10.8.2117
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 /**
  * Cache Engine Configuration
  * Default settings provided below
@@ -84,7 +83,6 @@
  *	));
  */
 Cache::config('default', array('engine' => 'File'));
-
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
  *
@@ -110,7 +108,6 @@ Cache::config('default', array('engine' => 'File'));
  * ));
  *
  */
-
 /**
  * Custom Inflector rules, can be set to correctly pluralize or singularize table, model, controller names or whatever other
  * string is passed to the inflection functions
@@ -119,7 +116,6 @@ Cache::config('default', array('engine' => 'File'));
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
-
 Inflector::rules('singular', array(
 	'rules' => array(
 		'/([rlnd])es$/i' => '\1',
@@ -132,7 +128,6 @@ Inflector::rules('singular', array(
 		'controllers' => 'controller',
 	)
 ));
-
 Inflector::rules('plural', array(
 	'rules' => array(
 		'/([taeiouj])$/i' => '\1s',
@@ -145,7 +140,6 @@ Inflector::rules('plural', array(
 		'controller' => 'controllers',
 	)
 ));
-
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on CakePlugin to use more
@@ -157,7 +151,6 @@ Inflector::rules('plural', array(
  */
 #Definiendo la lengua español(spa) por defecto
 Configure::write('Config.language', 'spa');
-
 //Autologin debugin
 Configure::write('AutoLogin', array(
 	'email' => 'chanerec@gmail.com'

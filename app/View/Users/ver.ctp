@@ -13,53 +13,32 @@ dl{width:550px}
 <?php
 	echo $this->Html->gravatar_img($user['User']['email']);
 ?>
-<div class='datos_usuario'>
-	<h2><?php  echo h($user['User']['username']);?></h2>
+<div class='datos_usuario' itemscope itemtype="http://data-vocabulary.org/Person">
+	<h1><?php  echo h($user['User']['username']);?></h1>
 	<dl>
 		<dt>Role</dt>
-		<dd>
-			<?php echo h($user['User']['role']); ?>
-			&nbsp;
-		</dd>
+		<dd itemprop="role"><?php echo h($user['User']['role']); ?>&nbsp;</dd>
 		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
+		<dd itemprop="nickname"><?php echo h($user['User']['username']); ?>&nbsp;</dd>
 		<?php if( !empty($user['User']['twitter']) ): ?>
 		<dt>Twitter</dt>
-		<dd>
-			<?php echo
-			$this->Html->link($user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter']);
-			?>
-			&nbsp;
-		</dd>
+		<dd itemprop="contact"><?php echo $this->Html->link($user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter']);?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( !empty($user['User']['facebook']) ): ?>
 		<dt>FaceBook</dt>
-		<dd>
-			<?php echo
+		<dd itemprop="contact"><?php echo
 			$this->Html->link($user['User']['facebook'], $user['User']['facebook']);
-			?>
-			&nbsp;
-		</dd>
+			?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( !empty($user['User']['url']) ): ?>
 		<dt>Sitio</dt>
-		<dd>
-			<?php echo
-			$this->Html->link($user['User']['url'], $user['User']['url']);
-			?>
-			&nbsp;
-		</dd>
+		<dd itemprop="url"><?php echo $this->Html->link($user['User']['url'], $user['User']['url']);?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( $user['User']['email_publico'] == 1 ): ?>
 		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-		<?php
+		<dd itemprop="contact"><?php
 			echo $this->Html->link($user['User']['email'], 'mailto:'.$user['User']['email']);
-		?>&nbsp;
-		</dd>
+		?>&nbsp;</dd>
 		<?php endif; ?>
 	</dl>
 <?if( !empty($user['Taller'])): ?>
@@ -82,7 +61,6 @@ foreach ($user['Taller'] as $t): ?>
 		</tbody>
 	</table>
 <?php endif; ?>
-
 <?php if (!empty($user['Curso'])):?>
 <h2>Talleres en donde estoy inscrito</h2>
 <table cellpadding = "0" cellspacing = "0">
@@ -93,7 +71,7 @@ foreach ($user['Taller'] as $t): ?>
 <?php
 	$i = 0;
 	foreach ($user['Curso'] as $curso): ?>
-	<tr>
+	<tr itemprop="affiliation">
 		<td><?php
 			echo $this->Html->link($curso['nombre'],
 			array('controller' => 'talleres', 'action' => 'ver', $curso['slug_dst'])
@@ -104,7 +82,6 @@ foreach ($user['Taller'] as $t): ?>
 <?php endforeach; ?>
 </table>
 <?php endif; ?>
-
 </div><!-- en datos usuarios -->
 </div>
 <div class="acciones">

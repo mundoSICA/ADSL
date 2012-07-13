@@ -5,6 +5,7 @@
 	$this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 	$this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
 ?>
+<div itemscope itemtype="http://data-vocabulary.org/Event">
 <div class="header2">
 <div id="slide_principal_talleres">
 			<img src="../../img/liston_talleres_slide.png" width="150" height="150" alt="Liston Talleres" id="liston_talleres_slide" />
@@ -13,7 +14,11 @@
 					<div class="slide">
 						<?php
 						echo $this->Html->link(
-								$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg'),
+								$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
+								array(
+									'itemprop'=>'photo',
+									'alt' => $taller['Taller']['nombre']
+								)),
 								array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $taller['Taller']['slug_dst']),
 								array('escape' => false)
 							);
@@ -34,48 +39,58 @@
 		</div>
 </div>
 <div class="talleres ver">
-<h2><?php  echo $taller['Taller']['nombre'];?></h2>
+<h1 itemprop="summary"><?php
+echo $this->Html->link( $taller['Taller']['nombre'],
+		array('controller'=>'talleres','action'=>'ver',$taller['Taller']['slug_dst']),
+		array('itemprop' => 'url'));
+?></h1>
 	<dl>
-		<dt>Tallerista</dt>
-		<dd>
-			<?php echo $this->Html->link($taller['User']['username'], array('controller' => 'users', 'action' => 'ver', $taller['User']['username'])); ?>
-			&nbsp;
-		</dd>
+		<dt itemprop="author"itemscope itemtype="http://data-vocabulary.org/Person">
+			<span itemprop="role">Tallerista</span>
+		</dt>
+		<dd><?php
+		echo $this->Html->link(
+			'<span itemprop="nickname" >'. $taller['User']['username'] . '</span>',
+			array('controller' => 'users', 'action' => 'ver', $taller['User']['username']),
+			array('escape' => false, 'itemprop' => 'url')
+		); ?></dd>
+		
 		<dt><?php echo __('Horario'); ?></dt>
 		<dd>
 			<?php echo h($taller['Taller']['horario']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Fecha Inicio'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['fecha_inicio']); ?>
-			&nbsp;
-		</dd>
+		<dd itemprop="startDate" datetime="<?php echo h($taller['Taller']['fecha_inicio']); ?>T06:00-08:00"><?php echo h($taller['Taller']['fecha_inicio']); ?></dd>
 		<dt><?php echo __('Fecha Final'); ?></dt>
-		<dd>
-			<?php echo h($taller['Taller']['fecha_final']); ?>
-			&nbsp;
-		</dd>
+		<dd itemprop="endDate" datetime="<?php echo h($taller['Taller']['fecha_final']); ?>T06:00-08:00"><?php echo h($taller['Taller']['fecha_final']); ?></dd>
+		
 		<dt><?php echo __('Costo'); ?></dt>
-		<dd>
-			<?php echo '$'.number_format($taller['Taller']['costo'],2); ?>
-			&nbsp;
-		</dd>
+		<dd itemprop='tickets'><?php echo '$'.number_format($taller['Taller']['costo'],2); ?></dd>
+		
 		<dt><?php echo __('Numero Total Horas'); ?></dt>
 		<dd>
 			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
 		</dd>
+		
 		<dt>Estado actual</dt>
 		<dd>
 			<?php echo $taller['Taller']['status']; ?>&nbsp;
 		</dd>
+		
 	</dl>
-	<h2>Requisitos</h2>
-	<p><?php echo $taller['Taller']['requisitos']; ?></p>
+	<div>
+		<h2>Requisitos</h2>
+		<?php echo $taller['Taller']['requisitos']; ?>
+	</div>
+
 	<h2>Resumen</h2>
-	<p><?php echo h($taller['Taller']['resumen']); ?></p>
+	<p>
+		<?php echo $taller['Taller']['resumen']; ?>
+	</p>
+
 	<h2>Descripción detallada</h2>
-	<p><?php echo h($taller['Taller']['contenido']); ?></p>
+	<p itemprop="description"><?php echo $taller['Taller']['contenido']; ?></p>
 	<!-- -->
 	<h2>Alumnos inscritos en el taller</h2>
 <?php
@@ -85,10 +100,11 @@ if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 
 }
 $user_auth = $this->Session->read('Auth.User.username');
 if (!empty($taller['User'])):?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0">
 	<tr>
 		<th>Alumno</th>
 		<th>Nick</th>
+		<th>role</th>
 	</tr>
 	<?php
 		$i = 0;
@@ -97,7 +113,7 @@ if (!empty($taller['User'])):?>
 						$boton_taller = false;
 					}
 		?>
-		<tr>
+		<tr itemscope itemtype="http://data-vocabulary.org/Person">
 				<td><?php
 				echo $this->Html->gravatar_link(
 						$user['email'],
@@ -105,9 +121,8 @@ if (!empty($taller['User'])):?>
 			);
 			?>
 				</td>
-				<td><?php
-				//echo $user['TalleresUser']['created'];
-				echo $user['username']; ?></td>
+				<td><?php echo $user['username']; ?></td>
+				<td itemprop="role">Alumno</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
@@ -122,6 +137,7 @@ if (!empty($taller['User'])):?>
 	}
 ?>
 </div>
+</div><!-- fin del evento -->
 <div class="acciones">
 	<h3>Acciones</h3>
 	<ul>
@@ -145,7 +161,7 @@ if (!empty($taller['User'])):?>
 <div class="related">
 	<h3>Posts Relacionados</h3>
 	<?php if (!empty($taller['Post'])):?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Nombre'); ?></th>

@@ -9,7 +9,6 @@
 	$this->Html->script('slides.min.jquery', array('inline' => false));
 	$this->Html->script('talleres.slides', array('inline' => false));
 	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
-
 ?>
 <script type="text/javascript">
 $(function() {
@@ -22,22 +21,36 @@ $(function() {
 			<div id="slide_talleres">
 				<div class="slides_container">
 				<?php foreach ($talleres as $taller): ?>
-					<div class="slide">
+					<div class="slide" itemscope itemtype="http://data-vocabulary.org/Event">
 						<?php
 						echo $this->Html->link(
-								$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg'),
-								array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $taller['Taller']['slug_dst']),
-								array('escape' => false)
+									$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
+									array(
+									'alt' => $taller['Taller']['nombre'],
+									'itemprop' => 'photo'
+									)
+								),
+								array(	'controller' => 'talleres',
+										'action' => 'ver',
+										'admin' => false,
+										$taller['Taller']['slug_dst']
+									),
+								array(	'escape' => false,
+										'title' => $taller['Taller']['nombre'],
+										'itemprop' => 'url'
+									)
 							);
 						?>
-						<h2 class="slide_taller_titulo"><?php echo $taller['Taller']['nombre']; ?>&nbsp;</h2>
+						<h2 class="slide_taller_titulo" itemprop="summary"><?php echo $taller['Taller']['nombre']; ?></h2>
 						<div class="slide_info_taller">
 							<span class="slide_horario"><strong>Horario: </strong>
 								<?php echo $taller['Taller']['horario']; ?>&nbsp;
 							</span>
 							<span class="slide_horas"><strong>Número de horas: </strong><?php echo $taller['Taller']['numero_total_horas']; ?>&nbsp;</span>
-							<span class="inicio"><strong>inicia: </strong><?php echo $taller['Taller']['fecha_inicio']; ?>&nbsp;</span>
-							<span class="fin"><strong>concluye: </strong><?php echo $taller['Taller']['fecha_final']; ?>&nbsp;</span>
+							<span class="inicio"><strong>inicia: </strong>
+							<span itemprop="startDate"><?php echo $taller['Taller']['fecha_inicio']; ?>&nbsp;</span></span>
+							<span class="fin"><strong>concluye: </strong>
+								<span itemprop="endDate"><?php echo $taller['Taller']['fecha_final']; ?>&nbsp;</span></span>
 						</div>
 					</div>
 				<?php endforeach; ?>

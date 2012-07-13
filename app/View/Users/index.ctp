@@ -12,7 +12,7 @@ div.avatar{
 }
 </style>
 <div class="users index">
-	<h2>Lista de usuarios</h2>
+	<h1>Lista de usuarios</h1>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th> </th>
@@ -20,11 +20,13 @@ div.avatar{
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
-	<tr>
-		<td><?php echo $this->Html->gravatar_img($user['User']['email'], 50); ?></td>
-		<td><?php echo $this->Html->link(h($user['User']['username']),
-											array('action' => 'ver', $user['User']['username'])
-							); ?>&nbsp;</td>
+	<tr itemscope itemtype="http://data-vocabulary.org/Person">
+		<td><?php echo $this->Html->gravatar_link($user['User']['email'], $user['User']['username']); ?></td>
+		<td><?php echo $this->Html->link(
+						h($user['User']['username']),
+						array('action' => 'ver', $user['User']['username']),
+						array('title' => 'ver Perfil')
+			); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

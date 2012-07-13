@@ -111,7 +111,7 @@ function beforeFilter() {
 		}
 		$users = $this->Taller->User->find('list');
 		$etiquetas = $this->Taller->Etiqueta->find('list');
-		$alumnos = $this->Taller->Alumnos->find('list');
+		$alumnos = array(); #$this->Taller->Alumnos->find('list');
 		$this->set(compact('users', 'etiquetas', 'alumnos'));
 	}
 

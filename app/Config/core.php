@@ -18,7 +18,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 /**
  * CakePHP Debug Level:
  *
@@ -32,8 +31,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
-
+	Configure::write('debug', 2);
 /**
  * Configure the Error handler used to handle errors for your application.  By default
  * ErrorHandler::handleError() is used.  It will display errors using Debugger, when debug > 0
@@ -53,7 +51,6 @@
 		'level' => E_ALL & ~E_DEPRECATED,
 		'trace' => true
 	));
-
 /**
  * Configure the Exception handler used for uncaught exceptions.  By default,
  * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and
@@ -75,12 +72,10 @@
 		'renderer' => 'ExceptionRenderer',
 		'log' => true
 	));
-
 /**
  * Application wide charset encoding
  */
 	Configure::write('App.encoding', 'UTF-8');
-
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
  * use CakePHP pretty URLs, remove these .htaccess
@@ -93,7 +88,6 @@
  * And uncomment the App.baseUrl below:
  */
 	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
-
 /**
  * Uncomment the define below to use CakePHP prefix routes.
  *
@@ -111,13 +105,11 @@
  *
  */
 Configure::write('Routing.prefixes', array('admin'));
-
 /**
  * Turn off all caching application-wide.
  *
  */
 	//Configure::write('Cache.disable', true);
-
 /**
  * Enable cache checking.
  *
@@ -128,13 +120,11 @@ Configure::write('Routing.prefixes', array('admin'));
  *
  */
 	//Configure::write('Cache.check', true);
-
 /**
  * Defines the default error type when using the log() function. Used for
  * differentiating error logging and debugging. Currently PHP supports LOG_DEBUG.
  */
 	define('LOG_ERROR', 2);
-
 /**
  * Session configuration.
  *
@@ -175,22 +165,18 @@ Configure::write('Routing.prefixes', array('admin'));
 	Configure::write('Session', array(
 		'defaults' => 'php'
 	));
-
 /**
  * The level of CakePHP security.
  */
 	Configure::write('Security.level', 'medium');
-
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR234322G0FgaC9mi');
-
+	Configure::write('Security.salt', 'hG93b0qyJfIxb42G0ffsgfwertyyuhjjkfdswewertxvFgaCi');
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '7685930965745354249674968364583');
-
+	Configure::write('Security.cipherSeed', '78906423566758699052672457842344649864583');
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
  * Will append a querystring parameter containing the time the file was modified. This is
@@ -200,7 +186,6 @@ Configure::write('Routing.prefixes', array('admin'));
  * timestamping regardless of debug value.
  */
 	//Configure::write('Asset.timestamp', true);
-
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
  * This requires a/var/cache directory to be writable by the web server for caching.
@@ -209,7 +194,6 @@ Configure::write('Routing.prefixes', array('admin'));
  * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().
  */
 	//Configure::write('Asset.filter.css', 'css.php');
-
 /**
  * Plug in your own custom JavaScript compressor by dropping a script in your webroot to handle the
  * output, and setting the config below to the name of the script.
@@ -217,42 +201,36 @@ Configure::write('Routing.prefixes', array('admin'));
  * To use, prefix your JavaScript link URLs with '/cjs/' instead of '/js/' or use JavaScriptHelper::link().
  */
 	//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
-
 /**
  * The classname and database used in CakePHP's
  * access control lists.
  */
 	Configure::write('Acl.classname', 'DbAcl');
 	Configure::write('Acl.database', 'default');
-
 /**
- * Uncomment this line and correct your server timezone to fix 
+ * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
 	//date_default_timezone_set('UTC');
-
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
  * If running via cli - apc is disabled by default. ensure it's available and enabled in this case
  *
  * Note: 'default' and other application caches should be configured in app/Config/bootstrap.php.
- *       Please check the comments in boostrap.php for more info on the cache engines available 
+ *       Please check the comments in boostrap.php for more info on the cache engines available
  *       and their setttings.
  */
 $engine = 'File';
 if (extension_loaded('apc') && function_exists('apc_dec') && (php_sapi_name() !== 'cli' || ini_get('apc.enable_cli'))) {
 	$engine = 'Apc';
 }
-
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
 if (Configure::read('debug') >= 1) {
 	$duration = '+10 seconds';
 }
-
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
 $prefix = 'myapp_';
-
 /**
  * Configure the cache used for general framework caching.  Path information,
  * object listings, and translation cache files are stored with this configuration.
@@ -264,7 +242,6 @@ Cache::config('_cake_core_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
-
 /**
  * Configure the cache for model and datasource caches.  This cache configuration
  * is used to store schema descriptions, and table listings in connections.

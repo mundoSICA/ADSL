@@ -3,21 +3,19 @@
  * Sluggable Behavior Class.
  *
  * Enables a model object to sluggable behavior.
- * 
+ *
  * @Author        fitorec
  * @copyright     2010-2012, SICÁ (tm)- soluciones integrales en computación aplicada.
  * @link          https://github.com/mundoSICA/cakephp_behavior_slug
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  * @since         SICÁ(tm) v 0.1
  */
-
 class SlugBehavior extends ModelBehavior {
 /**
  * Errors
  * @var array
  */
 	var $errors = array();
-
 /**
  * Defaults - slug_dst and slug_src should be uniqued
  *
@@ -33,26 +31,25 @@ class SlugBehavior extends ModelBehavior {
 	);
 /**
  * Descripción de argumentos:
- * 
+ *
  * slug_src : Este campo sera el que se convertira en slug_dst
  *				p.e. Articulo.titulo = "Este es un articulo sobre el comportamiento Slug"
- * 
+ *
  * slug_dst :	Es el valor slug, para el comportamiento slug, este campo se convierte sufre una trasformación slug
  * 				p.e. Articulo.slug = "este-es-un-articulo-sobre-el-comportamiento-slug" .
- * 
- * 
+ *
+ *
  * max_len : La longitud maxima que puede llegar a tomar slug_dst.
  *				p.e. con max_len=30 : Articulo.slug = "este-es-un-articulo-sobre-el-c" .
- * 
+ *
  * wd_separator: Caracter separadora de palabras, por defecto(-).
  * 			 	p.e. con 'wd_separator'='_' : Articulo.slug = "este_es_un_articulo_sobre_el_comportamiento_slug" .
- * 
+ *
  * extension_active: Por defecto false, si activamos este campo agrega la extensión '.html',
  *	 			reduciendo el max_len - 5 (la longitud de '.html').
  * 				p.e. Articulo.slug = "este-es-un-articulo-sobre-el-comportamiento-slug.html"
- * 
+ *
  * */
-
 /**
  * Initiate Slug behavior
  *
@@ -101,7 +98,6 @@ class SlugBehavior extends ModelBehavior {
 				$slug = substr($slug, 0, $max_len);
 			return ( $extension_active == true )? $slug.'.html' : $slug;
 	}
-
 /**
  * Before save method. Called before all saves
  *

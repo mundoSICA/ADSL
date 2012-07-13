@@ -10,7 +10,6 @@ var $components = array('Email');
 function beforeFilter() {
 			$this->Auth->allow('*');
 }
-
 /**
  * index method
  *
@@ -20,7 +19,6 @@ function beforeFilter() {
 		$this->Contribucion->recursive = 0;
 		$this->set('contribuciones', $this->paginate());
 	}
-
 /**
  * view method
  *
@@ -34,13 +32,12 @@ function beforeFilter() {
 		}
 		$this->set('commit', $this->Contribucion->read(null, $hash));
 	}
-
 /**
  * Agrega los commits que nos envia el github
- * 
- * Por medio de el hook Post-Receive el sitio github envia los cambios a la 
+ *
+ * Por medio de el hook Post-Receive el sitio github envia los cambios a la
  * página del ADSL desde aquí cachamos los cambios y los publicamos.
- * 
+ *
  * link: https://help.github.com/articles/post-receive-hooks
  */
 	public function agregar() {
@@ -52,7 +49,6 @@ function beforeFilter() {
 			}
 		}
 	}
-	
 	function nuevaContribucion($c){
 		$tipo_cambio = array(
 										'added' => 'Archivos añadidos',
