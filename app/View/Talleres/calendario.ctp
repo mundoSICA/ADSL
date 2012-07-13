@@ -18,32 +18,33 @@ foreach ($talleres as $t) {
 	$out .= "},";
 }//
 ?>
-<script type='text/javascript'>
-$(document).ready(function() {
-	//activacion del top menu
-	$("#BotonCalendario").activarTopMenu();
-	//calendario
-	$('#calendar').fullCalendar({
-		header: {
-		left: 'prev,next today',
-		center: 'title',
-		right: 'month,agendaWeek,agendaDay'
-	},
-	monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agusto","Septiembrw","Octubre","Noviembre","Diciembre"],
-	dayNamesShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
-	editable: true,
-	events: [
-		<?php echo $out; ?>
-	]
-	});
-});
-</script>
+<script type='text/javascript'>$(document).ready(function() {
+	var script = $('<script/>').attr('src', '<?php echo Router::url('/js/talleres/') ?>calendario.js').appendTo('head');
+});</script>
+
 <style type="text/css" media="all">
 .calendario-wrapper{
 	padding: 10px;
 }
 </style>
-<h2>Calendario de actividades del ADSL.</h2>
+<ul id='ListaTalleres'>
+<?php
+foreach ($talleres as $t):
+?>
+<li itemscope itemtype="http://data-vocabulary.org/Event">
+	<?php
+	echo $this->Html->link(
+		'<span itemtype="summary">' . $t['Taller']['nombre'] . '</span>',
+		array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $t['Taller']['slug_dst']),
+		array('escape' => false,'itemprop' => 'url')
+	)
+	. ' - <span itemprop="startDate">' . $t['Taller']['fecha_inicio']. '</span>';
+?>
+</li>
+<? endforeach; ?>
+</ul>
+
+<h1>Calendario de actividades del ADSL.</h1>
 <div class="calendario-wrapper">
 	<div id='calendar'></div>
 </div>

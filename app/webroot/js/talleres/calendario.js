@@ -1,6 +1,4 @@
-$(document).ready(function() {
-	//activacion del top menu
-	$("#BotonCalendario").activarTopMenu();
+$("#BotonCalendario").activarTopMenu();
 	//calendario
 	$('#calendar').fullCalendar({
 		header: {
@@ -11,8 +9,5 @@ $(document).ready(function() {
 	monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agusto","Septiembrw","Octubre","Noviembre","Diciembre"],
 	dayNamesShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
 	editable: true,
-	events: [
-		<?php echo $out; ?>
-	]
-	});
+	events: []
 });
