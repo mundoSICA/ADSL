@@ -63,12 +63,6 @@ function actualizar_path()
 		then
 			file_dst="${APP_DST}/${file_name}"
 			path_dst=`echo "${file_dst}" | sed -r 's/[^\/]*$//'`
-			#Revisión de permisos de escritura a la carpeta app/tmp de la aplicacion
-			if [ `ls -l "${APP_DST}" | grep tmp | awk '{print $1}'` != "drwxrwxrwx" ]
-			then
-				echo 'Dando permisos de escritura carpeta tmp'
-				chmod 777 "${APP_DST}/tmp" -R
-			fi
 			#Si el archivo destino no existe lo creamos.
 			if [ ! -e "${file_dst}" ]
 			then
@@ -91,6 +85,8 @@ function actualizar_path()
 			fi
 		fi
 	done
+	echo 'Dando permisos de escritura carpeta tmp'
+	chmod 777 "${APP_DST}/tmp" -R --silent
 }
 ##########################################################################################
 # Actualización rapida solo cambia los archivos indicados por el `git status`            #
