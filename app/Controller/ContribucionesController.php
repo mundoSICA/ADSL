@@ -51,9 +51,24 @@ function beforeFilter() {
 	}
 	function nuevaContribucion($c){
 		$tipo_cambio = array(
-										'added' => 'Archivos añadidos',
-										'modified' => 'Archivos modificados',
-										'removed' => 'Archivos eliminados',
+										'added' => 
+										array(
+											'titulo' => 'Archivos añadidos',
+											 'color' => '055FBF',
+											 'tag' => 'span'
+										),
+										'modified' => 
+										array(
+											'titulo' => 'Archivos modificados',
+											 'color' => 'CD4D00',
+											 'tag' => 'span'
+										),
+										'removed' =>
+										array(
+											'titulo' => 'Archivos eliminados',
+											 'color' => '660000',
+											 'tag' => 'del'
+										)
 		);
 		$newCommit = array(
 		'Contribucion' => array(
@@ -66,6 +81,7 @@ function beforeFilter() {
 			'removed' => implode("\n",$c['removed']),
 			'timestamp' => str_replace('T',' ',substr($c['timestamp'],0,19))
 		));
+		$urlInfo = Router::url('/',true).'contribuciones/ver/'.$c['id'];
 		$title = explode("\n",$c['message']);
 		$commit_msg = '';
 		$msg = $c['message'];
@@ -78,20 +94,22 @@ function beforeFilter() {
 		$commit_msg .= '<strong>Hash:</strong> ' . $c['id'] . '<br />';
 		$commit_msg .= '<strong>Fecha:</strong> ' . $c['timestamp'] . '<br />';
 		if( strlen($msg) > 5) {
-			$commit_msg .= '<h2>Mensaje:</h2><p>'.$msg.'</p>';
+			$commit_msg .= '<h2>Mensaje:</h2><pre style="background:#EEE;font-size:1.3em;padding:10px">'.$msg.'</pre>';
 		}
-		foreach($tipo_cambio as $t=>$t_descripcion) {
+		foreach($tipo_cambio as $t=>$t_data) {
+			//$tipo_cambio
 			if( count($c[$t]) ) {
-				$commit_msg .= '<h2>'.$t_descripcion.'</h2>';
+				$commit_msg .= '<h2>'.$t_data['titulo'].'</h2>';
 				$character = strtoupper($t[0]);
 				$commit_msg .= '<ul>';
 				foreach($c[$t] as $m) {
-					$commit_msg .= '<li>['.$character.'] '.$m."</li>\n";
+					$commit_msg .= '<li"><'.$t_data['tag'].' style="color:#'.$t_data['color'].'">'
+												.'['.$character.'] '.$m.'</'.$t_data['tag']."></li>\n";
 				}
 				$commit_msg .= '</ul>';
 			}
 		}///////////////////
-		$commit_msg .= '<br /><strong>Mayores informes: </strong><a href="'.$c['url'].'">'.$c['url'].'</a>';
+		$commit_msg .= '<br /><strong>Mayores informes: </strong><a href="'.$urlInfo.'">'.$urlInfo.'</a>';
 		$commit_msg .= '<p>Este mensaje es <i>auto-generado</i>, por medio de <strong>ADSL-robot</strong>'
 										.'Si desea no recibir más notificaciones favor de enviar un email a <i>robot@adsl.org.mx</i></p>';
 		$members = array(
@@ -110,7 +128,7 @@ function beforeFilter() {
 										'Luis Garcia <luism.garciam@gmail.com>',
 										'Confi <erick.cosmes@gmail.com>',
 										'fitorec <chanerec@gmail.com>'
-									);
+		);
 		foreach ($members as $member_email) {
 			$this->Email->reset();
 			$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
