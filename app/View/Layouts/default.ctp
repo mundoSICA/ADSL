@@ -1,8 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<!DOCTYPE html>
+<html lang="es-MX">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta charset="utf-8">
 	<title><?php echo $title_for_layout; ?></title>
 	<?php
 		##seccion de meta etiquetas
@@ -18,61 +17,11 @@
 		#Seccion de javascript
 		echo $this->Html->script('jquery.min');
 		echo $this->Html->script('jquery-ui-1.8.21.custom.min');
+		echo $this->Html->script('main.js');
 		echo $this->fetch('script');
 		echo "\n";
+		//recuerda poner esto en un archivo aparte
 	?>
-	<script  type="text/javascript">
-		$(function(){
-			//Agregando enlaces externos
-			$('a[rel=external]').click(function() {
-				window.open(this.href);
-				return false;
-			});
-			//animacion sobre el buscador
-			$('#buscador_input').val('Buscar en ADSL');
-			$('#buscador_input').focus(function() {
-				if($(this).val() == 'Buscar en ADSL')
-					$('#buscador_input').val('');
-			});
-			$('#buscador_input').blur(function() {
-				if($(this).val() == '')
-					$('#buscador_input').val('Buscar en ADSL');
-			});
-///////////////////////////////////////////////////////////////
-$('#dialog').dialog({
- 'title': 'iniciar sesión',
- autoOpen: false,
-	width: 600,
-	buttons: {
-	"Iniciar Sesión": function() {
-			$(this).dialog("close");
-	},
-	"Cancelar": function() {
-			$(this).dialog("close");
-	}
-	}
-});
-//flash Mensaje
-$('#flashMessage').dialog({
-	buttons: {
-		"Aceptar": function() {
-				$(this).dialog("close");
-			}
-	}
-});
-///////////////////////////////////////////////////////////////
-});
-</script>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-32823607-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
 </head>
 <body>
 <script type="text/javascript"></script>
@@ -86,18 +35,18 @@ _gaq.push(['_trackPageview']);
 				echo $this->Html->link('Login',array('controller'=>'users','action'=>'login'), array('title'=>'logearme'));
 			}
      ?></div>
-    <div class="header">
+    <div class="header"><header>
       <div id="logo">
 		  <a href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
 				<?php
 					echo $this->Html->image('logo_ave.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
 				?>
-			<h1 class='adsl_logo'>ADSL</h1>
-			<h2>Academia de Software Libre</h2>
+			<abbr title="Academia de Software Libre" class='adsl_logo'>ADSL</abbr>
+			<h3>Academia de Software Libre</h3>
 		</a>
 		<div id="slogan">
-			<h1>Academia de Software Libre</h1>
-			<h2>Compartir, Difundir y Generar Conocimiento</h2>
+			<h2>Academia de Software Libre</h2>
+			<h3>Compartir, Difundir y Generar Conocimiento</h3>
 		</div>
 	</div>
 	<div class="buscadoriconos">
@@ -131,8 +80,8 @@ _gaq.push(['_trackPageview']);
 			</a>
 		</div><!--termina iconos -->
       </div><!--termina buscadoriconos -->
-      </div>
-<!--termina header -->
+      </header></div>
+      <!--termina header -->
 	   <div class="menu">
 	       <?php
 					echo $this->element('menu_superior');
@@ -149,7 +98,6 @@ _gaq.push(['_trackPageview']);
 	echo $this->element('pie_info_direccion');
 ?>
 </div> <!--termina CajaPrincipal -->
-<?php echo $this->element('sql_dump'); ?>
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://mundosica.com/piwik/" : "http://mundosica.com/piwik/");
 document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
@@ -160,5 +108,6 @@ piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
 } catch( err ) {}
 </script><noscript><p><img src="http://mundosica.com/piwik/piwik.php?idsite=6" style="border:0" alt="mundosica-piwik" /></p></noscript>
+<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
