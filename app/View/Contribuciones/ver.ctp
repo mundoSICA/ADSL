@@ -27,8 +27,7 @@ h2.modified{	color:#6A3B00;text-shadow:1px 1px 0 #FFF,-1px -1px 0 #FFF,1px 1px 5
 a.modified{color: #CD4D00}
 h2.removed{color:#660000}
 del.removed{color:#9C0019;font-weight:bold}
-
-pre{overflow-x:scroll;}
+pre{overflow-x:auto;}
 </style>
 <div class="users ver">
 <span itemscope itemtype="http://data-vocabulary.org/Person">

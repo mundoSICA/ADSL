@@ -1,0 +1,45 @@
+De un tiempo para acá, bueno específicamente desde que Eymard me empezó hablar sobre sitios
+y su seguimiento me he interesado bastante por el en el uso de estas herramientas.
+
+PIWIK
+==============================================================================
+
+El piwik es una herramienta de análisis web de código abierto bajo licencia GNU/GPLv3 
+estaba pensando en agregarle esta herramienta al sitio de la Academia de Software Libre.
+
+La intensión es agregar esta información desde alguna sección a los miembros de la academia
+una vez que se identifiquen.
+
+En github existe una copia espejo del código fuente de la versión mas reciente, de la cual
+hice una copia canónica desde mi usuario:
+
+ - https://github.com/fitorec/piwik
+
+
+CAKEPHP + PIWIK
+==============================================================================
+
+Revisando un poco por Internet no encuentro mucho de cakephp+piwik.
+
+Solo encontré una implementación que se me hizo interesante:
+
+- http://www.edwardawebb.com/web-development/cakephp/piwik-analyze-visits-cakephp-site
+
+De pronto se me vino la tentación de aplicar esta, pero creo que seria mas útil el hacer
+un plugin.
+
+
+¿Proyecto nuevo?
+==============================================================================
+
+Un plugin en cakePHP es una micro-aplicación la cual encapsula toda una lógica en especifica,
+el optar por esta solución nos estaría brindando la posibilidad de hacerlo más re-utilizable.
+
+Por otra parte estoy pensando en que se podria poner en proyectos:
+
+ - http://www.adsl.org.mx/pages/proyectos
+
+Personalmente considero que seria un combo Killer agregar esta característica al CakePHP
+lo cual aria al plugin un proyecto interesante, aunque por el momento no alcanzo a visua-
+lizar el grado de dificultar del proyecto y tal vez me este metiendo en algo bastante com-
+plejo, pero en fin... me laten los retos.
