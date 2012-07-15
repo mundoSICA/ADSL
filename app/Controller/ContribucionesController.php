@@ -103,7 +103,7 @@ function beforeFilter() {
 				$character = strtoupper($t[0]);
 				$commit_msg .= '<ul>';
 				foreach($c[$t] as $m) {
-					$commit_msg .= '<li"><'.$t_data['tag'].' style="color:#'.$t_data['color'].'">'
+					$commit_msg .= '<li><'.$t_data['tag'].' style="color:#'.$t_data['color'].'">'
 												.'['.$character.'] '.$m.'</'.$t_data['tag']."></li>\n";
 				}
 				$commit_msg .= '</ul>';
