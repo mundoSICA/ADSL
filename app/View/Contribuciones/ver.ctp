@@ -37,7 +37,11 @@ pre{overflow-x:scroll;}
 ?>
 </span>
 <div class='informacion_commit' itemscope itemtype="http://data-vocabulary.org/Event">
-	<h1 itemprop="summary"><?php  echo $title;?></h1>
+	<h1 itemprop="summary"><?php  
+	echo $this->Html->link($title,
+			array('controller'=>'contribuciones','action'=>'ver', $commit['Contribucion']['hash'])
+		, array('itemprop'=>'url')
+	); ?></h1>
 	<dl>
 		<dt>Autor</dt>
 		<dd itemprop="author" itemtype="http://data-vocabulary.org/Person">
@@ -52,7 +56,7 @@ pre{overflow-x:scroll;}
 		<dt>Enlace Externo:</dt>
 		<dd><?php
 			$url = 'https://github.com/mundoSICA/ADSL/commit/' . $commit['Contribucion']['hash'];
-			echo $this->Html->link($url, $url, array('rel'=>'external', 'itemprop' => 'url' ));
+			echo $this->Html->link($url, $url, array('rel'=>'external'));
 			?>
 			&nbsp;
 		</dd>
@@ -77,6 +81,8 @@ $tipo_cambio = array(
 		'modified' => 'Archivos modificados',
 		'removed' => 'Archivos eliminados',
 );
+$url = 'https://github.com/mundoSICA/ADSL/blob/' . $commit['Contribucion']['hash'];
+
 foreach($tipo_cambio as $t=>$t_msg ){
 	if( strlen($commit['Contribucion'][$t]) ){
 		$files = explode("\n", $commit['Contribucion'][$t]);

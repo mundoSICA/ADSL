@@ -13,8 +13,8 @@ class AppController extends Controller {
 						'loginError' => 'Error al identificarse, intente de nuevo.'
 					),
 		'Session',
-		'RequestHandler'
+		'RequestHandler',
+		'Twitteroauth.Twitter' //Soporte para twitter!
 	);
-	
 	/******************** Funciones *******************************************************/
 }

@@ -122,5 +122,14 @@ function beforeFilter() {
 		$this->Taller->recursive = -1;
 		$this->set('talleres', $this->paginate());
 	}//end function
-
+	
+	function twitter() {
+		/*$result = Set::reverse($this->Twitter->OAuth->get(
+			 'legal/privacy', array()
+		));*/
+		$result = Set::reverse($this->Twitter->OAuth->get(
+       'account/verify_credentials', array()
+    ));
+		$this->set('result', $result);
+	}
 }

@@ -149,6 +149,8 @@ Inflector::rules('plural', array(
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+CakePlugin::loadAll();
+
 #Definiendo la lengua español(spa) por defecto
 Configure::write('Config.language', 'spa');
 //Autologin debugin
