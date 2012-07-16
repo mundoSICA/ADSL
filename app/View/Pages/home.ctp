@@ -9,6 +9,7 @@
 	$this->Html->script('slides.min.jquery', array('inline' => false));
 	$this->Html->script('talleres.slides', array('inline' => false));
 	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+	
 ?>
 <script type="text/javascript">
 $(function() {
@@ -61,22 +62,16 @@ $(function() {
 	</div>
 	<div class="bloqueinfo11">
 	   <div class="bloque1">
-       <h2><a href="#">Taller: Javascript &amp; Mootools</a></h2>
-       <p><img src="img/tdweb.jpg" alt="Taller Dise&ntilde;o Web" width="307" height="230" /></p>
+       <h2><a href="#">¿Como funciona?</a></h2>
+       <p>...</p>
       </div>
       <div class="bloque2">
-       <h2><a href="#">Becas y formas de pago </a></h2>
-    <p><img src="img/mblog.jpg" alt="Monetizando tu blog" /><br />
-          <br />
-       </p>
+       <h2><a href="#">Taller Soporte técnico</a></h2>
+			 <p>...</p>
       </div>
       <div class="bloque1">
-      <h2><a href="http://maps.google.com.mx/maps?q=Azucenas+610,+colonia+Reforma,+Oaxaca,+Oaxaca&amp;hl=es&amp;ppyss=confirm:Gracias.+Se+han+guardado+tus+cambios+y+se+publicar%C3%A1n+una+vez+que+hayan+sido+revisados.&amp;ie=UTF8&amp;view=map&amp;cid=5132139184235277504&amp;ll=17.077482,-96.708333&amp;spn=0.011117,0.01929&amp;z=16&amp;iwloc=A" rel="external">Mapa de ubicación</a></h2>
-       <p><img src="img/tjoomla.jpg" alt="Joomla" />
-</p>
-       <p><br />
-       </p>
-      </div>
+      <?php echo $this->element('mapa'); ?>
+		</div>
 	<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>
   </div><!--bloqueinfo -->
 <div class="bloqueinfo1">

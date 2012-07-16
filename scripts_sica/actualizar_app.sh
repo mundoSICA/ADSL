@@ -141,6 +141,7 @@ function update_db()
 	then
 		dia "${diagrama}" -e "${APP}/Config/Schema/db/01-schema.sql"
 		dia "${diagrama}" -e "${APP}/Config/Schema/db/01-schema.js"
+		dia "${diagrama}" -e "${REPO_PATH}/docs/diagramas/db.png"
 	else
 		echo -e "${red}diagrama no encontrado ${diagrama}${NC}"
 		exit
