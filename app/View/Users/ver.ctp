@@ -1,6 +1,10 @@
 <?php
 	$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
 	$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
+
+	echo $this->Html->script('jquery.prettydate', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
 ?>
 <style type="text/css" media="all">
 div.datos_usuario {
@@ -20,6 +24,14 @@ dl{width:550px}
 		<dd itemprop="role"><?php echo h($user['User']['role']); ?>&nbsp;</dd>
 		<dt><?php echo __('Username'); ?></dt>
 		<dd itemprop="nickname"><?php echo h($user['User']['username']); ?>&nbsp;</dd>
+
+		<dt>Inscrito desde</dt>
+		<dd>
+			<time class='timestamp prettyDate' datetime="<?php
+			echo $user['User']['created']; ?>"><?php
+			echo $user['User']['created'];
+			?></time></dd>
+
 		<?php if( !empty($user['User']['twitter']) ): ?>
 		<dt>Twitter</dt>
 		<dd itemprop="contact"><?php echo $this->Html->link($user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter']);?>&nbsp;</dd>

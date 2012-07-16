@@ -1,5 +1,8 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery');
+	echo $this->Html->script('activar.top.menu.jquery', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
 	$this->set('title_for_layout', 'ADSL -  Lista de contribuciones');
 	$this->Html->meta('description', 'Lista de contribuciones al repositorio publico ADSL');
 ?>
@@ -45,7 +48,7 @@ div.index{width:905px;border-left:1px solid #FFF}
 		 ?>&nbsp;</td>
 		<td>
 		<time itemprop="startDate" datetime="<?php echo h($contribucion['Contribucion']['timestamp'])?>"></time>
-		<time itemprop="endDate" datetime="<?php echo h($contribucion['Contribucion']['timestamp']); ?>"><?php echo h($contribucion['Contribucion']['timestamp']); ?></time>
+		<time class='prettyDate' itemprop="endDate" datetime="<?php echo h($contribucion['Contribucion']['timestamp']); ?>"><?php echo h($contribucion['Contribucion']['timestamp']); ?></time>
 		</td>
 	</tr>
 <?php endforeach; ?>

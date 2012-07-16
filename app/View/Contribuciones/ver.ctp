@@ -1,12 +1,19 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery');
+	echo $this->Html->script('activar.top.menu.jquery', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
+	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+
 	$title = explode("\n", $commit['Contribucion']['message']);
 	$title = $title[0];
 	$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
 	$msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
 	$this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 250), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonContribuciones").activarTopMenu();});</script>
+<script language="Javascript"  type="text/javascript">
+$(function() {
+	$("#BotonContribuciones").activarTopMenu();
+});</script>
 <style type="text/css" media="all">
 div.ver{width:905px;border-left:1px solid #FFF}
 div.informacion_commit {
@@ -62,8 +69,9 @@ pre{overflow-x:auto;}
 		<dt>Fecha</dt>
 		<dd >
 		<time class='timestamp' itemprop="startDate" datetime="<?php echo $commit['Contribucion']['timestamp']; ?>"></time>
-		<time class='timestamp' itemprop="endDate" datetime="<?php echo $commit['Contribucion']['timestamp']; ?>"><?php
-			echo $commit['Contribucion']['timestamp']; 
+		<time class='timestamp prettyDate' itemprop="endDate" datetime="<?php echo $commit['Contribucion']['timestamp']; ?>">
+		<?php
+			echo $commit['Contribucion']['timestamp'];
 		?></time>
 		 </dd>
 	</dl>

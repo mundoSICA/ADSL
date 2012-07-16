@@ -72,7 +72,7 @@ var tablas = [
 "nombre" : "users",
 "orden" : 2,
 "width" : 859,
-"height" : 321,
+"height" : 345,
 "pos_x" : 816,
 "pos_y" : 48,
 "fill_colour" : "#FFA472",
@@ -82,6 +82,7 @@ var tablas = [
  {"nombre" : "id", "tipo": "INT(5)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "role", "tipo": "ENUM('admin','miembro','registrado') DEFAULT 'registrado'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "username", "tipo": "VARCHAR(15)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "nombre", "tipo": "VARCHAR( 150 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "password", "tipo": "VARCHAR(40)", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "email", "tipo": "VARCHAR(100)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "email_publico", "tipo": "BOOLEAN DEFAULT FALSE", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
@@ -181,6 +182,25 @@ var tablas = [
  {"nombre" : "id", "tipo": "INT(4)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
+ ]
+},
+{
+"nombre" : "comentarios",
+"orden" : 10,
+"width" : 327,
+"height" : 177,
+"pos_x" : 1024,
+"pos_y" : 416,
+"fill_colour" : "#E5E5E5",
+"text_colour" : "#000000",
+"line_colour" : "#000000",
+"campos" : [
+ {"nombre" : "id", "tipo": "INT( 11 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "url", "tipo": "VARCHAR( 100 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "message", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "respuesta_a", "tipo": "INT( 11 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
  ]
 }
 ]
