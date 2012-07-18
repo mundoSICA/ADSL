@@ -3,6 +3,7 @@
 	echo $this->Html->script('jquery.prettydate', array('inline' => false));
 	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
 	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+	echo $this->Html->script('epiceditor/js/epiceditor', array('inline' => false));
 
 	$title = explode("\n", $commit['Contribucion']['message']);
 	$title = $title[0];
@@ -12,6 +13,21 @@
 ?>
 <script language="Javascript"  type="text/javascript">
 $(function() {
+	var opts = {
+  container: 'epiceditor',
+  basePath: '<?php echo Router::url('/'); ?>/js/epiceditor/',
+  clientSideStorage: true,
+  localStorageName: 'epiceditor',
+  parser: marked,
+  file: {
+    name: 'epiceditor',
+    defaultContent: '',
+    autoSave: 100
+  }
+};
+	var editor = new EpicEditor(opts).load(function () {
+								console.log("Editor loaded.")
+							});
 	$("#BotonContribuciones").activarTopMenu();
 });</script>
 <style type="text/css" media="all">
@@ -110,5 +126,15 @@ foreach($tipo_cambio as $t=>$t_msg ){
 	}
 }
 ?>
+
+<h2>Agregar tu comentario</h2>
+<div class="users formulario">
+<?php echo $this->Form->create('Comentario', array('action' => 'agregar'));?>
+	<fieldset>
+	<div id="epiceditor"></div>
+	</fieldset>
+<?php echo $this->Form->end('Agregar');?>
+</div>
+
 </div>
 </div><!-- en datos usuarios -->

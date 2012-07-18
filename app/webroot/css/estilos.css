@@ -1,4 +1,6 @@
 * {margin:0; padding:0;}
+::-webkit-selection{background:#df4646;color:#fff;text-shadow:none}::-moz-selection{background:#df4646;color:#fff;text-shadow:none}::selection{background:#df4646;color:#fff;text-shadow:none}
+
 body{
 	background: #f2f2f2 url(../img/bg.jpg);
 	background-repeat: repeat-x;

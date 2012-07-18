@@ -94,6 +94,19 @@ class User extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'Comentario' => array(
+			'className' => 'Comentario',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Noticia' => array(
 			'className' => 'Noticia',
 			'foreignKey' => 'user_id',
