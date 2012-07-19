@@ -1,9 +1,9 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
-	echo $this->Html->script('epiceditor/js/epiceditor', array('inline' => false));
+	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+	$this->Html->script('jquery.prettydate', array('inline' => false));
+	$this->Html->script('jquery.prettydate-es', array('inline' => false));
+	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+	$this->Html->script('epiceditor/js/epiceditor', array('inline' => false));
 
 	$title = explode("\n", $commit['Contribucion']['message']);
 	$title = $title[0];

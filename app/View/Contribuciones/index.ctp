@@ -1,8 +1,8 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+	$this->Html->script('jquery.prettydate', array('inline' => false));
+	$this->Html->script('jquery.prettydate-es', array('inline' => false));
+	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
 	$this->set('title_for_layout', 'ADSL -  Lista de contribuciones');
 	$this->Html->meta('description', 'Lista de contribuciones al repositorio publico ADSL');
 ?>

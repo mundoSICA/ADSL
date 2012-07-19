@@ -1,5 +1,6 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery');
+#Sección Javascript
+$this->Html->script('activar.top.menu.jquery', array('inline' => false));
 ?>
 <style type="text/css" media="all">
 div.index{

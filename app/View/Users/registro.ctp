@@ -1,7 +1,8 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery');
-	$this->set('title_for_layout', 'ADSL  - Registro de usuario');
-	$this->Html->meta('description', 'Registro de usuario, registrate en nuestro sitio web', array('inline' => false));
+$this->set('title_for_layout', 'ADSL  - Registro de usuario');
+$this->Html->meta('description', 'Registro de usuario, registrate en nuestro sitio web', array('inline' => false));
+#Sección Javascript
+$this->Html->script('activar.top.menu.jquery', array('inline' => false));
 ?>
 <script type="text/javascript">$(function() {$("#BotonRegistrate").activarTopMenu();});</script>
 <div class="users formulario">

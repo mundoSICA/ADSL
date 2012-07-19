@@ -12,11 +12,6 @@
 					echo $this->Html->image('ubuntu.jpg', array('alt'=>'ubuntu'));
 		?>
 	</a>
-	<a href="http://www.joomla.org/" rel="external">
-		<?php
-					echo $this->Html->image('joomla.jpg', array('alt'=>'Joomla'));
-		?>
-	</a>
 	<a href="http://www.mysql.com/" rel="external">
 		<?php
 					echo $this->Html->image('mysql.jpg', array('alt'=>'Mysql'));
@@ -42,6 +37,11 @@
 					echo $this->Html->image('blender.jpg', array('alt'=>'Blender'));
 		?>
 	</a>
+	<a href="http://www.mozilla-europe.org/es/firefox/" rel="external">
+		<?php
+					echo $this->Html->image('firefox.jpg', array('alt'=>'Firefox'));
+		?>
+	</a>
     <a href="http://wordpress.org/" rel="external">
 		<?php
 					echo $this->Html->image('wordpress.jpg', array('alt'=>'wordpress'));
@@ -57,14 +57,19 @@
 					echo $this->Html->image('linux.jpg', array('alt'=>'Linux'));
 		?>
 	</a>
-	<a href="http://www.mozilla-europe.org/es/firefox/" rel="external">
-		<?php
-					echo $this->Html->image('firefox.jpg', array('alt'=>'Firefox'));
-		?>
-	</a>
 	<a href="http://www.inkscape.org/?lang=es" rel="external">
 		<?php
 					echo $this->Html->image('inkscape.jpg', array('alt'=>'Inskape'));
+		?>
+	</a>
+	<a href="http://www.joomla.org/" rel="external">
+		<?php
+					echo $this->Html->image('joomla.jpg', array('alt'=>'Joomla'));
+		?>
+	</a>
+	<a href="http://www.cakephp.org/" rel="external">
+		<?php
+					echo $this->Html->image('cakephp.png', array('alt'=>'Cakephp'));
 		?>
 	</a>
 </div>

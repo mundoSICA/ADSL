@@ -1,7 +1,8 @@
 <?php
-	echo $this->Html->script('activar.top.menu.jquery');
-	$this->set('title_for_layout', 'ADSL  - Contactanos');
-	$this->Html->meta('description', 'Formulario de contacto, contactanos desde este medio', array('inline' => false));
+$this->set('title_for_layout', 'ADSL  - Contactanos');
+$this->Html->meta('description', 'Formulario de contacto, contactanos desde este medio', array('inline' => false));
+#Sección Javascript
+$this->Html->script('activar.top.menu.jquery', array('inline' => false));
 ?>
 <script language="Javascript"  type="text/javascript">$(function() {$("#BotonContactanos").activarTopMenu();});</script>
 <div class="formulario contacto">

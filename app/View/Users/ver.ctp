@@ -2,9 +2,10 @@
 	$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
 	$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
 
-	echo $this->Html->script('jquery.prettydate', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate-es', array('inline' => false));
-	echo $this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+### Scripts sección
+	$this->Html->script('jquery.prettydate', array('inline' => false));
+	$this->Html->script('jquery.prettydate-es', array('inline' => false));
+	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
 ?>
 <style type="text/css" media="all">
 div.datos_usuario {

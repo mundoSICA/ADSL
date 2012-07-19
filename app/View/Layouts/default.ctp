@@ -14,12 +14,6 @@
 		echo $this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
 		echo $this->fetch('css');
 		echo "\n";
-		#Seccion de javascript
-		echo $this->Html->script('jquery.min');
-		echo $this->Html->script('jquery-ui-1.8.21.custom.min');
-		echo $this->Html->script('main.js');
-		echo $this->fetch('script');
-		echo "\n";
 		//recuerda poner esto en un archivo aparte
 	?>
 </head>
@@ -98,6 +92,13 @@
 	echo $this->element('pie_info_direccion');
 ?>
 </div> <!--termina CajaPrincipal -->
+<?php
+		#Seccion de javascript
+		echo $this->Html->script('jquery.min')."\n";
+		echo $this->Html->script('jquery-ui-1.8.21.custom.min')."\n";
+		echo $this->Html->script('main.js')."\n";
+		echo $this->fetch('script')."\n";
+?>
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://mundosica.com/piwik/" : "http://mundosica.com/piwik/");
 document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));

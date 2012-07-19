@@ -1,15 +1,13 @@
 <?php
-	#sección metaDatos
-	$this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
-	$this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
-	#sección CSS
-	$this->Html->css('slide', null, array('inline' => false));
-	$this->Html->css('home','stylesheet', array('inline' => false ) );
-	#sección Javascript
-	$this->Html->script('slides.min.jquery', array('inline' => false));
-	$this->Html->script('talleres.slides', array('inline' => false));
-	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
-	
+#sección metaDatos
+$this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
+$this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
+#sección CSS
+$this->Html->css('slide', 'stylesheet', array('inline' => false));
+#sección Javascript
+$this->Html->script('slides.min.jquery', array('inline' => false));
+$this->Html->script('talleres.slides', array('inline' => false));
+$this->Html->script('activar.top.menu.jquery', array('inline' => false));
 ?>
 <script type="text/javascript">
 $(function() {
