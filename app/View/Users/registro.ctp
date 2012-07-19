@@ -2,9 +2,12 @@
 $this->set('title_for_layout', 'ADSL  - Registro de usuario');
 $this->Html->meta('description', 'Registro de usuario, registrate en nuestro sitio web', array('inline' => false));
 #Sección Javascript
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'users.registro',
+											), array('inline' => false));
+
 ?>
-<script type="text/javascript">$(function() {$("#BotonRegistrate").activarTopMenu();});</script>
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

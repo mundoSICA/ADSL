@@ -6,8 +6,12 @@ $this->Html->meta('description', 'Calendario de talleres disponibles '.date('Y-m
 $this->Html->css('fullcalendar','stylesheet', array('inline' => false ) );
 $this->Html->css('fullcalendar.print','stylesheet', array('inline' => false ) );
 #Sección Javascript
-$this->Html->script('fullcalendar.min', array('inline' => false));
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'fullcalendar.min',
+											'activar.top.menu.jquery',
+											'talleres.calendario',
+											), array('inline' => false));
 
 $out = '';
 $url_base = Router::url('/talleres/ver/');
@@ -21,10 +25,6 @@ foreach ($talleres as $t) {
 	$out .= "},";
 }//
 ?>
-<script type='text/javascript'>$(document).ready(function() {
-	var script = $('<script/>').attr('src', '<?php echo Router::url('/js/talleres/') ?>calendario.js').appendTo('head');
-});</script>
-
 <style type="text/css" media="all">
 .calendario-wrapper{
 	padding: 10px;

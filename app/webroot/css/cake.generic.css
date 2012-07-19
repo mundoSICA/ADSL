@@ -221,7 +221,8 @@ table td.acciones a {
 }
 .paging .current {
 	background: #efefef;
-	color: #c73e14;
+	color: #8D2100;
+	font-weight: bold;
 }
 
 /** Scaffold.ver**/

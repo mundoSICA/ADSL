@@ -3,9 +3,11 @@
 $this->set('title_for_layout', 'ADSL - Listado de talleres disponibles '.date('Y-m') );
 $this->Html->meta('description', 'Listado de talleres disponibles '.date('Y-m'), array('inline' => false));
 #Sección Javascript
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'talleres',
+											), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonTalleres").activarTopMenu();});</script>
 <div class="talleres index">
 	<h1>Lista de talleres</h1>
 	<?php

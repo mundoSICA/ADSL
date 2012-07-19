@@ -5,15 +5,13 @@ $this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo 
 #sección CSS
 $this->Html->css('slide', 'stylesheet', array('inline' => false));
 #sección Javascript
-$this->Html->script('slides.min.jquery', array('inline' => false));
-$this->Html->script('talleres.slides', array('inline' => false));
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'slides.min.jquery',
+											'talleres.slides',
+											'activar.top.menu.jquery',
+											'home',
+											), array('inline' => false));
 ?>
-<script type="text/javascript">
-$(function() {
-    $("#BotonInicio").activarTopMenu();
-});
-</script>
 <div class="header2">
 <div id="slide_principal_talleres">
 			<img src="img/liston_talleres_slide.png" width="150" height="150" alt="Liston Talleres" id="liston_talleres_slide" />

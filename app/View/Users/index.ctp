@@ -2,10 +2,11 @@
 $this->set('title_for_layout', 'ADSL - Lista de usuarios');
 $this->Html->meta('description', 'Lista de los usuarios registrados', array('inline' => false));
 #Sección Javascript
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'users',
+											), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonUsuarios").activarTopMenu();});</script>
-
 <style type="text/css" media="all">
 div.avatar{
 	padding:4px 5px 0 4px;

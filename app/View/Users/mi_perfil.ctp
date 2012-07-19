@@ -1,9 +1,11 @@
 <?php
 $this->set('title_for_layout', 'ADSL  - Mi perfil');
 #Sección Javascript
-$this->Html->script('activar.top.menu.jquery', array('inline' => false));
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'users.mi_perfil',
+											), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonPerfil").activarTopMenu();});</script>
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>

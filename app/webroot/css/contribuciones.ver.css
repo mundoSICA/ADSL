@@ -1,0 +1,44 @@
+div.ver {
+	width:905px;
+	border-left:1px solid #FFF;
+}
+div.informacion_commit {
+	width:700px;
+	float:left;
+}
+a.boton_naranja {
+	float:right;
+	width:200px;
+	display:block !important;
+}
+dl{
+	width:700px;
+}
+div.avatar {
+	margin-top:10px;
+}
+h2.added{
+	color:#00B2D4;
+	text-shadow:1px 1px 0 #FFF,-1px -1px 0 #FFF,1px 1px 5px #999
+}
+a.added {
+	color:#055FBF;
+}
+
+h2.modified{
+	color:#6A3B00;
+	text-shadow:1px 1px 0 #FFF,-1px -1px 0 #FFF,1px 1px 5px #999;
+}
+a.modified{
+	color: #CD4D00;
+}
+h2.removed{
+	color:#660000;
+}
+del.removed{
+	color:#9C0019;
+	font-weight:bold;
+}
+pre{
+	overflow-x:auto;
+}

@@ -1,57 +1,22 @@
 <?php
-	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
-	$this->Html->script('jquery.prettydate', array('inline' => false));
-	$this->Html->script('jquery.prettydate-es', array('inline' => false));
-	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
-	$this->Html->script('epiceditor/js/epiceditor', array('inline' => false));
-
-	$title = explode("\n", $commit['Contribucion']['message']);
-	$title = $title[0];
-	$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
-	$msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
-	$this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 250), array('inline' => false));
+#Metadatos
+$title = explode("\n", $commit['Contribucion']['message']);
+$title = $title[0];
+$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
+$msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
+$this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 250), array('inline' => false));
+#Sección CSS
+$this->Html->css('contribuciones.ver','stylesheet', array('inline' => false ) );
+#Sección Javascript
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'jquery.prettydate-es',
+											'jquery.prettydate',
+											'jquery.prettydate.ADSL',
+											'epiceditor/js/epiceditor',
+											'contribuciones.ver',
+											), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">
-$(function() {
-	var opts = {
-  container: 'epiceditor',
-  basePath: '<?php echo Router::url('/'); ?>/js/epiceditor/',
-  clientSideStorage: true,
-  localStorageName: 'epiceditor',
-  parser: marked,
-  file: {
-    name: 'epiceditor',
-    defaultContent: '',
-    autoSave: 100
-  }
-};
-	var editor = new EpicEditor(opts).load(function () {
-								console.log("Editor loaded.")
-							});
-	$("#BotonContribuciones").activarTopMenu();
-});</script>
-<style type="text/css" media="all">
-div.ver{width:905px;border-left:1px solid #FFF}
-div.informacion_commit {
-	width:700px;
-	float:left;
-}
-a.boton_naranja{
-display:block !important;
-float:right;
-width:200px;
-}
-dl{width:700px;}
-div.avatar{margin-top:10px}
-h2.added{	color:#00B2D4;text-shadow:1px 1px 0 #FFF,-1px -1px 0 #FFF,1px 1px 5px #999}
-a.added {color:#055FBF}
-
-h2.modified{	color:#6A3B00;text-shadow:1px 1px 0 #FFF,-1px -1px 0 #FFF,1px 1px 5px #999}
-a.modified{color: #CD4D00}
-h2.removed{color:#660000}
-del.removed{color:#9C0019;font-weight:bold}
-pre{overflow-x:auto;}
-</style>
 <div class="users ver">
 <span itemscope itemtype="http://data-vocabulary.org/Person">
 <?php

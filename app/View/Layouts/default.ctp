@@ -18,8 +18,7 @@
 	?>
 </head>
 <body>
-<script type="text/javascript"></script>
-<noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
+<script type="text/javascript"></script><noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
 <div id="dialog"></div>
 <div class="CajaPrincipal">
      <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <?php

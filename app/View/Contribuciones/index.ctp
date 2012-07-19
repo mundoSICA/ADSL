@@ -1,16 +1,18 @@
 <?php
-	$this->Html->script('activar.top.menu.jquery', array('inline' => false));
-	$this->Html->script('jquery.prettydate', array('inline' => false));
-	$this->Html->script('jquery.prettydate-es', array('inline' => false));
-	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
-	$this->set('title_for_layout', 'ADSL -  Lista de contribuciones');
-	$this->Html->meta('description', 'Lista de contribuciones al repositorio publico ADSL');
+#sección metaDatos
+$this->set('title_for_layout', 'ADSL -  Lista de contribuciones');
+$this->Html->meta('description', 'Lista de contribuciones al repositorio publico ADSL');
+#sección CSS
+$this->Html->css('contribuciones', 'stylesheet', array('inline' => false));
+#sección Javascript
+$this->Html->script(array(
+											'jquery.prettydate-es',
+											'jquery.prettydate',
+											'jquery.prettydate.ADSL',
+											'activar.top.menu.jquery',
+											'contribuciones',
+											), array('inline' => false));
 ?>
-<script language="Javascript"  type="text/javascript">$(function() {$("#BotonContribuciones").activarTopMenu();});</script>
-<style type="text/css" media="all">
-div.index{width:905px;border-left:1px solid #FFF}
-.commit{ color: #0065B4;font-weight: bold }
-</style>
 <div class="index">
 	<h1>Lista de contribuciones al ADSL</h1>
 	<p>
