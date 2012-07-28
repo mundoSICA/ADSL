@@ -1,12 +1,14 @@
 <?php
-#Metadatos
+### Metadatos
 $this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 $this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
-#Seccion CSS
+### Seccion CSS
 $this->Html->css('slide','stylesheet', array('inline' => false ) );
-#Sección Javascript
-$this->Html->script('slides.min.jquery', array('inline' => false));
-$this->Html->script('talleres.slides', array('inline' => false));
+### Sección Scripts
+$this->Html->script(array(
+							'slides.min.jquery',
+							'talleres.slides',
+				), array('inline' => false));
 ?>
 <div itemscope itemtype="http://data-vocabulary.org/Event">
 <div class="header2">

@@ -95,8 +95,9 @@ function beforeFilter() {
 			throw new NotFoundException('Registro invalido: user.');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			$this->_prepararDatos( &$this->request->data['User'] );
-			if ($this->User->save($this->request->data)) {
+
+			if ( $this->_prepararNuevoPassword( &$this->request->data['User'] )
+				&&  $this->User->save($this->request->data)) {
 				$this->Session->setFlash('Los datos en tu perfil fueron editados');
 				$this->redirect(array('action' => 'ver', $this->Session->read('Auth.User.username')));
 			} else {
@@ -116,21 +117,35 @@ function beforeFilter() {
 	 * @access publico/privado
 	 * @link [URL de mayor infor]
 	 */
-	function _prepararDatos($data) {
+	function _prepararNuevoPassword($data) {
 		//Agregamos los valores almacenados en la sesión
 		$data['role'] = $this->Session->read('Auth.User.role');
 		$data['username'] = $this->Session->read('Auth.User.username');
 		$data['id'] = $this->Session->read('Auth.User.id');
 		//revisamos si cambio la contraseña
-		if( $data['password_anterior'] == '' || $data['nuevo_password'] == '' ||
-			$data['nuevo_password'] != $data['repetir_nuevo_password'] ){
-					unset( $data['password_anterior']);
-					unset( $data['nuevo_password']);
-					unset( $data['repetir_nuevo_password']);
-					unset($this->User->validate['password']);
-			}else{
+		$suceso = true;
+		if (
+			$data['nuevo_password'] != '' ||
+			$data['password_anterior'] != '' ||
+			$data['repetir_nuevo_password'] != ''
+		){
+			$suceso = false;
+			if (
+				$data['nuevo_password'] == $data['repetir_nuevo_password'] &&
+				$this->Auth->password($data['password_anterior']) == $this->User->field('password')
+			) {
 				$data['password'] = $this->Auth->password($this->request->data['User']['nuevo_password']);
+				$suceso = true;
 			}
+		}
+		unset( $data['password_anterior']);
+		unset( $data['nuevo_password']);
+		unset( $data['repetir_nuevo_password']);
+		if ( !$suceso ) {
+			unset( $data['password']);
+			unset($this->User->validate['password']);
+		}
+		return $suceso;
 	}//end function
 /**
  * admin_edit method

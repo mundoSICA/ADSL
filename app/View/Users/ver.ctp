@@ -1,19 +1,16 @@
 <?php
-	$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
-	$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
-
-### Scripts sección
-	$this->Html->script('jquery.prettydate', array('inline' => false));
-	$this->Html->script('jquery.prettydate-es', array('inline' => false));
-	$this->Html->script('jquery.prettydate.ADSL', array('inline' => false));
+### Sección Metadatos
+$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
+$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
+### Sección CSS
+$this->Html->css('users.ver','stylesheet', array('inline' => false ) );
+### Sección Scripts
+$this->Html->script(array(
+							'jquery.prettydate-es',
+							'jquery.prettydate',
+							'jquery.prettydate.ADSL',
+				), array('inline' => false));
 ?>
-<style type="text/css" media="all">
-div.datos_usuario {
-	width:550px;
-	float:left;
-}
-dl{width:550px}
-</style>
 <div class="users ver">
 <?php
 	echo $this->Html->gravatar_img($user['User']['email']);

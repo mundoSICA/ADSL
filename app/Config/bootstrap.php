@@ -1,4 +1,7 @@
 <?php
+/*
+ * Bootstrap aqui arranca todo el show!
+ */
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
  *

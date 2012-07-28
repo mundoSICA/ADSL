@@ -87,16 +87,17 @@
 			?>
 </div>
 <?php
-	echo $this->element('pie_logos_promovemos');
-	echo $this->element('pie_info_direccion');
+echo $this->element(array('pie_logos_promovemos', 'pie_info_direccion'));
 ?>
 </div> <!--termina CajaPrincipal -->
 <?php
-		#Seccion de javascript
-		echo $this->Html->script('jquery.min')."\n";
-		echo $this->Html->script('jquery-ui-1.8.21.custom.min')."\n";
-		echo $this->Html->script('main.js')."\n";
-		echo $this->fetch('script')."\n";
+### Sección javascript
+echo $this->Html->script(array(
+		'jquery.min',
+		'jquery-ui-1.8.21.custom.min',
+		'main.js',
+	))."\n";
+echo $this->fetch('script')."\n";
 ?>
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://mundosica.com/piwik/" : "http://mundosica.com/piwik/");

@@ -19,7 +19,7 @@ class UserShell extends AppShell {
 				$this->User->recursive = -1;
 				$this->User->id = $id;
 				$user = $this->User->read();
-				$user['User']['password'] = $this->password();
+				$user['User']['password'] = $this->_password();
 				if( $this->User->save($user) ){
 						$this->out('La contraseña fue cambiada con exito');
 				}else{
@@ -28,12 +28,12 @@ class UserShell extends AppShell {
 		}
 		
 		/**
-		 * Mi de una nueva contraseña y regresa el hash del mismo
+		 * Pide una nueva contraseña y regresa el hash de la misma
 		 *
 		 * @return El hash correspondiente al password
-		 * @access publico
+		 * @access privado
 		 */
-		function password() {
+		function _password() {
 			$pass_plain = $this->in('El nuevo password: ');
 			App::import('Component', 'Auth');
 			$auth =& new AuthComponent(null);
