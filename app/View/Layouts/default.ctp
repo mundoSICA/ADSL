@@ -28,7 +28,8 @@
 				echo $this->Html->link('Login',array('controller'=>'users','action'=>'login'), array('title'=>'logearme'));
 			}
      ?></div>
-    <div class="header"><header>
+<header>
+    <div class="header">
       <div id="logo">
 		  <a href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
 				<?php
@@ -73,13 +74,14 @@
 			</a>
 		</div><!--termina iconos -->
       </div><!--termina buscadoriconos -->
-      </header></div>
+     </div>
       <!--termina header -->
-	   <div class="menu">
+	   <nav class="menu">
 	       <?php
 					echo $this->element('menu_superior');
 	       ?>
-	   </div>
+	   </nav>
+</header>
 <div id="content">
        <?php
 				echo $this->Session->flash();
@@ -93,6 +95,7 @@ echo $this->element(array('pie_logos_promovemos', 'pie_info_direccion'));
 <?php
 ### Sección javascript
 echo $this->Html->script(array(
+		'modernizr.custom.js',
 		'jquery.min',
 		'jquery-ui-1.8.21.custom.min',
 		'main.js',
