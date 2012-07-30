@@ -184,25 +184,25 @@ padding-top: 30px;
 	background: White url(../img/fondobloques.jpg);
 	color: Black;
 }
-.bloqueinfo1, .bloqueinfo11{
+.bloqueinfo1, .mainContent{
 	clear: both;
 	width: 946px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	color: Black;
 }
-.bloqueinfo11 h2{
+.mainContent h2{
 	color: #c35300;
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
 	margin-bottom: 15px;
 }
-.bloqueinfo11 h2 a:link,.bloqueinfo11 h2 a:visited{
+.mainContent h2 a:link,.mainContent h2 a:visited{
 	color: #594a40;
 	text-decoration: none;
 	font-weight: bold;
 }
-.bloqueinfo11 h2 a:hover,.bloqueinfo11 h2 a:active{
+.mainContent h2 a:hover,.mainContent h2 a:active{
 	color: #ca6f00;
 }
 .bloqueinfo2{
@@ -252,7 +252,7 @@ padding-top: 30px;
 .bloque1 h2, .bloque2 h2{
 	margin: 10px 0 5px 0;
 }
-.bloqueinfo11 h2{
+.mainContent h2{
 	margin-bottom: 12px;
 }
 .colbloque1{
@@ -323,9 +323,6 @@ padding-top: 30px;
 ul{
 	margin: 10px 0 10px 18px;
 	list-style: url('../img/bullet.jpg');
-}
-.bloque1 img, .bloque2 img{
-	margin: 0px;
 }
 .cont2 h3{
 	color: #E88000;

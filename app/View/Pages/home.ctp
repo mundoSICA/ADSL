@@ -3,7 +3,12 @@
 $this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
 $this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
 #sección CSS
-$this->Html->css('slide', 'stylesheet', array('inline' => false));
+$this->Html->css(array(
+											'slide',
+											'pages.home'
+										),
+									'stylesheet',
+									array('inline' => false));
 #sección Javascript
 $this->Html->script(array(
 											'slides.min.jquery',
@@ -56,47 +61,56 @@ $this->Html->script(array(
 			</div>
 		</div>
 	</div>
-	<div class="bloqueinfo11">
-	   <div class="bloque1">
-       <h2><a href="#">¿Como funciona?</a></h2>
-       <p>...</p>
-      </div>
-      <div class="bloque2">
-       <h2><a href="#">Taller Soporte técnico</a></h2>
-			 <p>...</p>
-      </div>
-      <div class="bloque1">
+	
+<section class="mainContent">
+	   <section class="bloque1 talleresLista">
+       <h2><a href="#">Últimos talleres</a></h2>
+			 <ul class="">
+       <?php foreach ($talleres as $taller): ?>
+       <li><?php
+       echo $this->Html->link(
+								$taller['Taller']['nombre'],
+								array(
+											'controller' => 'talleres',
+											'action' => 'ver',
+											'admin' => false,
+											$taller['Taller']['slug_dst']
+								),
+								array(
+										'title' => $taller['Taller']['nombre'],
+										'itemprop' => 'url'
+								)
+							);
+			?>
+			</li>
+			<?php endforeach; ?>
+			 </ul>
+      </section>
+      <section class="bloque2 ultimosUsuarioLista">
+		 <h2><a href="#">Últimos usuarios registrados</a></h2>
+			 <ul id='listaUsuarios'>
+       <?php foreach ($users as $username=>$email): ?>
+       <li itemscope itemtype="http://data-vocabulary.org/Person"><?php
+       echo $this->Html->link(
+								$this->Html->gravatar_Icon($email, $username) .
+								"<span itemprop='nickname'>{$username}</span>",
+								array(
+											'controller' => 'users',
+											'action' => 'ver',
+											'admin' => false,
+											$username
+								),
+								array(
+										'title' => $username,
+										'itemprop' => 'url',
+										'escape' => false
+								)
+							);
+				?></li>
+			<?php endforeach; ?>
+			 </ul>
+      </section>
+      <section class="bloque1 mapaUbicacion">
       <?php echo $this->element('mapa'); ?>
-		</div>
-	<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>
-  </div><!--bloqueinfo -->
-<div class="bloqueinfo1">
-	   <div class="bloque1">
-       <h2>Noticias Recientes</h2>
-       <div class="divisorcol"></div>
-<ul>
-<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
-<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
-<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
-<li><a href="#">ADSL invita al taller conociendo linux inscribete ya...! cupo limitado</a></li>
-</ul>
-    </div>
-      <div class="bloque2">
-       <h2>&Uacute;ltimos Posts</h2>
-       <div class="divisorcol"></div>
-       <ul>
-<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
-<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
-<li><a href="#">Los invitamos a el taller de (Monetizando tu Blog) sabado de 15:00 a 17:00 hrs ENTRADA LIBRE</a></li>
-<li><a href="#">ADSL invita al taller conociendo linux inscribete ya..! cupo limitado</a></li>
-</ul>
-</div>
-<div class="bloque1">
-       <h2>Anuncios</h2>
-      <div class="divisorcol"></div>
-       <img src="img/banner_capacitacion.jpg" alt="Asesor&iacute;a" /><br /><br />
-				<a href="http://www.mozilla-europe.org/es/firefox/" rel="external"><img src="img/banner_firefox.jpg" alt="Firefox" />
-				</a>
-      </div>
-<div style="clear:both; height:1px;font-size:0px; line-height: 0px;"></div>
-  </div><!--bloqueinfo -->
+		</section>
+</section><!-- end section bloqueinfo -->

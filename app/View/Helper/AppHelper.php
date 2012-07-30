@@ -54,7 +54,7 @@ class AppHelper extends Helper {
 	 * @access publico/privado
 	 * @link http://es.gravatar.com/site/implement/hash/
 	 */
-	function gravatar_link($email, $username=''){
+	function gravatar_link($email, $username='') {
 		$link = Router::url('/users/ver/'.$username);
 		return '<div class="avatar" style="width: 50px">'.
 				'<a href="'.$link.'" itemprop="url">'.
@@ -62,4 +62,17 @@ class AppHelper extends Helper {
 			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'))
 			.'</a><h5 itemprop="nickname">' . $username . '</h5></div>';
 	}
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function gravatar_Icon($email, $username='') {
+		$link = Router::url('/users/ver/'.$username);
+		return $this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=32'
+			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'));
+	}//end function
 }

@@ -84,27 +84,34 @@ function beforeFilter() {
 		$this->render(implode('/', $path));
 	}
 
-	/**
-	 * Descripción de la función
-	 *
-	 * @param tipo $parametro1 descripción del párametro 1.
-	 * @return tipo descripcion de lo que regresa
-	 * @access publico/privado
-	 * @link [URL de mayor infor]
-	 */
+/**
+ * Descripción de la función
+ *
+ * @param tipo $parametro1 descripción del párametro 1.
+ * @return tipo descripcion de lo que regresa
+ * @access publico/privado
+ * @link [URL de mayor infor]
+ */
 	function home() {
 		$this->Taller->recursive = -1;
 		$this->set('talleres', $this->paginate());
+		$this->set('users', 
+			$this->User->find('list', 
+			array(
+			'limit' => 10,
+			'fields' => array('User.username', 'User.email'),
+			'order' => 'User.created DESC',
+		)));
 	}//end function
 	
-	/**
-	 * Descripción de la función
-	 *
-	 * @param tipo $parametro1 descripción del párametro 1.
-	 * @return tipo descripcion de lo que regresa
-	 * @access publico/privado
-	 * @link [URL de mayor infor]
-	 */
+/**
+ * Descripción de la función
+ *
+ * @param tipo $parametro1 descripción del párametro 1.
+ * @return tipo descripcion de lo que regresa
+ * @access publico/privado
+ * @link [URL de mayor infor]
+ */
 	function sitemap() {
 		$this->layout = 'xml';
 		$this->viewClass = 'Xml';

@@ -51,13 +51,13 @@ function beforeFilter() {
 	}
 	function nuevaContribucion($c){
 		$tipo_cambio = array(
-										'added' => 
+										'added' =>
 										array(
 											'titulo' => 'Archivos añadidos',
 											 'color' => '055FBF',
 											 'tag' => 'span'
 										),
-										'modified' => 
+										'modified' =>
 										array(
 											'titulo' => 'Archivos modificados',
 											 'color' => 'CD4D00',

@@ -89,14 +89,15 @@
 			?>
 </div>
 <?php
-echo $this->element(array('pie_logos_promovemos', 'pie_info_direccion'));
+echo $this->element('pie_logos_promovemos');
+echo $this->element('pie_info_direccion');
 ?>
 </div> <!--termina CajaPrincipal -->
 <?php
 ### Sección javascript
 echo $this->Html->script(array(
-		'modernizr.custom.js',
 		'jquery.min',
+		'modernizr.custom.js',
 		'jquery-ui-1.8.21.custom.min',
 		'main.js',
 	))."\n";
