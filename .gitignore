@@ -1,7 +1,8 @@
 *~
 /app/tmp/
-/app/Config/database.php
+/app/Config/core.php
 /app/Config/core.php.web
+/app/Config/database.php
 /app/Config/database.php.web
 /app/Config/Schema/db/z-data.sql
 /app/Plugin/Twitteroauth/Config/

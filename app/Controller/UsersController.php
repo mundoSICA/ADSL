@@ -6,8 +6,19 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
+/*
+ * Componentes
+ */
+var $components = array('Email', 'EmailTokenRequest');
+
 function beforeFilter() {
-			$this->Auth->allow(array('password_reset','registro','index','ver'));
+			$this->Auth->allow(
+							array(	'reset_password',
+											'recuperacion_password',
+											'registro',
+											'index',
+											'ver'
+						));
 }
 /**
  * index method
@@ -109,6 +120,79 @@ function beforeFilter() {
 		$talleres = $this->User->Taller->find('list');
 		$this->set(compact('talleres'));
 	}
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function reset_password($token=null) {
+			if( $this->EmailTokenRequest->prepareToken() ) {
+				$this->Email->reset();
+				$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
+				$this->Email->to = $this->request->data['User']['email'];
+				$this->Email->sendAs = 'both';
+				$this->Email->replyTo = 'contacto ADSL <contacto@adsl.org.mx>';
+				$this->Email->subject = '¿Olvidaste tu contraseña?';
+				$msg = "<h1>¿Olvidaste tu contraseña?</h1>\n" .
+							"<p>De no ser asi hacer caso omiso de este mensaje</p>\n" .
+						 "<p>Puedes reuperar tu contraseña desde el siguiente enlace:</p>\n".
+							Router::url('/users/recuperacion_password/'. 
+							$this->request->data['User']['email_token'] . '/' .
+							$this->request->data['User']['email'], true );
+				if ($this->User->save($this->request->data,false)){
+					$this->Email->send($msg);
+					$this->Session->setFlash('Se te ha enviado un correo electronico, favor de revisar');
+				} else {
+					die('<pre>' . print_r($this->request->data['User'], true) . '</pre>');
+				}
+			}
+	}//end function
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link
+	 */
+	function recuperacion_password($token=null, $email=null) {
+		$dataToken = $this->EmailTokenRequest->readByToken($token);
+		if($dataToken) {
+			if ($this->request->is('post')) {
+				$data = &$this->request->data['User'];
+				//Check if email is valid
+				if( $data['email'] != $dataToken['User']['email']) {
+					$this->Session->setFlash('Error token/email Invalido, token eliminado!');
+					$this->EmailTokenRequest->deleteToken($data['id']);
+					return;
+				}
+				//Revisa que las contraseñas coincidan
+				if( $data['password'] == '' || $data['password'] != $data['repetir_password']) {
+					$this->Session->setFlash('Los passwords son invalidos, favor de revisarlos');
+					return;
+				}
+				//Actualizando las contraseñas
+				if( $this->EmailTokenRequest->updatePassword($dataToken, $data['password']) ) {
+					$this->Session->setFlash('Tu contraseña se ha cambiado correctamente');
+					$this->redirect(array('controller'=>'users', 'action' => 'login'));
+					return;
+				} else {
+					$this->Session->setFlash('Error al intentar cambiar la contraseña');
+					$this->redirect($this->Auth->redirect());
+					return;
+				}
+			}
+			//check if email is valid
+			if( $email && $this->EmailTokenRequest->validEmail($email) )
+				$this->request->data['User']['email'] = $email;
+		} else {
+			$this->Session->setFlash('¿Que estas intenando hacer?');
+			$this->redirect($this->Auth->redirect());
+		}
+	}//end function
 	/**
 	 * Descripción de la función
 	 *

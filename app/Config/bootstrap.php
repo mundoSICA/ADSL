@@ -160,3 +160,7 @@ Configure::write('Config.language', 'spa');
 Configure::write('AutoLogin', array(
 	'email' => 'chanerec@gmail.com'
 ));
+
+Configure::write('EmailTokenRequest', array(
+	'email_debug' => 'chanerec@gmail.com'
+));

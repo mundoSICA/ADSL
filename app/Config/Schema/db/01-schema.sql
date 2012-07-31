@@ -54,6 +54,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`password` VARCHAR(40) NOT NULL,
 	`email` VARCHAR(100) NOT NULL UNIQUE,
 	`email_publico` BOOLEAN DEFAULT FALSE NOT NULL,
+	`email_token` VARCHAR( 40 ) DEFAULT NULL,
+	`email_token_expires` DATETIME DEFAULT NULL,
 	`twitter` VARCHAR( 20 ) DEFAULT NULL,
 	`facebook` VARCHAR( 100 ) DEFAULT NULL,
 	`url` VARCHAR( 150 ) DEFAULT NULL,
