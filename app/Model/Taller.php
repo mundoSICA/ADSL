@@ -16,6 +16,7 @@ class Taller extends AppModel {
  */
 	public $displayField = 'nombre';
 	public $actsAs = array('Slug'=>array('max_len'=>80));
+	public $order = array('Taller.created' => 'DESC');
 /**
  * Validation rules
  *
