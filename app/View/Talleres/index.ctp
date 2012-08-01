@@ -8,20 +8,30 @@ $this->Html->script(array(
 											'talleres',
 											), array('inline' => false));
 ?>
+
 <div class="talleres index">
 	<h1>Lista de talleres</h1>
 	<?php
 	foreach ($talleres as $taller): ?>
-	<h2><?php echo h($taller['Taller']['nombre']); ?>&nbsp;</h2>
+	<section itemscope itemtype="http://schema.org/Event" itemclass="EducationEvent">
+	<h2 itemprop="name"><?php 
+	echo $this->Html->link($taller['Taller']['nombre'],
+		array('action' => 'ver', $taller['Taller']['slug_dst']),
+		array('itemprop' => 'url')); ?></h2>
 	<dl>
 		<dt>Imparte:</dt>
-		<dd><?php echo $taller['User']['username']; ?>&nbsp;</dd>
+		<dd itemprop="attendee" itemscope itemtype="http://schema.org/Person">
+		<span itemprop="name"><?php 
+		echo $this->Html->link($taller['User']['username'],
+		array('controller'=>'users','action' => 'ver', $taller['User']['username']),
+		array('itemprop' => 'url')); ?>&nbsp;</span>
+		</dd>
 		<dt>Horario:</dt>
 		<dd><?php echo h($taller['Taller']['horario']); ?>&nbsp;</dd>
 		<dt>Fecha de inicio:</dt>
-		<dd><?php echo h($taller['Taller']['fecha_inicio']); ?>&nbsp;</dd>
+		<dd itemprop="startDate"><?php echo h($taller['Taller']['fecha_inicio']); ?>&nbsp;</dd>
 		<dt>Fecha Final:</dt>
-		<dd><?php echo h($taller['Taller']['fecha_final']); ?>&nbsp;</dd>
+		<dd itemprop="endDate"><?php echo h($taller['Taller']['fecha_final']); ?>&nbsp;</dd>
 		<dt>Número de Horas:</dt>
 		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;</dd>
 		<dt>Estado actual:</dt>
@@ -32,6 +42,7 @@ $this->Html->script(array(
 	array('action' => 'ver', $taller['Taller']['slug_dst']),
 	array('class' => 'boton_naranja')
 	); ?>
+	</section>
 	<br /><br />
 <?php endforeach; ?>
 	<p>
