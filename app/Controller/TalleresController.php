@@ -6,6 +6,9 @@ App::uses('AppController', 'Controller');
  * @property Taller $Taller
  */
 class TalleresController extends AppController {
+
+var $components = array('Email');
+
 function beforeFilter() {
 			$this->Auth->allow(array('index','calendario','ver'));
 }
@@ -34,6 +37,7 @@ function beforeFilter() {
 			);
 			$this->Taller->save($taller);
 			$this->Session->setFlash('Has sido registrado en el taller<br />"'.$slug.'"<br /> con exito');
+			$this->_notificarAutor($taller);
 		}
 		$this->redirect(
 			array('controller'=>'talleres',
@@ -42,6 +46,63 @@ function beforeFilter() {
 						$slug
 		));
 	}
+/**
+ * Notifica al autor que un usuario fue registrado.
+ */
+	protected function _notificarAutor($taller) {
+		$destinos = array('chanerec@gmail.com', $taller['User']['email']);
+		$msg = "<p>El usuario %s Se acaba de registrar en el taller: <strong>%s</strong></p>";
+		$msg .= "<ul><li><b>Fecha/hora de inscripción:</b> %s</li>".
+						"<li><b>Taller:</b> %s</li><li><b>Usuario:</b> %s</li></ul>";
+		$username = $this->Session->read('Auth.User.username');
+		$msg = sprintf(
+						$msg, $username, $taller['Taller']['nombre'], $this->_fechaGuapa(),
+						Router::url('/talleres/ver/' . $taller['Taller']['slug_dst'], true),
+						Router::url('/users/ver/' . $username, true)
+					);
+		foreach ($destinos as $destino) {
+			$this->Email->reset();
+			$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
+			$this->Email->to = $destino;
+			$this->Email->sendAs = 'both';
+			$this->Email->replyTo = 'contacto ADSL <contacto@adsl.org.mx>';
+			$this->Email->subject = 'Nueva inscripción en el taller: '
+															. $taller['Taller']['nombre'];
+			$this->Email->send($msg);
+		}
+	}//end function
+	/* Regresa la fecha en formato bonito */
+	protected function _fechaGuapa() {
+		$dia=array(
+			'Sun' => 'Domingo',
+			'Mon' => 'Lunes',
+			'Tue' => 'Martes',
+			'Wed' => 'Miércoles',
+			'Thu' => 'Jueves',
+			'Fri' => 'Viernes',
+			'Sat' => 'Sábado'
+		);
+		$mes = array(
+			'Jan' => 'Enero',
+			'Feb' => 'Febrero',
+			'Mar' => 'Marzo',
+			'Apr' => 'Abril',
+			'May' => 'Mayo',
+			'Jun' => 'Junio',
+			'Jul' => 'Julio',
+			'Aug' => 'Agosto',
+			'Sep' => 'Septiembre',
+			'Oct' => 'Octubre',
+			'Nov' => 'Noviembre',
+			'Dec' => 'Diciembre'
+		);
+		return sprintf('%s %s de %s del %d , %s',
+			$dia[date('D')], date('d'),
+			$mes[date('M')],
+			date('Y'),
+			date('h:i:s A')
+		);
+	}//end function
 /**
  * index method
  *
