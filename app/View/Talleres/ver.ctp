@@ -149,7 +149,7 @@ if (!empty($taller['User'])):?>
 		<?php
 		if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
 		?>
-		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar',$taller['Taller']['slug_dst'], 'admin'=>true)); ?> </li>
+		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar', $taller['Taller']['slug_dst'], 'admin'=>true)); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
@@ -162,6 +162,12 @@ if (!empty($taller['User'])):?>
 		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
 	</ul>
+	<h3>Compartir</h3>
+	<?php
+		echo $this->QrCode->url(
+			'/talleres/ver' . $taller['Taller']['slug_dst'], array('size' => '170x170', 'margin' => 0)
+		);
+	?>
 </div>
 <div class="related">
 	<h3>Posts Relacionados</h3>

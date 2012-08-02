@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
 class TalleresController extends AppController {
 
 var $components = array('Email');
+/* lista de ayudantes */
+public $helpers = array('QrCode');
 
 function beforeFilter() {
 			$this->Auth->allow(array('index','calendario','ver'));
@@ -50,7 +52,7 @@ function beforeFilter() {
  * Notifica al autor que un usuario fue registrado.
  */
 	protected function _notificarAutor($taller) {
-		$destinos = array('chanerec@gmail.com', $taller['User']['email']);
+		$destinos = array('chanerec@gmail.com', 'eymard@mundosica.com', $taller['User']['email']);
 		$msg = "<p>El usuario %s Se acaba de registrar en el taller: <strong>%s</strong></p>";
 		$msg .= "<ul><li><b>Fecha/hora de inscripción:</b> %s</li>".
 						"<li><b>Taller:</b> %s</li><li><b>Usuario:</b> %s</li></ul>";
