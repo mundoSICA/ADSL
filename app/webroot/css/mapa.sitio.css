@@ -6,7 +6,7 @@
 .buttonize { cursor:pointer; text-shadow: 1px 1px 1px #222; font-weight:bold; color:#fff; padding: 5px 1em; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px; background: -webkit-gradient(linear, left top, left bottom, from(#008595), to(#02748c)); background: -moz-linear-gradient(top, #008595, #02748c); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#008595, endColorstr=#02748c); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#008595, endColorstr=#02748c)";}
 .buttonize a:hover { text-decoration: none; }
 .gradient { background:#fff; background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eaeaea)); background: -moz-linear-gradient(top, #fff, #eaeaea); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#eaeaea); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#eaeaea)"; }
-.map { width: 100%; height:400px; }
+.map { width: 100%; height:390px; }
 .streetview { width:100%; height:300px; }
 .lt { float:left; }
 .rt { float:right; }
@@ -19,4 +19,5 @@
 .item { padding:1em; margin:0 0 2em; }
 #mapa_sitio{
 	width:280px;
+	
 }

@@ -98,7 +98,7 @@ function beforeFilter() {
 		$this->set('users', 
 			$this->User->find('list', 
 			array(
-			'limit' => 10,
+			'limit' => 30,
 			'fields' => array('User.username', 'User.email'),
 			'order' => 'User.created DESC',
 		)));

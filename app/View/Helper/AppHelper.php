@@ -73,6 +73,9 @@ class AppHelper extends Helper {
 	function gravatar_Icon($email, $username='') {
 		$link = Router::url('/users/ver/'.$username);
 		return $this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=32'
-			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'));
+			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo', 'width'=>'32px',
+				'height' => '32px'
+			)
+			);
 	}//end function
 }

@@ -14,6 +14,7 @@ $this->Html->script(array(
 											'slides.min.jquery',
 											'talleres.slides',
 											'activar.top.menu.jquery',
+											'jquery.ui.datepicker-es.js',
 											'home',
 											), array('inline' => false));
 ?>
@@ -64,7 +65,9 @@ $this->Html->script(array(
 	
 <section class="mainContent">
 	   <section class="bloque1 talleresLista">
-       <h2><a href="#">Últimos talleres</a></h2>
+       <h2><?php echo $this->Html->link('Lista de talleres'
+									, array( 'controller'=>'talleres', 'action' => 'index' )); ?>
+					 <a href="#"></a></h2>
 			 <ul class="">
        <?php foreach ($talleres as $taller): ?>
        <li><?php
@@ -85,12 +88,29 @@ $this->Html->script(array(
 			</li>
 			<?php endforeach; ?>
 			 </ul>
+			 <section class="calendario">
+				 <h2>
+					 <?php echo $this->Html->link('Calendario de eventos'
+									, array( 'controller'=>'talleres', 'action' => 'calendario' )); ?>
+					 <a href="#"></a></h2>
+				 <p>Consulta nuestro calendario de eventos, donde podras encontrar las fechas de nuestros talleres:</p>
+				 <div id="calendarioEventos"></div>
+			 </section>
       </section>
+      
       <section class="bloque2 ultimosUsuarioLista">
-		 <h2><a href="#">Últimos usuarios registrados</a></h2>
+		 <h2><?php echo $this->Html->link('Ultimos usuarios registrados'
+									, array( 'controller'=>'users', 'action' => 'index' )); ?>
+					 <a href="#"></a></h2>
 			 <ul id='listaUsuarios'>
-       <?php foreach ($users as $username=>$email): ?>
-       <li itemscope itemtype="http://data-vocabulary.org/Person"><?php
+       <?php
+       $i=0;
+        foreach ($users as $username=>$email): ?>
+				 <?php
+				 if ($i%2 == 0) {
+					echo '<ul>';
+				}
+			echo '<li itemscope itemtype="http://data-vocabulary.org/Person">';
        echo $this->Html->link(
 								$this->Html->gravatar_Icon($email, $username) .
 								"<span itemprop='nickname'>{$username}</span>",
@@ -106,7 +126,12 @@ $this->Html->script(array(
 										'escape' => false
 								)
 							);
-				?></li>
+				echo '</li>';
+				if ($i%2 != 0) {
+					echo '</ul>';
+				}
+				$i++;
+				?>
 			<?php endforeach; ?>
 			 </ul>
       </section>

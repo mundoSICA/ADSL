@@ -19,4 +19,7 @@ $(function() {
 		});
 	}});
 	}).load();
+	/* cargamos el calendario */
+	$( "#calendarioEventos" ).datepicker({ autoSize: true });
+	
 });

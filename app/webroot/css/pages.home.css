@@ -1,8 +1,30 @@
-#listaUsuarios li img{
+#listaUsuarios ul, #listaUsuarios li img, #listaUsuarios{
 	vertical-align:middle;
-	margin-right: 5px;
+	margin:0;
+	padding:0;
 }
-
+#listaUsuarios li img{
+	margin-right: 5px
+}
 #listaUsuarios li{
 	margin:0;
+	width:150px;
+	height:33px;
+	display:block !important;
+}
+
+#listaUsuarios ul li{
+	display: inline;
+	width: 
+}
+
+#listaUsuarios ul:nth-child(even) {background: #CCC}
+#listaUsuarios ul li:nth-child(2n) {
+	float: right;
+	background: RGBA(0,0,0,0.1);
+	margin-top: -33px
+}
+
+#calendarioEventos .ui-datepicker-inline{
+	width: 300px;
 }
