@@ -3,6 +3,9 @@ $this->set('title_for_layout', 'ADSL - Lista de usuarios');
 $this->Html->meta('description', 'Lista de los usuarios registrados', array('inline' => false));
 #Sección Javascript
 $this->Html->script(array(
+											'jquery.prettydate-es',
+											'jquery.prettydate',
+											'jquery.prettydate.ADSL',
 											'activar.top.menu.jquery',
 											'users',
 											), array('inline' => false));
@@ -19,6 +22,7 @@ div.avatar{
 	<tr>
 			<th> </th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
+			<th>Inscrito desde</th>
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
@@ -29,6 +33,12 @@ div.avatar{
 						array('action' => 'ver', $user['User']['username']),
 						array('title' => 'ver Perfil')
 			); ?>&nbsp;</td>
+			<td>
+			<time class='timestamp prettyDate' datetime="<?php
+			echo $user['User']['created']; ?>"><?php
+			echo $user['User']['created'];
+			?></time>
+			</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

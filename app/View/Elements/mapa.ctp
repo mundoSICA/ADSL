@@ -11,7 +11,7 @@ $this->Html->script(array(
 ?>
 <section itemscope class="vcard" itemtype="http://data-vocabulary.org/Organization">
 <h2>
-	<h2><?php echo $this->Html->link('Ultimos usuarios registrados'
+	<h2><?php echo $this->Html->link('Conoce nuestra ubicación'
 									,array( 'controller'=>'pages', 'action' => 'contacto' )); ?>
 					 <a href="#"></a></h2></h2>
 		<address itemprop="address" class="adr" itemscope itemtype="http://data-vocabulary.org/Address">

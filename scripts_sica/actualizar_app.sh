@@ -40,6 +40,15 @@ then
 	exit 0;
 fi
 ##########################################################################################
+#   Elimina el cache 	                                                                   #
+##########################################################################################
+function deleteCache()
+{
+	echo -e "\t${red}Borrando cache${NC}";
+	rm -fr ${APP}/tmp/cache/models/*
+	rm -fr ${APP}/tmp/cache/persistent/*
+}
+##########################################################################################
 #   Actualiza la estructura de archivos realizando comprobacion md5                      #
 ##########################################################################################
 function extractConfig()
@@ -227,6 +236,7 @@ ${yellow}EJEMPLOS:${NC}
       ;;
    -a)
       actualiza_work_path
+      deleteCache
       ;;
    -d)
       update_db
@@ -234,6 +244,7 @@ ${yellow}EJEMPLOS:${NC}
    -f)
 		actualizar_path
 		update_db
+		deleteCache
 	;;
    acl|command_list|schema|api|console|testsuite|bake|i18n|upgrade|filezilla|user)
 		LIB=$(echo "${APP_DST}" | sed 's/app$//')
