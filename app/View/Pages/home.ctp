@@ -99,8 +99,9 @@ $this->Html->script(array(
       </section>
       
       <section class="bloque2 ultimosUsuarioLista">
-		 <h2><?php echo $this->Html->link('Ultimos usuarios registrados'
-									, array( 'controller'=>'users', 'action' => 'index' )); ?>
+		 <h2><?php echo 
+		 $this->Paginator->link('Ultimos usuarios registrados',
+		 array('controller'=>'users', 'action' => 'index', 'sort' => 'User.created', 'direction' => 'desc'));?>
 					 <a href="#"></a></h2>
 			 <ul id='listaUsuarios'>
        <?php

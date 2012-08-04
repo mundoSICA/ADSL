@@ -22,7 +22,7 @@ div.avatar{
 	<tr>
 			<th> </th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
-			<th>Inscrito desde</th>
+			<th><?php echo $this->Paginator->sort('created', 'Fecha de registro');?></th>
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
