@@ -134,16 +134,16 @@ $HTML_usuarios_registrados = '<table cellpadding = "0">
 	$HTML_usuarios_registrados .= '</table>';
 endif;
 
-if($boton_taller){
-		echo $this->Html->link('Inscribirme',
-				array('controller'=>'users','action' => 'inscribirme', $taller['Taller']['slug_dst']),
-				array('class'=>'registrarme')
-			);
-	} else {
-		echo '<div class="alert alert-error">
+echo '<div class="alert alert-error">
 		<strong>Para registrarse:</strong> Es necesario estar registrado y estar identificado
 		<a class="close" data-dismiss="alert">&times;</a>
 		<br clear="all"><br clear="all">';
+if($boton_taller){
+		echo $this->Html->link('Inscribirme',
+				array('controller'=>'talleres','action' => 'inscribirme', $taller['Taller']['slug_dst']),
+				array('class'=>'registrarme')
+			);
+	} else {
 		echo $this->Html->link('Registrame ',
 				array('controller' => 'users', 'action'=>'registro'),
 				array('class'=>'registrarme')
@@ -151,9 +151,9 @@ if($boton_taller){
 			$this->Html->link('Identicarme ',
 				array('controller'=>'users', 'action' => 'users', 'login'),
 				array('class'=>'identificarme')
-			).'<br clear="all"><br clear="all"></div>';
+			);
 }
-
+echo '<br clear="all"><br clear="all"></div>';
 echo $HTML_usuarios_registrados;
 
 ?>
