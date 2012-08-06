@@ -136,7 +136,7 @@ endif;
 
 if($boton_taller){
 		echo $this->Html->link('Inscribirme',
-				array('action' => 'inscribirme', $taller['Taller']['slug_dst']),
+				array('controller'=>'users','action' => 'inscribirme', $taller['Taller']['slug_dst']),
 				array('class'=>'registrarme')
 			);
 	} else {
@@ -145,7 +145,7 @@ if($boton_taller){
 		<a class="close" data-dismiss="alert">&times;</a>
 		<br clear="all"><br clear="all">';
 		echo $this->Html->link('Registrame ',
-				array('action' => 'users', 'registro'),
+				array('controller' => 'users', 'action'=>'registro'),
 				array('class'=>'registrarme')
 			). '  | '.
 			$this->Html->link('Identicarme ',
