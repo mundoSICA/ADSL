@@ -135,23 +135,27 @@ $HTML_usuarios_registrados = '<table cellpadding = "0">
 endif;
 
 echo '<div class="alert alert-error">
-		<strong>Para registrarse:</strong> Es necesario estar registrado y estar identificado
 		<a class="close" data-dismiss="alert">&times;</a>
-		<br clear="all"><br clear="all">';
+		';
 if($boton_taller){
-		echo $this->Html->link('Inscribirme',
+		echo '<strong>Inscrebete:</strong> aparta tu lugar:<br clear="all"><br clear="all">'.
+			$this->Html->link('Inscribirme',
 				array('controller'=>'talleres','action' => 'inscribirme', $taller['Taller']['slug_dst']),
 				array('class'=>'registrarme')
 			);
-	} elseif($taller['Taller']['status'] == 'abierto'){
-		echo $this->Html->link('Registrame ',
-				array('controller' => 'users', 'action'=>'registro'),
-				array('class'=>'registrarme')
-			). '  | '.
-			$this->Html->link('Identicarme ',
-				array('controller'=>'users', 'action' => 'users', 'login'),
-				array('class'=>'identificarme')
+} elseif( $taller['Taller']['status'] == 'abierto' && !$this->Session->read('Auth.User.username')){
+		echo '<strong>Para registrarse:</strong> Es necesario estar registrado y '.
+				'estar identificado<br clear="all"><br clear="all">'.
+				$this->Html->link('Registrame ',
+					array('controller' => 'users', 'action'=>'registro'),
+					array('class'=>'registrarme')
+				). '  | '.
+				$this->Html->link('Identicarme ',
+					array('controller'=>'users', 'action' => 'login'),
+					array('class'=>'identificarme')
 			);
+} else {
+		echo 'Ya estas inscrito en este taller ó el taller esta cerrado';
 }
 echo '<br clear="all"><br clear="all"></div>';
 echo $HTML_usuarios_registrados;
