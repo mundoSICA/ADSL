@@ -143,7 +143,7 @@ if($boton_taller){
 				array('controller'=>'talleres','action' => 'inscribirme', $taller['Taller']['slug_dst']),
 				array('class'=>'registrarme')
 			);
-	} else {
+	} elseif($taller['Taller']['status'] == 'abierto'){
 		echo $this->Html->link('Registrame ',
 				array('controller' => 'users', 'action'=>'registro'),
 				array('class'=>'registrarme')
