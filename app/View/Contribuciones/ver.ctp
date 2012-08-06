@@ -92,14 +92,5 @@ foreach($tipo_cambio as $t=>$t_msg ){
 }
 ?>
 
-<h2>Agregar tu comentario</h2>
-<div class="users formulario">
-<?php echo $this->Form->create('Comentario', array('action' => 'agregar'));?>
-	<fieldset>
-	<div id="epiceditor"></div>
-	</fieldset>
-<?php echo $this->Form->end('Agregar');?>
-</div>
-
 </div>
 </div><!-- en datos usuarios -->

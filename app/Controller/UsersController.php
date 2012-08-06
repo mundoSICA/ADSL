@@ -90,7 +90,6 @@ function beforeFilter() {
 		} else {
 				copy(ROOT . DS .  'app/webroot/img/users/default_avatar.jpg' ,
 						$dir->pwd() . DS . 'avatar.jpg');
-				die( var_dump( $dir->pwd() ) );
 		}
 	}
 /**
