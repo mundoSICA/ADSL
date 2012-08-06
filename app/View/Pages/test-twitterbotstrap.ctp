@@ -1,6 +1,6 @@
 <?php
-$this->set('title_for_layout', 'ADSL  - Lista de proyectos');
-$this->Html->meta('description', 'Listado detallado de nuestros proyectos o de los proyectos que apoyamos', array('inline' => false));
+$this->set('title_for_layout', 'Prueba de twitterBootstrap');
+$this->Html->meta('description', 'Esta pagina es sólo un contenido estatico de lo que es el bootrap', array('inline' => false));
 #sección CSS
 $this->Html->css('proyectos', 'stylesheet', array('inline' => false));
 #Sección Javascript
