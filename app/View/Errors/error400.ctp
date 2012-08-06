@@ -17,7 +17,8 @@
  */
 ?>
 <h2><?php echo $name; ?></h2>
-<p class="error">
+<p class="alert alert-error">
+	<button class="close" data-dismiss="alert">×</button>
 	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
 	<?php printf(
 		__d('cake', 'The requested address %s was not found on this server.'),

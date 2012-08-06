@@ -164,3 +164,24 @@ Configure::write('AutoLogin', array(
 Configure::write('EmailTokenRequest', array(
 	'email_debug' => 'chanerec@gmail.com'
 ));
+
+
+Configure::write('Colaboradores', 
+	array(
+		'eymard <eymard@mundosica.com>',
+		'ibangr <igarcia@mundosica.com>',
+		'Benny <soporte@mundosica.com>',
+		'Emanuel <manuel.wm@gmail.com>',
+		'R1ch <r1chd01@gmail.com>',
+		'Erick <chromery@gmail.com>',
+		'Manuel Hernandez <manuel.wm@gmail.com>',
+		'Jose Miguel <idjosemiguel@hotmail.com>',
+		'Gibrán el Gris <gibb.elgris@gmail.com>',
+		'Gibrán el Puñetero <chaibran_tg7@hotmail.com>',
+		'Edgar Duran <rnstux@gmail.com>',
+		'Ana Gines <ana.gines.hdz@gmail.com>',
+		'Luis Garcia <luism.garciam@gmail.com>',
+		'Confi <erick.cosmes@gmail.com>',
+		'fitorec <chanerec@gmail.com>'
+	)
+);

@@ -1,12 +1,14 @@
 <?php
 $this->set('title_for_layout', 'ADSL - Lista de usuarios');
 $this->Html->meta('description', 'Lista de los usuarios registrados', array('inline' => false));
+#Agregando css
+$this->Html->css('users.index','stylesheet', array('inline' => false ) );
 #Sección Javascript
 $this->Html->script(array(
-											'jquery.prettydate-es',
-											'jquery.prettydate',
-											'jquery.prettydate.ADSL',
-											'activar.top.menu.jquery',
+											'jquery.prettydate.js',
+											'jquery.prettydate-es.js',
+											'jquery.prettydate.ADSL.js',
+											'activar.top.menu.jquery.js',
 											'users',
 											), array('inline' => false));
 ?>
@@ -27,11 +29,13 @@ div.avatar{
 	<?php
 	foreach ($users as $user): ?>
 	<tr itemscope itemtype="http://data-vocabulary.org/Person">
-		<td><?php echo $this->Html->gravatar_link($user['User']['email'], $user['User']['username']); ?></td>
+		<td><?php echo $this->Html->avatar_link($user['User']['username']); ?></td>
 		<td><?php echo $this->Html->link(
-						h($user['User']['username']),
+						h('@'.$user['User']['username']),
 						array('action' => 'ver', $user['User']['username']),
-						array('title' => 'ver Perfil')
+						array('title' => 'ver Perfil',
+						'class' => 'btn btn-inverse btn-large'
+						)
 			); ?>&nbsp;</td>
 			<td>
 			<time class='timestamp prettyDate' datetime="<?php

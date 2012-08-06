@@ -100,47 +100,64 @@ echo $this->Html->link( $taller['Taller']['nombre'],
 	<h2>Alumnos inscritos en el taller</h2>
 <?php
 $boton_taller = false;
+
 if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 'abierto' ){
 	$boton_taller = true;
 }
+
 $user_auth = $this->Session->read('Auth.User.username');
-if (!empty($taller['User'])):?>
-	<table cellpadding = "0">
-	<tr>
+$HTML_usuarios_registrados = '';
+
+if (!empty($taller['User'])):
+$HTML_usuarios_registrados = '<table cellpadding = "0">
+<tr>
 		<th>Alumno</th>
 		<th>Nick</th>
 		<th>role</th>
 	</tr>
-	<?php
+';
+
 		$i = 0;
-		foreach ($taller['Alumnos'] as $user):
+		foreach ($taller['Alumnos'] as $user) {
 			if($boton_taller && $user_auth == $user['username']){
 						$boton_taller = false;
 					}
-		?>
-		<tr itemscope itemtype="http://data-vocabulary.org/Person">
-				<td><?php
-				echo $this->Html->gravatar_link(
-						$user['email'],
-						$user['username']
-			);
-			?>
-				</td>
-				<td><?php echo $user['username']; ?></td>
-				<td itemprop="role">Alumno</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-	<!-- -->
-<?php
-	if($boton_taller){
+			$HTML_usuarios_registrados .= '<tr itemscope itemtype="http://data-vocabulary.org/Person">';
+			$HTML_usuarios_registrados .= '<td>'.
+					$this->Html->avatar_link(
+								$user['username']
+					).'</td>'.
+					'<td>'.$user['username'] . '</td>'.
+					'<td itemprop="role">Alumno</td>'.
+				'</tr>';
+		}
+	$HTML_usuarios_registrados .= '</table>';
+endif;
+
+if($boton_taller){
 		echo $this->Html->link('Inscribirme',
 				array('action' => 'inscribirme', $taller['Taller']['slug_dst']),
 				array('class'=>'registrarme')
 			);
-	}
+	} else {
+		echo '<div class="alert alert-error">
+		<strong>Para registrarse:</strong> Es necesario estar registrado y estar identificado
+		<a class="close" data-dismiss="alert">&times;</a>
+		<br clear="all"><br clear="all">';
+		echo $this->Html->link('Registrame ',
+				array('action' => 'users', 'registro'),
+				array('class'=>'registrarme')
+			). '  | '.
+			$this->Html->link('Identicarme ',
+				array('controller'=>'users', 'action' => 'users', 'login'),
+				array('class'=>'identificarme')
+			).'<br clear="all"><br clear="all"></div>';
+}
+
+echo $HTML_usuarios_registrados;
+
 ?>
+<!-- -->
 </div>
 </div><!-- fin del evento -->
 <div class="acciones">

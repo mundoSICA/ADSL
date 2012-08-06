@@ -9,9 +9,9 @@ $this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 2
 $this->Html->css('contribuciones.ver','stylesheet', array('inline' => false ) );
 #Sección Javascript
 $this->Html->script(array(
+											'jquery.prettydate.js',
+											'jquery.prettydate-es.js',
 											'activar.top.menu.jquery',
-											'jquery.prettydate-es',
-											'jquery.prettydate',
 											'jquery.prettydate.ADSL',
 											'epiceditor/js/epiceditor',
 											'contribuciones.ver',
@@ -20,7 +20,7 @@ $this->Html->script(array(
 <div class="users ver">
 <span itemscope itemtype="http://data-vocabulary.org/Person">
 <?php
-	echo $this->Html->gravatar_link($commit['Contribucion']['author_email'], $commit['Contribucion']['author_name']);
+	echo $this->Html->avatar_link($commit['Contribucion']['author_name']);
 ?>
 </span>
 <div class='informacion_commit' itemscope itemtype="http://data-vocabulary.org/Event">

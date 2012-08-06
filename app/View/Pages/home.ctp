@@ -113,8 +113,8 @@ $this->Html->script(array(
 				}
 			echo '<li itemscope itemtype="http://data-vocabulary.org/Person">';
        echo $this->Html->link(
-								$this->Html->gravatar_Icon($email, $username) .
-								"<span itemprop='nickname'>{$username}</span>",
+								$this->Html->avatar_icon($username) .
+								"<label class='btn btn-inverse' itemprop='nickname'>{$username}</label>",
 								array(
 											'controller' => 'users',
 											'action' => 'ver',

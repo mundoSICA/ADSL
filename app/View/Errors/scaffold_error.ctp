@@ -16,14 +16,23 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
-<h2><?php echo $name; ?></h2>
+<h2><?php echo __d('cake_dev', 'Scaffold Error'); ?></h2>
 <p class="alert alert-error">
 	<button class="close" data-dismiss="alert">×</button>
-	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
-	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
+	<strong><?php echo __d('cake_dev', 'Error'); ?>: </strong>
+	<?php echo __d('cake_dev', 'Method _scaffoldError in was not found in the controller'); ?>
 </p>
-<?php
-if (Configure::read('debug') > 0 ):
-	echo $this->element('exception_stack_trace');
-endif;
-?>
+<p class="alert alert-info">
+	<button class="close" data-dismiss="alert">×</button>
+	<strong><?php echo __d('cake_dev', 'Notice'); ?>: </strong>
+	<?php echo __d('cake_dev', 'If you want to customize this error message, create %s', APP_DIR . DS . 'View' . DS . 'Errors' . DS . 'scaffold_error.ctp'); ?>
+</p>
+<pre>
+&lt;?php
+function _scaffoldError() {<br />
+
+}
+
+</pre>
+
+<?php echo $this->element('exception_stack_trace'); ?>

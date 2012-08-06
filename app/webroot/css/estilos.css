@@ -1,4 +1,3 @@
-* {margin:0; padding:0;}
 ::-webkit-selection{background:#df4646;color:#fff;text-shadow:none}::-moz-selection{background:#df4646;color:#fff;text-shadow:none}::selection{background:#df4646;color:#fff;text-shadow:none}
 
 body{
@@ -541,7 +540,7 @@ div.avatar h5{
 	display:block;
 }
 a.boton_naranja,
-a.registrarme{
+a.registrarme, a.identificarme {
 	background: #F5792A;
 	background-repeat: repeat-x;
 	background-image: -moz-linear-gradient(top, #F5792A, #D75400);
@@ -556,7 +555,7 @@ a.registrarme{
 	height:18px;
 	color:white;
 	padding:15px;
-	display:block;
+	display: inline;
 	font-size:20px;
 	width:6em;
 	text-align:center;
@@ -571,6 +570,7 @@ a.boton_naranja{
 	display:inline;
 }
 a.boton_naranja:hover,
+a.identificarme:hover,
 a.registrarme:hover{
 	text-decoration:none;
 	text-shadow:0 0 5px #0E3051;
@@ -602,4 +602,7 @@ a.registrarme:hover{
 .timestamp, .prettyDate{
 	width: 10em;
 	display: block;
+}
+dt, dd {
+	line-height:200%;
 }

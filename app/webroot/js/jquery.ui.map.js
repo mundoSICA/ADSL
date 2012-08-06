@@ -10,6 +10,7 @@
 	 * @param name:string
 	 * @param prototype:object
 	 */
+	if( google != null ) {
 	$.a = function(name, prototype) {
 		
 		var namespace = name.split('.')[0];
@@ -60,8 +61,8 @@
 		 * @see http://code.google.com/intl/sv-SE/apis/maps/documentation/javascript/reference.html#MapOptions
 		 */
 		options: {
-			mapTypeId: 'roadmap',
-			zoom: 1
+			zoom: 11,
+			mapTypeId: 'roadmap'
 		},
 		
 		/**
@@ -369,5 +370,5 @@
 			return this.addEventListener(name, a, b);
 		}
 	});
-	
+	}
 } (jQuery) );

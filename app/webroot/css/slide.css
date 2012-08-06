@@ -176,3 +176,15 @@
 	background:none;
 	text-shadow:1px 1px 1px #261f18, -1px -1px 0 #FFEBA6 !important;
 }
+
+#slide_talleres .pagination li.current a{
+	margin:none;
+}
+
+#slide_talleres .pagination a{
+	padding:0;
+	border:none 0;
+	width:12px;
+	height:12px;
+}
+

@@ -34,8 +34,7 @@ $this->Html->script(array(
 	?>
 	<tr itemscope itemtype="http://data-vocabulary.org/Event">
 		<td itemprop="author" itemtype="http://data-vocabulary.org/Person"><?php
-			echo $this->Html->gravatar_link(
-						$contribucion['Contribucion']['author_email'],
+			echo $this->Html->avatar_link(
 						$contribucion['Contribucion']['author_name']
 			);
 		 ?>&nbsp;</td>

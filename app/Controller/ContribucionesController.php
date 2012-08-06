@@ -112,23 +112,8 @@ function beforeFilter() {
 		$commit_msg .= '<br /><strong>Mayores informes: </strong><a href="'.$urlInfo.'">'.$urlInfo.'</a>';
 		$commit_msg .= '<p>Este mensaje es <i>auto-generado</i>, por medio de <strong>ADSL-robot</strong>'
 										.'Si desea no recibir más notificaciones favor de enviar un email a <i>robot@adsl.org.mx</i></p>';
-		$members = array(
-										'eymard <eymard@mundosica.com>',
-										'ibangr <igarcia@mundosica.com>',
-										'Benny <soporte@mundosica.com>',
-										'Emanuel <manuel.wm@gmail.com>',
-										'R1ch <r1chd01@gmail.com>',
-										'Erick <chromery@gmail.com>',
-										'Manuel Hernandez <manuel.wm@gmail.com>',
-										'Jose Miguel <idjosemiguel@hotmail.com>',
-										'Gibrán el Gris <gibb.elgris@gmail.com>',
-										'Gibrán el Puñetero <chaibran_tg7@hotmail.com>',
-										'Edgar Duran <rnstux@gmail.com>',
-										'Ana Gines <ana.gines.hdz@gmail.com>',
-										'Luis Garcia <luism.garciam@gmail.com>',
-										'Confi <erick.cosmes@gmail.com>',
-										'fitorec <chanerec@gmail.com>'
-		);
+		$EmailTokenRequest = (array) Configure::read('EmailTokenRequest');
+		$members = Configure::read('Colaboradores');
 		foreach ($members as $member_email) {
 			$this->Email->reset();
 			$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';

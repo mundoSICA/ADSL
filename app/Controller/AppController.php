@@ -14,7 +14,15 @@ class AppController extends Controller {
 					),
 		'Session',
 		'RequestHandler',
-		'Twitteroauth.Twitter' //Soporte para twitter!
+		'Twitteroauth.Twitter', //Soporte para twitter!
+	);
+	var $helpers = array(
+		'TwitterBootstrap', //Twitter Bootstrap
+		'Form',
+		'Html',
+		'Session',
+		'Js',
+		'Time',
 	);
 	/******************** Funciones *******************************************************/
 }

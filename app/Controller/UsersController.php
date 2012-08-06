@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 /**
  * Users Controller ADSL
  *
@@ -9,7 +11,8 @@ class UsersController extends AppController {
 /*
  * Componentes
  */
-var $components = array('Email', 'EmailTokenRequest');
+public $components = array('Email', 'EmailTokenRequest', 'Gravatar');
+
 
 function beforeFilter() {
 			$this->Auth->allow(
@@ -65,10 +68,31 @@ function beforeFilter() {
 			$this->Session->setFlash(sprintf('Usuario invalido (%s)', $slug));
 			$this->redirect(array('action' => 'index'));
 		} else {
-			$this->set('user', $this->User->read(null, $id));
+			$user = $this->User->read(null, $id);
+			$this->_downloadAvatar($user['User']);
+			$this->set('user', $user);
 		}
 	}
 
+	function _downloadAvatar($user) {
+		#Creamos el directorio del usuario
+		$dir = new Folder(ROOT . DS .  'app/webroot/img/users/' . $user['username'], true);
+		######################################################################################
+		$file = new File($dir->pwd() . DS . 'avatar.jpg');
+		if($file->exists())
+			return true;
+		##################################################################
+		if( $this->Gravatar->accountExists($user['email']) ) {
+					$this->Gravatar->download(
+						$user['email'], '/webroot/img/users/' .
+						$user['username'] . '/'. 'avatar.jpg', array('size'=>50)
+					);
+		} else {
+				copy(ROOT . DS .  'app/webroot/img/users/default_avatar.jpg' ,
+						$dir->pwd() . DS . 'avatar.jpg');
+				die( var_dump( $dir->pwd() ) );
+		}
+	}
 /**
  * add method
  *
@@ -82,7 +106,10 @@ function beforeFilter() {
 			$this->request->data['User']['password'] = $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Has sido registrado, Ahora debes iniciar sesión');
+				#Una vez registrado descargamos su avatar
+				$this->_downloadAvatar($this->request->data['User']);
+				#Una vez registrado descargamos su avatar
+				$this->Session->setFlash('Has sido registrado, Ahora puedes iniciar sesión');
 				$this->redirect(array('action' => 'login'));
 			} else {
 				$this->Session->setFlash('No te puedes registrar!, favor de revisar que tus datos sean correctos');
@@ -139,7 +166,7 @@ function beforeFilter() {
 				$msg = "<h1>¿Olvidaste tu contraseña?</h1>\n" .
 							"<p>De no ser asi hacer caso omiso de este mensaje</p>\n" .
 						 "<p>Puedes reuperar tu contraseña desde el siguiente enlace:</p>\n".
-							Router::url('/users/recuperacion_password/'. 
+							Router::url('/users/recuperacion_password/'.
 							$this->request->data['User']['email_token'] . '/' .
 							$this->request->data['User']['email'], true );
 				if ($this->User->save($this->request->data,false)){

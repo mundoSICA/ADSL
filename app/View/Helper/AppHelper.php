@@ -35,16 +35,23 @@ class AppHelper extends Helper {
 	 * @param tipo $parametro1 descripción del párametro 1.
 	 * @return tipo descripcion de lo que regresa
 	 * @access publico/privado
-	 * @link http://es.gravatar.com/site/implement/hash/
 	 */
-	function gravatar_img($email, $size=100, $options=array()){
+	 public $helpers = array(
+    'Html',
+    'Form',
+    'TwitterBootstrap',
+    );
+	function avatar($username, $size=100, $options=array()){
 		if( !isset($options['alt']) ){
-			$nick = explode('@',$email);
-			$options['alt'] = $nick[0]. ' Avatar';
+			$options['alt'] = $username. ' Avatar';
 		}
+		$options['width']=$size .'px';
+		$options['height']=$size .'px';
+		$options['alt']=$username . ' Avatar';
+		$options['itemprop']= 'photo';
 		return '<div itemprop="photo" class="avatar" style="width: '.$size.'px">'.
-			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s='.$size, $options)
-			.'</div>';
+		$this->image('/img/users/'. $username .'/avatar.jpg'
+			, $options).'</div>';
 	}
 	/**
 	 * Descripción de la función
@@ -52,13 +59,12 @@ class AppHelper extends Helper {
 	 * @param tipo $parametro1 descripción del párametro 1.
 	 * @return tipo descripcion de lo que regresa
 	 * @access publico/privado
-	 * @link http://es.gravatar.com/site/implement/hash/
 	 */
-	function gravatar_link($email, $username='') {
+	function avatar_link($username='') {
 		$link = Router::url('/users/ver/'.$username);
 		return '<div class="avatar" style="width: 50px">'.
 				'<a href="'.$link.'" itemprop="url">'.
-			$this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=50'
+			$this->image('/img/users/'. $username .'/avatar.jpg'
 			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'))
 			.'</a><h5 itemprop="nickname">' . $username . '</h5></div>';
 	}
@@ -70,12 +76,11 @@ class AppHelper extends Helper {
 	 * @access publico/privado
 	 * @link [URL de mayor infor]
 	 */
-	function gravatar_Icon($email, $username='') {
+	function avatar_icon($username='') {
 		$link = Router::url('/users/ver/'.$username);
-		return $this->image('http://www.gravatar.com/avatar/'. md5( $email ).'?s=32'
-			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo', 'width'=>'32px',
+		return $this->image('/img/users/'. $username .'/avatar.jpg',
+				array('alt' => $username . ' Avatar', 'itemprop' => 'photo', 'width'=>'32px',
 				'height' => '32px'
-			)
-			);
+			));
 	}//end function
 }

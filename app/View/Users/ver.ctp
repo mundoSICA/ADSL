@@ -13,7 +13,7 @@ $this->Html->script(array(
 ?>
 <div class="users ver">
 <?php
-	echo $this->Html->gravatar_img($user['User']['email']);
+	echo $this->Html->avatar($user['User']['username']);
 ?>
 <div class='datos_usuario' itemscope itemtype="http://data-vocabulary.org/Person">
 	<h1><?php  echo h($user['User']['username']);?></h1>

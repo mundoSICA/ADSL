@@ -7,6 +7,7 @@
 	margin-right: 5px
 }
 #listaUsuarios li{
+	border:0;
 	margin:0;
 	width:150px;
 	height:33px;
@@ -21,10 +22,17 @@
 #listaUsuarios ul:nth-child(even) {background: #CCC}
 #listaUsuarios ul li:nth-child(2n) {
 	float: right;
-	background: RGBA(0,0,0,0.1);
+	justify: left;
 	margin-top: -33px
 }
 
 #calendarioEventos .ui-datepicker-inline{
 	width: 300px;
+}
+
+#listaUsuarios label.btn{
+	width:85px;
+}
+#CajaPrincipal{
+	background: #FFF;
 }

@@ -9,9 +9,11 @@
 		echo $this->fetch('meta');
 		echo "\n";
 		##Sección de CSS
+		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('estilos');
 		echo $this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
+		echo $this->Html->css('google-code-prettify');
 		echo $this->fetch('css');
 		echo "\n";
 		//recuerda poner esto en un archivo aparte
@@ -102,6 +104,19 @@ echo $this->Html->script(array(
 		'jquery.min',
 		'modernizr.custom.js',
 		'jquery-ui-1.8.21.custom.min',
+		'google-code-prettify',
+		'bootstrap-transition',
+		'bootstrap-alert',
+		'bootstrap-modal',
+		'bootstrap-dropdown',
+		'bootstrap-scrollspy',
+		'bootstrap-tab',
+		'bootstrap-tooltip',
+		'bootstrap-popover',
+		'bootstrap-button',
+		'bootstrap-collapse',
+		'bootstrap-carousel',
+		'bootstrap-typeahead',
 		'main.js',
 	))."\n";
 echo $this->fetch('script')."\n";

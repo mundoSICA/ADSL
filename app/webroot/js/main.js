@@ -4,11 +4,23 @@
  *              todas las páginas del sitio
  */
 $(function(){
-	//Agregando enlaces externos
+	// Desactivamos la acción por defecto al presionar un link que inicie con ancla
+   $('section [href^=#]').click(function (e) {
+      e.preventDefault()
+   })
+   //Agregando enlaces externos
 	$('a[rel=external]').click(function() {
 		window.open(this.href);
 		return false;
 	});
+	// Construyendo el marcado cd código fuente.
+  window.prettyPrint && prettyPrint()
+	// add-ons
+	$('.add-on :checkbox').on('click', function () {
+     var $this = $(this)
+       ,method = $this.attr('checked') ? 'addClass' : 'removeClass'
+			$(this).parents('.add-on')[method]('active')
+	})
 	//animacion sobre el buscador
 	$('#buscador_input').val('Buscar en ADSL');
 	$('#buscador_input').focus(function() {
@@ -51,3 +63,5 @@ _gaq.push(['_trackPageview']);
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+

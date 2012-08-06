@@ -1,6 +1,6 @@
 /* Spanish */
 $.prettyDate.messages = {
-	now: "recién",
+	now: "reci&#xE9;n",
 	minute: "hace 1 minuto",
 	minutes: $.prettyDate.template("hace {0} minutos"),
 	hour: "hace 1 hora",
