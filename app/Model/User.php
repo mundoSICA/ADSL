@@ -14,7 +14,7 @@ class User extends AppModel {
  * @var string
  */
 	public $displayField = 'username';
-	public $actsAs = array('Slug'=>array('max_len'=>50));
+	public $actsAs = array('Slug'=>array('max_len'=>15));
 	public $order = 'User.username ASC';
 /**
  * Validation rules
