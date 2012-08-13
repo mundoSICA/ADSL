@@ -3,55 +3,63 @@
 $this->set('title_for_layout', 'ADSL  - video Streaming');
 $this->Html->meta('description', 'ADSL Academia de Software Libre, evento en vivo, Video streaming '.date('Y'), array('inline' => false));
 #sección CSS
-/*$this->Html->css(array(
-											'slide',
-											'pages.home'
+$this->Html->css(array(
+											'pages.streaming'
 										),
 									'stylesheet',
-									array('inline' => false));*/
+									array('inline' => false));
 #sección Javascript
 /*$this->Html->script(array(
 											'slides.min.jquery',
 											), array('inline' => false)); */
+$streaming = Configure::read('streaming');
 ?>
 
 <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Chat en vivo</li>
-            </ul>
+            <iframe width="220px" scrolling="no" height="700px" frameborder="0" style="border: 0px none transparent;" src="http://www.ustream.tv/socialstream/10172229"></iframe>
           </div><!--/.well -->
         </div><!--/span-->
 
         <div class="span9">
-					
+
 		<section class="hero-unit">
-					<h1>Area en desarrollo</h1>
-					<p>Lo sentimos estamos desarrollando esta area, por favor para visualizar el streaming visita el canal de ustreaming.</p>
-					<p><a class="btn btn-primary btn-large">Visitar</a></p>
+					<h1><?php echo $streaming['nombre']; ?></h1>
+					<p>
+						<iframe src="http://www.ustream.tv/embed/10172229" width="608" height="368" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
+						</p>
+
+					<p><a href='http://www.ustream.tv/channel/adsl' class="btn btn-primary btn-large">Visitar Ustream.tv/channel/adsl</a></p>
+				</section>
+				<section>
+					<h2>URL para compartir</h2>
+					<input value='http://ustre.am/GGgd' onfocus='this.select()' style='width:650px;'>
 				</section>
 				
           <div class="row-fluid">
             <div class="span4">
               <h2>Primer Video</h2>
+              <img src="http://static-cdn1.ustream.tv/i/video/picture/0/1/19/19911/19911154/1_10172229_19911154,192x108,b,1:2.jpg" />
 							<p>Video uno de la Academia de software Libre</p>
               <p><a href="http://www.ustream.tv/recorded/19911154" class="btn">Ver detalles »</a></p>
             </div><!--/span-->
-            
+
             <div class="span4">
               <h2>Segundo Video</h2>
+              <img src="http://static-cdn1.ustream.tv/i/video/picture/0/1/19/19761/19761946/1_10172229_19761946,192x108,b,1:2.jpg"/>
 							<p>Video dos de la Academia de software Libre</p>
               <p><a href="http://www.ustream.tv/recorded/19761946" class="btn">Ver detalles »</a></p>
             </div><!--/span-->
 
             <div class="span4">
               <h2>Tercer Video</h2>
+              <img src="http://static-cdn2.ustream.tv/i/video/picture/0/1/19/19761/19761813/1_10172229_19761813,192x108,b,1:2.jpg" alt="" title="" />
 							<p>Video dos de la Academia de software Libre</p>
               <p><a href="http://www.ustream.tv/recorded/19761813" class="btn">Ver detalles »</a></p>
             </div><!--/span-->
 
           </div><!--/row-->
-          
+
         </div><!--/span-->
       </div>

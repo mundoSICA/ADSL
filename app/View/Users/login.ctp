@@ -5,11 +5,11 @@
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend>Identicate como usario</legend>
+		<legend>ADSL - Identificacte como usario</legend>
+		<div class="input text required"><label for="UserUsername">Username</label><input type="text" id="UserUsername" maxlength="15" name="data[User][username]"></div>
+		<div class="input password required"><label for="UserPassword">Password</label><input type="password" id="UserPassword" name="data[User][password]"></div>
+		<div class="input checkbox"><input type="hidden" value="0" id="UserAutoLogin_" name="data[User][auto_login]"><input type="checkbox" id="UserAutoLogin" value="1" name="data[User][auto_login]"><label for="UserAutoLogin">Recordarme en mi equipo</label></div>
 	<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('auto_login', array('type' => 'checkbox', 'label' => 'Recordarme en mi equipo'));
 		echo $this->Form->end('Autenticarse');
 	?>
 	</fieldset>

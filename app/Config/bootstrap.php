@@ -186,4 +186,6 @@ Configure::write('Colaboradores',
 	)
 );
 
-Configure::write('streaming', 'activado');
+Configure::write('streaming',
+	array('nombre' => 'Sesión 01 - La cultura libre en el diseño - inkscape karbon14 Alchemy Xaraxtreme')
+);

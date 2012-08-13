@@ -157,10 +157,10 @@ function beforeFilter() {
 	function reset_password($token=null) {
 			if( $this->EmailTokenRequest->prepareToken() ) {
 				$this->Email->reset();
-				$this->Email->from = 'robot ADSL <robot@micorreofacil.com>';
+				$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
 				$this->Email->to = $this->request->data['User']['email'];
 				$this->Email->sendAs = 'both';
-				$this->Email->replyTo = 'contacto ADSL <contacto@micorreofacil.com>';
+				$this->Email->replyTo = 'contacto ADSL <contacto@adsl.org.mx>';
 				$this->Email->subject = '¿Olvidaste tu contraseña?';
 				$msg = "<h1>¿Olvidaste tu contraseña?</h1>\n" .
 							"<p>De no ser asi hacer caso omiso de este mensaje</p>\n" .

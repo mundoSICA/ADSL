@@ -30,6 +30,8 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+
+	Router::connect('/en-vivo.html', array('controller' => 'pages', 'action' => 'display', 'streaming'));
 /*
  * mapa de sitio y feed
  **/
