@@ -48,9 +48,11 @@ $(function(){
 	//flash Mensaje
 	$('#flashMessage').dialog({
 		buttons: {
-			"Aceptar": function() {
-				$(this).dialog("close");
-			}
+			"Cancel" : {
+				'html': '<li class="icon-remove-sign icon-white"></li> Cerrar Notificación',
+				'class': 'btn btn-danger',
+				'click': function() { $(this).dialog("close"); }
+				}
 		}
 	});
 });

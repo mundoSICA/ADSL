@@ -94,6 +94,13 @@ function beforeFilter() {
  */
 	function home() {
 		$this->Taller->recursive = -1;
+		$streaming = Configure::read('streaming');
+		if( $streaming != '')
+			$this->Session->setFlash(
+			'En este momento estamos tramitiendo<br/><br/>'
+			. '<a href="'. Router::url('/pages/streaming').'" class="btn btn-primary">'
+			. '<li class="icon-facetime-video"></li>Acceder al streaming</a>'
+			);
 		$this->set('talleres', $this->paginate());
 		$this->set('users', 
 			$this->User->find('list', 

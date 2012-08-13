@@ -185,3 +185,5 @@ Configure::write('Colaboradores',
 		'fitorec <chanerec@gmail.com>'
 	)
 );
+
+Configure::write('streaming', 'activado');
