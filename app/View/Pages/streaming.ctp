@@ -9,9 +9,11 @@ $this->Html->css(array(
 									'stylesheet',
 									array('inline' => false));
 #sección Javascript
-/*$this->Html->script(array(
-											'slides.min.jquery',
-											), array('inline' => false)); */
+$this->Html->script(array(
+											'activar.top.menu.jquery',
+											'streaming',
+											'http://platform.twitter.com/widgets.js'
+											), array('inline' => false));
 $streaming = Configure::read('streaming');
 ?>
 
@@ -30,13 +32,25 @@ $streaming = Configure::read('streaming');
 						<iframe src="http://www.ustream.tv/embed/10172229" width="608" height="368" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
 						</p>
 
-					<p><a href='http://www.ustream.tv/channel/adsl' class="btn btn-primary btn-large">Visitar Ustream.tv/channel/adsl</a></p>
+					<p>
+						<a href='http://www.ustream.tv/channel/adsl' class="btn btn-primary btn-large">
+							Visitar Ustream.tv/channel/adsl
+						</a>
+					</p>
 				</section>
 				<section>
 					<h2>URL para compartir</h2>
 					<input value='http://ustre.am/GGgd' onfocus='this.select()' style='width:650px;'>
+					    <div id="tweet-btn">
+							<a href="http://twitter.com/share" class="twitter-share-button"
+							data-url="http://t.co/VAYlgQ9R"
+							 data-text="Estoy viendo la trasmisión en vivo de la Academia de Software Libre @academiADSL"
+							 >Compartir por Twitter</a>
+							</div>
 				</section>
-				
+				<!-- URL generada
+				https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fadsl.org.mx%2Fpages%2Fstreaming&source=tweetbutton&text=Estoy%20viendo%20la%20trasmisi%C3%B3n%20en%20vivo%20de%20la%20Academia%20de%20Software%20Libre%20%40academiADSL&url=http%3A%2F%2Ft.co%2FVAYlgQ9R
+				-->
           <div class="row-fluid">
             <div class="span4">
               <h2>Primer Video</h2>

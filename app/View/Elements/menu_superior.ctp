@@ -44,9 +44,9 @@ echo $this->Html->link('Inicio', '/', array('id'=>'BotonInicio'));
 		array('id'=>'BotonContribuciones')
 	);?></li>
 	<li><?php
-	echo $this->Html->link('Proyectos',
-		array('controller'=>'pages','action'=>'proyectos','admin'=>false),
-		array('id'=>'BotonProyectos')
+	echo $this->Html->link('Video en vivo',
+		array('controller' => 'pages', 'action' => 'display', 'streaming','admin'=>false),
+		array('id'=>'BotonStreaming')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Contactanos',
