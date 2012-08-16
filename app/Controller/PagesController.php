@@ -31,10 +31,7 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
-function beforeFilter() {
-			$this->Auth->allow('*');
-}
-
+	public $components = array('Recaptcha.Recaptcha');
 /**
  * Controller name
  *
@@ -47,14 +44,17 @@ function beforeFilter() {
  *
  * @var array
  */
-	public $helpers = array('Html', 'Session');
-
+	public $helpers = array('Html', 'Session', 'Recaptcha.Recaptcha');
 /**
  * This controller does not use a model
  *
  * @var array
  */
 	public $uses = array('Taller','User', 'Contribucion');
+
+function beforeFilter() {
+			$this->Auth->allow('*');
+}
 
 /**
  * Displays a view

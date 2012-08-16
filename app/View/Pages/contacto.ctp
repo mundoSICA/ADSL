@@ -17,6 +17,7 @@ $this->Html->script(array(
 	echo $this->Form->input('telefono');
 	echo $this->Form->input('asunto');
 	echo $this->Form->input('mensaje', array('type'=> 'textarea'));
+	echo $this->Recaptcha->show('clean');
 ?>
 	</fieldset>
 <?php echo $this->Form->end('contactanos');?>
