@@ -1,5 +1,5 @@
 #container {
-	width:940px;
+	width:100%;
 	margin:0 auto;
 	position:relative;
 	z-index:0;
@@ -7,7 +7,7 @@
 }
 
 #slide_principal_talleres {
-	width:946px;
+	width:100%;
 	height:325px;
 	position:relative;
 	-webkit-box-shadow:5px 0 3px RGBA(0,0,0,0.5),-5px 0 3px RGBA(0,0,0,0.5);
@@ -28,7 +28,7 @@
 
 #slide_talleres {
 	position:absolute;
-	width:925px;
+	width:100%;
 	top:8px;
 	left:8px;
 	z-index:100;
@@ -42,29 +42,15 @@
 */
 
 .slides_container {
-	width:925px;
 	overflow:hidden;
 	position:relative;
 	display:none;
-}
-
-/*
-	Each slide
-	Important:
-	Set the width of your slides
-	If height not specified height will be set by the slide content
-	Set to display block
-*/
-
-.slides_container {
-	width:925px;
+	width:100%;
 	height:310px;
 	display:block;
-	/*-moz-border-radius: 0 0 10px 10px;
-	-webkit-border-radius: 0 0 10px 10px;
-	border-radius: 0 0 10px 10px;
-	over-float:hidden;*/
-	-moz-border-radius: 10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
 }
 .slides_container div.slide {
 	width:925px;
@@ -78,10 +64,10 @@
 
 #slide_talleres .next, #slide_talleres .prev {
 	position:absolute;
-	background: url(../img/slide_prev_next.png) no-repeat;
+	background: url(../img/slide_prev_next.png) no-repeat 0 -40px;
 	opacity: 0.5;
 	top:170px;
-	left:-8px;
+	right:15px;
 	width:40px;
 	height:40px;
 	display:block;
@@ -89,8 +75,8 @@
 }
 
 #slide_talleres .next {
-	left:892px;
-	background-position: 0 -40px;
+	left:0px;
+	background-position: 0 0;
 }
 
 #slide_talleres .next:hover, #slide_talleres .prev:hover {
@@ -139,7 +125,7 @@
 	left:0;
 	height:40px;
 	padding:5px 20px 0 0px;
-	width:940px;
+	width:905px;
 	font-size:1.3em;
 	line-height:1.33;
 	color:#fff;
@@ -155,12 +141,15 @@
 	background-image: -webkit-linear-gradient(top, #F5792A, #D75400);
 	background-image: -o-linear-gradient(top, #F5792A, #D75400);
 	background-image: linear-gradient(top, #F5792A, #D75400);
+	-moz-border-radius:0 0 10px 10px;
+	-webkit-border-radius:0 0 10px 10px;
+	border-radius:0 0 10px 10px;
 }
 
 .slide_info_taller span{
 	float: left;
-	margin-left: 10px;
-	width:220px;
+	margin-left:1%;
+	width:24%;
 }
 .slide_info_taller span strong{
 	display:block;
@@ -187,4 +176,114 @@
 	width:12px;
 	height:12px;
 }
+/*
+ * soporte para tables
+ */
+@media (max-width: 768px) {
+	#slides_container,
+	.header2 /* slide */
+	{
+		width:550px;
+	}
+	.header2,
+	#slide_principal_talleres,
+	#slides_container{
+		height:270px;
+	}
+	h2.slide_taller_titulo{width:510px;font-size: 15px;margin-top:-10px}
+	.slides_container div.slide
+	{
+		width:530px;
+	}
+	.slides_container{height:250px;}
+	.slide_info_taller {
+		top: 160px;
+		left:0;
+		height:80px;
+		width:510px;
+	}
+	.pagination {
+		margin-top:-110px;
+	}
+	#slide_talleres .next, #slide_talleres .prev {
+		top:80px;
+	}
+	#liston_talleres_slide{display:none}
+}
 
+/*
+ * Soporte para moviles/celulares
+ * 
+ */
+@media (max-width: 400px) {
+	#slides_container,
+	.header2 /* slide */
+	{
+		width:350px;
+	}
+	.header2,
+	#slide_principal_talleres,
+	#slides_container{
+		height:270px;
+	}
+	h2.slide_taller_titulo{
+		width:330px;
+		padding:0;
+		color:#593200;
+		font-weight: bold;
+		text-shadow:2px 2px 0 #FFF !important;
+		}
+	.slides_container div.slide
+	{
+		width:330px;
+	}
+	.slides_container div.slide img { margin-top: 60px;}
+	.slides_container{height:250px;}
+	.slide_info_taller {
+		top: 160px;
+		left:0;
+		height:80px;
+		width:310px;
+	}
+	.pagination {
+		margin-top:-110px;
+	}
+	#slide_talleres .next, #slide_talleres .prev {
+		top:80px;
+	}
+	#liston_talleres_slide{display:none}
+}
+
+/*
+ * Soporte para pantallas grandes
+ * Ancho mayores a 1400px
+ */
+@media only screen  and (min-width: 1420px) {
+	#slides_container,
+	.header2 /* slide */
+	{
+		width:100%;
+		height:270px;
+	}
+	h2.slide_taller_titulo {
+		float: left;
+		width: 900px;
+	}
+	.slide_info_taller{
+		position:absolute;
+		margin: -260px 0 0 950px;
+		width:400px;
+		height:240px;
+	}
+	.slide_info_taller span strong:before{
+		content:" ☛ ";
+	}
+	.slide_info_taller span{
+		width: 98%;
+		display: block;
+		margin:auto;
+		padding: 1%;
+		font-size:1em;
+	}
+	
+}

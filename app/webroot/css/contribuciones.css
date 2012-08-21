@@ -1,6 +1,7 @@
 /* no mamar */
 div.index {
-	width:905px;
+	width:98%;
+	padding:1%;
 	border-left:1px solid #FFF;
 }
 .commit {

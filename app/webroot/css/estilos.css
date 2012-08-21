@@ -81,6 +81,10 @@ a#LinkPrincipal{
 	width:470px;
 	padding-top:50px;
 }
+span.emailLabel:after{content:"Email: "}
+span.telLabel:after{content:"Teléfono: "}
+span.loginLabel:after{content:" ☞ "}
+
 #logo abbr, #logo #slogan h2{ font-size:32px}
 #logo #slogan h3{ font-size:20px}
 #logo abbr,
@@ -107,11 +111,11 @@ a#LinkPrincipal:hover h3, a#LinkPrincipal h3:hover{color:#D87C00;}
 .buscadoriconos{
 	width: 268px;
 	height: 133px;
-	float: left;
+	float: right;
 }
 .buscador{
-padding-top: 30px;
-	width: 268px;
+	padding-top: 30px;
+	width: 100%;
 	height: 36px;
 	float: left;
 	text-align: right;
@@ -124,7 +128,7 @@ padding-top: 30px;
 }
 .iconos{
 	padding-top: 10px;
-	width: 268px;
+	width: 100%;
 	height: 56px;
 	float: left;
 	text-align: right;
@@ -140,7 +144,6 @@ padding-top: 30px;
 .barra{
 	width: 946px;
 	height: 24px;
-	background: #736153;
 	text-align: right;
 	text-shadow:0 0 3px #DCC3AF;
 	font-size:15px;
@@ -152,11 +155,6 @@ padding-top: 30px;
 .barra a:hover, .barra a:active{
 	text-decoration: underline;
 	color: #f4b108;
-}
-.bloquePrincipal{
-	width: 850px;
-	height: 329px;
-	background: White;
 }
 .menu{
 	width: 946px;
@@ -176,20 +174,6 @@ padding-top: 30px;
 .object{
 	margin: 0px;
 }
-.bloqueinfo{
-	clear: both;
-	width: 875px;
-	margin-top: 20px;
-	background: White url(../img/fondobloques.jpg);
-	color: Black;
-}
-.bloqueinfo1, .mainContent{
-	clear: both;
-	width: 946px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	color: Black;
-}
 .mainContent h2{
 	color: #c35300;
 	font-size: 20px;
@@ -203,57 +187,6 @@ padding-top: 30px;
 }
 .mainContent h2 a:hover,.mainContent h2 a:active{
 	color: #ca6f00;
-}
-.bloqueinfo2{
-	margin: 15px 10px 5px 8px;
-	padding: 10px;
-	border-color: #b3b1b1;
-	border-style: solid;
-	border-width: 1px;
-	clear: both;
-	float: left;
-	width: 538px;
-	color: black;
-	background:   url(../img/bgcont.jpg) bottom;
-	background-repeat: repeat-x;
-}
-.bloqueinfo2 img{
-	margin: 4px;
-}
-.bloqueinfo2 p{
-	margin: 0 0 15px 0;
-}
-.bloque1{
-	width: 302px;
-	float: left;
-	margin-top: 0px;
-	padding-left:5px;
-}
-.bloque2{
-	width: 307px;
-	float: left;
-	margin-left:10px;
-	margin-right: 10px;
-	margin-top: 0px;
-}
-.bloque1 li, .bloque2 li{
-	margin: 15px 0 19px 0px;
-	border-bottom: solid 1px silver;
-}
-.bloque1 li a:link, .bloque1 li a:visited, .bloque2 li a:link, .bloque2 li a:visited{
-	color: #6c5d3e;
-	text-decoration: none;
-	font-weight: bold;
-}
-.bloque1 li a:hover,.bloque1 li a:active, .bloque2 li a:hover,.bloque2 li a:active{
-	text-decoration: underline;
-	color: #c2570b;
-}
-.bloque1 h2, .bloque2 h2{
-	margin: 10px 0 5px 0;
-}
-.mainContent h2{
-	margin-bottom: 12px;
 }
 .colbloque1{
 	width: 176px;
@@ -401,6 +334,7 @@ ul{
 	font-size: 11px;
 	background-color:#f2f2f2;
 	padding: 0 20px;
+	text-align:center;
 }
 .logosfooter img{
 	margin: 0px;
@@ -606,3 +540,157 @@ a.registrarme:hover{
 dt, dd {
 	line-height:200%;
 }
+
+nav.menu{
+	margin:auto;
+	width:100%;
+	text-align:center;
+}
+
+/*
+ * Soporte para tables
+ * 
+ */
+@media (max-width: 768px) {
+	div.header,
+	div.barra,
+	div.CajaPrincipal,
+	div.separadorfooter,
+	footer,
+	div.separadorfooter2,
+	#content, .contacto{
+		width:550px;
+	}
+	
+	.formulario, div.acciones, div.users, div.index /* acciones */
+	{
+		width:540px;
+		padding:5px;
+	}
+	div.logosfooter{
+		height:250px;
+		width:510px;
+	}
+	/* El slogan desaparece */
+	#slogan {
+		display:none;
+	}
+	/* El logo se reduce ya que el eslogan desaparecio */
+	#logo{width:200px;}
+	/* El menu aumenta su altura al doble ya que ahora se muestra en 2 filas */
+	nav.menu{ height:92px }
+	.formulario, div.acciones, div.users, div.index
+	{
+		clear:both;
+		float: left;
+		border-left: 1px solid #666666;
+	}
+	.span4{ width: 510px !important;padding:0 10px; clear:clear: both;display: block}
+}
+
+/*
+ * Soporte para moviles/celulares
+ * 
+ */
+@media (max-width: 400px) {
+	div.header,
+	div.barra,
+	div.CajaPrincipal,
+	div.separadorfooter,
+	footer,
+	div.separadorfooter2,
+	#content, .contacto{
+		width:350px;
+	}
+	.formulario, div.acciones, div.users, div.index /* acciones */
+	{
+		width:340px;
+		padding:0;
+		margin:0;
+	}
+	/* El slogan desaparece */
+	span.emailLabel:after{content:" ☎ "}
+	span.telLabel:after{content:" ✉ "}
+	.menu ul li a:hover,
+	.menu ul li a.activa,
+	.menu ul li a {
+		font-size:13px;
+		height: 26px;
+		margin:0px 1px;
+		padding:10px 5px;
+		border:none;
+	}
+	div.logosfooter{
+		height:420px;
+		width:300px;
+	}
+	.CajaPrincipal form{ margin:0; padding:0}
+	/* El slogan desaparece */
+	#slogan {
+		display:none;
+	}
+	/* El logo se reduce ya que el eslogan desaparecio */
+	#logo h3, #logo a#LinkPrincipal, #logo{width:150px;margin:0;padding:0;font-size:10px}
+	header .buscadoriconos{width:180px !important; margin:0;padding:0}
+	/* El menu aumenta su altura al doble ya que ahora se muestra en 2 filas */
+	nav.menu{ height:92px }
+	.formulario, div.acciones, div.users, div.index
+	{
+		clear:both;
+		float: left;
+		border-left: 1px solid #666666;
+	}
+	.span4{ width: 300px !important;padding:0 10px; clear:clear: both;display: block}
+}
+
+
+/*
+ * Soporte para pantallas grandes
+ * Ancho mayores a 1400px
+ */
+@media only screen  and (min-width: 1420px) {
+	div.header,
+	div.barra,
+	div.separadorfooter,
+	footer,
+	div.separadorfooter2,
+	#content, .contacto,
+	.container,
+	.navbar-fixed-top .container,
+	.navbar-fixed-bottom .container,
+	div.CajaPrincipal{
+		width:1400px;
+	}
+	
+	.formulario, div.acciones, div.users, div.index /* acciones */
+	{
+		width:90%;
+		padding:3%;
+		margin:auto;
+	}
+	div.logosfooter{
+		width:100%;
+	}
+	.menu ul li a:hover,
+	.menu ul li a.activa,
+	.menu ul li a {
+		font-size:20px;
+		height: 26px;
+		margin:0 25px;
+		padding:10px 5px;
+		border:none;
+	}
+	/* El slogan desaparece */
+	#logo {
+		width:1000px;
+	}
+	#slogan{width:800px}
+	#logo #slogan h2{ font-size:50px}
+	#logo #slogan h3{ font-size: 30px}
+	.buscadoriconos{width:400px}
+	/* El logo se reduce ya que el eslogan desaparecio */
+	 /* #logo{width:200px;} */
+	/* El menu aumenta su altura al doble ya que ahora se muestra en 2 filas */
+	.span4{ width: 510px !important;padding:0 10px; clear:clear: both;display: block}
+}
+

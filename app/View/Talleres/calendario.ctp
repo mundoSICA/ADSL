@@ -29,6 +29,12 @@ foreach ($talleres as $t) {
 .calendario-wrapper{
 	padding: 10px;
 }
+@media (max-width: 400px) {
+	.calendario-wrapper{
+		padding:3px;
+		width:340px;
+	}
+}
 </style>
 <ul id='ListaTalleres'>
 <?php

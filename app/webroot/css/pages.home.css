@@ -6,33 +6,74 @@
 #listaUsuarios li img{
 	margin-right: 5px
 }
-#listaUsuarios li{
+
+ul#listaUsuarios li{
 	border:0;
 	margin:0;
 	width:150px;
 	height:33px;
-	display:block !important;
+	display: block;
+	float: left;
+	width:50%;
 }
 
-#listaUsuarios ul li{
-	display: inline;
-	width: 
-}
-
-#listaUsuarios ul:nth-child(even) {background: #CCC}
-#listaUsuarios ul li:nth-child(2n) {
-	float: right;
-	justify: left;
-	margin-top: -33px
+ul#listaUsuarios li:nth-child(4n+1),
+ul#listaUsuarios li:nth-child(4n+2)
+{
+	background:#DDD;
 }
 
 #calendarioEventos .ui-datepicker-inline{
-	width: 300px;
+	width:97%;
+	padding:1%;
 }
 
 #listaUsuarios label.btn{
 	width:85px;
 }
+
 #CajaPrincipal{
 	background: #FFF;
+}
+
+/*
+ * Soporte para tables
+ * 
+ */
+@media (max-width: 768px) {
+	#listaUsuarios label.btn {
+		width:170px;
+	}
+}
+
+/*
+ * Soporte para moviles
+ * 
+ */
+@media (max-width: 400px) {
+	#listaUsuarios label.btn {
+		width:90px;
+		padding:2px;
+	}
+}
+
+/*
+ * Soporte para pantallas grandes
+ * Ancho mayores a 1400px
+ */
+@media only screen  and (min-width: 1420px) {
+	#listaUsuarios label.btn {
+		width:100px;
+		padding:3px;
+	}
+	section#home_bloque1{ width:350px !important;}
+	section#home_bloque2,
+	section#home_bloque3{
+		width:300px;
+		padding:10px;
+		margin:0;
+		float: left;
+		clear:none;
+		display: inline;
+	}
 }

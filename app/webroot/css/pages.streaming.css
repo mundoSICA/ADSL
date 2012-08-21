@@ -8,3 +8,27 @@
 .sidebar-nav{
 	padding:0;
 }
+
+/*
+ * soporte para tables
+ */
+@media (max-width: 768px) {
+
+	section.hero-unit,
+	div.span9{
+		clear:both;
+		background-color:red;
+		display:block;
+		float:none;
+		padding:0;
+		margin:0;
+		width:100% !important;
+	}
+	div.innerContent{
+		position:absolute;
+		width:550px;
+		z-index:2;
+	}
+}
+
+

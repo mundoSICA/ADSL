@@ -1,22 +1,28 @@
 <?php
 $this->set('title_for_layout', 'ADSL  - Contactanos');
 $this->Html->meta('description', 'Formulario de contacto, contactanos desde este medio', array('inline' => false));
-#Sección CSS
-$this->Html->css('pages.contacto','stylesheet', array('inline' => false ));
-#sección javaScript
+#sección Javascript
 $this->Html->script(array(
 											'activar.top.menu.jquery',
 											'contacto',
 											), array('inline' => false));
 ?>
 <div class="formulario contacto">
+<style type="text/css" media="all">
+#splash{
+	font-family: "Courier",monospace;
+	width: 26em;	
+	background-color: #96E0FF;
+	background-position: 80% 20%; background-repeat: no-repeat;/* Safari 4-5, Chrome 1-9 */ 
+	background: -webkit-gradient(radial, 80% 80%, 0, 80% 80%, 100, from(#1a82f7), to(#2F2727)); /* Safari 5.1+, Chrome 10+ */
 	
-<?php echo $this->Form->create('Page');?>
-	<fieldset>
+	background: -webkit-radial-gradient(80% 20%, closest-corner, #1a82f7, #2F2727); /* Firefox 3.6+ */
 	
-	<div id='splash'>
-	<h1>Contacto ADSL</h1>
-<pre><?php
+	background: -moz-radial-gradient(80% 80%, closest-corner, #1a82f7, #2F2727); /* IE 10 */
+	background: -ms-radial-gradient(80% 20%, closest-corner, #1a82f7, #2F2727); /* Opera cannot do radial gradients yet */ 
+}
+</style>
+<pre id='splash'><?php
 echo h(
 "              ,_     ,     .'<_            
      _      _> `'-,'(__.-' _/              
@@ -33,14 +39,15 @@ echo h(
 |/___\|//__\||//_\V/_\|//_______\\|//V//\|/"
 );
 ?></pre>
-</div>
-<div id='formData'>
+
+<?php echo $this->Form->create('Page');?>
+	<fieldset>
+	<h1>Formulario de contacto ADSL</h1>
 <?php
 	echo $this->Form->input('nombre');
 	echo $this->Form->input('email');
 	echo $this->Form->input('telefono');
 	echo $this->Form->input('asunto');
-	echo "</div>\n";
 	echo $this->Form->input('mensaje', array('type'=> 'textarea'));
 	echo $this->Recaptcha->show('clean');
 ?>

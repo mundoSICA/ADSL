@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 	<title><?php echo $title_for_layout; ?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php
 		##seccion de meta etiquetas
 		echo $this->Html->meta('icon');
@@ -26,7 +27,10 @@ var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-32823607-1']); _gaq.push(['
 <script type="text/javascript"></script><noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
 <div id="dialog"></div>
 <div class="CajaPrincipal">
-     <div class="barra">Teléfonos: 51 51241 | E-Mail: contacto@adsl.org.mx | <?php
+     <div class="barra">
+			 <span class='telLabel'></span><span itemprop="telephone">51 51241</span> |
+			 <span class='emailLabel'></span><a href="mailto:contacto@adsl.org.mx">contacto@adsl.org.mx</a>
+			 |<span class='loginLabel'></span><?php
      if( $this->Session->read('Auth.User') ){
 				echo $this->Html->link('Salir',array('controller'=>'users','action'=>'logout','admin'=>false), array('title'=>'Cerrar sesión'));
 			}else{

@@ -63,8 +63,8 @@ $this->Html->script(array(
 		</div>
 	</div>
 	
-<section class="mainContent">
-	   <section class="bloque1 talleresLista">
+<section class="row-fluid">
+	   <section class="talleresLista span4" id='home_bloque1'>
        <h2><?php echo $this->Html->link('Lista de talleres'
 									, array( 'controller'=>'talleres', 'action' => 'index' )); ?>
 					 <a href="#"></a></h2>
@@ -98,7 +98,7 @@ $this->Html->script(array(
 			 </section>
       </section>
       
-      <section class="bloque2 ultimosUsuarioLista">
+      <section class="ultimosUsuarioLista span4" id='home_bloque2'>
 		 <h2><?php echo 
 		 $this->Paginator->link('Ultimos usuarios registrados',
 		 array('controller'=>'users', 'action' => 'index', 'sort' => 'User.created', 'direction' => 'desc'));?>
@@ -108,9 +108,6 @@ $this->Html->script(array(
        $i=0;
         foreach ($users as $username=>$email): ?>
 				 <?php
-				 if ($i%2 == 0) {
-					echo '<ul>';
-				}
 			echo '<li itemscope itemtype="http://data-vocabulary.org/Person">';
        echo $this->Html->link(
 								$this->Html->avatar_icon($username) .
@@ -128,15 +125,11 @@ $this->Html->script(array(
 								)
 							);
 				echo '</li>';
-				if ($i%2 != 0) {
-					echo '</ul>';
-				}
-				$i++;
 				?>
 			<?php endforeach; ?>
 			 </ul>
       </section>
-      <section class="bloque1 mapaUbicacion">
+      <section class="mapaUbicacion span4" id='home_bloque3'>
       <?php echo $this->element('mapa'); ?>
 		</section>
 </section><!-- end section bloqueinfo -->
