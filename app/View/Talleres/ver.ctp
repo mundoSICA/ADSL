@@ -3,7 +3,11 @@
 $this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 $this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
 ### Seccion CSS
-$this->Html->css('slide','stylesheet', array('inline' => false ) );
+$this->Html->css(
+						array('slide','talleres.ver'),
+						'stylesheet',
+						array('inline' => false )
+					);
 ### Sección Scripts
 $this->Html->script(array(
 							'slides.min.jquery',
