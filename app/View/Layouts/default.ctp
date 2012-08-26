@@ -18,10 +18,13 @@
 		echo $this->fetch('css');
 		echo "\n";
 		//recuerda poner esto en un archivo aparte
-	?>
-<script type="text/javascript">
-var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-32823607-1']); _gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
-</script>
+		$modoServer = (bool)($_SERVER['SERVER_NAME']!='localhost');
+	if ($modoServer) :
+?>
+<script type="text/javascript"><!--//
+var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_trackPageview']);(function(){var ga= document.createElement('script'); ga.type='text/javascript'; ga.async = true; ga.src = ('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js'; var s=document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,s);})();
+//--></script>
+<?php endif; ?>
 </head>
 <body>
 <script type="text/javascript"></script><noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
@@ -41,9 +44,9 @@ var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-32823607-1']); _gaq.push(['
     <div class="header">
       <div id="logo">
 		  <a href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
-				<?php
-					echo $this->Html->image('logo_ave.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
-				?>
+			<?php
+			echo $this->Html->image('logo_ave.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
+			?>
 			<abbr title="Academia de Software Libre" class='adsl_logo'>ADSL</abbr>
 			<h3>Academia de Software Libre</h3>
 		</a>
@@ -87,15 +90,15 @@ var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-32823607-1']); _gaq.push(['
       <!--termina header -->
 	   <nav class="menu">
 	       <?php
-					echo $this->element('menu_superior');
+		echo $this->element('menu_superior');
 	       ?>
 	   </nav>
 </header>
 <div id="content">
        <?php
-				echo $this->Session->flash();
-				echo $this->fetch('content');
-			?>
+		echo $this->Session->flash();
+		echo $this->fetch('content');
+	?>
 </div>
 <?php
 echo $this->element('pie_logos_promovemos');
@@ -124,17 +127,15 @@ echo $this->Html->script(array(
 		'main.js',
 	))."\n";
 echo $this->fetch('script')."\n";
+if($modoServer) :
 ?>
 <script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://mundosica.com/piwik/" : "http://mundosica.com/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+var pkBaseURL=(("https:"==document.location.protocol)?"https://mundosica.com/piwik/":"http://mundosica.com/piwik/"); document.write(unescape("%3Cscript src='"+pkBaseURL+"piwik.js' type='text/javascript'%3E%3C/script%3E"));
 </script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
+try { var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}
 </script><noscript><p><img src="http://mundosica.com/piwik/piwik.php?idsite=6" style="border:0" alt="mundosica-piwik" /></p></noscript>
-<?php echo $this->element('sql_dump'); ?>
+<?php
+endif;
+echo $this->element('sql_dump'); ?>
 </body>
 </html>
