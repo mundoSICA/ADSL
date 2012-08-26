@@ -6,5 +6,6 @@
 /app/Config/database.php.web
 /app/Config/Schema/db/z-data.sql
 /app/Plugin/Twitteroauth/Config/
-
-
+#Imgs de los talleres y usuarios
+/app/webroot/img/talleres/
+/app/webroot/img/users/

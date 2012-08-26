@@ -31,7 +31,6 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
-	public $components = array('Recaptcha.Recaptcha');
 /**
  * Controller name
  *
@@ -44,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Html', 'Session', 'Recaptcha.Recaptcha');
+	public $helpers = array('Html', 'Session');
 /**
  * This controller does not use a model
  *
@@ -94,13 +93,16 @@ function beforeFilter() {
  */
 	function home() {
 		$this->Taller->recursive = -1;
-		$streaming = Configure::read('streaming');
+		/*
+		 * Estreaming comentado.
+		 * -------------------------------------------------------------
+		 * $streaming = Configure::read('streaming');
 		if( !empty($streaming) )
 			$this->Session->setFlash(
 			'En este momento estamos tramitiendo<br/><br/>'
 			. '<a href="'. Router::url('/en-vivo.html').'" class="btn btn-primary">'
 			. '<li class="icon-facetime-video"></li>Acceder al streaming</a>'
-			);
+			);*/
 			
 		$this->set('talleres', $this->paginate());
 		$this->set('users', 
