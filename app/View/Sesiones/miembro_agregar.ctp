@@ -1,6 +1,6 @@
 <?php
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Vista:  Sesiones Agregar
  */
 
@@ -9,19 +9,19 @@ $this->set('title_for_layout', 'Correo Facil - Sesiones Agregar');
 $this->Html->meta('description', 'Sesiones Agregar', array('inline' => false));
 
 #sección CSS
-#$this->Html->css(array(
-#						'sesiones.formulario',
-#						'sesiones.agregar',
-#						), 'stylesheet', array('inline' => false));
+$this->Html->css(array(
+						'markitup/set',
+						'markitup/skin',
+						), 'stylesheet', array('inline' => false));
 
 #sección Javascript
-#$this->Html->script(array(
-#											'sesiones.formulario',
-#											'sesiones.agregar',
-#											), array('inline' => false));
+$this->Html->script(array(
+											'markitup/jquery.markitup',
+											'markitup/set_markdown',
+											'miembro_sesiones_agregar',
+											), array('inline' => false));
 ?>
 <div class="row-fluid">
-
 <div class="actions span3 well sidebar-nav">
 	<h3>Acciones</h3>
 	<ul class="nav nav-list">
@@ -38,20 +38,19 @@ $this->Html->meta('description', 'Sesiones Agregar', array('inline' => false));
 <div class="sesiones form span9">
 <?php echo $this->Form->create('Sesion', array('class' => 'well')); ?>
 	<fieldset>
-		<legend>Agregar Sesion</legend>
+		<legend>Agregar Sesión</legend>
 	<?php
-		echo $this->Form->input('taller_id');
-		echo $this->Form->input('keywords');
 		echo $this->Form->input('nombre');
-		echo $this->Form->input('slug_dst');
-		echo $this->Form->input('orden');
+		echo $this->Form->input('keywords',array('label'=>'Parabras claves(separadas por coma)'));
 		echo $this->Form->input('descripcion');
-		echo $this->Form->input('content');
-		echo $this->Form->input('estrellas');
+		echo $this->Form->input('content', array('id' => 'markItUp'));
 		echo $this->Form->input('fecha_publicacion');
 	?>
 	</fieldset>
-<?php echo $this->Html->link('Cancelar', array('action' => 'index'), array('class'=>'btn btn-danger btn-large')); ?> | <?php echo $this->Form->end('Enviar'); ?>
+<?php 
+	echo $this->Html->link('Cancelar', array('action' => 'index'), array('class'=>'btn btn-danger btn-large'));
+	echo $this->Form->end('Agregar');
+?>
 </div>
 </div>
 

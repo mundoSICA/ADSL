@@ -175,8 +175,17 @@ echo $HTML_usuarios_registrados;
 		if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
 		?>
 		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar', $taller['Taller']['slug_dst'], 'admin'=>true)); ?> </li>
+		
+		<li><?php
+		echo $this->Html->link('Agregar sesión', 
+				array(
+					'controller' => 'sesiones',
+					'action' => 'agregar',
+					'miembro' => true,
+					$taller['Taller']['slug_dst']
+				)
+			); ?></li>
 		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar')); ?> </li>
 		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
 		<? endif; ?>
 		<?php
@@ -195,8 +204,8 @@ echo $HTML_usuarios_registrados;
 	?>
 </div>
 <div class="related">
-	<h3>Posts Relacionados</h3>
-	<?php if (!empty($taller['Post'])):?>
+	<h3>Sesiones</h3>
+	<?php if (!empty($taller['Sesion'])):?>
 	<table cellpadding = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -210,29 +219,24 @@ echo $HTML_usuarios_registrados;
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($taller['Post'] as $post): ?>
+		foreach ($taller['Sesion'] as $sesion): ?>
 		<tr>
-			<td><?php echo $post['id'];?></td>
-			<td><?php echo $post['nombre'];?></td>
-			<td><?php echo $post['slug_dst'];?></td>
-			<td><?php echo $post['created'];?></td>
-			<td><?php echo $post['modified'];?></td>
-			<td><?php echo $post['content'];?></td>
-			<td><?php echo $post['taller_id'];?></td>
+			<td><?php echo $sesion['id'];?></td>
+			<td><?php echo $sesion['nombre'];?></td>
+			<td><?php echo $sesion['slug_dst'];?></td>
+			<td><?php echo $sesion['created'];?></td>
+			<td><?php echo $sesion['modified'];?></td>
+			<td><?php echo $sesion['content'];?></td>
+			<td><?php echo $sesion['taller_id'];?></td>
 			<td class="acciones">
-				<?php echo $this->Html->link('Ver', array('controller' => 'posts', 'action' => 'ver', $post['id'])); ?>
-				<?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'editar', $post['id'])); ?>
-				<?php echo $this->Form->postLink('Borrar', array('controller' => 'posts', 'action' => 'borrar', $post['id']), null, __('Esta seguro que desea borrar: # %s?', $post['id'])); ?>
+				<?php echo $this->Html->link('Ver', array('controller' => 'sesiones', 'action' => 'ver', $sesion['slug_dst'])); ?>
+				<?php echo $this->Html->link('Editar', array('controller' => 'sesiones', 'action' => 'editar', $sesion['id'])); ?>
+				<?php echo $this->Form->postLink('Borrar', array('controller' => 'sesiones', 'action' => 'borrar', $sesion['id']), null, __('Esta seguro que desea borrar: # %s?', $sesion['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-	<div class="acciones">
-		<ul>
-			<li><?php echo $this->Html->link('Agregar Post', array('controller' => 'posts', 'action' => 'agregar'));?> </li>
-		</ul>
-	</div>
 </div>
 <div class="related">
 	<h3>Etiquetas Relacionados</h3>

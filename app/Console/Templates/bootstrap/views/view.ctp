@@ -1,6 +1,6 @@
 <?php
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Plantilla ver - para cakephp con twbootstrap
  */
 echo "<?php\n";
@@ -10,7 +10,7 @@ $pre2="\n\t\t";
 $pre3="\n\t\t\t";
 ?>
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Vista:  <?php echo $titulo."\n"; ?>
  */
 

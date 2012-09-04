@@ -28,6 +28,12 @@ a:hover, a:active{
 	text-decoration: underline;
 	color: #c27404;
 }
+a.btn:link, a.btn:visited{
+	color: #FFF;
+}
+a.btn-danger:link, a.btn-danger:visited{
+	float: right;
+}
 h2{
 	color: #594A40;
 	font-size: 20px;
@@ -694,3 +700,6 @@ nav.menu{
 	.span4{ width: 510px !important;padding:0 10px; clear:clear: both;display: block}
 }
 
+.table {
+  width: 98%;
+}

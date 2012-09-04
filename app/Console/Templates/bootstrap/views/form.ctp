@@ -1,6 +1,6 @@
 <?php
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Plantilla form - para cakephp con twbootstrap
  */
 echo "<?php\n";
@@ -10,7 +10,7 @@ $baseCssJs  .=  '.formulario';
 $titulo = $pluralHumanName . ' ' .(strpos($action, 'add')===false?'Editar':'Agregar');
 ?>
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Vista:  <?php echo $titulo."\n"; ?>
  */
 

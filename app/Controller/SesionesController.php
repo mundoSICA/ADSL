@@ -11,7 +11,9 @@
 App::uses('AppController', 'Controller');
 
 class SesionesController extends AppController {
-
+var $helpers = array(
+		'Markdown',
+	);
 /**
  * beforeFilter - Se ejecuta antes de cada acción
  */
@@ -40,7 +42,7 @@ class SesionesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function ver($taller_slug = null, $slug = null) {
+	public function ver($slug = null) {
 		$id = $this->Sesion->primaryKeyBySlug($slug, true);
 		if (!$this->Sesion->exists()) {
 			throw new NotFoundException('Sesion inválido');
@@ -67,12 +69,12 @@ class SesionesController extends AppController {
 		#
 		if ($this->request->is('post')) {
 			$this->Sesion->create();
-			$this->request->data['Session']['taller_id'] = $taller_id;
-			$this->request->data['Session']['nombre'] = $taller['Taller']['nombre'] . ' - ' . 
-				$this->request->data['Session']['nombre'];
+			$this->request->data['Sesion']['taller_id'] = $taller_id;
+			$this->request->data['Sesion']['nombre'] = $taller_slug . ' ' .
+			$this->request->data['Sesion']['nombre'];
 			if ($this->Sesion->save($this->request->data)) {
 				$this->Session->setFlash('La sesión fue guardada');
-				$this->redirect(array('controller' => 'talleres', 'action' => 'ver', $taller_slug));
+				$this->redirect(array('controller' => 'talleres', 'action' => 'ver', 'miembro' => false, $taller_slug));
 			} else {
 				$this->Session->setFlash(__('El sesion no pudo ser guardado. Por favor, intente de nuevo.'));
 			}

@@ -64,16 +64,16 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- posts --
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-	`id` INT(5) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`nombre` VARCHAR(75) NOT NULL UNIQUE,
-	`slug_dst` VARCHAR(80) NOT NULL UNIQUE,
+-- estrellas --
+DROP TABLE IF EXISTS `estrellas`;
+CREATE TABLE IF NOT EXISTS `estrellas` (
+	`id` INT( 4 ) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	`exteno_id` INT( 5 ) NOT NULL,
+	`externo_tabla` VARCHAR( 50 ) DEFAULT NULL,
+	`user_id` INT( 5 ) NOT NULL UNIQUE,
+	`estrellas` INT( 1 ) DEFAULT NULL,
 	`created` DATETIME NOT NULL,
-	`modified` DATETIME NOT NULL,
-	`content` TEXT DEFAULT NULL,
-	`taller_id` INT( 4 ) DEFAULT NULL
+	`content` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- talleres_users --
@@ -104,6 +104,23 @@ CREATE TABLE IF NOT EXISTS `etiquetas_noticias` (
 	`id` INT(2) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
 	`noticia_id` INT( 5 ) NOT NULL UNIQUE,
 	`etiqueta_id` INT ( 4) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- sesiones --
+DROP TABLE IF EXISTS `sesiones`;
+CREATE TABLE IF NOT EXISTS `sesiones` (
+	`id` INT(5) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	`taller_id` INT( 5 ) NOT NULL,
+	`keywords` VARCHAR(150) DEFAULT NULL,
+	`nombre` VARCHAR(150) NOT NULL UNIQUE,
+	`slug_dst` VARCHAR(150) NOT NULL UNIQUE,
+	`orden` INT( 2 ) DEFAULT NULL,
+	`descripcion` TEXT DEFAULT NULL,
+	`content` TEXT DEFAULT NULL,
+	`estrellas` TEXT DEFAULT NULL,
+	`created` DATETIME NOT NULL,
+	`modified` DATETIME NOT NULL,
+	`fecha_publicacion` DATETIME NOT NULL UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas --

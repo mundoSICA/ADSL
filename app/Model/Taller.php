@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * Taller Model
  *
  * @property User $User
- * @property Post $Post
+ * @property Sesion $Sesion
  * @property Etiqueta $Etiqueta
  * @property User $User
  */
@@ -148,8 +148,8 @@ class Taller extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Post' => array(
-			'className' => 'Post',
+		'Sesion' => array(
+			'className' => 'Sesion',
 			'foreignKey' => 'taller_id',
 			'dependent' => false,
 			'conditions' => '',

@@ -1,6 +1,6 @@
 <?php
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Plantilla index - para cakephp con twbootstrap
  */
 echo "<?php\n";
@@ -8,7 +8,7 @@ $baseCssJs = strtolower($pluralVar) . '.index';
 $titulo = $pluralHumanName . ' Index';
 ?>
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Vista:  <?php echo $titulo."\n"; ?>
  */
 

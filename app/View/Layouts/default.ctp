@@ -24,7 +24,8 @@
 		echo "\t".$this->Html->meta('icon');
 		echo "\t".$this->fetch('meta');
 		##Sección de CSS
-		echo "\n\t".$this->Html->css('bootstrap.css');
+		echo "\n\t".$this->Html->css('bootstrap');
+		echo "\n\t".$this->Html->css('bootstrap-responsive');
 		echo "\n\t".$this->Html->css('cake.generic');
 		echo "\n\t".$this->Html->css('estilos');
 		echo "\n\t".$this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');

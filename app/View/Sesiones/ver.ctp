@@ -6,7 +6,8 @@
 
 #sección metaDatos
 $this->set('title_for_layout', 'Correo Facil - Sesiones Ver');
-$this->Html->meta('description', 'Sesiones Ver', array('inline' => false));
+$this->Html->meta('description', $sesion['Sesion']['descripcion'], array('inline' => false));
+$this->Html->meta('keywords', $sesion['Sesion']['keywords'], array('inline' => false));
 
 #sección CSS
 #$this->Html->css(array(
@@ -18,30 +19,58 @@ $this->Html->meta('description', 'Sesiones Ver', array('inline' => false));
 #											'sesiones.ver',
 #											), array('inline' => false));
 ?>
+<style type="text/css" media="all">
+div.page-header h2{
+	float:right;
+	padding: 0 3% 0 3%;
+}
+div.page-header h1 date{
+	font-size: 0.4em;
+	padding-left: 2em;
+}
+</style>
 <div class="row-fluid">
 	<div class="actions span3 well sidebar-nav">
 	<h3>Acciones</h3>
 	<ul class="nav nav-list">
 		<li><?php
 		echo $this->Html->link(
-			'<i class="icon-home"></i> Inicio Sesiones',
-			array('action' => 'index'),
+			'<i class="icon-home"></i> Inicio taller',
+			array(
+				'controller'=>'talleres',
+				'action' => 'ver',
+				$sesion['Taller']['slug_dst']
+				),
+			array('escape' => false)
+		); ?>
+		</li>
+		<li><?php
+		echo $this->Html->link(
+			'<i class="icon-star"></i> Calificar',
+			array('action' => 'calificar',$sesion['Sesion']['slug_dst']),
 			array('escape' => false)
 		); ?>
 		</li>
 		<li><?php
 		echo $this->Html->link(
 			'<i class="icon-pencil"></i> Editar Sesion',
-			array('action' => 'editar', $sesion['Sesion']['id']),
+			array(
+			'action' => 'editar',
+			'miembro' => true,
+			$sesion['Sesion']['slug_dst']
+			),
 			array('escape' => false)
 		); ?>
 		</li>
 		<li><?php
 		echo $this->Form->postLink(
 			'<i class="icon-trash"></i> Borrar Sesion',
-			array('action' => 'borrar', $sesion['Sesion']['id']),
+			array(
+			'action' => 'borrar',
+			$sesion['Sesion']['slug_dst']
+			),
 			array('escape' => false),
-			'Esta seguro de querer borrar el registro ' . $sesion['Sesion']['id']
+			'Esta seguro de querer borrar el registro ' . $sesion['Sesion']['slug_dst']
 		); ?>
 		</li>
 		<li><?php
@@ -73,94 +102,22 @@ $this->Html->meta('description', 'Sesiones Ver', array('inline' => false));
 </div>
 
 <div class="sesiones view span9">
-<div class="page-header"><h1>Sesion</h1></div>
-<table class="table table-bordered table-striped">
-	<tbody>
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['id']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Taller'); ?></th>
-		<td>
-			<?php echo $this->Html->link($sesion['Taller']['nombre'], array('controller' => 'talleres', 'action' => 'view', $sesion['Taller']['id'])); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Keywords'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['keywords']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Nombre'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['nombre']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Slug Dst'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['slug_dst']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Orden'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['orden']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Descripcion'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['descripcion']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Content'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['content']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Estrellas'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['estrellas']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Created'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['created']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Modified'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['modified']); ?>
-			&nbsp;
-		</td>
-	</tr>
-	<tr>
-		<th><?php echo __('Fecha Publicacion'); ?></th>
-		<td>
-			<?php echo h($sesion['Sesion']['fecha_publicacion']); ?>
-			&nbsp;
-		</td>
-	</tr>	</tbody>
-</table>
+<div class="page-header">
+	<h1><?php
+	echo $this->Html->link($sesion['Taller']['nombre'], array('controller' => 'talleres', 'action' => 'ver', $sesion['Taller']['slug_dst']));
+	?><date><?php echo h($sesion['Sesion']['fecha_publicacion']); ?></date></h1>
+	<h2><?php echo str_replace(
+				$sesion['Taller']['slug_dst'],
+				'',
+				$sesion['Sesion']['nombre']); ?></h2>
+</div>
+<p><?php
+	echo $this->Markdown->parse($sesion['Sesion']['content']);
+?><p>
+<p>
+<span><strong>Actualizado: </strong> <?php echo h($sesion['Sesion']['modified']); ?></span>
+</p>
+<?php echo h($sesion['Sesion']['estrellas']); ?>
 
 <div class="btn-group">
 	<a href="#" class="btn btn-primary"><i class="icon-cog icon-white"></i> Acciones</a>
@@ -169,14 +126,14 @@ $this->Html->meta('description', 'Sesiones Ver', array('inline' => false));
 		<li><?php
 		echo $this->Html->link(
 			'<i class="icon-pencil"></i> Editar',
-			array('action' => 'editar', $sesion['Sesion']['id']),
+			array('action' => 'editar', $sesion['Sesion']['slug_dst']),
 			array('escape' => false)
 		); ?>
 		</li>
 		<li><?php
 		echo $this->Form->postLink(
 			'<i class="icon-trash"></i> Borrar',
-			array('action' => 'borrar', $sesion['Sesion']['id']),
+			array('action' => 'borrar', $sesion['Sesion']['slug_dst']),
 			array('escape' => false)
 		); ?>
 		</li>
