@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es-MX" itemscope itemtype="http://schema.org/WebPage">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv='Content-Type' content='text/html;' charset='utf-8'>
 	<title><?php echo $title_for_layout; ?></title>
+	<meta name="cache-control" content="public">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<?php
+	<meta name="copyright" content="Academia de Software Libre">
+	<meta name="design-by" content="http://www.adsl.org.mx/users/ver/Manuel">
+	<meta name="author" content="http://www.adsl.org.mx/contribuciones">
+	<meta name="distribution" content="global">
+	<meta name="document-classification" content="general">
+	<meta name="rating" content="general">
+	<meta name="language" content="es-MX">
+	<meta name="geo.position" content="<?php echo implode(';', $adsl_data['geo']); ?>">
+	<meta name="geo.placename" content="Academia de software Libre">
+	<meta name="geo.region" content="MX-OAX">
+	<meta name="country" content="MX">
+	<meta name="city" content="Oaxaca">
+	<meta name="zipcode" content="68000">
+<?php
 		##seccion de meta etiquetas
-		echo $this->Html->meta('icon');
-		echo $this->fetch('meta');
-		echo "\n";
+		echo "\t".$this->Html->meta('icon');
+		echo "\t".$this->fetch('meta');
 		##Sección de CSS
-		echo $this->Html->css('bootstrap.css');
-		echo $this->Html->css('cake.generic');
-		echo $this->Html->css('estilos');
-		echo $this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
-		echo $this->Html->css('google-code-prettify');
-		echo $this->fetch('css');
-		echo "\n";
+		echo "\n\t".$this->Html->css('bootstrap.css');
+		echo "\n\t".$this->Html->css('cake.generic');
+		echo "\n\t".$this->Html->css('estilos');
+		echo "\n\t".$this->Html->css('jquery-ui-theme/jquery-ui-1.8.21.custom');
+		echo "\n\t".$this->Html->css('google-code-prettify');
+		echo "\n\t".$this->fetch('css');
 		//recuerda poner esto en un archivo aparte
 		$modoServer = (bool)($_SERVER['SERVER_NAME']!='localhost');
 	if ($modoServer) :
@@ -26,7 +39,7 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 //--></script>
 <?php endif; ?>
 </head>
-<body>
+<body itemscope itemtype="http://schema.org/CreativeWork">
 <script type="text/javascript"></script><noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
 <div id="dialog"></div>
 <div class="CajaPrincipal">
@@ -43,12 +56,18 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 <header>
     <div class="header">
       <div id="logo">
-		  <a href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
+		  <a itemprop="url" href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
 			<?php
-			echo $this->Html->image('logo_ave.jpg', array('alt'=>'ADSL: Academia de Software Libre'));
+			echo $this->Html->image(
+				'logo_ave.jpg',
+				array(
+					'itemprop'=>'image',
+					'alt'=>'ADSL: Academia de Software Libre',
+				)
+			);
 			?>
 			<abbr title="Academia de Software Libre" class='adsl_logo'>ADSL</abbr>
-			<h3>Academia de Software Libre</h3>
+			<h3 itemprop="name">Academia de Software Libre</h3>
 		</a>
 		<div id="slogan">
 			<h2>Academia de Software Libre</h2>
