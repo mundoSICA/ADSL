@@ -12,6 +12,7 @@ var $components = array('Email');
 public $helpers = array('QrCode');
 
 function beforeFilter() {
+			parent::beforeFilter();
 			$this->Auth->allow(array('index','calendario','ver'));
 }
 //var $uses = array('TalleresUser');

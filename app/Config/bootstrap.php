@@ -187,5 +187,12 @@ Configure::write('Colaboradores',
 );
 
 Configure::write('streaming',
+	//,array()
 	array('nombre' => 'Sesión 01 - La cultura libre en el diseño - inkscape karbon14 Alchemy Xaraxtreme')
+);
+
+Configure::write('adsl',
+	array('geo' =>
+				array('latitude'=> 17.05998, 'longitude'=> -96.71982)
+	)
 );

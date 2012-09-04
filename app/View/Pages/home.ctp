@@ -1,7 +1,11 @@
 <?php
 #sección metaDatos
 $this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
-$this->Html->meta('description', 'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), array('inline' => false));
+$this->Html->meta(
+	'description',
+	'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), 
+	array('inline' => false,'itemprop'=>'description')
+);
 #sección CSS
 $this->Html->css(array(
 											'slide',
@@ -62,7 +66,7 @@ $this->Html->script(array(
 			</div>
 		</div>
 	</div>
-	
+<h1>Academia de Software Libre - ADSL</h1>
 <section class="row-fluid">
 	   <section class="talleresLista span4" id='home_bloque1'>
        <h2><?php echo $this->Html->link('Lista de talleres'

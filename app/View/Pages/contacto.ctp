@@ -42,7 +42,7 @@ echo h(
 	echo $this->Form->input('asunto');
 	echo "</div>\n";
 	echo $this->Form->input('mensaje', array('type'=> 'textarea'));
-	echo $this->Recaptcha->show('clean');
+	/*echo $this->Recaptcha->show('clean');*/
 ?>
 	</fieldset>
 <?php echo $this->Form->end('contactanos');?>

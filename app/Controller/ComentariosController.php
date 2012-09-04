@@ -7,7 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class ComentariosController extends AppController {
 function beforeFilter() {
-			$this->Auth->allow(array('agregar','index'));
+	parent::beforeFilter();
+	$this->Auth->allow(array('agregar','index'));
 }
 
 /**

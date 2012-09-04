@@ -15,6 +15,7 @@ public $components = array('Email', 'EmailTokenRequest', 'Gravatar');
 
 
 function beforeFilter() {
+	parent::beforeFilter();
 			$this->Auth->allow(
 							array(	'reset_password',
 											'recuperacion_password',

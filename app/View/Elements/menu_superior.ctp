@@ -5,7 +5,7 @@
  * Link-info:   http://book.cakephp.org/2.0/en/views.html#using-view-blocks
  */
 ?>
-<ul>
+<ul itemprop="breadcrumb">
 	<li><?php
 echo $this->Html->link('Inicio', '/', array('id'=>'BotonInicio'));
 ?></li>
@@ -13,44 +13,44 @@ echo $this->Html->link('Inicio', '/', array('id'=>'BotonInicio'));
 	if( $this->Session->read('Auth.User.role') ) {
 		echo $this->Html->link('Mi Perfil',
 				array('controller'=>'users', 'action' => 'mi_perfil', 'admin'=>false),
-				array('id'=>'BotonPerfil')
+				array('id'=>'BotonPerfil', 'itemprop' => 'url')
 		);
 	}else{
 		echo $this->Html->link('Registrate',
 				array('controller'=>'users', 'action' => 'registro', 'admin'=>false),
-				array('id'=>'BotonRegistrate')
+				array('id'=>'BotonRegistrate', 'itemprop' => 'url')
 		);
 	}
 	?></li>
 	<li><?php
 	echo $this->Html->link('Talleres',
 		array('controller'=>'talleres', 'action'=>'index', 'admin'=>false),
-		array('id'=>'BotonTalleres')
+		array('id'=>'BotonTalleres', 'itemprop' => 'url')
 );
 ?></li>
 	<li><?php
 	echo $this->Html->link('Calendario',
 		array('controller'=>'talleres','action'=>'calendario','admin'=>false),
-		array('id'=>'BotonCalendario')
+		array('id'=>'BotonCalendario', 'itemprop' => 'url')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Usuarios',
 		array('controller'=>'users','action'=>'index','admin'=>false),
-		array('id'=>'BotonUsuarios')
+		array('id'=>'BotonUsuarios', 'itemprop' => 'url')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Contribuciones',
 		array('controller'=>'contribuciones','action'=>'index','admin'=>false),
-		array('id'=>'BotonContribuciones')
+		array('id'=>'BotonContribuciones', 'itemprop' => 'url')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Video en vivo',
 		array('controller' => 'pages', 'action' => 'display', 'streaming','admin'=>false),
-		array('id'=>'BotonStreaming')
+		array('id'=>'BotonStreaming', 'itemprop' => 'url')
 	);?></li>
 	<li><?php
 	echo $this->Html->link('Contactanos',
 		array('controller'=>'pages','action'=>'contacto','admin'=>false),
-		array('id'=>'BotonContactanos')
+		array('id'=>'BotonContactanos', 'itemprop' => 'url')
 	);?></li>
 </ul>

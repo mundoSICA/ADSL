@@ -24,10 +24,18 @@ $this->Html->script(array(
 			Tel: <span class="tel" itemprop="tel">(951) 205 43 51</span> / E-Mail: <a href='mailto:contacto@adsl.org.mx'>contacto@adsl.org.mx</a><br />
 		<span class="geo" itemprop="geo" itemscope itemtype="http://data-vocabulary.org/Geo/">
 			<span class="latitude">
-           <span class="value-title" itemprop="latitude" content="17.060169" title="17.060169"></span>
+           <span class="value-title" itemprop="latitude" content="<?php
+						echo $adsl_data['geo']['latitude'];
+						?>" title="<?php
+						echo $adsl_data['geo']['latitude'];
+						?>"></span>
 			</span>
 			<span class="longitude">
-           <span class="value-title" itemprop="longitude" content="-96.719406" title="-96.719406"></span>
+           <span class="value-title" itemprop="longitude" content="<?php
+						echo $adsl_data['geo']['longitude'];
+						?>" title="<?php
+						echo $adsl_data['geo']['longitude'];
+						?>"></span>
 			</span>
 		</span>
 </section>

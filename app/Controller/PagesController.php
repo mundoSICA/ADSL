@@ -52,7 +52,8 @@ class PagesController extends AppController {
 	public $uses = array('Taller','User', 'Contribucion');
 
 function beforeFilter() {
-			$this->Auth->allow('*');
+	parent::beforeFilter();
+	$this->Auth->allow('*');
 }
 
 /**
