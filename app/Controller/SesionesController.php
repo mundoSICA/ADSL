@@ -3,8 +3,8 @@
  * Controlador Sesiones
  *
  * @author     @fitorec - <chanerec@gmail.com>
- * @copyright  2012-2012 micorreofacil.com
- * @creado     September 4, 2012, 7:49 am
+ * @copyright  2012-2012 adsl.org.mx
+ * @created    September 4, 2012, 7:49 am
  * @property Sesion $Sesion
  */
 

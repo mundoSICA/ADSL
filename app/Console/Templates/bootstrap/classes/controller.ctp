@@ -3,7 +3,7 @@
  * Plantilla para el Controlador generado por el bake de CakePhp
  *
  * @author     fitorec - <chanerec@gmail.com>
- * @copyright  2012-2012 micorreofacil.com
+ * @copyright  2012-2012 adsl.org.mx
  * @link       http://www.mundosica.com
  */
 echo "<?php\n";
@@ -12,8 +12,8 @@ echo "<?php\n";
  * Controlador <?php echo $controllerName."\n"; ?>
  *
  * @author     @fitorec - <chanerec@gmail.com>
- * @copyright  2012-2012 micorreofacil.com
- * @creado     <?php echo date('F j, Y, g:i a')."\n"; ?>
+ * @copyright  2012-2012 adsl.org.mx
+ * @created    <?php echo date('F j, Y, g:i a')."\n"; ?>
 <?php
 if (!$isScaffold) {
 	$defaultModel = Inflector::singularize($controllerName);

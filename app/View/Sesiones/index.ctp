@@ -1,6 +1,6 @@
 <?php
 /**
- * micorreofacil.com
+ * adsl.org.mx
  * Vista:  Sesiones Index
  */
 

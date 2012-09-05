@@ -66,7 +66,8 @@ class Sesion extends AppModel {
 			'foreignKey' => 'taller_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => 'num_sesiones'
 		)
 	);
 }

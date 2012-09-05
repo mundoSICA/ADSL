@@ -1,58 +1,117 @@
 <?php
-### Metadatos
+/**
+ * adsl.org.mx
+ * Vista:  Talleres Ver
+ */
+
+#sección metaDatos
 $this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 $this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
 ### Seccion CSS
 $this->Html->css(
-						array('slide','talleres.ver'),
+						array('talleres.ver'),
 						'stylesheet',
 						array('inline' => false )
 					);
-### Sección Scripts
-$this->Html->script(array(
-							'slides.min.jquery',
-							'talleres.slides',
-				), array('inline' => false));
+#sección Javascript
+#$this->Html->script(array(
+#							'slides.min.jquery',
+#							'talleres.slides',
+#				), array('inline' => false));
 ?>
-<div itemscope itemtype="http://data-vocabulary.org/Event">
-<div class="header2">
-<div id="slide_principal_talleres">
-			<img src="../../img/liston_talleres_slide.png" width="150" height="150" alt="Liston Talleres" id="liston_talleres_slide" />
-			<div id="slide_talleres">
-				<div class="slides_container">
-					<div class="slide">
-						<?php
-						echo $this->Html->link(
-								$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
+<div class="row-fluid">
+	<div class="actions span3 well sidebar-nav">
+	<h3>Acciones</h3>
+	<ul class="nav nav-list">
+	<li class='nav-header'><i class="icon-folder-open"></i> Talleres</li>
+		<li><?php
+		echo $this->Html->link(
+			'<i class="icon-home"></i> Inicio Talleres',
+			array('action' => 'index'),
+			array('escape' => false)
+		); ?>
+		</li>
+<?php
+if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
+?>
+		<li><?php
+		echo $this->Html->link(
+			'<i class="icon-pencil"></i> Editar Taller',
+			array('action' => 'editar', $taller['Taller']['id']),
+			array('escape' => false)
+		); ?>
+		</li>
+		<li><?php
+		echo $this->Html->link(
+			'<i class="icon-plus"></i> Agregar Taller',
+			array('action' => 'Agregar'),
+			array('escape' => false)
+		); ?>
+		</li>
+<?php endif; ?>
+		<li class='divider'></li>
+		<li class='nav-header'><i class='icon-th-list'></i> Sesiones</li>
+<?php 
+foreach ($taller['Sesion'] as $sesion){
+	echo '<li>'.
+			$this->Html->link(
+			'<i class="icon-ok"></i>'.
+				str_replace($taller['Taller']['slug_dst'],'',$sesion['nombre']),
+				array('controller' => 'sesiones', 'action' => 'ver', $sesion['slug_dst']),
+				array('escape' => false)
+			).'</li>';
+			;
+}
+?>
+<?php
+if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
+?>
+		<li><?php
+			echo $this->Html->link(
+			'<i class="icon-plus"></i> Agregar Sesion',
+			array('controller' => 'sesiones', 'action' => 'agregar'),
+			array('escape' => false)
+		);
+		?> </li>
+<?php
+endif;
+?>
+		<li class='divider'></li>
+		<li class='nav-header'><i class='icon-tags'></i> Etiquetas</li>
+		<li><?php
+			echo $this->Html->link(
+			'<i class="icon-list"></i> Listar Etiquetas',
+			array('controller' => 'etiquetas', 'action' => 'index'),
+			array('escape' => false)
+		);
+		?> </li>
+
+<?php
+if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
+?>
+		<li><?php
+			echo $this->Html->link(
+			'<i class="icon-plus"></i> Agregar Etiqueta',
+			array('controller' => 'etiquetas', 'action' => 'agregar'),
+			array('escape' => false)
+		);
+		?> </li>
+<?php endif; ?>
+	</ul>
+</div>
+
+<div class="talleres view span9" itemscope itemtype="http://data-vocabulary.org/Event">
+<div class="page-header">
+	<h1 itemprop="summary"><?php echo h($taller['Taller']['nombre']); ?></h1>
+</div>
+<?php
+echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 								array(
 									'itemprop'=>'photo',
-									'alt' => $taller['Taller']['nombre']
-								)),
-								array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $taller['Taller']['slug_dst']),
-								array('escape' => false)
-							);
-						?>
-						<h2 class="slide_taller_titulo"><?php echo $taller['Taller']['nombre']; ?>&nbsp;</h2>
-						<div class="slide_info_taller">
-							<span class="slide_horario"><strong>Horario: </strong>
-								<?php echo $taller['Taller']['horario']; ?>&nbsp;
-							</span>
-							<span class="slide_horas"><strong>Número de horas: </strong><?php echo $taller['Taller']['numero_total_horas']; ?>&nbsp;</span>
-							<span class="inicio"><strong>inicia: </strong><?php echo $taller['Taller']['fecha_inicio']; ?>&nbsp;</span>
-							<span class="fin"><strong>concluye: </strong><?php echo $taller['Taller']['fecha_final']; ?>&nbsp;</span>
-						</div>
-					</div>
-				</div>
-				<a href="#" class="prev" title='Previo'></a> <a href="#" class="next" title='Siguiente'></a>
-			</div>
-		</div>
-</div>
-<div class="talleres ver">
-<h1 itemprop="summary"><?php
-echo $this->Html->link( $taller['Taller']['nombre'],
-		array('controller'=>'talleres','action'=>'ver',$taller['Taller']['slug_dst']),
-		array('itemprop' => 'url'));
-?></h1>
+									'alt' => $taller['Taller']['nombre'],
+									'class' => 'img-polaroid img-rounded'
+								));
+?>
 	<dl>
 		<dt itemprop="author"itemscope itemtype="http://data-vocabulary.org/Person">
 			<span itemprop="role">Tallerista</span>
@@ -110,8 +169,72 @@ if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 
 }
 
 $user_auth = $this->Session->read('Auth.User.username');
-$HTML_usuarios_registrados = '';
+?>
 
+<div class="related">
+	<h3>Etiquetas</h3>
+	<?php if (!empty($taller['Etiqueta'])): ?>
+	<table class="table table-bordered table-striped">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Nombre'); ?></th>
+		<th><?php echo __('Slug Dst'); ?></th>
+		<th class="actions">Acciones</th>
+	</tr>
+	<?php
+		$i = 0;
+		foreach ($taller['Etiqueta'] as $etiqueta): ?>
+		<tr>
+			<td><?php echo $etiqueta['id']; ?></td>
+			<td><?php echo $etiqueta['nombre']; ?></td>
+			<td><?php echo $etiqueta['slug_dst']; ?></td>
+			<td class="actions">			<div class="btn-group">
+	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li>
+		<?php 
+		echo $this->Html->link(
+			'<i class="icon-eye-open"></i> Ver',
+			array('controller' => 'etiquetas', 'action' => 'ver', $etiqueta['id']),
+			array('escape' => false)
+		); ?>
+		</li>
+		<li>
+		<?php 
+		echo $this->Html->link(
+			'<i class="icon-pencil"></i> Editar',
+			array('controller' => 'etiquetas', 'action' => 'editar', $etiqueta['id']),
+			array('escape' => false)
+		); ?>
+		</li>
+		<li>
+		<?php 
+		echo $this->Form->postLink(
+			'<i class="icon-trash"></i> Borrar',
+			array('controller' => 'etiquetas', 'action' => 'borrar', $etiqueta['id']),
+			array('escape' => false),
+			"Estas seguro de borrar el registro # {$etiqueta['id']}?"
+		); ?>
+		</li>
+	</ul>
+	</div>
+	</td>
+</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+</div>
+
+<div class="related">
+	<?php if (!empty($taller['Alumnos'])): ?>
+	<h3>Alumnos inscritos en el taller</h3>
+<?php
+$boton_taller = false;
+if($this->Session->read('Auth.User.username') && $taller['Taller']['status'] == 'abierto' ){
+	$boton_taller = true;
+}
+$user_auth = $this->Session->read('Auth.User.username');
+$HTML_usuarios_registrados = '';
 if (!empty($taller['User'])):
 $HTML_usuarios_registrados = '<table cellpadding = "0">
 <tr>
@@ -165,115 +288,6 @@ echo '<br clear="all"><br clear="all"></div>';
 echo $HTML_usuarios_registrados;
 
 ?>
-<!-- -->
-</div>
-</div><!-- fin del evento -->
-<div class="acciones">
-	<h3>Acciones</h3>
-	<ul>
-		<?php
-		if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
-		?>
-		<li><?php echo $this->Html->link('Editar Taller', array('action' => 'editar', $taller['Taller']['slug_dst'], 'admin'=>true)); ?> </li>
-		
-		<li><?php
-		echo $this->Html->link('Agregar sesión', 
-				array(
-					'controller' => 'sesiones',
-					'action' => 'agregar',
-					'miembro' => true,
-					$taller['Taller']['slug_dst']
-				)
-			); ?></li>
-		<li><?php echo $this->Html->link('Agregar Taller', array('action' => 'agregar')); ?> </li>
-		<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar')); ?> </li>
-		<? endif; ?>
-		<?php
-			if($this->Session->read('Auth.User.role') == 'admin' ):
-		?>
-		<li><?php echo $this->Form->postLink('Borrar Taller', array('action' => 'borrar', $taller['Taller']['id']), null, __('Esta seguro que desea borrar: # %s?', $taller['Taller']['id'])); ?> </li>
-		<?php endif; ?>
-		<li><?php echo $this->Html->link('Listar Talleres', array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link('Listar Users', array('controller' => 'users', 'action' => 'index')); ?> </li>
-	</ul>
-	<h3>Compartir</h3>
-	<?php
-		echo $this->QrCode->url(
-			'/talleres/ver' . $taller['Taller']['slug_dst'], array('size' => '170x170', 'margin' => 0)
-		);
-	?>
-</div>
-<div class="related">
-	<h3>Sesiones</h3>
-	<?php if (!empty($taller['Sesion'])):?>
-	<table cellpadding = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Nombre'); ?></th>
-		<th><?php echo __('Slug Dst'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Content'); ?></th>
-		<th><?php echo __('Taller Id'); ?></th>
-		<th class="acciones">Acciones</th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($taller['Sesion'] as $sesion): ?>
-		<tr>
-			<td><?php echo $sesion['id'];?></td>
-			<td><?php echo $sesion['nombre'];?></td>
-			<td><?php echo $sesion['slug_dst'];?></td>
-			<td><?php echo $sesion['created'];?></td>
-			<td><?php echo $sesion['modified'];?></td>
-			<td><?php echo $sesion['content'];?></td>
-			<td><?php echo $sesion['taller_id'];?></td>
-			<td class="acciones">
-				<?php echo $this->Html->link('Ver', array('controller' => 'sesiones', 'action' => 'ver', $sesion['slug_dst'])); ?>
-				<?php echo $this->Html->link('Editar', array('controller' => 'sesiones', 'action' => 'editar', $sesion['id'])); ?>
-				<?php echo $this->Form->postLink('Borrar', array('controller' => 'sesiones', 'action' => 'borrar', $sesion['id']), null, __('Esta seguro que desea borrar: # %s?', $sesion['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
 <?php endif; ?>
 </div>
-<div class="related">
-	<h3>Etiquetas Relacionados</h3>
-	<?php if (!empty($taller['Etiqueta'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Nombre'); ?></th>
-		<th><?php echo __('Slug Dst'); ?></th>
-		<th class="acciones">Acciones</th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($taller['Etiqueta'] as $etiqueta): ?>
-		<tr>
-			<td><?php echo $etiqueta['id'];?></td>
-			<td><?php echo $etiqueta['nombre'];?></td>
-			<td><?php echo $etiqueta['slug_dst'];?></td>
-			<td class="acciones">
-				<?php echo $this->Html->link('Ver', array('controller' => 'etiquetas', 'action' => 'ver', $etiqueta['id'])); ?>
-				<?php echo $this->Html->link('Editar', array('controller' => 'etiquetas', 'action' => 'editar', $etiqueta['id'])); ?>
-				<?php echo $this->Form->postLink('Borrar', array('controller' => 'etiquetas', 'action' => 'borrar', $etiqueta['id']), null, __('Esta seguro que desea borrar: # %s?', $etiqueta['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-	<div class="acciones">
-		<ul>
-			<li><?php echo $this->Html->link('Agregar Etiqueta', array('controller' => 'etiquetas', 'action' => 'agregar'));?> </li>
-		</ul>
-	</div>
-</div>
-<div class="related">
-	<div class="acciones">
-		<ul>
-			<li><?php echo $this->Html->link('Agregar User', array('controller' => 'users', 'action' => 'agregar'));?> </li>
-		</ul>
-	</div>
 </div>
