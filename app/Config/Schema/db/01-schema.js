@@ -5,7 +5,7 @@ var tablas = [
 "nombre" : "talleres",
 "orden" : 1,
 "width" : 755,
-"height" : 441,
+"height" : 465,
 "pos_x" : 288,
 "pos_y" : 64,
 "fill_colour" : "#ABFFA3",
@@ -28,7 +28,8 @@ var tablas = [
  {"nombre" : "num_alumnos", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "status", "tipo": "ENUM('abierto', 'cerrado') DEFAULT 'abierto'", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "num_sesiones", "tipo": "INT( 2 ) DEFAULT 0", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {

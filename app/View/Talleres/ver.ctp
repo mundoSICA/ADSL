@@ -69,7 +69,7 @@ if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read
 		<li><?php
 			echo $this->Html->link(
 			'<i class="icon-plus"></i> Agregar Sesion',
-			array('controller' => 'sesiones', 'action' => 'agregar'),
+			array('controller' => 'sesiones', 'action' => 'agregar','miembro'=>true,$taller['Taller']['slug_dst']),
 			array('escape' => false)
 		);
 		?> </li>

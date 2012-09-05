@@ -196,7 +196,7 @@
         <dia:point val="59.1182,22.99"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="59.1182,22.99;84.2882,37.69"/>
+        <dia:rectangle val="59.1182,22.99;84.2882,38.49"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -208,7 +208,7 @@
         <dia:real val="25.170000000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="14.700000000000005"/>
+        <dia:real val="15.500000000000005"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -589,6 +589,26 @@ nombre de la organizacion#</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#Fecha de modificación#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="primary_key">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="nullable">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="unique">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="table_attribute">
+          <dia:attribute name="name">
+            <dia:string>#num_sesiones#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#INT( 2 ) default 0#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Número de sesiones que tiene cada taller.#</dia:string>
           </dia:attribute>
           <dia:attribute name="primary_key">
             <dia:boolean val="false"/>
@@ -3184,7 +3204,7 @@ nombre de la organizacion#</dia:string>
         <dia:point val="105.32,43.7336"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="105.32,42.4236;115.993,47.5964"/>
+        <dia:rectangle val="105.32,42.4236;115.992,47.5964"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">

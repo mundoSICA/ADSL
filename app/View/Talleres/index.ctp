@@ -123,6 +123,8 @@ $this->Html->script(array(
 		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;</dd>
 		<dt>Estado actual:</dt>
 		<dd><?php echo h($taller['Taller']['status']); ?>&nbsp;</dd>
+		<dt>No sesiones:</dt>
+		<dd><?php echo h($taller['Taller']['num_sesiones']); ?>&nbsp;</dd>
 	</dl><br />
 	<p><?php echo h($taller['Taller']['resumen']); ?>&nbsp;</p>
 	<?php echo $this->Html->link('Ver más',
