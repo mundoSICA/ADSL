@@ -26,6 +26,24 @@ Academia Del Software Libre
 
 Este es un repositorio del sitio [ADSL](http://www.adsl.org.mx/).
 
+## Herramientas necesarias para colaborar.
+
+### Git:
+
+ - **Linux:** http://git-scm.com/download/linux
+ - **Windows:** http://windows.github.com/
+ - **OS X:** http://code.google.com/p/git-osx-installer/
+
+### Editor de texto.
+
+Se recomienda un editor de textos avanzados, que no agregue caracteres especiales recomendamos `vim`, `emacs` y en especial el `geany` con las herramientas [web ninja](https://github.com/mundoSICA/geany-web-ninja).
+
+ - <http://www.geany.org/Download/Releases>
+
+### Servidor web.
+Se requirede de un servidor web(recomendamos apache), con soporte PHP y un servidor de base de datos mysql, puede ocupar un paquete en uno como:
+
+ - http://www.apachefriends.org/es/index.html
 
 ## Como contribuir:
  - Inscribete al [__github__](https://github.com/signup/free)
