@@ -96,7 +96,8 @@ p {
 	clear: both;
 	color: #333;
 	padding:0;
-	overflow: auto;
+	overflow:hidden;
+	width:945px;
 }
 #footer {
 	clear: both;

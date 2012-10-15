@@ -124,7 +124,11 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 echo $this->element('pie_logos_promovemos');
 echo $this->element('pie_info_direccion');
 ?>
-</div> <!--termina CajaPrincipal -->
+</div>
+<!--termina CajaPrincipal -->
+<script language="Javascript"  type="text/javascript" src="<?php
+echo Router::url('/', true); ?>js/fokus.min.js"></script>
+
 <?php
 ### Sección javascript
 echo $this->Html->script(array(
@@ -146,6 +150,9 @@ echo $this->Html->script(array(
 		'bootstrap-typeahead',
 		'main.js',
 	))."\n";
+?>
+
+<?php
 echo $this->fetch('script')."\n";
 if($modoServer) :
 ?>

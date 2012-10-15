@@ -188,7 +188,8 @@
     margin-left: 130px;
   }
   .row-fluid {
-    width: 100%;
+    width: 98%;
+    padding: 0 1%;
     *zoom: 1;
   }
   .row-fluid:before,
@@ -247,8 +248,8 @@
     *width: 40.11774868157847%;
   }
   .row-fluid .span4 {
-    width: 31.623931623931625%;
-    *width: 31.570740134569924%;
+    width: 33%;
+    *width: 32.7%;
   }
   .row-fluid .span3 {
     width: 23.076923076923077%;
