@@ -7,6 +7,19 @@
 #sección metaDatos
 $this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
 $this->Html->meta('description', h($taller['Taller']['resumen']), array('inline' => false));
+
+
+# Implementación de la API de twitter para microdatos
+# https://dev.twitter.com/docs/cards
+#
+$this->Html->meta(array('name' => 'twitter:card', 'content' => 'summary'),null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), null , array('inline' => false) );
+#$this->Html->meta(array('name' => 'twitter:creator', 'content' => '@twitter-tallerista'), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:url', 'content' => Router::url('/talleres/ver/' . $taller['Taller']['slug_dst'], true)), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:title', 'content' => htmlentities($taller['Taller']['nombre'])), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:description', 'content' => htmlentities($taller['Taller']['contenido'])), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:image', 'content' => Router::url('/img/talleres/'.$taller['Taller']['slug_dst'].'.jpg')), null , array('inline' => false) );
+
 ### Seccion CSS
 $this->Html->css(
 						array('talleres.ver'),

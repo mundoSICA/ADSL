@@ -2,12 +2,30 @@
 #Metadatos
 $title = explode("\n", $commit['Contribucion']['message']);
 $title = $title[0];
-$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
 $msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),ENT_QUOTES,"UTF-8");
+
+$this->set('title_for_layout', 'ADSL Contribución - ' . $title);
 $this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 250), array('inline' => false));
+
+# Implementación de la API de twitter para microdatos
+# https://dev.twitter.com/docs/cards
+#
+$this->Html->meta(array('name' => 'twitter:card', 'content' => 'summary'),null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), null , array('inline' => false) );
+# Faltaría implementar la meta etiqueta de forma dinamica(leer datos del usuario,p.e. si tiene twitter):
+# <meta name='twitter:creator" content="@author">
+$this->Html->meta(array('name' => 'twitter:creator', 'content' => '@fitorec'), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:url', 'content' => Router::url('/contribuciones/ver/' . $commit['Contribucion']['hash'], true)), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:title', 'content' => htmlentities($title)), null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:description', 'content' => htmlentities($msg)), null , array('inline' => false) );
+# Este meta tal vez deberia de referir al avatar del author
+## <meta name="twitter:image" content="URL-imagen">
+
+
 #Sección CSS
 $this->Html->css('contribuciones.ver','stylesheet', array('inline' => false ) );
 #Sección Javascript
+$this->Html->scriptStart(array('inline' => false));
 $this->Html->script(array(
 											'jquery.prettydate.js',
 											'jquery.prettydate-es.js',
@@ -16,6 +34,7 @@ $this->Html->script(array(
 											'epiceditor/js/epiceditor',
 											'contribuciones.ver',
 											), array('inline' => false));
+$this->Html->scriptEnd();
 ?>
 <div class="users ver">
 <span itemscope itemtype="http://data-vocabulary.org/Person">
