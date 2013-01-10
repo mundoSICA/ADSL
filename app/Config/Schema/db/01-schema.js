@@ -1,5 +1,6 @@
 /* Created by DiaJSON-Dump Version 0.01(Beta)
--- Filename: 01-schema.js
+ * Filename: 01-schema.js
+ */
 var tablas = [
 {
 "nombre" : "talleres",
@@ -50,7 +51,7 @@ var tablas = [
  {"nombre" : "added", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "modified", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "removed", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "timestamp", "tipo": "TIMESTAMP", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "TIMESTAMP", "tipo": "TIMESTAMP", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {
@@ -60,7 +61,7 @@ var tablas = [
 "height" : 105,
 "pos_x" : 304,
 "pos_y" : 384,
-"fill_colour" : "#FFFFFF",
+"fill_colour" : "#FFCAEC",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
@@ -98,23 +99,20 @@ var tablas = [
  ]
 },
 {
-"nombre" : "estrellas",
+"nombre" : "videos",
 "orden" : 11,
-"width" : 339,
-"height" : 200,
-"pos_x" : 16,
-"pos_y" : 384,
-"fill_colour" : "#FFF4A5",
+"width" : 270,
+"height" : 129,
+"pos_x" : 32,
+"pos_y" : 48,
+"fill_colour" : "#FFFFFF",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT( 4 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "exteno_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "externo_tabla", "tipo": "VARCHAR( 50 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "estrellas", "tipo": "INT( 1 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "contenido_id", "tipo": "INT(5)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
  {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "content", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {
@@ -136,39 +134,39 @@ var tablas = [
  ]
 },
 {
-"nombre" : "noticias",
-"orden" : 3,
-"width" : 258,
-"height" : 200,
-"pos_x" : 96,
-"pos_y" : 144,
-"fill_colour" : "#FFFFFF",
+"nombre" : "contenidos_etiquetas",
+"orden" : 8,
+"width" : 270,
+"height" : 105,
+"pos_x" : 112,
+"pos_y" : 320,
+"fill_colour" : "#FFCAEC",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
  {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "content", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "contenido_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "etiqueta_id", "tipo": "INT ( 4)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
  ]
 },
 {
-"nombre" : "etiquetas_noticias",
-"orden" : 8,
-"width" : 258,
-"height" : 105,
-"pos_x" : 112,
-"pos_y" : 272,
-"fill_colour" : "#FFFFFF",
+"nombre" : "estrellas",
+"orden" : 10,
+"width" : 339,
+"height" : 200,
+"pos_x" : 16,
+"pos_y" : 384,
+"fill_colour" : "#FFF4A5",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
- {"nombre" : "noticia_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "etiqueta_id", "tipo": "INT ( 4)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false}
+ {"nombre" : "id", "tipo": "INT( 4 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "exteno_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "externo_tabla", "tipo": "VARCHAR( 50 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "estrellas", "tipo": "INT( 1 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "content", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
  ]
 },
 {
@@ -203,7 +201,7 @@ var tablas = [
 "height" : 105,
 "pos_x" : 304,
 "pos_y" : 464,
-"fill_colour" : "#FFFFFF",
+"fill_colour" : "#FFCAEC",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
@@ -213,25 +211,25 @@ var tablas = [
  ]
 },
 {
-"nombre" : "comentarios",
-"orden" : 10,
-"width" : 304,
+"nombre" : "contenidos",
+"orden" : 3,
+"width" : 281,
 "height" : 248,
-"pos_x" : 1008,
-"pos_y" : 240,
-"fill_colour" : "#E5E5E5",
+"pos_x" : 96,
+"pos_y" : 160,
+"fill_colour" : "#FFFFFF",
 "text_colour" : "#000000",
 "line_colour" : "#000000",
 "campos" : [
- {"nombre" : "id", "tipo": "INT( 11 )", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
  {"nombre" : "user_id", "tipo": "INT( 5 )", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
- {"nombre" : "url", "tipo": "VARCHAR( 100 )", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
- {"nombre" : "message", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "parent_id", "tipo": "INT( 11 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "lft", "tipo": "INT( 11 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "rght", "tipo": "INT( 11 )", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "id", "tipo": "INT(2)", "clave_primaria": true,"clave_unica": true,"es_null": false,"auto_increment": true},
+ {"nombre" : "nombre", "tipo": "VARCHAR(75)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "slug_dst", "tipo": "VARCHAR(80)", "clave_primaria": false,"es_null": false,"clave_unica": true,"auto_increment": false},
+ {"nombre" : "keywords", "tipo": "VARCHAR(200)", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "content", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "estrellas", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "created", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false},
+ {"nombre" : "modified", "tipo": "DATETIME", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 }
 ]

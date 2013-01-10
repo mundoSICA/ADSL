@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `contribuciones` (
 	`added` TEXT DEFAULT NULL,
 	`modified` TEXT DEFAULT NULL,
 	`removed` TEXT DEFAULT NULL,
-	`timestamp` TIMESTAMP NOT NULL
+	`TIMESTAMP` TIMESTAMP NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas_talleres --
@@ -65,16 +65,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- estrellas --
-DROP TABLE IF EXISTS `estrellas`;
-CREATE TABLE IF NOT EXISTS `estrellas` (
-	`id` INT( 4 ) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`exteno_id` INT( 5 ) NOT NULL,
-	`externo_tabla` VARCHAR( 50 ) DEFAULT NULL,
-	`user_id` INT( 5 ) NOT NULL UNIQUE,
-	`estrellas` INT( 1 ) DEFAULT NULL,
+-- videos --
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE IF NOT EXISTS `videos` (
+	`id` INT(2) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	`contenido_id` INT(5) NOT NULL UNIQUE,
 	`created` DATETIME NOT NULL,
-	`content` TEXT DEFAULT NULL
+	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- talleres_users --
@@ -87,24 +84,24 @@ CREATE TABLE IF NOT EXISTS `talleres_users` (
 	`created` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- noticias --
-DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE IF NOT EXISTS `noticias` (
-	`user_id` INT( 5 ) NOT NULL,
+-- contenidos_etiquetas --
+DROP TABLE IF EXISTS `contenidos_etiquetas`;
+CREATE TABLE IF NOT EXISTS `contenidos_etiquetas` (
 	`id` INT(2) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`nombre` VARCHAR(75) NOT NULL UNIQUE,
-	`slug_dst` VARCHAR(80) NOT NULL UNIQUE,
-	`created` DATETIME NOT NULL,
-	`modified` DATETIME NOT NULL,
-	`content` TEXT DEFAULT NULL
+	`contenido_id` INT( 5 ) NOT NULL UNIQUE,
+	`etiqueta_id` INT ( 4) NOT NULL UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- etiquetas_noticias --
-DROP TABLE IF EXISTS `etiquetas_noticias`;
-CREATE TABLE IF NOT EXISTS `etiquetas_noticias` (
-	`id` INT(2) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-	`noticia_id` INT( 5 ) NOT NULL UNIQUE,
-	`etiqueta_id` INT ( 4) NOT NULL UNIQUE
+-- estrellas --
+DROP TABLE IF EXISTS `estrellas`;
+CREATE TABLE IF NOT EXISTS `estrellas` (
+	`id` INT( 4 ) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	`exteno_id` INT( 5 ) NOT NULL,
+	`externo_tabla` VARCHAR( 50 ) DEFAULT NULL,
+	`user_id` INT( 5 ) NOT NULL UNIQUE,
+	`estrellas` INT( 1 ) DEFAULT NULL,
+	`created` DATETIME NOT NULL,
+	`content` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- sesiones --
@@ -132,17 +129,17 @@ CREATE TABLE IF NOT EXISTS `etiquetas` (
 	`slug_dst` VARCHAR(80) NOT NULL UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- comentarios --
-DROP TABLE IF EXISTS `comentarios`;
-CREATE TABLE IF NOT EXISTS `comentarios` (
-	`id` INT( 11 ) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+-- contenidos --
+DROP TABLE IF EXISTS `contenidos`;
+CREATE TABLE IF NOT EXISTS `contenidos` (
 	`user_id` INT( 5 ) NOT NULL,
-	`url` VARCHAR( 100 ) NOT NULL UNIQUE,
-	`message` TEXT DEFAULT NULL,
-	`modified` DATETIME DEFAULT NULL,
-	`created` DATETIME DEFAULT NULL,
-	`parent_id` INT( 11 ) DEFAULT NULL,
-	`lft` INT( 11 ) DEFAULT NULL,
-	`rght` INT( 11 ) DEFAULT NULL
+	`id` INT(2) PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	`nombre` VARCHAR(75) NOT NULL UNIQUE,
+	`slug_dst` VARCHAR(80) NOT NULL UNIQUE,
+	`keywords` VARCHAR(200) DEFAULT NULL,
+	`content` TEXT DEFAULT NULL,
+	`estrellas` TEXT DEFAULT NULL,
+	`created` DATETIME NOT NULL,
+	`modified` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 -- End SQL-Dump

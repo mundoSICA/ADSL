@@ -7,6 +7,8 @@ $msg = htmlentities(str_replace($title,'',$commit['Contribucion']['message']),EN
 $this->set('title_for_layout', 'ADSL Contribución - ' . $title);
 $this->Html->meta('description', substr($title.str_replace("\n"," ",$msg) ,0 , 250), array('inline' => false));
 
+$this->Html->meta(array('name' => 'msapplication-starturl', 'content' => Router::url('/contribuciones', true)),null , array('inline' => false) );
+
 # Implementación de la API de twitter para microdatos
 # https://dev.twitter.com/docs/cards
 #
@@ -15,11 +17,14 @@ $this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), 
 # Faltaría implementar la meta etiqueta de forma dinamica(leer datos del usuario,p.e. si tiene twitter):
 # <meta name='twitter:creator" content="@author">
 $this->Html->meta(array('name' => 'twitter:creator', 'content' => '@fitorec'), null , array('inline' => false) );
-$this->Html->meta(array('name' => 'twitter:url', 'content' => Router::url('/contribuciones/ver/' . $commit['Contribucion']['hash'], true)), null , array('inline' => false) );
-$this->Html->meta(array('name' => 'twitter:title', 'content' => htmlentities($title)), null , array('inline' => false) );
-$this->Html->meta(array('name' => 'twitter:description', 'content' => htmlentities($msg)), null , array('inline' => false) );
-# Este meta tal vez deberia de referir al avatar del author
-## <meta name="twitter:image" content="URL-imagen">
+$this->Html->meta(array('property' => 'og:url', 'content' => Router::url('/contribuciones/ver/' . $commit['Contribucion']['hash'], true)), null , array('inline' => false) );
+$this->Html->meta(array('property' => 'og:title', 'content' => htmlentities($title)), null , array('inline' => false) );
+$this->Html->meta(array('property' => 'og:description', 'content' => 
+str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
+
+), null , array('inline' => false) );
+
+$this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/users/'. $commit['Contribucion']['author_name'] .'/avatar.jpg', true)), null , array('inline' => false) );
 
 
 #Sección CSS
@@ -39,7 +44,7 @@ $this->Html->scriptEnd();
 <div class="users ver">
 <span itemscope itemtype="http://data-vocabulary.org/Person">
 <?php
-	echo $this->Html->avatar_link($commit['Contribucion']['author_name']);
+	echo $this->Html->avatar_link($commit['Contribucion']['author_name']);	
 ?>
 </span>
 <div class='informacion_commit' itemscope itemtype="http://data-vocabulary.org/Event">

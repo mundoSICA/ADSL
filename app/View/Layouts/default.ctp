@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-MX" itemscope itemtype="http://schema.org/WebPage">
+<html lang="es-MX" itemscope itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv='Content-Type' content='text/html;' charset='utf-8'>
@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="copyright" content="Academia de Software Libre">
 	<meta name="design-by" content="http://www.adsl.org.mx/users/ver/Manuel">
+	<meta name="generator" content="adsl.org.mx" />
 	<meta name="author" content="http://www.adsl.org.mx/contribuciones">
 	<meta name="distribution" content="global">
 	<meta name="document-classification" content="general">
@@ -19,6 +20,8 @@
 	<meta name="country" content="MX">
 	<meta name="city" content="Oaxaca">
 	<meta name="zipcode" content="68000">
+	<meta name="application-name" content="ADSL" />
+	<meta name="msapplication-tooltip" content="Academia de software libre compartir y difundir conocimiento" />
 <?php
 		##seccion de meta etiquetas
 		echo "\t".$this->Html->meta('icon');

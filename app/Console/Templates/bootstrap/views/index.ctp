@@ -66,7 +66,7 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 							"\n\t); ?>\n";
 				?>
 			</li>
-<?
+<?php
 			}
 		}
 	}
@@ -140,7 +140,7 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 </div>
 </td>
 </tr>
-<?
+<?php
 	echo "<?php endforeach; ?>\n";
 	?>
 	</table>

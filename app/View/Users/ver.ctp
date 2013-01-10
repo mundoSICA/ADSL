@@ -1,7 +1,10 @@
 <?php
 ### Sección Metadatos
-$this->set('title_for_layout', 'ADSL  - perfil '.h($user['User']['username']));
-$this->Html->meta('description', 'Perfil '.h($user['User']['username']), array('inline' => false));
+$title = 'ADSL  - perfil '.h($user['User']['username']);
+$msg = 'ADSL Perfil del usuario '.h($user['User']['username']);
+
+$this->set('title_for_layout', $title);
+$this->Html->meta('description', $msg, array('inline' => false));
 ### Sección CSS
 $this->Html->css('users.ver','stylesheet', array('inline' => false ) );
 ### Sección Scripts
@@ -10,6 +13,21 @@ $this->Html->script(array(
 							'jquery.prettydate',
 							'jquery.prettydate.ADSL',
 				), array('inline' => false));
+# Implementación de la API de twitter para microdatos
+# https://dev.twitter.com/docs/cards
+#
+$this->Html->meta(array('name' => 'twitter:card', 'content' => 'summary'),null , array('inline' => false) );
+$this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), null , array('inline' => false) );
+
+$this->Html->meta(array('property' => 'og:url', 'content' => Router::url('/users/ver/' . $user['User']['username'], true)), null , array('inline' => false) );
+$this->Html->meta(array('property' => 'og:title', 'content' => htmlentities($title)), null , array('inline' => false) );
+$this->Html->meta(array('property' => 'og:description', 'content' => 
+str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
+
+), null , array('inline' => false) );
+
+$this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/users/' . $user['User']['username'] . '/avatar.jpg', true)), null , array('inline' => false) );
+
 ?>
 <div class="users ver">
 <?php

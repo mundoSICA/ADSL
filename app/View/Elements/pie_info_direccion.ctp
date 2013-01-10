@@ -8,6 +8,8 @@
 <div class="separadorfooter2"></div>
 <footer itemprop="sourceOrganization provider publisher creator" class="vcard" itemtype="http://data-vocabulary.org/Organization">
 	<div class="footerCont">
+		<img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL2Fkc2wub3JnLm14&tag=3" alt="Page Rank" style="border:0;" />
+		<abbr><strong>ADSL</strong></abbr><br />
 		Algunos Derechos Reservados &copy; <date itemprop="dateCreated">2010</date>- <date itemprop="dateModified"><?php echo date('Y'); ?></date>,
 		<strong itemprop="name" class="fn org">Academia de Software Libre</strong>
 		<a href="<?php echo Router::url('/',true); ?>" itemprop="url" class="url">adsl.org.mx</a>
