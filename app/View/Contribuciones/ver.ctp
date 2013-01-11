@@ -117,4 +117,20 @@ foreach($tipo_cambio as $t=>$t_msg ){
 ?>
 
 </div>
-</div><!-- en datos usuarios -->
+</div><!-- end datos usuarios -->
+<!-- comentarios -->
+<div id="disqus_thread" class="span9"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'adsl'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Por favor active JavaScript para ver los comentarios <a href="http://disqus.com/?ref_noscript">Comentarios soportados por Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Comentarios soportados por <span class="logo-disqus">Disqus</span></a>
+<!-- Fin de los comentarios -->
