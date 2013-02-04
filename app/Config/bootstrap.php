@@ -193,6 +193,6 @@ Configure::write('streaming',
 
 Configure::write('adsl',
 	array('geo' =>
-				array('latitude'=> 17.05998, 'longitude'=> -96.71982)
+				array('latitude'=> 17.05621, 'longitude'=> -96.719964)
 	)
 );

@@ -15,7 +15,7 @@ $this->Html->script(array(
 									,array( 'controller'=>'pages', 'action' => 'contacto' )); ?>
 					 <a href="#"></a></h2></h2>
 		<address itemprop="address" class="adr" itemscope itemtype="http://data-vocabulary.org/Address">
-			<span class="street-address" itemprop="street-address">Manuel Doblado Num. 119,Col. Centro</span>,
+			<span class="street-address" itemprop="street-address">Arteaga Num. 613, Col. Centro</span>,
 			CP: <span>68000</span>,
 			<span class="region" itemprop="region">Oaxaca</span>,
 			<span class="locality" itemprop="localy">Oax</span>,

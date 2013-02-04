@@ -15,7 +15,7 @@
 		<a href="<?php echo Router::url('/',true); ?>" itemprop="url" class="url">adsl.org.mx</a>
 		<br />
 		<address itemprop="address" class="adr" itemscope itemtype="http://data-vocabulary.org/Address">
-			<span class="street-address" itemprop="street-address">Manuel Doblado Num. 119,Col. Centro</span>,
+			<span class="street-address" itemprop="street-address">Arteaga Num 613,Col. Centro</span>,
 			CP: <span>68000</span>,
 			<span class="region" itemprop="region">Oaxaca</span>,
 			<span class="locality" itemprop="localy">Oax</span>,

@@ -24,6 +24,7 @@ str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
 
 ), null , array('inline' => false) );
 
+
 $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/users/'. $commit['Contribucion']['author_name'] .'/avatar.jpg', true)), null , array('inline' => false) );
 
 
