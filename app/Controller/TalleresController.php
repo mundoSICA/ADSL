@@ -7,14 +7,14 @@ App::uses('AppController', 'Controller');
  */
 class TalleresController extends AppController {
 
-var $components = array('Email');
+	var $components = array('Email');
 /* lista de ayudantes */
-public $helpers = array('QrCode');
+	public $helpers = array('QrCode');
 
-function beforeFilter() {
+	function beforeFilter() {
 			parent::beforeFilter();
 			$this->Auth->allow(array('index','calendario','ver'));
-}
+	}
 //var $uses = array('TalleresUser');
 /**
  * index method

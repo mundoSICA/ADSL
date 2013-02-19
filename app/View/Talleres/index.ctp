@@ -30,7 +30,7 @@ $this->Html->script(array(
 		if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
 		echo $this->Html->link(
 		'<i class="icon-plus"></i> Agregar',
-		array('action' => 'agregar'),
+		array('action' => 'agregar', 'admin' => true),
 		array('escape' => false)
 	);
 	endif;

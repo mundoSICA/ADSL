@@ -48,7 +48,7 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 <div id="dialog"></div>
 <div class="CajaPrincipal">
      <div class="barra">
-			 <span class='telLabel'></span><span itemprop="telephone">51 51241</span> |
+			 <span class='telLabel'></span><span itemprop="telephone">(951) 205-43-51</span> |
 			 <span class='emailLabel'></span><a href="mailto:contacto@adsl.org.mx">contacto@adsl.org.mx</a>
 			 |<span class='loginLabel'></span><?php
      if( $this->Session->read('Auth.User') ){

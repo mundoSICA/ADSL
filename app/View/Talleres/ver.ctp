@@ -51,14 +51,14 @@ if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read
 		<li><?php
 		echo $this->Html->link(
 			'<i class="icon-pencil"></i> Editar Taller',
-			array('action' => 'editar', $taller['Taller']['id']),
+			array('action' => 'editar', $taller['Taller']['slug_dst'], 'admin' => true),
 			array('escape' => false)
 		); ?>
 		</li>
 		<li><?php
 		echo $this->Html->link(
 			'<i class="icon-plus"></i> Agregar Taller',
-			array('action' => 'Agregar'),
+			array('action' => 'Agregar', 'admin' => true),
 			array('escape' => false)
 		); ?>
 		</li>
