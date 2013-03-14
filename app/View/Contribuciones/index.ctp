@@ -31,18 +31,18 @@ $this->Html->script(array(
 	$title = $contribucion['Contribucion']['message'];
 	$title = explode("\n", $title);
 	$title = $title[0];
+	$img_ancla = $this->Html->image('ancla.svg', array('width'=>12, 'height'=>12, 'alt'=>'Enlace'));
 	?>
-	<tr itemscope itemtype="http://data-vocabulary.org/Event">
-		<td itemprop="author" itemtype="http://data-vocabulary.org/Person"><?php
+	<tr itemscope itemtype="http://schema.org/EducationEvent">
+		<td itemscope itemprop="attendee" itemtype="http://schema.org/Person"><?php
 			echo $this->Html->avatar_link(
 						$contribucion['Contribucion']['author_name']
 			);
 		 ?>&nbsp;</td>
 		 <td>
-			 <span itemprop="eventType" class='contribución'>commit: </span>
 			 <?php
 			 echo $this->Html->link(
-						'<span itemprop="summary">' . $title . '</span>',
+						$img_ancla . ' <span itemprop="name">' . $title . '</span>',
 						array('controller'=>'contribuciones', 'action' => 'ver', $contribucion['Contribucion']['hash']),
 						array('itemprop' => 'url', 'escape' => false)
 				);

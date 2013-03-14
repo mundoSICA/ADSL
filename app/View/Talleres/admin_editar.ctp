@@ -13,11 +13,11 @@
 		echo $this->Form->input('fecha_inicio');
 		echo $this->Form->input('fecha_final');
 		echo $this->Form->input('costo');
+		echo $this->Form->input('cupo');
+		echo $this->Form->input('num_sesiones');
 		echo $this->Form->input('resumen');
 		echo $this->Form->input('contenido');
 		echo $this->Form->input('numero_total_horas');
-		echo $this->Form->input('Etiqueta');
-		echo $this->Form->input('Alumnos');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Enviar');?>

@@ -3,7 +3,7 @@
 $this->set('title_for_layout', 'ADSL  - Academia de Software Libre');
 $this->Html->meta(
 	'description',
-	'ADSL Academia de Software Libre, Compartiendo Conocimiento '.date('Y'), 
+	'ADSL Academia de Software Libre: Compartir, difundir y Generar Conocimiento',
 	array('inline' => false,'itemprop'=>'description')
 );
 #sección CSS
@@ -28,13 +28,13 @@ $this->Html->script(array(
 			<div id="slide_talleres">
 				<div class="slides_container">
 				<?php foreach ($talleres as $taller): ?>
-					<div class="slide" itemscope itemtype="http://data-vocabulary.org/Event">
+					<div class="slide" itemscope itemtype="http://schema.org/EducationEvent">
 						<?php
 						echo $this->Html->link(
 									$this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 									array(
 									'alt' => $taller['Taller']['nombre'],
-									'itemprop' => 'photo'
+									'itemprop' => 'image'
 									)
 								),
 								array(	'controller' => 'talleres',
@@ -48,12 +48,15 @@ $this->Html->script(array(
 									)
 							);
 						?>
-						<h2 class="slide_taller_titulo" itemprop="summary"><?php echo $taller['Taller']['nombre']; ?></h2>
+						<h2 class="slide_taller_titulo" itemprop="name"><?php echo $taller['Taller']['nombre']; ?></h2>
 						<div class="slide_info_taller">
 							<span class="slide_horario"><strong>Horario: </strong>
 								<?php echo $taller['Taller']['horario']; ?>&nbsp;
 							</span>
-							<span class="slide_horas"><strong>Número de horas: </strong><?php echo $taller['Taller']['numero_total_horas']; ?>&nbsp;</span>
+							<span class="slide_horas"><strong>Número de horas: </strong>
+							<meta itemprop="duration" content="PT<?php echo $taller['Taller']['numero_total_horas']; ?>H">
+							<?php echo $taller['Taller']['numero_total_horas']; ?>&nbsp;
+							</span>
 							<span class="inicio"><strong>inicia: </strong>
 							<span itemprop="startDate"><?php echo $taller['Taller']['fecha_inicio']; ?>&nbsp;</span></span>
 							<span class="fin"><strong>concluye: </strong>
@@ -101,21 +104,21 @@ $this->Html->script(array(
 				 <div id="calendarioEventos"></div>
 			 </section>
       </section>
-      
+
       <section class="ultimosUsuarioLista span4" id='home_bloque2'>
-		 <h2><?php echo 
+		 <h2><?php echo
 		 $this->Paginator->link('Ultimos usuarios registrados',
 		 array('controller'=>'users', 'action' => 'index', 'sort' => 'User.created', 'direction' => 'desc'));?>
 					 <a href="#"></a></h2>
 			 <ul id='listaUsuarios'>
        <?php
-       $i=0;
         foreach ($users as $username=>$email): ?>
+
+        <li itemscope itemtype="http://schema.org/Person">
 				 <?php
-			echo '<li itemscope itemtype="http://data-vocabulary.org/Person">';
        echo $this->Html->link(
 								$this->Html->avatar_icon($username) .
-								"<label class='btn btn-inverse' itemprop='nickname'>{$username}</label>",
+								"<label class='btn btn-inverse' itemprop='name'>{$username}</label>",
 								array(
 											'controller' => 'users',
 											'action' => 'ver',

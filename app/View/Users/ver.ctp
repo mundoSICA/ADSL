@@ -21,7 +21,7 @@ $this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), 
 
 $this->Html->meta(array('property' => 'og:url', 'content' => Router::url('/users/ver/' . $user['User']['username'], true)), null , array('inline' => false) );
 $this->Html->meta(array('property' => 'og:title', 'content' => htmlentities($title)), null , array('inline' => false) );
-$this->Html->meta(array('property' => 'og:description', 'content' => 
+$this->Html->meta(array('property' => 'og:description', 'content' =>
 str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
 
 ), null , array('inline' => false) );
@@ -33,14 +33,18 @@ $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/use
 <?php
 	echo $this->Html->avatar($user['User']['username']);
 ?>
-<div class='datos_usuario' itemscope itemtype="http://data-vocabulary.org/Person">
-	<h1><?php  echo h($user['User']['username']);?></h1>
+<div class='datos_usuario' itemscope itemtype="http://schema.org/Person">
+	<h1>
+	<?php echo $this->Html->link(
+						h('@'.$user['User']['username']),
+						array('action' => 'ver', $user['User']['username']),
+						array('title' => 'Perfil de '.$user['User']['username'], 'itemprop' => 'url name')
+			); ?></h1>
 	<dl>
 		<dt>Role</dt>
-		<dd itemprop="role"><?php echo h($user['User']['role']); ?>&nbsp;</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd itemprop="nickname"><?php echo h($user['User']['username']); ?>&nbsp;</dd>
-
+		<dd><?php echo h($user['User']['role']); ?>&nbsp;</dd>
+		<dt>Nickname</dt>
+		<dd><?php echo h($user['User']['username']); ?>&nbsp;</dd>
 		<dt>Inscrito desde</dt>
 		<dd>
 			<time class='timestamp prettyDate' datetime="<?php
@@ -50,17 +54,19 @@ $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/use
 
 		<?php if( !empty($user['User']['twitter']) ): ?>
 		<dt>Twitter</dt>
-		<dd itemprop="contact"><?php echo $this->Html->link($user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter']);?>&nbsp;</dd>
+		<dd><?php
+		echo $this->Html->link('http://twitter.com/'.$user['User']['twitter'], 'http://twitter.com/'.$user['User']['twitter'], array('title' => 'Seguir por twitter','itemprop' => 'url'));
+		?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( !empty($user['User']['facebook']) ): ?>
 		<dt>FaceBook</dt>
-		<dd itemprop="contact"><?php echo
-			$this->Html->link($user['User']['facebook'], $user['User']['facebook']);
+		<dd><?php echo
+			$this->Html->link($user['User']['facebook'], $user['User']['facebook'], array('title' => 'Contactar por FaceBook','itemprop' => 'url'));
 			?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( !empty($user['User']['url']) ): ?>
 		<dt>Sitio</dt>
-		<dd itemprop="url"><?php echo $this->Html->link($user['User']['url'], $user['User']['url']);?>&nbsp;</dd>
+		<dd><?php echo $this->Html->link($user['User']['url'], $user['User']['url'], array('title' => 'Visitar Página personal','itemprop' => 'url'));?>&nbsp;</dd>
 		<?php endif; ?>
 		<?php if( $user['User']['email_publico'] == 1 ): ?>
 		<dt><?php echo __('Email'); ?></dt>
@@ -69,7 +75,9 @@ $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/use
 		?>&nbsp;</dd>
 		<?php endif; ?>
 	</dl>
-<?if( !empty($user['Taller'])): ?>
+<?php
+if( !empty($user['Taller'])):
+?>
 	<h2>Talleres impartidos</h2>
 	<table>
 		<thead>

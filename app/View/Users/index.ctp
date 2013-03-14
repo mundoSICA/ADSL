@@ -19,23 +19,21 @@ div.avatar{
 }
 </style>
 <div class="users index">
-	<h1>Lista de usuarios</h1>
+	<h1>Lista de Miembros</h1>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th> </th>
-			<th><?php echo $this->Paginator->sort('username');?></th>
-			<th><?php echo $this->Paginator->sort('created', 'Fecha de registro');?></th>
+			<th><?php echo $this->Paginator->sort('username', 'Nick de usuario');?></th>
+			<th><?php echo $this->Paginator->sort('created', 'Registrado desde');?></th>
 	</tr>
 	<?php
 	foreach ($users as $user): ?>
-	<tr itemscope itemtype="http://data-vocabulary.org/Person">
+	<tr itemscope itemtype="http://schema.org/Person">
 		<td><?php echo $this->Html->avatar_link($user['User']['username']); ?></td>
 		<td><?php echo $this->Html->link(
 						h('@'.$user['User']['username']),
 						array('action' => 'ver', $user['User']['username']),
-						array('title' => 'ver Perfil',
-						'class' => 'btn btn-inverse btn-large'
-						)
+						array('title' => 'ver Perfil', 'class' => 'btn btn-inverse btn-large', 'itemprop' => 'url name')
 			); ?>&nbsp;</td>
 			<td>
 			<time class='timestamp prettyDate' datetime="<?php

@@ -51,7 +51,7 @@ var tablas = [
  {"nombre" : "added", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "modified", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
  {"nombre" : "removed", "tipo": "TEXT", "clave_primaria": false,"es_null": true,"clave_unica": false,"auto_increment": false},
- {"nombre" : "TIMESTAMP", "tipo": "TIMESTAMP", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
+ {"nombre" : "timestamp", "tipo": "TIMESTAMP", "clave_primaria": false,"es_null": false,"clave_unica": false,"auto_increment": false}
  ]
 },
 {

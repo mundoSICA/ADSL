@@ -49,6 +49,7 @@ class AppHelper extends Helper {
 		$options['height']=$size .'px';
 		$options['alt']=$username . ' Avatar';
 		$options['itemprop']= 'photo';
+		$options['class']= 'photo';
 		return '<div itemprop="photo" class="avatar" style="width: '.$size.'px">'.
 		$this->image('/img/users/'. $username .'/avatar.jpg'
 			, $options).'</div>';
@@ -62,11 +63,11 @@ class AppHelper extends Helper {
 	 */
 	function avatar_link($username='') {
 		$link = Router::url('/users/ver/'.$username);
-		return '<div class="avatar" style="width: 50px">'.
-				'<a href="'.$link.'" itemprop="url">'.
+		return "\n\t\t<div class='avatar'>".
+				"<a href='{$link}'>".
 			$this->image('/img/users/'. $username .'/avatar.jpg'
-			, array('alt' => $username . ' Avatar', 'itemprop' => 'photo'))
-			.'</a><h5 itemprop="nickname">' . $username . '</h5></div>';
+			, array('alt' => $username . ' Avatar', 'itemprop' => 'image', 'class' => 'img-circle'))
+			.'</a><h5><a href="'.$link.'" itemprop="url name">' . $username . '</a></h5></div>';
 	}
 	/**
 	 * Descripción de la función
@@ -79,8 +80,12 @@ class AppHelper extends Helper {
 	function avatar_icon($username='') {
 		$link = Router::url('/users/ver/'.$username);
 		return $this->image('/img/users/'. $username .'/avatar.jpg',
-				array('alt' => $username . ' Avatar', 'itemprop' => 'photo', 'width'=>'32px',
-				'height' => '32px'
+				array(
+				'alt' => $username . ' Avatar',
+				'itemprop' => 'image',
+				'width'=>'32px',
+				'height' => '32px',
+				'class' => 'img-rounded img-polaroid',
 			));
 	}//end function
 }

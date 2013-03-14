@@ -65,7 +65,7 @@ if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read
 <?php endif; ?>
 		<li class='divider'></li>
 		<li class='nav-header'><i class='icon-th-list'></i> Sesiones</li>
-<?php 
+<?php
 foreach ($taller['Sesion'] as $sesion){
 	echo '<li>'.
 			$this->Html->link(
@@ -111,32 +111,47 @@ if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read
 		);
 		?> </li>
 <?php endif; ?>
+<!-- Compartir sección -->
+			<li class='divider'></li>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+			<?php
+		echo $this->QrCode->url(
+			'/talleres/'.$taller['Taller']['slug_dst'], array('size' => '170x170', 'margin' => 0)
+		);
+		?>
 	</ul>
 </div>
 
-<div class="talleres view span9" itemscope itemtype="http://data-vocabulary.org/Event">
-<div class="page-header">
-	<h1 itemprop="summary"><?php echo h($taller['Taller']['nombre']); ?></h1>
-</div>
+<div class="talleres view span9" itemscope itemtype="http://schema.org/EducationEvent">
+	<h1 itemprop="name"><?php
+	echo $this->Html->link(
+			h($taller['Taller']['nombre']),
+			array('controller' => 'talleres', 'action' => 'ver', $taller['Taller']['slug_dst']),
+			array('itemprop' => 'url')
+		);
+	?></h1>
+
 <?php
 echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 								array(
-									'itemprop'=>'photo',
+									'itemprop'=>'image',
 									'alt' => $taller['Taller']['nombre'],
 									'class' => 'img-polaroid img-rounded'
 								));
 ?>
 	<dl>
-		<dt itemprop="author"itemscope itemtype="http://data-vocabulary.org/Person">
-			<span itemprop="role">Tallerista</span>
+		<dt>
+			<span>Tallerista</span>
 		</dt>
-		<dd><?php
+		<dd itemprop="attendee" itemscope itemtype="http://schema.org/Person"><?php
 		echo $this->Html->link(
-			'<span itemprop="nickname" >'. $taller['User']['username'] . '</span>',
+			'<span itemprop="name" >'. $taller['User']['username'] . '</span>',
 			array('controller' => 'users', 'action' => 'ver', $taller['User']['username']),
 			array('escape' => false, 'itemprop' => 'url')
 		); ?></dd>
-		
+
 		<dt><?php echo __('Horario'); ?></dt>
 		<dd>
 			<?php echo h($taller['Taller']['horario']); ?>
@@ -146,26 +161,37 @@ echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 		<dd itemprop="startDate" datetime="<?php echo h($taller['Taller']['fecha_inicio']); ?>T06:00-08:00"><?php echo h($taller['Taller']['fecha_inicio']); ?></dd>
 		<dt><?php echo __('Fecha Final'); ?></dt>
 		<dd itemprop="endDate" datetime="<?php echo h($taller['Taller']['fecha_final']); ?>T06:00-08:00"><?php echo h($taller['Taller']['fecha_final']); ?></dd>
-		
-		<dt><?php echo __('Costo'); ?></dt>
-		<dd itemprop='tickets'><?php echo '$'.number_format($taller['Taller']['costo'],2); ?></dd>
-		
 		<dt><?php echo __('Numero Total Horas'); ?></dt>
 		<dd>
 			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
 		</dd>
 		
+		<dt>Numero de Sesiones</dt>
+		<dd><?php echo h($taller['Taller']['num_sesiones']); ?> Sesiones</dd>
+
 		<dt>Estado actual</dt>
 		<dd>
 			<?php echo $taller['Taller']['status']; ?>&nbsp;
 		</dd>
-		
+
 	</dl>
+	<meta itemprop="duration" content="PT<?php echo $taller['Taller']['numero_total_horas']; ?>H">
+
+	<dl itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+		<dt>Cuota de Recuperación</dt>
+		<dd itemprop="price lowPrice highPrice">
+			<?php echo '$'.number_format($taller['Taller']['costo'],2); ?>
+		</dd>
+		<dt>Cupo</dt>
+		<dd>
+			<span itemprop="offerCount"><?php echo $taller['Taller']['cupo']; ?></span> Personas
+		</dd>
+	</dl>
+
 	<div>
 		<h2>Requisitos</h2>
 		<?php echo $taller['Taller']['requisitos']; ?>
 	</div>
-
 	<h2>Resumen</h2>
 	<p>
 		<?php echo $taller['Taller']['resumen']; ?>
@@ -206,7 +232,7 @@ $user_auth = $this->Session->read('Auth.User.username');
 	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li>
-		<?php 
+		<?php
 		echo $this->Html->link(
 			'<i class="icon-eye-open"></i> Ver',
 			array('controller' => 'etiquetas', 'action' => 'ver', $etiqueta['id']),
@@ -214,7 +240,7 @@ $user_auth = $this->Session->read('Auth.User.username');
 		); ?>
 		</li>
 		<li>
-		<?php 
+		<?php
 		echo $this->Html->link(
 			'<i class="icon-pencil"></i> Editar',
 			array('controller' => 'etiquetas', 'action' => 'editar', $etiqueta['id']),
@@ -222,7 +248,7 @@ $user_auth = $this->Session->read('Auth.User.username');
 		); ?>
 		</li>
 		<li>
-		<?php 
+		<?php
 		echo $this->Form->postLink(
 			'<i class="icon-trash"></i> Borrar',
 			array('controller' => 'etiquetas', 'action' => 'borrar', $etiqueta['id']),
@@ -263,13 +289,13 @@ $HTML_usuarios_registrados = '<table cellpadding = "0">
 			if($boton_taller && $user_auth == $user['username']){
 						$boton_taller = false;
 					}
-			$HTML_usuarios_registrados .= '<tr itemscope itemtype="http://data-vocabulary.org/Person">';
+			$HTML_usuarios_registrados .= '<tr itemscope itemtype="http://schema.org/Person">';
 			$HTML_usuarios_registrados .= '<td>'.
 					$this->Html->avatar_link(
 								$user['username']
 					).'</td>'.
 					'<td>'.$user['username'] . '</td>'.
-					'<td itemprop="role">Alumno</td>'.
+					'<td>Alumno</td>'.
 				'</tr>';
 		}
 	$HTML_usuarios_registrados .= '</table>';
@@ -307,10 +333,7 @@ echo $HTML_usuarios_registrados;
 <!-- comentarios -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'adsl'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
+var disqus_shortname = 'adsl';
 (function() {
 	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

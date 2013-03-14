@@ -79,6 +79,20 @@ a#LinkPrincipal{
 	display:block;
 	float: left;
 	text-decoration:none;
+	-webkit-transition-duration: .5s;
+	   -moz-transition-duration: .5s;
+	     -o-transition-duration: .5s;
+	        transition-duration: .5s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
+}
+a#LinkPrincipal:hover {
+	-webkit-transform: scale(1.2);
+	   -moz-transform: scale(1.2);
+	     -o-transform: scale(1.2);
+	        transform: scale(1.2);
 }
 #slogan{
 	float: left;
@@ -132,20 +146,63 @@ a#LinkPrincipal:hover h3, a#LinkPrincipal h3:hover{color:#D87C00;}
 	color: #000;
 }
 .iconos{
-	padding-top: 10px;
 	width: 100%;
 	height: 56px;
 	float: left;
 	text-align: right;
 }
-.iconos img{
-	margin: 5px;
+
+.iconos a {
+	margin: 10px 5px 0 5px;
 	opacity: 0.8;
+	background: URL('../img/redes_sociales.png') no-repeat;
+	width: 42px;
+	height: 42px;
+	display: block;
+	float: right;
+	-webkit-border-radius: 21px 21px;
+		 -moz-border-radius: 21px 21px;
+					border-radius: 21px 21px;
+	-webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.2), 0 0 10px #BFBFBF;
+		 -moz-box-shadow: inset 0 0 10px rgba(0,0,0,.2), 0 0 10px #BFBFBF;
+			-ms-box-shadow: inset 0 0 10px rgba(0,0,0,.2), 0 0 10px #BFBFBF;
+			 -o-box-shadow: inset 0 0 10px rgba(0,0,0,.2), 0 0 10px #BFBFBF;
+					box-shadow: inset 0 0 10px rgba(0,0,0,.2), 0 0 10px #BFBFBF;
+	-webkit-transition-duration: 1.5s;
+	   -moz-transition-duration: 1.5s;
+	     -o-transition-duration: 1.5s;
+	        transition-duration: 1.5s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
 }
-.iconos img:hover{
+
+.iconos a.twitter {
+	background-position: -44px 0;
+}
+.iconos a.flickr {
+	background-position: -88px 0;
+}
+.iconos a.rss {
+	background-position: -132px 0;
+}
+
+.iconos a:hover {
 	margin: 0 5px 10px 5px;
 	opacity: 1;
+	outline: 0;
+	-webkit-box-shadow: inset 0 0 10px rgba(255,255,255,.1), 0 0 10px #FFF;
+		 -moz-box-shadow: inset 0 0 10px rgba(255,255,255,.1), 0 0 10px #FFF;
+			-ms-box-shadow: inset 0 0 10px rgba(255,255,255,.1), 0 0 10px #FFF;
+			 -o-box-shadow: inset 0 0 10px rgba(255,255,255,.1), 0 0 10px #FFF;
+					box-shadow: inset 0 0 10px rgba(255,255,255,.1), 0 0 10px #FFF;
+	-webkit-transform: rotate(720deg);
+	   -moz-transform: rotate(720deg);
+	     -o-transform: rotate(720deg);
+	        transform: rotate(720deg);
 }
+
 .barra{
 	width: 946px;
 	height: 24px;
@@ -294,6 +351,14 @@ ul{
 	margin-left: 10px;
 	text-decoration:none;
 	text-shadow: 0 2px 1px #5B4100;
+	-webkit-transition-duration: .25s;
+	   -moz-transition-duration: .25s;
+	     -o-transition-duration: .25s;
+	        transition-duration: .25s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
 }
 .menu ul li a.activa,
 .menu ul li a:hover {
@@ -312,6 +377,10 @@ ul{
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
+	-webkit-transform: scale(1.05);
+	   -moz-transform: scale(1.05);
+	     -o-transform: scale(1.05);
+	        transform: scale(1.05);
 }
 .separadorfooter{
 	clear: both;
@@ -458,7 +527,7 @@ div.users,div.index{
 	display: block;
 	clear: both;
 }
-div.avatar{
+div.avatar {
 	float: left;
 	margin-right: 20px;
 	padding:7px;
@@ -469,8 +538,45 @@ div.avatar{
 	-o-border-radius: 0 0 10px 10px;
 	border-radius:10px;
 	text-align:center;
+	-webkit-transition-duration: .25s;
+	   -moz-transition-duration: .25s;
+	     -o-transition-duration: .25s;
+	        transition-duration: .25s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
 }
-div.avatar img{border:1px solid #FFF;}
+div.avatar:hover {
+	-webkit-transform: scale(1.2);
+	   -moz-transform: scale(1.2);
+	     -o-transform: scale(1.2);
+	        transform: scale(1.2);
+}
+
+div.avatar img {
+	border:1px solid #FFF;
+	margin: 0 auto 5px auto;
+}
+div.avatar a img {
+	-webkit-transition-duration: 1.5s;
+	   -moz-transition-duration: 1.5s;
+	     -o-transition-duration: 1.5s;
+	        transition-duration: 1.5s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
+}
+div.avatar a img:hover {
+	-webkit-transform:rotate(720deg);
+	   -moz-transform:rotate(720deg);
+	     -o-transform:rotate(720deg);
+	        transform:rotate(720deg);
+}
+div.avatar a {
+	color: #C2570B !important;
+}
 div.avatar h5{
 	position:absolute;
 	width:50px;
@@ -554,7 +660,7 @@ nav.menu{
 
 /*
  * Soporte para tables
- * 
+ *
  */
 @media (max-width: 768px) {
 	div.header,
@@ -566,7 +672,7 @@ nav.menu{
 	#content, .contacto{
 		width:550px;
 	}
-	
+
 	.formulario, div.acciones, div.users, div.index /* acciones */
 	{
 		width:540px;
@@ -595,7 +701,7 @@ nav.menu{
 
 /*
  * Soporte para moviles/celulares
- * 
+ *
  */
 @media (max-width: 400px) {
 	div.header,
@@ -637,6 +743,12 @@ nav.menu{
 	/* El logo se reduce ya que el eslogan desaparecio */
 	#logo h3, #logo a#LinkPrincipal, #logo{width:150px;margin:0;padding:0;font-size:10px}
 	header .buscadoriconos{width:180px !important; margin:0;padding:0}
+	.iconos a{
+		margin: 10px 1px 0 1px;
+	}
+	.iconos a:hover {
+		margin: 0 1px 10px 1px;
+	}
 	/* El menu aumenta su altura al doble ya que ahora se muestra en 2 filas */
 	nav.menu{ height:92px }
 	.formulario, div.acciones, div.users, div.index
@@ -666,7 +778,7 @@ nav.menu{
 	div.CajaPrincipal{
 		width:1400px;
 	}
-	
+
 	.formulario, div.acciones, div.users, div.index /* acciones */
 	{
 		width:90%;

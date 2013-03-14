@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `contribuciones` (
 	`added` TEXT DEFAULT NULL,
 	`modified` TEXT DEFAULT NULL,
 	`removed` TEXT DEFAULT NULL,
-	`TIMESTAMP` TIMESTAMP NOT NULL
+	`timestamp` TIMESTAMP NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- etiquetas_talleres --

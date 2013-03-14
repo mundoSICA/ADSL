@@ -1,6 +1,6 @@
 <?php
-$this->set('title_for_layout', 'ADSL  - Registro de usuario');
-$this->Html->meta('description', 'Registro de usuario, registrate en nuestro sitio web', array('inline' => false));
+$this->set('title_for_layout', 'ADSL  - Registro de miembros');
+$this->Html->meta('description', 'Registro de miembros, registrate en la Academia de Software Libre', array('inline' => false));
 #Sección Javascript
 $this->Html->script(array(
 											'activar.top.menu.jquery',
@@ -11,7 +11,7 @@ $this->Html->script(array(
 <div class="users formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<h1>Registrate como usuario</h1>
+		<h1>Registrate como miembro</h1>
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');

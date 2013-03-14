@@ -2936,7 +2936,7 @@ nombre de la organizacion#</dia:string>
         </dia:composite>
         <dia:composite type="table_attribute">
           <dia:attribute name="name">
-            <dia:string>#TIMESTAMP#</dia:string>
+            <dia:string>#timestamp#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>#TIMESTAMP#</dia:string>

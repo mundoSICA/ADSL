@@ -19,7 +19,7 @@ $this->Html->meta(array('name' => 'twitter:site', 'content' => '@academiadsl'), 
 $this->Html->meta(array('name' => 'twitter:creator', 'content' => '@fitorec'), null , array('inline' => false) );
 $this->Html->meta(array('property' => 'og:url', 'content' => Router::url('/contribuciones/ver/' . $commit['Contribucion']['hash'], true)), null , array('inline' => false) );
 $this->Html->meta(array('property' => 'og:title', 'content' => htmlentities($title)), null , array('inline' => false) );
-$this->Html->meta(array('property' => 'og:description', 'content' => 
+$this->Html->meta(array('property' => 'og:description', 'content' =>
 str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
 
 ), null , array('inline' => false) );
@@ -42,21 +42,21 @@ $this->Html->script(array(
 											), array('inline' => false));
 $this->Html->scriptEnd();
 ?>
-<div class="users ver">
-<span itemscope itemtype="http://data-vocabulary.org/Person">
+<div class="users ver" itemscope itemtype="http://schema.org/EducationEvent">
+<span itemscope  itemprop="attendee" itemtype="http://schema.org/Person">
 <?php
-	echo $this->Html->avatar_link($commit['Contribucion']['author_name']);	
+	echo $this->Html->avatar_link($commit['Contribucion']['author_name']);
 ?>
 </span>
-<div class='informacion_commit' itemscope itemtype="http://data-vocabulary.org/Event">
-	<h1 itemprop="summary"><?php  
+<div class='informacion_commit'>
+	<h1><?php
 	echo $this->Html->link($title,
 			array('controller'=>'contribuciones','action'=>'ver', $commit['Contribucion']['hash'])
-		, array('itemprop'=>'url')
+		, array('itemprop'=>'url name')
 	); ?></h1>
 	<dl>
 		<dt>Autor</dt>
-		<dd itemprop="author" itemtype="http://data-vocabulary.org/Person">
+		<dd>
 			<?php echo
 			$this->Html->link(
 				$commit['Contribucion']['author_name'],
@@ -104,11 +104,11 @@ foreach($tipo_cambio as $t=>$t_msg ){
 		$li_template = '<li>%s</li>';
 		foreach($files as $file) {
 			if( $t != 'removed' )
-				printf($li_template, 
+				printf($li_template,
 							$this->Html->link($file,"{$url}/{$file}", array('rel'=>'external','class'=>$t))
 						);
 			else
-				printf($li_template, 
+				printf($li_template,
 						"<del class='{$t}'>{$file}</del>", array('rel'=>'external','class'=>$t)
 					);
 		}

@@ -40,17 +40,17 @@ foreach ($talleres as $t) {
 <?php
 foreach ($talleres as $t):
 ?>
-<li itemscope itemtype="http://data-vocabulary.org/Event">
+<li itemscope itemtype="http://schema.org/EducationEvent">
 	<?php
 	echo $this->Html->link(
-		'<span itemtype="summary">' . $t['Taller']['nombre'] . '</span>',
+		$t['Taller']['nombre'],
 		array('controller' => 'talleres', 'action' => 'ver', 'admin' => false, $t['Taller']['slug_dst']),
-		array('escape' => false,'itemprop' => 'url')
+		array('escape' => false,'itemprop' => 'url name')
 	)
 	. ' - <span itemprop="startDate">' . $t['Taller']['fecha_inicio']. '</span>';
 ?>
 </li>
-<? endforeach; ?>
+<?php endforeach; ?>
 </ul>
 
 <h1>Calendario de actividades del ADSL.</h1>

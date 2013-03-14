@@ -4,7 +4,7 @@
  * Vista:  Talleres Index
  */
 #Metadatos
-$this->set('title_for_layout', 'ADSL - Listado de talleres disponibles '.date('Y-m') );
+$this->set('title_for_layout', 'ADSL - Listado de nuestros talleres disponibles '.date('Y-m') );
 $this->Html->meta('description', 'Listado de talleres disponibles '.date('Y-m'), array('inline' => false));
 #sección CSS
 #$this->Html->css(array(
@@ -16,6 +16,8 @@ $this->Html->script(array(
 											'activar.top.menu.jquery',
 											'talleres',
 											), array('inline' => false));
+
+$img_ancla = $this->Html->image('ancla.svg', array('width'=>14, 'height'=>14, 'alt'=>'Enlace'));
 ?>
 <div class="row-fluid">
 	<div class="actions span3 well sidebar-nav">
@@ -79,18 +81,20 @@ $this->Html->script(array(
 	<div class="page-header"><h1>Lista de talleres</h1></div>
 	<?php
 	foreach ($talleres as $taller): ?>
-	<section itemscope itemtype="http://schema.org/Event" itemclass="EducationEvent">
+	<section itemscope itemtype="http://schema.org/EducationEvent" itemclass="EducationEvent">
 	<h2 itemprop="name"><?php
-	echo $this->Html->link($taller['Taller']['nombre'],
+	echo $img_ancla . ' ' .
+	$this->Html->link($taller['Taller']['nombre'],
 		array('action' => 'ver', $taller['Taller']['slug_dst']),
-		array('itemprop' => 'url')); ?></h2>
+		array('itemprop' => 'url'));
+	?></h2>
 		<p><?php
 						echo $this->Html->link(
 									$this->Html->image(
 										'talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 										array(
 											'alt' => $taller['Taller']['nombre'],
-											'itemprop' => 'photo',
+											'itemprop' => 'image',
 											'class' => 'img-polaroid img-rounded'
 										)
 								),
@@ -120,19 +124,21 @@ $this->Html->script(array(
 		<dt>Fecha Final:</dt>
 		<dd itemprop="endDate"><?php echo h($taller['Taller']['fecha_final']); ?>&nbsp;</dd>
 		<dt>Número de Horas:</dt>
-		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;</dd>
+		<dd><?php echo h($taller['Taller']['numero_total_horas']); ?>&nbsp;
+		</dd>
 		<dt>Estado actual:</dt>
 		<dd><?php echo h($taller['Taller']['status']); ?>&nbsp;</dd>
 		<dt>No sesiones:</dt>
 		<dd><?php echo h($taller['Taller']['num_sesiones']); ?>&nbsp;</dd>
 	</dl><br />
-	<p><?php echo h($taller['Taller']['resumen']); ?>&nbsp;</p>
+	<meta itemprop="duration" content="PT<?php echo h($taller['Taller']['numero_total_horas']); ?>H">
+	<p  itemprop="description"><?php echo h($taller['Taller']['resumen']); ?>&nbsp;</p>
 	<?php echo $this->Html->link('Ver más',
 	array('action' => 'ver', $taller['Taller']['slug_dst']),
 	array('class' => 'boton_naranja')
 	); ?>
 	</section>
-	<br /><br />
+	<hr />
 <?php endforeach; ?>
 	<small class="pull-right">
 	<?php

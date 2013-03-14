@@ -55,4 +55,6 @@ $(function(){
 				}
 		}
 	});
+	//
+	$('.iconos a').tooltip({placement: 'bottom'});
 });

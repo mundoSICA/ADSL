@@ -1,4 +1,16 @@
 *~
+# Archivos Core de CakePHP
+/.htaccess
+/.travis.yml
+/README
+/build.properties
+/build.xml
+/index.php
+/lib/
+/plugins/
+/vendors/
+
+# Archivos de seguimiento
 /app/tmp/
 /app/Config/core.php
 /app/Config/core.php.web
@@ -6,6 +18,7 @@
 /app/Config/database.php.web
 /app/Config/Schema/db/z-data.sql
 /app/Plugin/Twitteroauth/Config/
+
 #Imgs de los talleres y usuarios
 /app/webroot/img/talleres/
 /app/webroot/img/users/

@@ -7,7 +7,7 @@
 	margin-right: 5px
 }
 
-ul#listaUsuarios li{
+ul#listaUsuarios li {
 	border:0;
 	margin:0;
 	width:150px;
@@ -15,8 +15,21 @@ ul#listaUsuarios li{
 	display: block;
 	float: left;
 	width:50%;
+	-webkit-transition-duration: .25s;
+	   -moz-transition-duration: .25s;
+	     -o-transition-duration: .25s;
+	        transition-duration: .25s;
+	-webkit-transition-property: -webkit-transform;
+	   -moz-transition-property: -moz-transform;
+	     -o-transition-property: -o-transform;
+	        transition-property: transform;
 }
-
+ul#listaUsuarios li:hover {
+	-webkit-transform: scale(1.3);
+	   -moz-transform: scale(1.3);
+	     -o-transform: scale(1.3);
+	        transform: scale(1.3);
+}
 ul#listaUsuarios li:nth-child(4n+1),
 ul#listaUsuarios li:nth-child(4n+2)
 {
@@ -38,7 +51,7 @@ ul#listaUsuarios li:nth-child(4n+2)
 
 /*
  * Soporte para tables
- * 
+ *
  */
 @media (max-width: 768px) {
 	#listaUsuarios label.btn {
@@ -48,7 +61,7 @@ ul#listaUsuarios li:nth-child(4n+2)
 
 /*
  * Soporte para moviles
- * 
+ *
  */
 @media (max-width: 400px) {
 	#listaUsuarios label.btn {

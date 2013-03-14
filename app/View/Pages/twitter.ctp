@@ -1,4 +1,4 @@
-<div itemscope itemtype="http://data-vocabulary.org/Person">
+<div itemscope itemtype="http://schema.org/Person">
 <?php
 if( !empty( $result ) && isset($result['profile_image_url']) ):
 
@@ -10,7 +10,7 @@ if( !empty( $result ) && isset($result['profile_image_url']) ):
 	Mi nombre es <span itemprop="name"><?php
 	echo $result['screen_name'];
 	?></span>, <br />
-	pero me llaman <span itemprop="nickname"><?php
+	pero me llaman <span><?php
 	echo $result['name'];
 	?></span>. <br />
 	Esta es mi página principal: 

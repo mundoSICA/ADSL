@@ -22,6 +22,7 @@
 	<meta name="zipcode" content="68000">
 	<meta name="application-name" content="ADSL" />
 	<meta name="msapplication-tooltip" content="Academia de software libre compartir y difundir conocimiento" />
+	<meta name="msvalidate.01" content="0BE1D85670E5445264ADC79E23C5EF45" />
 <?php
 		##seccion de meta etiquetas
 		echo "\t".$this->Html->meta('icon');
@@ -43,27 +44,28 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 //--></script>
 <?php endif; ?>
 </head>
-<body itemscope itemtype="http://schema.org/CreativeWork">
+<body>
 <script type="text/javascript"></script><noscript><div id="javascript_requerido" >Este sitio requiere javascript para su optima visualización.</div></noscript>
 <div id="dialog"></div>
 <div class="CajaPrincipal">
-     <div class="barra">
+<header itemprop="author copyrightHolder creator provider publisher sourceOrganization reviewedBy" itemscope itemtype="http://schema.org/Organization">
+  <div class="barra">
 			 <span class='telLabel'></span><span itemprop="telephone">(951) 205-43-51</span> |
-			 <span class='emailLabel'></span><a href="mailto:contacto@adsl.org.mx">contacto@adsl.org.mx</a>
+			 <span class='emailLabel'></span><a itemprop="email" href="mailto:contacto@adsl.org.mx">contacto@adsl.org.mx</a>
 			 |<span class='loginLabel'></span><?php
      if( $this->Session->read('Auth.User') ){
 				echo $this->Html->link('Salir',array('controller'=>'users','action'=>'logout','admin'=>false), array('title'=>'Cerrar sesión'));
 			}else{
 				echo $this->Html->link('Login',array('controller'=>'users','action'=>'login'), array('title'=>'logearme'));
-			}
-     ?></div>
-<header>
+			}?>
+
+  </div><?php /** end .barra **/ ?>
     <div class="header">
       <div id="logo">
 		  <a itemprop="url" href="<?php echo Router::url('/', true); ?>" id='LinkPrincipal'>
 			<?php
 			echo $this->Html->image(
-				'logo_ave.jpg',
+				'logo_ave.png',
 				array(
 					'itemprop'=>'image',
 					'alt'=>'ADSL: Academia de Software Libre',
@@ -75,7 +77,7 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 		</a>
 		<div id="slogan">
 			<h2>Academia de Software Libre</h2>
-			<h3>Compartir, Difundir y Generar Conocimiento</h3>
+			<h3 itemprop="description">Compartir, Difundir y Generar Conocimiento</h3>
 		</div>
 	</div>
 	<div class="buscadoriconos">
@@ -87,36 +89,24 @@ var _gaq=_gaq || []; _gaq.push(['_setAccount','UA-32823607-1']); _gaq.push(['_tr
 			</form>
 	</div><!--termina buscador -->
 		<div class="iconos">
-			<a href="http://www.facebook.com/#!/profile.php?id=100001349064369" rel="external">
-				<?php
-					echo $this->Html->image('facebook.jpg', array('alt'=>'facebook'));
-				?>
+			<a class='rss' href="<?php echo Router::url('/feed.xml');?>" title='Nuestro canal RSS'>
 			</a>
-			<a href="http://twitter.com/academiadsl" rel="external">
-				<?php
-					echo $this->Html->image('twitter.jpg', array('alt'=>'twitter'));
-				?>
+			<a class='flickr' href="http://www.flickr.com/photos/academiadsl/sets/72157625524455434/" rel="external" title='Nuestras fotos en flickr'>
 			</a>
-			<a href="http://www.flickr.com/photos/academiadsl/sets/72157625524455434/" rel="external">
-				<?php
-					echo $this->Html->image('flickr.jpg', array('alt'=>'flickr'));
-				?>
+			<a class='twitter' href="http://twitter.com/academiadsl" rel="external" title='Siguenos en twitter'>
 			</a>
-			<a href="<?php echo Router::url('/feed.xml');?>">
-				<?php
-					echo $this->Html->image('feed.jpg', array('alt'=>'Feed'));
-				?>
+			<a class='facebook' href="http://www.facebook.com/#!/profile.php?id=100001349064369" rel="external"  title='Contactanos por FaceBook'>
 			</a>
 		</div><!--termina iconos -->
       </div><!--termina buscadoriconos -->
      </div>
       <!--termina header -->
-	   <nav class="menu">
+</header>
+	<nav class="menu">
 	       <?php
 		echo $this->element('menu_superior');
 	       ?>
-	   </nav>
-</header>
+	</nav>
 <div id="content">
        <?php
 		echo $this->Session->flash();
@@ -139,18 +129,7 @@ echo $this->Html->script(array(
 		'modernizr.custom.js',
 		'jquery-ui-1.8.21.custom.min',
 		'google-code-prettify',
-		'bootstrap-transition',
-		'bootstrap-alert',
-		'bootstrap-modal',
-		'bootstrap-dropdown',
-		'bootstrap-scrollspy',
-		'bootstrap-tab',
-		'bootstrap-tooltip',
-		'bootstrap-popover',
-		'bootstrap-button',
-		'bootstrap-collapse',
-		'bootstrap-carousel',
-		'bootstrap-typeahead',
+		'bootstrap.min.js',
 		'main.js',
 	))."\n";
 ?>

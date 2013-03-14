@@ -6,23 +6,28 @@
  */
 ?>
 <div class="separadorfooter2"></div>
-<footer itemprop="sourceOrganization provider publisher creator" class="vcard" itemtype="http://data-vocabulary.org/Organization">
+<footer itemprop="sourceOrganization provider publisher creator" class="vcard" itemscope itemtype="http://schema.org/Organization">
+
 	<div class="footerCont">
 		<img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL2Fkc2wub3JnLm14&tag=3" alt="Page Rank" style="border:0;" />
-		<abbr><strong>ADSL</strong></abbr><br />
-		Algunos Derechos Reservados &copy; <date itemprop="dateCreated">2010</date>- <date itemprop="dateModified"><?php echo date('Y'); ?></date>,
-		<strong itemprop="name" class="fn org">Academia de Software Libre</strong>
+		<abbr><strong itemprop="name" class="fn org">ADSL</strong></abbr><br />
+		Algunos Derechos Reservados &copy;
+		<date itemprop="foundingDate">2010</date> - <date><?php echo date('Y'); ?></date>,
+		<strong itemprop="description">Academia de Software Libre</strong>
 		<a href="<?php echo Router::url('/',true); ?>" itemprop="url" class="url">adsl.org.mx</a>
-		<br />
-		<address itemprop="address" class="adr" itemscope itemtype="http://data-vocabulary.org/Address">
-			<span class="street-address" itemprop="street-address">Arteaga Num 613,Col. Centro</span>,
+
+
+		<div itemprop='location' itemscope itemtype="http://schema.org/Place">
+		<address itemprop="address" class="adr" itemscope itemtype="http://schema.org/PostalAddress">
+			<span class="street-address" itemprop="streetAddress">Arteaga Num 613,Col. Centro</span>,
 			CP: <span>68000</span>,
-			<span class="region" itemprop="region">Oaxaca</span>,
-			<span class="locality" itemprop="localy">Oax</span>,
-			<span itemprop="country-name">México</span>
+			<span class="region" itemprop="addressLocality">Oaxaca</span>,
+			<span class="locality" itemprop="addressRegion">Oax</span>,
+			<span itemprop="addressCountry">México</span>
+			Tel: <span class="tel" itemprop="telephone">(951) 205 43 51</span> / E-Mail:
+			<a href='mailto:contacto@adsl.org.mx' itemprop="email">contacto@adsl.org.mx</a><br />
 		</address>
-			Tel: <span class="tel" itemprop="tel">(951) 205 43 51</span> / E-Mail: <a href='mailto:contacto@adsl.org.mx'>contacto@adsl.org.mx</a><br />
-		<span class="geo" itemprop="geo" itemscope itemtype="http://data-vocabulary.org/Geo/">
+		<span class="geo" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
 			<span class="latitude">
            <span class="value-title" itemprop="latitude" content="<?php
 						echo $adsl_data['geo']['latitude'];
@@ -38,8 +43,9 @@
 						?>"></span>
 			</span>
 		</span>
-			Sitio esta hecho con código libre y abierto
-			<a href="https://github.com/mundoSICA/ADSL" rel="external">disponible en github</a> 
+	</div>
+		Sitio esta hecho con código libre y abierto
+		<a href="https://github.com/mundoSICA/ADSL" rel="external">disponible en github</a>
 		Maquetado por: <a href="http://www.adsl.org.mx/users/ver/Manuel">Manuel Hndz.</a>,
 		Implentado por los <?php echo $this->Html->link('Colaboradores',
 			 array('controller' => 'contribuciones'),
