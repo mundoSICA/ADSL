@@ -6,7 +6,16 @@ $this->Html->script(array(
 											'users.mi_perfil',
 											), array('inline' => false));
 ?>
-<div class="users formulario">
+<div class="row-fluid">
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
+</div>
+
+<div class="users index span9 formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
 		<legend>Edicion de mi perfil</legend>
@@ -22,13 +31,14 @@ $this->Html->script(array(
 		echo $this->Form->input('repetir_nuevo_password');
 	?>
 	</fieldset>
-<div class="submit">
-	<input type="submit" value="Enviar datos">
-	<?php
+	<div class="submit">
+		<input type="submit" value="Enviar datos">
+		<?php
 		echo $this->Html->link('Ver mi perfil',
 			array('controller'=>'users', 'action'=>'ver', $this->request->data['User']['username'])
 			,array('class' => 'boton_naranja')
 		);
-	?>
+		?>
+	</div>
 </div>
 </div>

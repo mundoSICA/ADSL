@@ -20,55 +20,18 @@ $this->Html->script(array(
 $img_ancla = $this->Html->image('ancla.svg', array('width'=>14, 'height'=>14, 'alt'=>'Enlace'));
 ?>
 <div class="row-fluid">
-	<div class="actions span3 well sidebar-nav">
-	<h3>Acciones</h3>
-	<ul class="nav nav-list">
-<!-- Talleres sección -->
-		<li class='nav-header'>
-				<i class="icon-folder-open"></i> Talleres
-		</li>
-		<li>
+	<div class="actions span3 sidebar-nav">
 	<?php
-		if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
-		echo $this->Html->link(
-		'<i class="icon-plus"></i> Agregar',
-		array('action' => 'agregar', 'admin' => true),
-		array('escape' => false)
-	);
-	endif;
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
 	?>
-		</li>
-<!-- Usuarios sección -->
-			<li class='divider'></li>
-			<li class='nav-header'>
-				<i class="icon-user"></i> Usuarios
-			</li>
-			<li>
-	<?php
-		echo $this->Html->link(
-		'<i class="icon-home"></i> Listar',
-		array('controller' => 'users', 'action' => 'index'),
-		array('escape' => false)
-	); ?>
-			</li>
-<!-- Etiquetas sección -->
-			<li class='divider'></li>
-			<li class='nav-header'>
-				<i class="icon-tags"></i> Etiquetas
-			</li>
-			<li>
-	<?php
-		echo $this->Html->link(
-		'<i class="icon-home"></i> Listar',
-		array('controller' => 'etiquetas', 'action' => 'index'),
-		array('escape' => false)
-	); ?>
-			</li>
 <!-- Compartir sección -->
-			<li class='divider'></li>
+	<ul class='nav nav-list well'>
 			<li class='nav-header'>
 				<i class="icon-share"></i> Compartir
 			</li>
+			<li class='divider'></li>
 			<?php
 		echo $this->QrCode->url(
 			'/talleres/', array('size' => '170x170', 'margin' => 0)
@@ -143,7 +106,7 @@ $img_ancla = $this->Html->image('ancla.svg', array('width'=>14, 'height'=>14, 'a
 	<small class="pull-right">
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => 'Página {:page} de {:pages}, viendo {:current} registros de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
+	'format' => 'Página {:page} de {:pages}, viendo {:current} talleres de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
 	));
 	?>
 	</small>

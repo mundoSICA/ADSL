@@ -57,4 +57,6 @@ $(function(){
 	});
 	//
 	$('.iconos a').tooltip({placement: 'bottom'});
+	
+	$('.nav.nav-list a').tooltip();
 });

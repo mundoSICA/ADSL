@@ -1,5 +1,10 @@
 <?php
-### Sección Metadatos
+/**
+ * adsl.org.mx
+ * Vista:  Users Ver
+ */
+
+#sección metaDatos
 $title = 'ADSL  - perfil '.h($user['User']['username']);
 $msg = 'ADSL Perfil del usuario '.h($user['User']['username']);
 
@@ -29,7 +34,30 @@ str_replace( array("\n", "\r"), ' ',htmlspecialchars($msg) )
 $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/users/' . $user['User']['username'] . '/avatar.jpg', true)), null , array('inline' => false) );
 
 ?>
-<div class="users ver">
+
+<div class="row-fluid">
+
+<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
+<!-- Compartir sección -->
+	<ul class='nav nav-list well'>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+			<li class='divider'></li>
+		<li><?php
+		echo $this->QrCode->url(
+			'/usuarios/', array('size' => '170x170', 'margin' => 0)
+		);
+		?></li>
+	</ul>
+</div>
+
+<div class="users ver span9">
 <?php
 	echo $this->Html->avatar($user['User']['username']);
 ?>
@@ -120,44 +148,6 @@ foreach ($user['Taller'] as $t): ?>
 <?php endif; ?>
 </div><!-- en datos usuarios -->
 </div>
-<div class="acciones">
-	<h3>Acciones</h3>
-	<ul>
-		<li><?php echo $this->Html->link('Listar usaurios', array('action' => 'index')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3>Noticias Relacionados</h3>
-	<?php if (!empty($user['Noticia'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Nombre'); ?></th>
-		<th><?php echo __('Slug Dst'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Content'); ?></th>
-		<th class="acciones">Acciones</th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($user['Noticia'] as $noticia): ?>
-		<tr>
-			<td><?php echo $noticia['id'];?></td>
-			<td><?php echo $noticia['user_id'];?></td>
-			<td><?php echo $noticia['nombre'];?></td>
-			<td><?php echo $noticia['slug_dst'];?></td>
-			<td><?php echo $noticia['created'];?></td>
-			<td><?php echo $noticia['modified'];?></td>
-			<td><?php echo $noticia['content'];?></td>
-			<td class="acciones">
-				<?php echo $this->Html->link('Ver', array('controller' => 'noticias', 'action' => 'ver', $noticia['id'])); ?>
-				<?php echo $this->Html->link('Editar', array('controller' => 'noticias', 'action' => 'editar', $noticia['id'])); ?>
-				<?php echo $this->Form->postLink('Borrar', array('controller' => 'noticias', 'action' => 'borrar', $noticia['id']), null, __('Esta seguro que desea borrar: # %s?', $noticia['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+
+
 </div>

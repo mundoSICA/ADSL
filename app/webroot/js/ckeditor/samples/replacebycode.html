@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+-->
+<html>
+<head>
+	<title>Replace Textarea by Code &mdash; CKEditor Sample</title>
+	<meta charset="utf-8">
+	<script src="../ckeditor.js"></script>
+	<link href="sample.css" rel="stylesheet">
+</head>
+<body>
+	<form action="sample_posteddata.php" method="post">
+		<textarea id="PageTextarea" name="data[Page][textarea]"></textarea>
+		<script>
+			CKEDITOR.replace( 'PageTextarea' );
+		</script>
+	</form>
+</body>
+</html>

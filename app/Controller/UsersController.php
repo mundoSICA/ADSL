@@ -13,7 +13,6 @@ class UsersController extends AppController {
  */
 public $components = array('Email', 'EmailTokenRequest', 'Gravatar');
 
-
 function beforeFilter() {
 	parent::beforeFilter();
 			$this->Auth->allow(

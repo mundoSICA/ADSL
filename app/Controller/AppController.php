@@ -23,6 +23,8 @@ class AppController extends Controller {
 		'Session',
 		'Js',
 		'Time',
+		'QrCode',
+		'Wysiwyg'
 	);
 	/******************** Funciones *******************************************************/
 

@@ -41,7 +41,7 @@ echo h(
 	echo $this->Form->input('telefono');
 	echo $this->Form->input('asunto');
 	echo "</div>\n";
-	echo $this->Form->input('mensaje', array('type'=> 'textarea'));
+	echo $this->Wysiwyg->textarea('mensaje');
 	/*echo $this->Recaptcha->show('clean');*/
 ?>
 	</fieldset>

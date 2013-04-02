@@ -1,4 +1,13 @@
-<div class="talleres formulario">
+<div class="row-fluid">
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
+</div>
+
+<div class="talleres span9 formulario">
 <?php echo $this->Form->create('Taller', array('type' => 'file'));?>
 	<fieldset>
 		<legend>Agregar Taller</legend>
@@ -14,7 +23,8 @@
 		echo $this->Form->input('num_sesiones', array('value'=>1));
 		echo $this->Form->input('requisitos', array('type'=>'textarea','value'=>'Lista de requisitos'));
 		echo $this->Form->input('resumen', array('type'=>'textarea','value'=>'Escriba aquí un breve resumen'));
-		echo $this->Form->input('contenido', array('type'=>'textarea','value'=>'Escriba aquí una descripción más amplia'));
+		echo "Contenido";
+		echo $this->Wysiwyg->textarea('contenido');
 		echo '<div class="input text required">';
 		echo $this->Form->label('Taller.slide', 'Archivo para el slide(925x250 jpeg)');
 		echo '<input id="TallerSlide" type="file" name="data[Taller][slide]">';
@@ -22,4 +32,5 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Crear taller');?>
+</div>
 </div>

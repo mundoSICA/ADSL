@@ -2,7 +2,28 @@
 	$this->set('title_for_layout', 'ADSL  - Inicio de sesión');
 	$this->Html->meta('robots', 'noindex,nofollow', array('inline' => false));
 ?>
-<div class="users formulario">
+<div class="row-fluid">
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
+<!-- Compartir sección -->
+	<ul class='nav nav-list well'>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+			<li class='divider'></li>
+		<li><?php
+		echo $this->QrCode->url(
+			'/usuarios/login', array('size' => '170x170', 'margin' => 0)
+		);
+		?></li>
+	</ul>
+</div>
+
+<div class="users index span9 formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
 		<legend>ADSL - Identificacte como usario</legend>
@@ -19,4 +40,5 @@
 	<?php
 	echo $this->Html->link('Olvide mi contraseña', array('action'=>'reset_password'));
 	?>
+	</div>
 </div>

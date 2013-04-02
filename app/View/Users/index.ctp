@@ -1,5 +1,9 @@
 <?php
-$this->set('title_for_layout', 'ADSL - Lista de usuarios');
+/**
+ * adsl.org.mx
+ * Vista:  Users Index
+ */
+$this->set('title_for_layout', 'ADSL - Lista de miembros en el ADSL');
 $this->Html->meta('description', 'Lista de los usuarios registrados', array('inline' => false));
 #Agregando css
 $this->Html->css('users.index','stylesheet', array('inline' => false ) );
@@ -18,8 +22,29 @@ div.avatar{
 	margin-right:0;
 }
 </style>
-<div class="users index">
-	<h1>Lista de Miembros</h1>
+<div class="row-fluid">
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role']);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
+<!-- Compartir sección -->
+	<ul class='nav nav-list well'>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+			<li class='divider'></li>
+		<li><?php
+		echo $this->QrCode->url(
+			'/usuarios/', array('size' => '170x170', 'margin' => 0)
+		);
+		?></li>
+	</ul>
+</div>
+
+<div class="users index span9">
+	<div class="page-header"><h1>Lista de miembros</h1></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th> </th>
@@ -47,7 +72,7 @@ div.avatar{
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => 'Página %page% de %pages%, viendo %current% registros de un total %count%, iniciando en %start% acabando en %end%'
+	'format' => 'Página %page% de %pages%, viendo %current% usuarios de un total %count%, iniciando en %start% acabando en %end%'
 	));
 	?>	</p>
 
@@ -59,15 +84,4 @@ div.avatar{
 	?>
 	</div>
 </div>
-<div class="acciones">
-	<h3>Acciones</h3>
-	<?php echo $this->Form->create('User');?>
-	<ul>
-		<li>
-			<?php
-				echo $this->Form->input('Buscar_usuario', array('value'=>'nick usuario'));
-				echo $this->Form->end('Buscar');
-			?>
-		</li>
-	</ul>
 </div>

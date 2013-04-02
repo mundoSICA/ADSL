@@ -34,88 +34,18 @@ $this->Html->css(
 #				), array('inline' => false));
 ?>
 <div class="row-fluid">
-	<div class="actions span3 well sidebar-nav">
-	<h3>Acciones</h3>
-	<ul class="nav nav-list">
-	<li class='nav-header'><i class="icon-folder-open"></i> Talleres</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-home"></i> Inicio Talleres',
-			array('action' => 'index'),
-			array('escape' => false)
-		); ?>
-		</li>
-<?php
-if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
-?>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-pencil"></i> Editar Taller',
-			array('action' => 'editar', $taller['Taller']['slug_dst'], 'admin' => true),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-plus"></i> Agregar Taller',
-			array('action' => 'Agregar', 'admin' => true),
-			array('escape' => false)
-		); ?>
-		</li>
-<?php endif; ?>
-		<li class='divider'></li>
-		<li class='nav-header'><i class='icon-th-list'></i> Sesiones</li>
-<?php
-foreach ($taller['Sesion'] as $sesion){
-	echo '<li>'.
-			$this->Html->link(
-			'<i class="icon-ok"></i>'.
-				str_replace($taller['Taller']['slug_dst'],'',$sesion['nombre']),
-				array('controller' => 'sesiones', 'action' => 'ver', $sesion['slug_dst']),
-				array('escape' => false)
-			).'</li>';
-			;
-}
-?>
-<?php
-if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
-?>
-		<li><?php
-			echo $this->Html->link(
-			'<i class="icon-plus"></i> Agregar Sesion',
-			array('controller' => 'sesiones', 'action' => 'agregar','miembro'=>true,$taller['Taller']['slug_dst']),
-			array('escape' => false)
-		);
-		?> </li>
-<?php
-endif;
-?>
-		<li class='divider'></li>
-		<li class='nav-header'><i class='icon-tags'></i> Etiquetas</li>
-		<li><?php
-			echo $this->Html->link(
-			'<i class="icon-list"></i> Listar Etiquetas',
-			array('controller' => 'etiquetas', 'action' => 'index'),
-			array('escape' => false)
-		);
-		?> </li>
-
-<?php
-if( $this->Session->read('Auth.User.role') == 'miembro' ||  $this->Session->read('Auth.User.role') == 'admin' ):
-?>
-		<li><?php
-			echo $this->Html->link(
-			'<i class="icon-plus"></i> Agregar Etiqueta',
-			array('controller' => 'etiquetas', 'action' => 'agregar'),
-			array('escape' => false)
-		);
-		?> </li>
-<?php endif; ?>
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($userAuth['role'], $taller);
+	echo $this->Html->menu_usuario($userAuth);
+	?>
 <!-- Compartir sección -->
-			<li class='divider'></li>
+	<ul class='nav nav-list well'>
 			<li class='nav-header'>
 				<i class="icon-share"></i> Compartir
 			</li>
+			<li class='divider'></li>
 			<?php
 		echo $this->QrCode->url(
 			'/talleres/'.$taller['Taller']['slug_dst'], array('size' => '170x170', 'margin' => 0)

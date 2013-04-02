@@ -720,8 +720,8 @@ nav.menu{
 		margin:0;
 	}
 	/* El slogan desaparece */
-	span.emailLabel:after{content:" ☎ "}
-	span.telLabel:after{content:" ✉ "}
+	span.emailLabel:after{content:" ✉ "}
+	span.telLabel:after{content:" ☎ "}
 	.menu ul li a:hover,
 	.menu ul li a.activa,
 	.menu ul li a {

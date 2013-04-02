@@ -9,7 +9,6 @@ class TalleresController extends AppController {
 
 	var $components = array('Email');
 /* lista de ayudantes */
-	public $helpers = array('QrCode');
 
 	function beforeFilter() {
 			parent::beforeFilter();
