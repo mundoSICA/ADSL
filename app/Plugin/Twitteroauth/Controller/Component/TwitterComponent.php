@@ -18,17 +18,17 @@ class TwitterComponent extends Component {
   private $__services = array(
     'OAuth' => 'TwitterOAuth'
   );
-  
+
   /**
    * Constructor merge settings
-   * 
+   *
    * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
    * @param array $settings Array of configuration settings.
    */
   public function __construct(ComponentCollection $collection, $settings = array()) {
     parent::__construct($collection, $settings);
   }
-  
+
   /**
    * Initialization method. Triggered before the controller's `beforeFilfer`
    * method but after the model instantiation.
@@ -42,12 +42,12 @@ class TwitterComponent extends Component {
     // Handle loading our library firstly...
     App::build(array('Vendor' => array(
       APP.'Plugin'.DS.'Twitteroauth'.DS .'Vendor'.DS)
-    ));    
+    ));
     App::import('Vendor', 'Twitter', array(
       'file' => 'abraham-twitteroauth'.DS.'twitteroauth'.DS.'twitteroauth.php'
     ));
   }
-  
+
   /**
    * PHP magic method for satisfying requests for undefined variables. We
    * will attempt to determine the service that the user is requesting and
@@ -77,10 +77,10 @@ class TwitterComponent extends Component {
    */
   private function __createService($class) {
     return new $class(
-      Configure::read('Twitter.consumer_key'),      
-      Configure::read('Twitter.consumer_secret'),      
-      Configure::read('Twitter.oauth_token'),      
+      Configure::read('Twitter.consumer_key'),
+      Configure::read('Twitter.consumer_secret'),
+      Configure::read('Twitter.oauth_token'),
       Configure::read('Twitter.oauth_token_secret')
     );
-  }  
+  }
 }

@@ -8,21 +8,21 @@
  *		jquery.ui.map.js
  */
 ( function($) {
-	
+
 	$.extend($.ui.gmap.prototype, {
-		
+
 		/**
-		 * Extracts microdata from the HTML by specified namespace 
+		 * Extracts microdata from the HTML by specified namespace
 		 * @param ns:string
 		 * @param callback:function(microdata:object, element:jQuery object, iterator:int)
 		 */
-		microdata: function(ns, callback) { 
+		microdata: function(ns, callback) {
 			var self = this;
 			$('[itemtype="{0}"]'.replace('{0}', ns)).each(function(i) {
 				callback(self._traverse($(this), {'@type': self._resolveType($(this).attr('itemtype'))}), this, i);
 			});
 		},
-		
+
 		/**
 		 * Traverse through all child nodes
 		 * @param $el:jQuery Object
@@ -38,7 +38,7 @@
 						obj[itemProp] = [];
 					}
 					obj[itemProp].push({'@type': self._resolveType(itemType)});
-					self._traverse($this, obj[itemProp][obj[itemProp].length-1]);					
+					self._traverse($this, obj[itemProp][obj[itemProp].length-1]);
 				} else if ( itemProp ) {
 					if ( obj[itemProp] ) {
 						// In case any property is duplicated
@@ -57,7 +57,7 @@
 			});
 			return obj;
 		},
-		
+
 		/**
 		 * Extract the proper value based on element attribute
 		 * @param $el:jQuery Object
@@ -77,7 +77,7 @@
 			}
 			return;
 		},
-		
+
 		/**
 		 * Removes any url or prefix
 		 * @param $el:jQuery Object
@@ -91,7 +91,7 @@
 			}
 			return type;
 		}
-	
+
 	});
-	
+
 } (jQuery) );

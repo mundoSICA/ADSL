@@ -47,7 +47,7 @@ $this->Html->script(array(
 		echo $this->Form->input('fecha_publicacion');
 	?>
 	</fieldset>
-<?php 
+<?php
 	echo $this->Html->link('Cancelar', array('action' => 'index'), array('class'=>'btn btn-danger btn-large'));
 	echo $this->Form->end('Agregar');
 ?>

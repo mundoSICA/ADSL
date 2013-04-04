@@ -3,22 +3,22 @@
 // By Jay Salvat - http://markitup.jaysalvat.com/
 // ------------------------------------------------------------------*/
 .markdown .markItUpButton1 a {
-	background-image:url(images/h1.png); 
+	background-image:url(images/h1.png);
 }
 .markdown .markItUpButton2 a {
-	background-image:url(images/h2.png); 
+	background-image:url(images/h2.png);
 }
 .markdown .markItUpButton3 a {
-	background-image:url(images/h3.png); 
+	background-image:url(images/h3.png);
 }
 .markdown .markItUpButton4 a {
-	background-image:url(images/h4.png); 
+	background-image:url(images/h4.png);
 }
 .markdown .markItUpButton5 a {
-	background-image:url(images/h5.png); 
+	background-image:url(images/h5.png);
 }
 .markdown .markItUpButton6 a {
-	background-image:url(images/h6.png); 
+	background-image:url(images/h6.png);
 }
 
 .markdown .markItUpButton7 a {
@@ -36,7 +36,7 @@
 }
 
 .markdown .markItUpButton11 a {
-	background-image:url(images/picture.png); 
+	background-image:url(images/picture.png);
 }
 .markdown .markItUpButton12 a {
 	background-image:url(images/link.png);

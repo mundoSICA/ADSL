@@ -142,7 +142,7 @@ class EmailTokenRequestComponent extends Component {
 		if( $deleteOldTokens ) {
 			$this->deleteOldTokens();
 		}
-		if (!$this->_controller->request->is('post') || 
+		if (!$this->_controller->request->is('post') ||
 			!isset($data[$this->modelName][$this->email]) ) {
 			return false;
 		}
@@ -194,7 +194,7 @@ class EmailTokenRequestComponent extends Component {
 	}
 /*
  * Returns true if a record with particular token exists.
- * 
+ *
  * @param string Token
  * @return boolean True if such a record exists
  * @Link   http://api.cakephp.org/view_source/model#line-2547
@@ -209,7 +209,7 @@ class EmailTokenRequestComponent extends Component {
 	/**
 	 * Return email if a record with particular token exists.
 	 *
-	 * @param string $token 
+	 * @param string $token
 	 * @return Mixed String email if token exists, Boolean false.
 	 * @access public
 	 */

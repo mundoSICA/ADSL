@@ -95,7 +95,7 @@ echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 		<dd>
 			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
 		</dd>
-		
+
 		<dt>Numero de Sesiones</dt>
 		<dd><?php echo h($taller['Taller']['num_sesiones']); ?> Sesiones</dd>
 

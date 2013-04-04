@@ -27,6 +27,7 @@
 		echo $this->Form->input('resumen');
 		echo $this->Wysiwyg->textarea('contenido');
 		echo $this->Form->input('numero_total_horas');
+		echo $this->Form->input('notificar', array('type' => 'checkbox', 'label' => 'Notificar por Correo electronico'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Enviar');?>

@@ -1,5 +1,5 @@
 /* ADSL - Script principal
- * 
+ *
  * Descripcion: Aqui se agrupara la logica en javascript que comparten
  *              todas las páginas del sitio
  */
@@ -57,6 +57,6 @@ $(function(){
 	});
 	//
 	$('.iconos a').tooltip({placement: 'bottom'});
-	
+
 	$('.nav.nav-list a').tooltip();
 });

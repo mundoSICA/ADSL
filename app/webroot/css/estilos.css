@@ -673,6 +673,9 @@ nav.menu{
 		width:550px;
 	}
 
+	/* El slogan desaparece */
+	span.emailLabel:after{content:" ✉ "}
+	span.telLabel:after{content:" ☎ "}
 	.formulario, div.acciones, div.users, div.index /* acciones */
 	{
 		width:540px;
@@ -719,9 +722,7 @@ nav.menu{
 		padding:0;
 		margin:0;
 	}
-	/* El slogan desaparece */
-	span.emailLabel:after{content:" ✉ "}
-	span.telLabel:after{content:" ☎ "}
+
 	.menu ul li a:hover,
 	.menu ul li a.activa,
 	.menu ul li a {

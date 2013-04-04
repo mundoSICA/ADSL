@@ -41,12 +41,16 @@
  *
  */
 class EmailConfig {
-
-	public $default = array(
-		'transport' => 'Mail',
-		'from' => 'contacto@adsl.org.mx',
-		'charset' => 'utf-8',
-		'headerCharset' => 'utf-8',
+	/* support for gmail
+	 * link: book.cakephp.org/2.0/en/core-utility-libraries/email.html
+	 * */
+	public $gmail = array(
+        'host' => 'smtp.gmail.com',
+        'port' => 465,
+        'username' => 'my@gmail.com',
+        'password' => 'secret',
+        'transport' => 'Smtp',
+        'tls' => true
 	);
 
 	public $smtp = array(
@@ -58,40 +62,72 @@ class EmailConfig {
 		'username' => 'user',
 		'password' => 'secret',
 		'client' => null,
+		'log' => true,
+		//'charset' => 'utf-8',
+		//'headerCharset' => 'utf-8',
+	);
+
+	public $default = array(
+		'transport' => 'Mail',
+		'from' => array('robot@adsl.org.mx'    => 'Robot ADSL'),
+		'replyTo' => array('robot@adsl.org.mx' => 'Robot ADSL'),
+		'host' => 'localhost',
+		'timeout' => 30,
+		'username' => 'user',
+		'password' => 'secret',
+		'log' => true,
+		'template' => 'default',
+		'emailFormat' => 'both',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
+	);
+
+	public $colaboradores = array(
+		'transport' => 'Mail',
+		'from' => array('robot@adsl.org.mx'    => 'Robot ADSL'),
+		'replyTo' => array('robot@adsl.org.mx' => 'Robot ADSL'),
+		'host' => 'localhost',
+		'timeout' => 30,
+		'username' => 'user',
+		'password' => 'secret',
+		'log' => true,
+		'template' => 'default',
+		'emailFormat' => 'both',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
+		'to' => array(
+			'eymard@mundosica.com',
+			'igarcia@mundosica.com',
+			'soporte@mundosica.com',
+			'manuel.wm@gmail.com',
+			'r1chd01@gmail.com',
+			'chromery@gmail.com',
+			'manuel.wm@gmail.com',
+			'idjosemiguel@hotmail.com',
+			'gibb.elgris@gmail.com',
+			'chaibran_tg7@hotmail.com',
+			'rnstux@gmail.com',
+			'ana.gines.hdz@gmail.com',
+			'luism.garciam@gmail.com',
+			'erick.cosmes@gmail.com',
+			'chanerec@gmail.com'
+		)
+	);
+/*
+public $default = array(
+		'transport' => 'Smtp',
+		'from' => array('el_cacho@mundosica.com' => 'El chaco(bootSicá)'),
+		'host' => 'mail.mundosica.com',
+		'port' => 25,
+		'timeout' => 1,
+		'username' => 'el_chaco@mundosica.com',
+		'password' => 'admin-Pru3bas.12',
+		'client' => null,
 		'log' => false,
 		'charset' => 'utf-8',
 		'headerCharset' => 'utf-8',
-	);
-
-	public $fast = array(
-		'from' => 'contacto@adsl.org.mx',
-		'sender' => 'contacto@adsl.org.mx',
-		'to' => 'chanerec@gmail.com',
-		'cc' => null,
-		'bcc' => null,
-		'replyTo' => null,
-		'readReceipt' => null,
-		'returnPath' => null,
-		'messageId' => true,
-		'subject' => null,
-		'message' => null,
-		'headers' => null,
-		'viewRender' => null,
-		'template' => false,
-		'layout' => false,
-		'viewVars' => null,
-		'attachments' => null,
-		'emailFormat' => null,
-		'transport' => 'Smtp',
-		'host' => 'localhost',
-		'port' => 25,
-		'timeout' => 30,
-		'username' => 'ADSL contacto',
-		'password' => 'secret',
-		'client' => null,
-		'log' => true,
-		'charset' => 'utf-8',
-		'headerCharset' => 'utf-8',
-	);
-
+		'template' => 'default',
+		'replyTo' => 'admin@mundosica.com',
+		'emailFormat' => 'both'
+	);*/
 }

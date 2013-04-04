@@ -93,7 +93,7 @@ a.si, a.no {
   border-radius: 12px;
   color: white;
   margin-left: 80px;
-  -moz-border-radius: 12px;  
+  -moz-border-radius: 12px;
   text-transform: uppercase;
   text-shadow: #000 1px 1px 20px;
   cursor:pointer;
@@ -127,9 +127,9 @@ input#botonResetear {
 }
 input#botonResetear:hover{ text-shadow: #FFB27C 1px 1px 20px; }
 
-label{  
-    display: block;  
-    color: #4F2F01;  
-    line-height: 2em;  
-    font-size: 15px;  
-}  
+label{
+    display: block;
+    color: #4F2F01;
+    line-height: 2em;
+    font-size: 15px;
+}

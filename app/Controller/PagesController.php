@@ -104,17 +104,17 @@ function beforeFilter() {
 			. '<a href="'. Router::url('/en-vivo.html').'" class="btn btn-primary">'
 			. '<li class="icon-facetime-video"></li>Acceder al streaming</a>'
 			);*/
-			
+
 		$this->set('talleres', $this->paginate());
-		$this->set('users', 
-			$this->User->find('list', 
+		$this->set('users',
+			$this->User->find('list',
 			array(
 			'limit' => 30,
 			'fields' => array('User.username', 'User.email'),
 			'order' => 'User.created DESC',
 		)));
 	}//end function
-	
+
 /**
  * Descripción de la función
  *
@@ -135,12 +135,12 @@ function beforeFilter() {
 		);
 		$this->set(compact('talleres', 'usuarios'));
 	}//end function
-	
+
 	function feed() {
 		$this->Taller->recursive = -1;
 		$this->set('talleres', $this->paginate());
 	}//end function
-	
+
 	function twitter() {
 		/*$result = Set::reverse($this->Twitter->OAuth->get(
 			 'legal/privacy', array()

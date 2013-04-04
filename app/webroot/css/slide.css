@@ -228,7 +228,7 @@
 
 /*
  * Soporte para moviles/celulares
- * 
+ *
  */
 @media (max-width: 400px) {
 	#slides_container,
@@ -300,5 +300,5 @@
 		padding: 1%;
 		font-size:1em;
 	}
-	
+
 }

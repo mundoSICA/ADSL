@@ -93,7 +93,7 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li>
-	<?php 
+	<?php
 		echo $this->Html->link(
 		'<i class="icon-eye-open"></i> Ver',
 		array('action' => 'ver', $sesion['Sesion']['id']),
@@ -101,7 +101,7 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 	); ?>
 		</li>
 		<li>
-	<?php 
+	<?php
 		echo $this->Html->link(
 		'<i class="icon-pencil"></i> Editar',
 		array('action' => 'editar', $sesion['Sesion']['id']),
@@ -109,7 +109,7 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 	); ?>
 		</li>
 		<li>
-	<?php 
+	<?php
 		echo $this->Form->postLink(
 		'<i class="icon-trash"></i> Borrar',
 		array('action' => 'borrar', $sesion['Sesion']['id']),

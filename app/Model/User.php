@@ -47,7 +47,7 @@ class User extends AppModel {
 				'rule' => '/^[0-9a-zA-Z_-]{6,41}$/',
 				'message' => 'Debe contener minusculas, mayusculas, números de longitud minima 6 carácteres',
 				'allowEmpty' => false,
-				'required' => true,
+				//'required' => true,
 			)
 		),
 		'email' => array(
@@ -132,4 +132,21 @@ class User extends AppModel {
 			'insertQuery' => ''
 		)
 	);
+	/**
+	 * Devuelve una lista de usuarios con la notificacion activada
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function notificados() {
+		return $this->find('list',
+			array(
+				'conditions' => array('User.notificaciones' => 1),
+				'fields' => array('User.username', 'User.email'),
+				'recursive' => 0
+			)
+		);
+	}//end function
 }

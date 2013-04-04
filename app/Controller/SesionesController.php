@@ -132,4 +132,4 @@ var $helpers = array(
 		$this->redirect(array('action' => 'index'));
 	}// fin admin_borrar
 
-}// fin controlador 
+}// fin controlador

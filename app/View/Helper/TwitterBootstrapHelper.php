@@ -15,7 +15,7 @@ class TwitterBootstrapHelper extends AppHelper {
 	 * @access public
 	 */
 	public $helpers = array("Form", "Html", "Session");
-	
+
 	/**
 	 * Options used internally. Don't send any of these options along to FormHelper
 	 *
@@ -35,10 +35,10 @@ class TwitterBootstrapHelper extends AppHelper {
 	);
 
 	/**
-	 * basic_input 
-	 * 
-	 * @param mixed $field 
-	 * @param array $options 
+	 * basic_input
+	 *
+	 * @param mixed $field
+	 * @param array $options
 	 * @access public
 	 * @return void
 	 */
@@ -51,10 +51,10 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * _parse_input_options 
-	 * 
-	 * @param mixed $field 
-	 * @param array $options 
+	 * _parse_input_options
+	 *
+	 * @param mixed $field
+	 * @param array $options
 	 * @access public
 	 * @return void
 	 */
@@ -77,9 +77,9 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * _construct_label 
-	 * 
-	 * @param mixed $options 
+	 * _construct_label
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return void
 	 */
@@ -114,16 +114,16 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * _construct_input 
-	 * 
-	 * @param mixed $options 
+	 * _construct_input
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return void
 	 */
 	public function _construct_input($options) {
 		if (in_array($options["type"], array("checkbox"))) {
 			$options["input"] = "";
-		} 
+		}
 		if (isset($options["input"])) { return $options["input"]; }
 		$options["input"] = $this->Form->input($options["field"], array(
 			"div" => false,
@@ -133,9 +133,9 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * _constuct_input_and_addon 
-	 * 
-	 * @param mixed $options 
+	 * _constuct_input_and_addon
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return void
 	 */
@@ -147,9 +147,9 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * _handle_input_addon 
-	 * 
-	 * @param mixed $options 
+	 * _handle_input_addon
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return void
 	 */
@@ -162,13 +162,13 @@ class TwitterBootstrapHelper extends AppHelper {
 		}
 		return $input;
 	}
-	
+
 	/**
-	 * input_addon 
-	 * 
-	 * @param mixed $content 
-	 * @param mixed $input 
-	 * @param string $type 
+	 * input_addon
+	 *
+	 * @param mixed $content
+	 * @param mixed $input
+	 * @param string $type
 	 * @access public
 	 * @return void
 	 */
@@ -183,10 +183,10 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * search 
-	 * 
-	 * @param mixed $name 
-	 * @param array $options 
+	 * search
+	 *
+	 * @param mixed $name
+	 * @param array $options
 	 * @access public
 	 * @return void
 	 */
@@ -202,7 +202,7 @@ class TwitterBootstrapHelper extends AppHelper {
 		}
 		return $this->Form->text($name, $options);
 	}
-	
+
 	/**
 	 * Takes an array of options to output markup that works with
 	 * twitter bootstrap forms.
@@ -265,10 +265,10 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Takes the array of options and will apply the append or prepend bits
-	 * from the options and returns the input string. 
-	 * 
-	 * @param mixed $input 
-	 * @param string $type 
+	 * from the options and returns the input string.
+	 *
+	 * @param mixed $input
+	 * @param string $type
 	 * @access public
 	 * @return string
 	 */
@@ -330,9 +330,9 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Takes the options from the input method and returns an array of the
-	 * inline help and inline block content wrapped in the appropriate markup. 
-	 * 
-	 * @param mixed $options 
+	 * inline help and inline block content wrapped in the appropriate markup.
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return string
 	 */
@@ -345,7 +345,7 @@ class TwitterBootstrapHelper extends AppHelper {
 					"span",
 					$options[$help],
 					array("class" => $help_class)
-				); 
+				);
 			}
 		}
 		return array_values($help_markup);
@@ -353,9 +353,9 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Outputs a list of radio form elements with the proper
-	 * markup for twitter bootstrap styles 
-	 * 
-	 * @param array $options 
+	 * markup for twitter bootstrap styles
+	 *
+	 * @param array $options
 	 * @access public
 	 * @return string
 	 */
@@ -398,10 +398,10 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Wraps the form button method and just applies the Bootstrap classes to
-	 * the button before passing the options on to the FormHelper button method. 
-	 * 
-	 * @param string $value 
-	 * @param array $options 
+	 * the button before passing the options on to the FormHelper button method.
+	 *
+	 * @param string $value
+	 * @param array $options
 	 * @access public
 	 * @return string
 	 */
@@ -488,13 +488,13 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * Wraps the html link method and applies the Bootstrap classes to the 
-	 * options array before passing it on to the html link method. 
-	 * 
-	 * @param mixed $title 
-	 * @param mixed $url 
-	 * @param array $options 
-	 * @param mixed $confirm 
+	 * Wraps the html link method and applies the Bootstrap classes to the
+	 * options array before passing it on to the html link method.
+	 *
+	 * @param mixed $title
+	 * @param mixed $url
+	 * @param array $options
+	 * @param mixed $confirm
 	 * @access public
 	 * @return string
 	 */
@@ -505,12 +505,12 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Wraps the postLink method to create post links that use the bootstrap
-	 * button styles. 
-	 * 
-	 * @param mixed $title 
-	 * @param mixed $url 
-	 * @param array $options 
-	 * @param mixed $confirm 
+	 * button styles.
+	 *
+	 * @param mixed $title
+	 * @param mixed $url
+	 * @param array $options
+	 * @param mixed $confirm
 	 * @access public
 	 * @return string
 	 */
@@ -521,9 +521,9 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Takes the array of options from $this->button or $this->button_link
-	 * and returns the modified array with the bootstrap classes 
-	 * 
-	 * @param mixed $options 
+	 * and returns the modified array with the bootstrap classes
+	 *
+	 * @param mixed $options
 	 * @access public
 	 * @return string
 	 */
@@ -560,9 +560,9 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Delegates to the HtmlHelper::getCrumbList() method and sets the proper
-	 * class for the breadcrumbs class. 
-	 * 
-	 * @param array $options 
+	 * class for the breadcrumbs class.
+	 *
+	 * @param array $options
 	 * @access public
 	 * @return string
 	 */
@@ -593,11 +593,11 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * Delegates to the HtmlHelper::addCrumb() method. 
-	 * 
-	 * @param mixed $title 
-	 * @param mixed $link 
-	 * @param array $options 
+	 * Delegates to the HtmlHelper::addCrumb() method.
+	 *
+	 * @param mixed $title
+	 * @param mixed $link
+	 * @param array $options
 	 * @access public
 	 * @return string
 	 */
@@ -609,9 +609,9 @@ class TwitterBootstrapHelper extends AppHelper {
 	 * Creates a Bootstrap label with $messsage and optionally the $type. Any
 	 * options that could get passed to HtmlHelper::tag can be passed in the
 	 * third param.
-	 * 
-	 * @param string $message 
-	 * @param string $type 
+	 *
+	 * @param string $message
+	 * @param string $type
 	 * @param array $options
 	 * @access public
 	 * @return string
@@ -629,12 +629,12 @@ class TwitterBootstrapHelper extends AppHelper {
 		}
 		return $this->Html->tag("span", $message, $options);
 	}
-	
+
 	/**
 	 * Creates a Bootstrap badge with $num and optional $style. Any options
 	 * that could get passed to the HtmlHelper::tag can be passed in the 3rd
 	 * param
-	 * 
+	 *
 	 * @param  integer $num
 	 * @param  string  $style
 	 * @param  array   $options
@@ -656,10 +656,10 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Takes the name of an icon and returns the i tag with the appropriately
-	 * named class. The second param will switch between black and white 
+	 * named class. The second param will switch between black and white
 	 * icon sets.
-	 * 
-	 * @param mixed $name 
+	 *
+	 * @param mixed $name
 	 * @access public
 	 * @return void
 	 */
@@ -673,7 +673,7 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * progress
-	 * 
+	 *
 	 * @param  string $style
 	 * @param  array  $options
 	 * @return string
@@ -699,7 +699,7 @@ class TwitterBootstrapHelper extends AppHelper {
 			$width = $options["width"];
 		}
 		$bar = $this->Html->tag(
-			"div", 
+			"div",
 			"",
 			array("class" => "bar", "style" => "width: {$width}%;")
 		);
@@ -707,10 +707,10 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	/**
-	 * Renders alert markup and takes a style and closable option 
-	 * 
-	 * @param mixed $content 
-	 * @param array $options 
+	 * Renders alert markup and takes a style and closable option
+	 *
+	 * @param mixed $content
+	 * @param array $options
 	 * @access public
 	 * @return void
 	 */
@@ -738,7 +738,7 @@ class TwitterBootstrapHelper extends AppHelper {
 			array("class" => $class)
 		);
 	}
-	
+
 	/**
 	 * Captures the Session flash if it is set and renders it in the proper
 	 * markup for the twitter bootstrap styles. The default key of "flash",
@@ -760,7 +760,7 @@ class TwitterBootstrapHelper extends AppHelper {
 		}
 		return $this->alert($content, array("style" => $key, "closable" => $close));
 	}
-	
+
 	/**
 	 * By default it checks $this->flash() for 5 different keys of valid
 	 * flash types and returns the string.
@@ -788,16 +788,16 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Returns the content from SessionHelper::flash() for the passed in
-	 * $key. 
-	 * 
-	 * @param string $key 
+	 * $key.
+	 *
+	 * @param string $key
 	 * @access public
 	 * @return void
 	 */
 	public function _flash_content($key = "flash") {
 		return $this->Session->flash($key, array("element" => null));
 	}
-	
+
 	/**
 	 * Displays the alert-message.block-messgae div's from the twitter
 	 * bootstrap.
@@ -835,7 +835,7 @@ class TwitterBootstrapHelper extends AppHelper {
 
 	/**
 	 * Displays an h1 tag wrapped in a div with the page-header class
-	 * 
+	 *
 	 * @param string $title
 	 * @return string
 	 */

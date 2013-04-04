@@ -145,7 +145,7 @@ div.pagination{
 			<a href="/1" title='5 estrella'><i class="icon-star-empty"></i></a>
 		</p>
 	</li>
-	
+
 	<li class="span3">
 <div class="btn-group">
 	<a href="#" class="btn btn-primary"><i class="icon-cog icon-white"></i> Acciones</a>

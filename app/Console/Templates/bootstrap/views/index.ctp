@@ -6,6 +6,11 @@
 echo "<?php\n";
 $baseCssJs = strtolower($pluralVar) . '.index';
 $titulo = $pluralHumanName . ' Index';
+$pre1="\n\t";
+$pre2="\n\t\t";
+$pre3="\n\t\t\t";
+$pre4="\n\t\t\t";
+
 ?>
 /**
  * adsl.org.mx
@@ -31,12 +36,12 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 	<h3>Acciones</h3>
 	<ul class="nav nav-list">
 		<li><?php
-				echo "\n\t<?php".
-							"\n\t\techo \$this->Html->link(".
-							"\n\t\t'<i class=\"icon-plus\"></i> Agregar',".
-							"\n\t\tarray('action' => 'agregar'),".
-							"\n\t\tarray('escape' => false)".
-							"\n\t); ?>\n";
+				echo $pre1 . "<?php";
+				echo $pre2 . "echo \$this->Html->link(";
+				echo $pre3 . "'<i class=\"icon-plus\"></i> Agregar',";
+				echo $pre3 . "array('action' => 'agregar'),";
+				echo $pre3 . "array('escape' => false)";
+				echo $pre2 . "); ?>\n";
 				?>
 		</li>
 <?php
@@ -49,21 +54,21 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 				<?php echo Inflector::humanize($details['controller'])."\n" ?>
 			</li>
 			<li><?php
-				echo "\n\t<?php".
-							"\n\t\techo \$this->Html->link(".
-							"\n\t\t'<i class=\"icon-home\"></i> Listar',".
-							"\n\t\tarray('controller' => '{$details['controller']}', 'action' => 'index'),".
-							"\n\t\tarray('escape' => false)".
-							"\n\t); ?>\n";
+				echo $pre1 . "<?php";
+				echo $pre2 . "echo \$this->Html->link(";
+				echo $pre3 . "'<i class=\"icon-list\"></i> Listar',";
+				echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'index'),";
+				echo $pre3 . "array('escape' => false)";
+				echo $pre2 . "); ?>\n";
 				?>
 			</li>
 			<li><?php
-				echo "\n\t<?php".
-							"\n\t\techo \$this->Html->link(".
-							"\n\t\t'<i class=\"icon-plus\"></i> Agregar',".
-							"\n\t\tarray('controller' => '{$details['controller']}', 'action' => 'agregar'),".
-							"\n\t\tarray('escape' => false)".
-							"\n\t); ?>\n";
+				echo $pre1 . "<?php";
+				echo $pre2 . "echo \$this->Html->link(";
+				echo $pre3 . "'<i class=\"icon-plus\"></i> Agregar',";
+				echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'agregar'),";
+				echo $pre3 . "array('escape' => false)";
+				echo $pre2 . "); ?>\n";
 				?>
 			</li>
 <?php
@@ -84,29 +89,42 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 		<th class="actions">Acciones</th>
 	</tr>
 	<?php
-	echo "<?php
-	foreach (\${$pluralVar} as \${$singularVar}): ?>\n";
-	echo "\t<tr>\n";
+	echo $pre1 . "<?php";
+	echo $pre2 . "foreach (\${$pluralVar} as \${$singularVar}): ?>";
+	echo $pre2 . "<tr>";
 		foreach ($fields as $field) {
 			$isKey = false;
 			if (!empty($associations['belongsTo'])) {
 				foreach ($associations['belongsTo'] as $alias => $details) {
 					if ($field === $details['foreignKey']) {
 						$isKey = true;
-						echo "\t\t<td>\n\t\t\t<?php echo \$this->Html->link(\${$singularVar}['{$alias}']['{$details['displayField']}'], array('controller' => '{$details['controller']}', 'action' => 'ver', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])); ?>\n\t\t</td>\n";
+						echo $pre2 . "<td>";
+						echo $pre3 . "<?php echo \$this->Html->link(";
+						echo $pre4 . "\${$singularVar}['{$alias}']['{$details['displayField']}'],";
+						echo $pre4 . "array('controller' => '{$details['controller']}', 'action' => 'ver', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])";
+						echo $pre3 . ");";
+						echo $pre3 . "?>";
+						echo $pre2 . "</td>";
 						break;
 					}
 				}
 			}
 			if ($isKey !== true) {
 				if($field == $details['primaryKey']) {
-						echo "\t\t<td><?php echo \$this->Html->link(\${$singularVar}['{$modelClass}']['{$field}'], array('action' => 'ver', \${$singularVar}['{$modelClass}']['{$field}'])); ?></td>\n";
+						echo $pre2 . "<td>";
+						echo $pre3 . "<?php echo \$this->Html->link(";
+						echo $pre4 . "\${$singularVar}['{$modelClass}']['{$field}'],";
+						echo $pre4 . "array('action' => 'ver', \${$singularVar}['{$modelClass}']['{$field}'])";
+						echo $pre3 . "); ?>"
+						echo $pre2 . "</td>";
 				} else {
-					echo "\t\t<td><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</td>\n";
+					echo $pre2 . "<td>";
+					echo $pre3 . "<?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;";
+					echo $pre2 . "</td>";
 				}
 			}
 		}
-		echo "\t\t<td class=\"actions\">\n";
+		echo $pre2 . "<td class=\"actions\">";
 ?>
 <div class="btn-group">
 	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
@@ -147,7 +165,7 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 	<small class="pull-right">
 	<?php echo "<?php
 	echo \$this->Paginator->counter(array(
-	'format' => 'Página {:page} de {:pages}, viendo {:current} registros de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
+	'format' => 'Página {:page} de {:pages}, viendo {:current} {$pluralHumanName} de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
 	));
 	?>\n"; ?>
 	</small>

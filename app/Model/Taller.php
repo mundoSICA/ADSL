@@ -219,13 +219,14 @@ class Taller extends AppModel {
 				} else {//en caso que el slug no este definido optenemos el futuro Slug del nombre
 					$fileName .=  $this->slugStr($d['Taller']['nombre']) . '.jpg';
 				}
-				$return = copy($d['Taller']['slide']['tmp_name'], $fileName);
+				$return = @copy($d['Taller']['slide']['tmp_name'], $fileName);
 				unset($d['Taller']['slide']);
 				return $return;
 			}
 		}
 		return false;
 	}//end function
+
 	/**
 	 * Descripción de la función
 	 *

@@ -26,7 +26,7 @@ class UserShell extends AppShell {
 						$this->out('Error al intentar cambiar al contraseña');
 				}
 		}
-		
+
 		/**
 		 * Pide una nueva contraseña y regresa el hash de la misma
 		 *

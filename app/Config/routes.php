@@ -38,7 +38,7 @@
 	Router::connect('/sitemap.xml', array('controller' => 'pages', 'action' => 'sitemap'));
 	/* twitter login */
 	Router::connect('/twitter', array('controller' => 'pages', 'action' => 'twitter'));
-	
+
 	Router::connect('/feed.xml', array('controller' => 'pages', 'action' => 'feed'));
 /**
  * Load all plugin routes.  See the CakePlugin documentation on

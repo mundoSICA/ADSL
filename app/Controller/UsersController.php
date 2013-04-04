@@ -136,7 +136,10 @@ function beforeFilter() {
 			if ( $this->_prepararNuevoPassword( &$this->request->data['User'] )
 				&&  $this->User->save($this->request->data)) {
 				$this->Session->setFlash('Los datos en tu perfil fueron editados');
-				$this->redirect(array('action' => 'ver', $this->Session->read('Auth.User.username')));
+				if( $this->request->data['User']['el_password_cambio'] )
+					$this->redirect($this->Auth->logout());
+				else
+					$this->redirect(array('action' => 'ver', $this->Session->read('Auth.User.username')));
 			} else {
 				$this->Session->setFlash('Tus datos no pudieron ser actualizados');
 			}
@@ -172,7 +175,7 @@ function beforeFilter() {
 					$this->Email->send($msg);
 					$this->Session->setFlash('Se te ha enviado un correo electronico, favor de revisar');
 				} else {
-					die('<pre>' . print_r($this->request->data['User'], true) . '</pre>');
+					$this->Session->setFlash('Ocurrio un error, por favor vuelva a Intentar');
 				}
 			}
 	}//end function
@@ -232,29 +235,32 @@ function beforeFilter() {
 		$data['role'] = $this->Session->read('Auth.User.role');
 		$data['username'] = $this->Session->read('Auth.User.username');
 		$data['id'] = $this->Session->read('Auth.User.id');
-		//revisamos si cambio la contraseña
-		$suceso = true;
-		if (
-			$data['nuevo_password'] != '' ||
-			$data['password_anterior'] != '' ||
-			$data['repetir_nuevo_password'] != ''
-		){
-			$suceso = false;
-			if (
-				$data['nuevo_password'] == $data['repetir_nuevo_password'] &&
-				$this->Auth->password($data['password_anterior']) == $this->User->field('password')
-			) {
-				$data['password'] = $this->Auth->password($this->request->data['User']['nuevo_password']);
-				$suceso = true;
-			}
-		}
+		$data['password'] = $this->User->field('password');
+		//
+		$password_anterior = $data['password_anterior'];
+		$nuevo_password = $data['nuevo_password'];
+		$repetir_nuevo_password = $data['repetir_nuevo_password'];
 		unset( $data['password_anterior']);
 		unset( $data['nuevo_password']);
 		unset( $data['repetir_nuevo_password']);
-		if ( !$suceso ) {
-			unset( $data['password']);
-			unset($this->User->validate['password']);
+		//revisamos si cambio la contraseña
+		$suceso = true;
+		//revisamos si cambio la contraseña
+		if( $password_anterior == '' )
+			return $suceso;
+		//Sí la contraseña cambio e ingreso el password nulo
+		if ($nuevo_password == '' || $repetir_nuevo_password == ''){
+			$suceso = false;
 		}
+		//Si valido el mismo password y el password anterior es correcto
+		if ( $nuevo_password == $repetir_nuevo_password &&
+			$this->Auth->password($password_anterior) == $this->User->field('password')
+		) {
+				$data['el_password_cambio'] = true;
+				$data['password'] = $this->Auth->password($nuevo_password);
+				$suceso = true;
+			}
+
 		return $suceso;
 	}//end function
 /**

@@ -69,7 +69,7 @@ client credentials are saved in config.php as CONSUMER_KEY and CONSUMER_SECRET. 
 save a static callback URL in the app settings page, in the config file or use a dynamic
 callback URL later in step 2. In example use http://example.com/callback.php.
 
-1) When a user lands on redirect.php we build a new TwitterOAuth object using the client 
+1) When a user lands on redirect.php we build a new TwitterOAuth object using the client
 credentials. If you have your own configuration method feel free to use it instead of config.php.
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);// Use config.php client credentials
 $connection = new TwitterOAuth('abc890', '123xyz');
@@ -93,14 +93,14 @@ https://twitter.com/oauth/authenticate?oauth_token=xyz123&info=abc // info will 
 5) The user is now on twitter.com and may have to login. Once authenticated with Twitter they will
 will either have to click on allow/deny, or will be automatically redirected back to the callback.
 
-6) Now that the user has returned to callback.php and allowed access we need to build a new 
+6) Now that the user has returned to callback.php and allowed access we need to build a new
 TwitterOAuth object using the temporary credentials.
-$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['oauth_token'], 
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['oauth_token'],
 $_SESSION['oauth_token_secret']);
 
-7) Now we ask Twitter for long lasting token credentials. These are specific to the application 
-and user and will act like password to make future requests. If a dynamic callback URL was used 
-you will also have to pass the oauth_verifier parameter. Normally the token credentials would 
+7) Now we ask Twitter for long lasting token credentials. These are specific to the application
+and user and will act like password to make future requests. If a dynamic callback URL was used
+you will also have to pass the oauth_verifier parameter. Normally the token credentials would
 get saved in your database but for this example we are just using sessions.
 $token_credentials = $connection->getAccessToken(); // Used applications registered callback URL
 $token_credentials = $connection->getAccessToken($_REQUEST['oauth_verifier']);
@@ -108,7 +108,7 @@ $token_credentials = $connection->getAccessToken($_REQUEST['oauth_verifier']);
 7a) After getting the token credentials we redirect the user to index.php.
 
 8) With the token credentials we build a new TwitterOAuth object.
-$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $token_credentials['oauth_token'], 
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $token_credentials['oauth_token'],
 $token_credentials['oauth_token_secret']);
 
 9) And finally we can make requests authenticated as the user. You can GET, POST, and DELETE API

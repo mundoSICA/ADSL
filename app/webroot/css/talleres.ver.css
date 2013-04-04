@@ -1,14 +1,14 @@
 
 /*
  * Soporte para tables
- * 
+ *
  */
 @media (max-width: 768px) {
 }
 
 /*
  * Soporte para moviles/celulares
- * 
+ *
  */
 @media (max-width: 400px) {
 	a.registrarme, a.identificarme {
@@ -23,6 +23,6 @@
  * Ancho mayores a 1400px
  */
 @media only screen  and (min-width: 1420px) {
-	
+
 }
 

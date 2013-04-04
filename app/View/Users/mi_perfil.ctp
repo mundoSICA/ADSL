@@ -18,17 +18,18 @@ $this->Html->script(array(
 <div class="users index span9 formulario">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend>Edicion de mi perfil</legend>
+		<legend>Edición de mi perfil</legend>
 	<?php
 		echo $this->Form->input('email');
 		echo $this->Form->input('email_publico', array('label'=> 'Deseo que mi correo electronico aparezca en mi perfil publico'));
 		echo $this->Form->input('twitter');
 		echo $this->Form->input('facebook', array('label'=> 'Facebook(link)'));
 		echo $this->Form->input('url');
-		echo '<h2>Cambiar tu contraseña</h2>';
-		echo $this->Form->input('password_anterior');
-		echo $this->Form->input('nuevo_password');
-		echo $this->Form->input('repetir_nuevo_password');
+		echo $this->Form->input('notificaciones', array('label'=> 'Recibir notificación cuando se abre un taller'));
+		echo "\n<h2>Cambiar tu contraseña</h2>";
+		echo $this->Form->input('password_anterior', array('type'=> 'password'));
+		echo $this->Form->input('nuevo_password', array('type'=> 'password'));
+		echo $this->Form->input('repetir_nuevo_password', array('type'=> 'password'));
 	?>
 	</fieldset>
 	<div class="submit">

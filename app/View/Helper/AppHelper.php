@@ -173,7 +173,7 @@ class AppHelper extends Helper {
 				'action' => 'calendario'
 			),
 		);
-		
+
 		// Agregamos accion login ó cerrar sesión
 		//role:(admin, miembro, registrado, internauta)
 		if($user_role == 'admin' || $user_role == 'miembro') {
@@ -224,7 +224,7 @@ class AppHelper extends Helper {
 				'action' => 'streaming'
 			),
 			array(
-				'icon'   => 'icon-contact',
+				'icon'   => 'icon-envelope',
 				'msg'    => 'Contacto',
 				'title'    => 'Contactanos',
 				'action' => 'contacto'
@@ -247,6 +247,8 @@ class AppHelper extends Helper {
 			$urlInfo = array('controller' => $menu['controller'], 'action' => $link['action']);
 			if(isset($link['prefix'])){
 				$urlInfo[$link['prefix']] = true;
+			} else {
+				$urlInfo['admin'] = false;
 			}
 			$html .=  '<li>' .
 			$this->Html->link(

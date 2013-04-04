@@ -3,11 +3,15 @@
  * adsl.org.mx
  * Plantilla ver - para cakephp con twbootstrap
  */
+
 echo "<?php\n";
 $baseCssJs = strtolower($pluralHumanName) . '.ver';
 $titulo = $pluralHumanName . ' Ver';
+$pre1="\n\t";
 $pre2="\n\t\t";
 $pre3="\n\t\t\t";
+$pre4="\n\t\t\t";
+
 ?>
 /**
  * adsl.org.mx
@@ -33,42 +37,64 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 	<h3>Acciones</h3>
 	<ul class="nav nav-list">
 		<li><?php
-			echo "<?php".
-						$pre2."echo \$this->Html->link(".
-						$pre3."'<i class=\"icon-home\"></i> Inicio " . $pluralHumanName . "',".
-						$pre3."array('action' => 'index'),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
-			?>
-		</li>
+			/* Botón de Inicio ADSL */
+			echo "<?php";
+			echo $pre3 . "/* Botón de Inicio ADSL */";
+			echo $pre3 . "echo \$this->Html->link('<i class=\"icon-home\"></i> Inicio ADSL',";
+			echo $pre4 . "array('/'),";
+			echo $pre4 . "array('escape' => false)";
+			echo $pre3 . "); ?>" . $pre3;
+		?></li>
 		<li><?php
-			echo "<?php".
-						$pre2."echo \$this->Html->link(".
-						$pre3."'<i class=\"icon-pencil\"></i> Editar " . $singularHumanName . "',".
-						$pre3."array('action' => 'editar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+			echo "<?php";
+			echo $pre2 . "echo \$this->Html->link(";
+			echo $pre3 . "'<i class=\"icon-home\"></i> Inicio " . $pluralHumanName . "',";
+			echo $pre3 . "array('action' => 'index'),";
+			echo $pre3 . "array('escape' => false)";
+			echo $pre2 . "); ?>\n";
 			?>
 		</li>
+<?php
+	echo "<?php";
+	echo $pre2 . "/* Editar {$singularHumanName} */";
+	echo $pre1 . "if(in_array(\$userAuth['role'], array('admin', 'miembro'))) :" . $pre2;
+?>
 		<li><?php
-			echo "<?php".
-						$pre2."echo \$this->Form->postLink(".
-						$pre3."'<i class=\"icon-trash\"></i> Borrar " . $singularHumanName . "',".
-						$pre3."array('action' => 'borrar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
-						$pre3."array('escape' => false),".
-						$pre3."'Esta seguro de querer borrar el registro ' . \${$singularVar}['{$modelClass}']['{$primaryKey}']".
-						$pre2."); ?>\n";
-			?>
-		</li>
+			echo "<?php";
+			echo $pre2 . "echo \$this->Html->link(";
+			echo $pre3 . "'<i class=\"icon-plus\"></i> Agregar " . $singularHumanName . "',";
+			echo $pre3 . "array('action' => 'Agregar'),";
+			echo $pre3 . "array('escape' => false)";
+			echo $pre2 . "); ?>";
+			?></li>
 		<li><?php
-			echo "<?php".
-						$pre2."echo \$this->Html->link(".
-						$pre3."'<i class=\"icon-plus\"></i> Agregar " . $singularHumanName . "',".
-						$pre3."array('action' => 'Agregar'),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+			echo "<?php";
+			echo $pre2 . "echo \$this->Html->link(";
+			echo $pre3 . "'<i class=\"icon-pencil\"></i> Editar " . $singularHumanName . "',";
+			echo $pre3 . "array('action' => 'editar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),";
+			echo $pre3 . "array('escape' => false)";
+			echo $pre2 . "); ?>" . $pre2;
+		?></li>
+
+<?php echo $pre1 . "<?php endif; ?>" ?>;
+
+<?php
+	echo "<?php";
+	echo $pre1 . "/* Editar {$singularHumanName} */";
+	echo $pre1 . "if(\$userAuth['role'] == 'admin') :" . $pre1;
+?>
+		<li><?php
+			echo "<?php";
+			echo $pre2 . "echo \$this->Form->postLink(";
+			echo $pre3 . "'<i class=\"icon-trash\"></i> Borrar " . $singularHumanName . "',";
+			echo $pre3 . "array('action' => 'borrar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),";
+			echo $pre3 . "array('escape' => false),";
+			echo $pre3 . "'Esta seguro de querer borrar el registro ' . \${$singularVar}['{$modelClass}']['{$primaryKey}']";
+			echo $pre2 . "); ?>\n";
 			?>
 		</li>
+<?php echo $pre1 . "<?php endif; ?>" ?>;
+
 <?php
 	$done = array();
 	foreach ($associations as $type => $data) :
@@ -76,27 +102,45 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 			if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
 				echo $pre2."<li class='divider'></li>";
 				echo $pre2."<li class='nav-header'>" . Inflector::humanize($details['controller']) . "</li>";
-				#Enlace Listar asociacion
-				echo $pre2."<li><?php".
-						 $pre3."echo \$this->Html->link(".
-						 $pre3."'<i class=\"icon-list\"></i> Listar " . Inflector::humanize($details['controller']) . "',".
-						 $pre3."array('controller' => '{$details['controller']}', 'action' => 'index'),".
-						 $pre3."array('escape' => false)".
-						 $pre2.");".
-						 $pre2."?> </li>\n";
-				#Enlace Agregar asociacion
-				echo $pre2."<li><?php".
-						 $pre3."echo \$this->Html->link(".
-						 $pre3."'<i class=\"icon-plus\"></i> Agregar " . Inflector::humanize(Inflector::underscore($alias)) . "',".
-						 $pre3."array('controller' => '{$details['controller']}', 'action' => 'agregar'),".
-						 $pre3."array('escape' => false)".
-						 $pre2.");".
-						 $pre2."?> </li>\n";
+
+				# Enlace Lista asociacion
+				echo $pre2 . "<li><?php";
+				echo $pre3 . "echo \$this->Html->link(";
+				echo $pre3 . "'<i class=\"icon-list\"></i> Lista de " . Inflector::humanize($details['controller']) . "',";
+				echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'index'),";
+				echo $pre3 . "array('escape' => false)";
+				echo $pre2 . ");";
+				echo $pre2 . "?> </li>";
+
+				# Enlace Agregar asociacion
+				echo $pre1 . "<?php";
+				echo $pre1 . "/* Agregar */";
+				echo $pre1 . "if(in_array(\$userAuth['role'], array('admin', 'miembro'))) :";
+				echo $pre2 . "<li><?php";
+				echo $pre3 . "echo \$this->Html->link(";
+				echo $pre3 . "'<i class=\"icon-plus\"></i> Agregar " . Inflector::humanize(Inflector::underscore($alias)) . "',";
+				echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'agregar'),";
+				echo $pre3 . "array('escape' => false)";
+				echo $pre2 . ");";
+				echo $pre2 . "?> </li>";
+				echo $pre1 . "<?php endif; ?>";
 				$done[] = $details['controller'];
 			}
 		}
 	endforeach;
 ?>
+	<!-- Compartir sección -->
+			<li class='divider'></li>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+		<li><?php
+		echo "<?php";
+		echo $pre2 . "echo \$this->QrCode->url(";
+		echo $pre3 . "'/{$pluralVar}/ver', array('size' => '170x170', 'margin' => 0)";
+		echo $pre2 . ");";
+		echo $pre2 . "?>";
+		?></li>
 	</ul>
 </div>
 
@@ -111,19 +155,23 @@ foreach ($fields as $field) {
 		foreach ($associations['belongsTo'] as $alias => $details) {
 			if ($field === $details['foreignKey']) {
 				$isKey = true;
-				echo "\n\t<tr>";
-				echo "\n\t\t<th><?php echo __('" . Inflector::humanize(Inflector::underscore($alias)) . "'); ?></th>";
-				echo "\n\t\t<td>\n\t\t\t<?php echo \$this->Html->link(\${$singularVar}['{$alias}']['{$details['displayField']}'], array('controller' => '{$details['controller']}', 'action' => 'view', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])); ?>\n\t\t\t&nbsp;\n\t\t</td>";
-				echo "\n\t</tr>";
+				echo $pre2 . "<tr>";
+				echo $pre3 . "<th><?php echo __('" . Inflector::humanize(Inflector::underscore($alias)) . "'); ?></th>";
+				echo $pre3 . "<td>";
+				echo $pre4 . "<?php echo \$this->Html->link(\${$singularVar}['{$alias}']['{$details['displayField']}'], array('controller' => '{$details['controller']}', 'action' => 'view', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])); ?>";
+				echo $pre3 . "</td>";
+				echo $pre2 . "</tr>";
 				break;
 			}
 		}
 	}
 	if ($isKey !== true) {
-		echo "\n\t<tr>";
-		echo "\n\t\t<th><?php echo __('" . Inflector::humanize($field) . "'); ?></th>";
-		echo "\n\t\t<td>\n\t\t\t<?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>\n\t\t\t&nbsp;\n\t\t</td>";
-		echo "\n\t</tr>";
+		echo $pre2 . "<tr>";
+		echo $pre3 . "<th><?php echo __('" . Inflector::humanize($field) . "'); ?></th>";
+		echo $pre3 . "<td>";
+		echo $pre4 . "<?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>";
+		echo $pre2 . "</td>";
+		echo $pre2 . "</tr>";
 	}
 }
 ?>
@@ -136,29 +184,29 @@ foreach ($fields as $field) {
 	<ul class="dropdown-menu">
 		<li><?php
 			echo  "<?php".
-						$pre2."echo \$this->Html->link(".
-						$pre3."'<i class=\"icon-pencil\"></i> Editar',".
-						$pre3."array('action' => 'editar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+						$pre2 . "echo \$this->Html->link(".
+						$pre3 . "'<i class=\"icon-pencil\"></i> Editar',".
+						$pre3 . "array('action' => 'editar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
+						$pre3 . "array('escape' => false)".
+						$pre2 . "); ?>\n";
 			?>
 		</li>
 		<li><?php
 			echo  "<?php".
-						$pre2."echo \$this->Form->postLink(".
-						$pre3."'<i class=\"icon-trash\"></i> Borrar',".
-						$pre3."array('action' => 'borrar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+						$pre2 . "echo \$this->Form->postLink(".
+						$pre3 . "'<i class=\"icon-trash\"></i> Borrar',".
+						$pre3 . "array('action' => 'borrar', \${$singularVar}['{$modelClass}']['{$primaryKey}']),".
+						$pre3 . "array('escape' => false)".
+						$pre2 . "); ?>\n";
 			?>
 		</li>
 		<li><?php
 			echo  "<?php".
-						$pre2."echo \$this->Html->link(".
-						$pre3."'<i class=\"icon-list\"></i> Lista {$pluralHumanName}',".
-						$pre3."array('action' => 'index'),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+						$pre2 . "echo \$this->Html->link(".
+						$pre3 . "'<i class=\"icon-list\"></i> Lista {$pluralHumanName}',".
+						$pre3 . "array('action' => 'index'),".
+						$pre3 . "array('escape' => false)".
+						$pre2 . "); ?>\n";
 			?>
 		</li>
 	</ul>
@@ -173,8 +221,8 @@ if (!empty($associations['hasOne'])) :
 		<dl>
 	<?php
 			foreach ($details['fields'] as $field) {
-				echo "\t\t<dt><?php echo __('" . Inflector::humanize($field) . "'); ?></dt>\n";
-				echo "\t\t<dd>\n\t<?php echo \${$singularVar}['{$alias}']['{$field}']; ?>\n&nbsp;</dd>\n";
+				echo $pre2 . "<dt><?php echo __('" . Inflector::humanize($field) . "'); ?></dt>";
+				echo $pre2 . "<dd><?php echo \${$singularVar}['{$alias}']['{$field}']; ?>&nbsp;</dd>\n";
 			}
 	?>
 		</dl>
@@ -213,44 +261,46 @@ foreach ($relations as $alias => $details):
 			}
 ?>
 		<th class="actions">Acciones</th>
-	</tr>
-<?php
-echo "\t<?php
-		\$i = 0;
-		foreach (\${$singularVar}['{$alias}'] as \${$otherSingularVar}): ?>\n";
-		echo "\t\t<tr>\n";
-			foreach ($details['fields'] as $field) {
-				echo "\t\t\t<td><?php echo \${$otherSingularVar}['{$field}']; ?></td>\n";
-			}
+	</tr><?php
+	echo $pre1 . "<?php";
+	echo $pre2 . "\$i = 0;";
+	echo $pre2 . "foreach (\${$singularVar}['{$alias}'] as \${$otherSingularVar}): ?>";
+	echo $pre2 . "<tr>";
+	foreach ($details['fields'] as $field) {
+		echo $pre3 . "<td><?php echo \${$otherSingularVar}['{$field}']; ?></td>";
+	}
+	echo $pre3 . "<td class=\"actions\">";
+	?>
 
-			echo "\t\t\t<td class=\"actions\">";
-			?>
-			<div class="btn-group">
+	<div class="btn-group">
 	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li><?php
-			echo $pre2."<?php \n\t\techo \$this->Html->link(".
-					 $pre3."'<i class=\"icon-eye-open\"></i> Ver',".
-					 $pre3."array('controller' => '{$details['controller']}', 'action' => 'ver', \${$otherSingularVar}['{$details['primaryKey']}']),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+			echo $pre2 . "<?php";
+			echo $pre2 . "echo \$this->Html->link(";
+			echo $pre3 . "'<i class=\"icon-eye-open\"></i> Ver',";
+			echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'ver', \${$otherSingularVar}['{$details['primaryKey']}']),";
+			echo $pre3 . "array('escape' => false)";
+			echo $pre2 . "); ?>\n";
 			?>
 		</li>
 		<li><?php
-			echo $pre2."<?php \n\t\techo \$this->Html->link(".
-					 $pre3."'<i class=\"icon-pencil\"></i> Editar',".
-					 $pre3."array('controller' => '{$details['controller']}', 'action' => 'editar', \${$otherSingularVar}['{$details['primaryKey']}']),".
-						$pre3."array('escape' => false)".
-						$pre2."); ?>\n";
+			echo $pre2 . "<?php";
+			echo $pre2 . "echo \$this->Html->link(";
+			echo $pre3 . "'<i class=\"icon-pencil\"></i> Editar',";
+			echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'editar', \${$otherSingularVar}['{$details['primaryKey']}']),";
+			echo $pre3 . "array('escape' => false)";
+			echo $pre2 . "); ?>" . $pre1;
 			?>
 		</li>
 		<li><?php
-			echo $pre2."<?php \n\t\techo \$this->Form->postLink(".
-					 $pre3."'<i class=\"icon-trash\"></i> Borrar',".
-					 $pre3."array('controller' => '{$details['controller']}', 'action' => 'borrar', \${$otherSingularVar}['{$details['primaryKey']}']),".
-						$pre3."array('escape' => false),".
-						$pre3."\"Estas seguro de borrar el registro # {\${$otherSingularVar}['{$details['primaryKey']}']}?\"".
-						$pre2."); ?>\n";
+			echo $pre2 . "<?php";
+			echo $pre2 . "echo \$this->Form->postLink(";
+			echo $pre3 . "'<i class=\"icon-trash\"></i> Borrar',";
+			echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'borrar', \${$otherSingularVar}['{$details['primaryKey']}']),";
+			echo $pre3 . "array('escape' => false),";
+			echo $pre3 . "\"Estas seguro de borrar el registro # {\${$otherSingularVar}['{$details['primaryKey']}']}?\"";
+			echo $pre2 . "); ?>\n";
 			?>
 		</li>
 	</ul>
@@ -258,18 +308,18 @@ echo "\t<?php
 	</td>
 </tr>
 <?php
-echo "\t<?php endforeach; ?>\n";
+echo $pre1 . "<?php endforeach; ?>" . $pre1;
 ?>
 	</table>
-<?php echo "<?php endif; ?>\n\n"; ?>
+<?php echo "<?php endif; ?>" . $pre2; ?>
 	<div class="actions"><?php
-	echo "<?php\n".
-				$pre2."echo \$this->Html->link(".
-				$pre3."'Nuevo " . Inflector::humanize(Inflector::underscore($alias)) . "',".
-				$pre3."array('controller' => '{$details['controller']}', 'action' => 'agregar'),".
-				$pre3."array('class' => 'btn btn-info')".
-				$pre2."); ?>"; ?>
-	</div>
+	echo "<?php";
+	echo $pre2 . "echo \$this->Html->link(";
+	echo $pre3 . "'Nuevo " . Inflector::humanize(Inflector::underscore($alias)) . "',";
+	echo $pre3 . "array('controller' => '{$details['controller']}', 'action' => 'agregar'),";
+	echo $pre3 . "array('class' => 'btn btn-info')";
+	echo $pre2 . "); ?>" . $pre2;
+	?></div>
 </div>
 <?php endforeach; ?>
 </div>

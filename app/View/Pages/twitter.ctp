@@ -13,8 +13,8 @@ if( !empty( $result ) && isset($result['profile_image_url']) ):
 	pero me llaman <span><?php
 	echo $result['name'];
 	?></span>. <br />
-	Esta es mi página principal: 
-	<?php 
+	Esta es mi página principal:
+	<?php
 	echo $this->Html->link($result['url'], $result['url']);
 	echo '<h2>Descripción</h2>';
 	echo  $result['description'];

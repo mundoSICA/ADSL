@@ -36,7 +36,7 @@
 	</fieldset>
 	<?php
 	echo $this->Html->link('registrarme', array('action'=>'registro'));
-	?> | 
+	?> |
 	<?php
 	echo $this->Html->link('Olvide mi contraseña', array('action'=>'reset_password'));
 	?>

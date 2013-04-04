@@ -139,13 +139,14 @@ class TalleresController extends AppController {
 					'Revise que la imagen<br />para el Slide sea válida<br />(jpeg 925x250)'
 				);
 			}elseif ( $this->Taller->save($this->request->data)) {
+				$slug = $this->_notificarTaller();
 				$this->Session->setFlash('El taller ya fue agregado y agendado con exito!');
-				$this->redirect(array('action' => 'index', 'admin' => false));
+				$this->redirect(array('action' => 'ver/' . $slug , 'admin' => false));
 			} else {
 				$this->Session->setFlash('El registro taller. No pudo ser guardado');
 			}
 		}
-		$users = $this->Taller->User->find('list');
+		$users = $this->Taller->User->find('list', array('conditions' => array('User.role' => array('admin', 'miembro'))));
 		$etiquetas = $this->Taller->Etiqueta->find('list');
 		$alumnos = array();//$this->Taller->Alumnos->find('list');
 		$this->set(compact('users', 'etiquetas', 'alumnos'));
@@ -164,15 +165,20 @@ class TalleresController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Taller->save($this->request->data)) {
+
+				//Revisamos a los elementos a notificar
+				if($this->request->data['Taller']['notificar']){
+					$this->_notificarTaller();
+				}
 				$this->Session->setFlash('El registro taller. Fue guardado');
-				$this->redirect(array('action' => 'index','admin' => false));
+				$this->redirect(array('action' => 'ver/' . $slug , 'admin' => false));
 			} else {
 				$this->Session->setFlash('El registro taller. No pudo ser guardado');
 			}
 		} else {
 			$this->request->data = $this->Taller->read(null, $id);
 		}
-		$users = $this->Taller->User->find('list');
+		$users = $this->Taller->User->find('list', array('conditions' => array('User.role' => array('admin', 'miembro'))));
 		$etiquetas = $this->Taller->Etiqueta->find('list');
 		$alumnos = array(); #$this->Taller->Alumnos->find('list');
 		$this->set(compact('users', 'etiquetas', 'alumnos'));
@@ -199,4 +205,35 @@ class TalleresController extends AppController {
 		$this->Session->setFlash('Taller. No se pudo borrar');
 		$this->redirect(array('action' => 'index'));
 	}
+	/**
+	 * Descripción de la función
+	 *
+	 * @param tipo $parametro1 descripción del párametro 1.
+	 * @return tipo descripcion de lo que regresa
+	 * @access publico/privado
+	 * @link [URL de mayor infor]
+	 */
+	function _notificarTaller() {
+		$slug = NULL;
+		$slug =  $this->Taller->slugStr($this->request->data['Taller']['nombre']);
+		if ( $slug ) {
+			$urlInfo = Router::url('/',true).'talleres/ver/'.$slug;
+			$msg  = "<h1><a href='{$urlInfo}' style='color:#C2570B;text-decoration:none'>".
+							"\n{$this->request->data['Taller']['nombre']}\n</a></h1>";
+			$msg .= "<h4>{$this->request->data['Taller']['resumen']}</h4>".
+							"<h2>Descripción:</h2>".$this->request->data['Taller']['contenido'];
+			$msg .= "<br /><strong>Mayores informes: </strong>\n<a href={$urlInfo}>{$urlInfo}</a>";
+
+			$usuarios_a_notificar = $this->Taller->User->notificados();
+			App::uses('CakeEmail', 'Network/Email');
+			$email = new CakeEmail('default');
+			$email->subject('Notificación Taller ' . $this->request->data['Taller']['nombre']);
+			$email->addHeaders(array('X-Mailer' => 'adsl.org.mx'));
+			foreach ($usuarios_a_notificar as $username => $member_email) {
+				$email->to($member_email);
+				$email->send($msg);
+			}
+		}
+		return $slug;
+	}//end function
 }

@@ -268,7 +268,7 @@ class BitlyHelper extends AppHelper {
 				$i++;
 			} while($i < $retry);
 		}
-		
+
 		return null;
 	}
 
@@ -299,7 +299,7 @@ class BitlyHelper extends AppHelper {
 				$i++;
 			} while($i < $retry);
 		}
-		
+
 		return null;
 	}
 
@@ -408,7 +408,7 @@ class BitlyHelper extends AppHelper {
  *
  * @return array authenticate parameters
  * @access protected
- */	
+ */
 	function _authenticateParams(){
 		$result = array(
 			'login'  => $this->user_name,

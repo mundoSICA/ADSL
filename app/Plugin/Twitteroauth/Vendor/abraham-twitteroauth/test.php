@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * 
+ *
  */
 
 /* Load required lib files. */
@@ -307,7 +307,7 @@ twitteroauth_row($method, $connection->delete($method), $connection->http_code);
 
 /**
  * Friendships Methods.
- */ 
+ */
 twitteroauth_header('Friendships Methods');
 
 /* friendships/create */

@@ -6,7 +6,6 @@ App::uses('AppController', 'Controller');
  * @property Contribucion $Contribucion
  */
 class ContribucionesController extends AppController {
-var $components = array('Email');
 function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
@@ -40,17 +39,22 @@ function beforeFilter() {
  * página del ADSL desde aquí cachamos los cambios y los publicamos.
  *
  * link: https://help.github.com/articles/post-receive-hooks
+ * link2: https://github.com/mundoSICA/ADSL/settings/hooks
  */
 	public function agregar() {
-		$whiteList = array('207.97.227.253', '50.57.128.197', '108.171.174.178');
-		if ($this->request->is('post') && in_array($_SERVER['REMOTE_ADDR'], $whiteList)) {
+		// $whiteList = array('207.97.227.253', '50.57.128.197', '108.171.174.178');
+		// if ($this->request->is('post') && in_array($_SERVER['REMOTE_ADDR'], $whiteList)) {
+		if ($this->request->is('post')) {
 			$commits = json_decode($this->request->data['payload'], true);
 			foreach ($commits['commits'] as $c) {
-				$this->nuevaContribucion($c);
+				if(!$this->Contribucion->exists($c['id'])) {
+					$this->nuevaContribucion($c);
+				}
 			}
 		}
 	}
-	function nuevaContribucion($c){
+
+	function nuevaContribucion($c) {
 		$tipo_cambio = array(
 										'added' =>
 										array(
@@ -111,20 +115,13 @@ function beforeFilter() {
 			}
 		}///////////////////
 		$commit_msg .= '<br /><strong>Mayores informes: </strong><a href="'.$urlInfo.'">'.$urlInfo.'</a>';
-		$commit_msg .= '<p>Este mensaje es <i>auto-generado</i>, por medio de <strong>ADSL-robot</strong>'
-										.'Si desea no recibir más notificaciones favor de enviar un email a <i>robot@adsl.org.mx</i></p>';
-		$EmailTokenRequest = (array) Configure::read('EmailTokenRequest');
-		$members = Configure::read('Colaboradores');
-		foreach ($members as $member_email) {
-			$this->Email->reset();
-			$this->Email->from = 'robot ADSL <robot@adsl.org.mx>';
-			$this->Email->to = $member_email;
-			$this->Email->sendAs = 'both';
-			$this->Email->replyTo = $c['author']['email'];
-			$this->Email->subject = count($title)? $title[0] : 'Notificación de cambios';
-			$this->Email->subject .= ' - contribución repositorio ADSL';
-			$this->Email->send($commit_msg);
-		}
+
+		App::uses('CakeEmail', 'Network/Email');
+		$email = new CakeEmail('colaboradores');
+		$email->subject(count($title)? $title[0] : 'Notificación de cambios - contribución repositorio ADSL' );
+		$email->addHeaders(array('X-Mailer' => 'adsl.org.mx'));
+		$email->replyTo($c['author']['email']);
+		$email->send($commit_msg);
 		$this->Contribucion->save($newCommit);
 	}
 }

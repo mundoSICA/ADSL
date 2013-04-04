@@ -21,14 +21,14 @@ class TwitterComponentTest extends CakeTestCase {
     $this->Controller = new TestTwitterController();
     $this->Twitter->initialize($this->Controller);
   }
-  
+
   public function tearDown() {
     parent::tearDown();
     // Clean up after we're done
     unset($this->Twitter);
     unset($this->Controller);
   }
-  
+
   /**
    * test GET legal/privacy (requires no authentication)
    */
@@ -36,9 +36,9 @@ class TwitterComponentTest extends CakeTestCase {
     $result = Set::reverse($this->Twitter->OAuth->get(
        'legal/privacy', array()
     ));
-    $this->assertTrue(isset($result['privacy']));        
+    $this->assertTrue(isset($result['privacy']));
   }
-  
+
   /**
    * test GET account/verify_credentials (requires authentication)
    */
@@ -46,6 +46,6 @@ class TwitterComponentTest extends CakeTestCase {
     $result = Set::reverse($this->Twitter->OAuth->get(
        'account/verify_credentials', array()
     ));
-    $this->assertTrue(isset($result['id']));        
-  }  
+    $this->assertTrue(isset($result['id']));
+  }
 }
