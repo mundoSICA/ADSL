@@ -53,6 +53,8 @@ foreach ($talleres as $t):
 <?php endforeach; ?>
 </ul>
 
+<?php  echo $this->element('redes_sociales'); ?>
+
 <h1>Calendario de actividades del ADSL.</h1>
 <div class="calendario-wrapper">
 	<div id='calendar'></div>

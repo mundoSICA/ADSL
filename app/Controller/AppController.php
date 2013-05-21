@@ -6,6 +6,9 @@
 
 App::uses('Controller', 'Controller');
 class AppController extends Controller {
+
+	protected static $_usuario = array();
+
 	var $components = array(
 		'AutoLogin',
 		'Auth'=>array(
@@ -26,9 +29,9 @@ class AppController extends Controller {
 		'QrCode',
 		'Wysiwyg'
 	);
-	/******************** Funciones *******************************************************/
 
-		function  beforeFilter() {
+	/******************** Funciones *******************************************************/
+	function  beforeFilter() {
 		$userAuth = null;
 		if($this->Auth->loggedIn()) {
 					$userAuth = $this->Auth->user();
@@ -40,6 +43,7 @@ class AppController extends Controller {
 		}
 		$this->set('adsl_data', Configure::read('adsl'));
 		$this->set('userAuth', $userAuth);
+		$helpers['App']['userAuth'] = $userAuth;
     parent::beforeFilter();
 	}
 

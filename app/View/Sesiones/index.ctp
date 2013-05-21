@@ -25,10 +25,10 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 		<li>
 	<?php
 		echo $this->Html->link(
-		'<i class="icon-plus"></i> Agregar',
-		array('action' => 'agregar'),
-		array('escape' => false)
-	); ?>
+			'<i class="icon-plus"></i> Agregar',
+			array('action' => 'agregar'),
+			array('escape' => false)
+		); ?>
 		</li>
 			<li class='divider'></li>
 			<li class='nav-header'>
@@ -37,18 +37,18 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 			<li>
 	<?php
 		echo $this->Html->link(
-		'<i class="icon-home"></i> Listar',
-		array('controller' => 'talleres', 'action' => 'index'),
-		array('escape' => false)
-	); ?>
+			'<i class="icon-list"></i> Listar',
+			array('controller' => 'talleres', 'action' => 'index'),
+			array('escape' => false)
+		); ?>
 			</li>
 			<li>
 	<?php
 		echo $this->Html->link(
-		'<i class="icon-plus"></i> Agregar',
-		array('controller' => 'talleres', 'action' => 'agregar'),
-		array('escape' => false)
-	); ?>
+			'<i class="icon-plus"></i> Agregar',
+			array('controller' => 'talleres', 'action' => 'agregar'),
+			array('escape' => false)
+		); ?>
 			</li>
 	</ul>
 </div>
@@ -64,32 +64,57 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 			<th><?php echo $this->Paginator->sort('slug_dst'); ?></th>
 			<th><?php echo $this->Paginator->sort('orden'); ?></th>
 			<th><?php echo $this->Paginator->sort('descripcion'); ?></th>
-			<th><?php echo $this->Paginator->sort('content'); ?></th>
 			<th><?php echo $this->Paginator->sort('estrellas'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th><?php echo $this->Paginator->sort('fecha_publicacion'); ?></th>
 			<th class="actions">Acciones</th>
 	</tr>
+
 	<?php
-	foreach ($sesiones as $sesion): ?>
-	<tr>
-		<td><?php echo $this->Html->link($sesion['Sesion']['id'], array('action' => 'ver', $sesion['Sesion']['id'])); ?></td>
+		foreach ($sesiones as $sesion): ?>
+		<tr>
 		<td>
-			<?php echo $this->Html->link($sesion['Taller']['nombre'], array('controller' => 'talleres', 'action' => 'ver', $sesion['Taller']['id'])); ?>
+			<?php echo $this->Html->link(
+			$sesion['Sesion']['id'],
+			array('action' => 'ver', $sesion['Sesion']['id'])
+			); ?>
 		</td>
-		<td><?php echo h($sesion['Sesion']['keywords']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['nombre']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['slug_dst']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['orden']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['descripcion']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['content']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['estrellas']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['created']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($sesion['Sesion']['fecha_publicacion']); ?>&nbsp;</td>
-		<td class="actions">
-<div class="btn-group">
+		<td>
+			<?php echo $this->Html->link(
+			$sesion['Taller']['nombre'],
+			array('controller' => 'talleres', 'action' => 'ver', $sesion['Taller']['id'])
+			);
+			?>
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['keywords']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['nombre']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['slug_dst']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['orden']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['descripcion']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['estrellas']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['created']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['modified']); ?>&nbsp;
+		</td>
+		<td>
+			<?php echo h($sesion['Sesion']['fecha_publicacion']); ?>&nbsp;
+		</td>
+		<td class="actions"><div class="btn-group">
 	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li>
@@ -126,7 +151,7 @@ $this->Html->meta('description', 'Sesiones Index', array('inline' => false));
 	<small class="pull-right">
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => 'Página {:page} de {:pages}, viendo {:current} registros de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
+	'format' => 'Página {:page} de {:pages}, viendo {:current} Sesiones de un total de {:count}, iniciando en el registro {:start}, cabando en {:end}'
 	));
 	?>
 	</small>

@@ -3,6 +3,8 @@
  * adsl.org.mx
  * Vista:  Talleres Ver
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
 
 #sección metaDatos
 $this->set('title_for_layout', 'ADSL Taller -  '.h($taller['Taller']['nombre']));
@@ -36,9 +38,10 @@ $this->Html->css(
 <div class="row-fluid">
 	<div class="actions span3 sidebar-nav">
 	<?php
+	echo $this->Html->menu_sesiones($taller['Taller']['slug_dst'], $taller['Sesion']);
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role'], $taller);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres($taller['Taller']);
+	echo $this->Html->menu_usuario();
 	?>
 <!-- Compartir sección -->
 	<ul class='nav nav-list well'>
@@ -52,6 +55,7 @@ $this->Html->css(
 		);
 		?>
 	</ul>
+
 </div>
 
 <div class="talleres view span9" itemscope itemtype="http://schema.org/EducationEvent">
@@ -96,9 +100,6 @@ echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 			<?php echo number_format($taller['Taller']['numero_total_horas'],0); ?>hrs
 		</dd>
 
-		<dt>Numero de Sesiones</dt>
-		<dd><?php echo h($taller['Taller']['num_sesiones']); ?> Sesiones</dd>
-
 		<dt>Estado actual</dt>
 		<dd>
 			<?php echo $taller['Taller']['status']; ?>&nbsp;
@@ -117,7 +118,7 @@ echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 			<span itemprop="offerCount"><?php echo $taller['Taller']['cupo']; ?></span> Personas
 		</dd>
 	</dl>
-
+	<?php  echo $this->element('redes_sociales'); ?>
 	<div>
 		<h2>Requisitos</h2>
 		<?php echo $taller['Taller']['requisitos']; ?>
@@ -130,6 +131,27 @@ echo $this->Html->image('talleres/'.$taller['Taller']['slug_dst'].'.jpg',
 	<h2>Descripción detallada</h2>
 	<p itemprop="description"><?php echo $taller['Taller']['contenido']; ?></p>
 	<!-- -->
+<?php
+$num_sesiones = count($taller['Sesion']);
+if( $num_sesiones>1):
+?>
+	<h2>
+		Sesiones disponibles (<?php echo $num_sesiones; ?>)
+	</h2>
+	<ol class="">
+	<?php foreach($taller['Sesion'] as $sesion):
+			$link = $this->Html->link(
+				$sesion['nombre'],
+				array('controller' => 'sesiones', 'action' => 'ver', $sesion['slug_dst']),
+				array('itemprop' => 'url')
+			);
+	 ?>
+		<li><?php echo $link; ?></li>
+	<?php endforeach; ?>
+	</ol>
+<?php
+endif; //Sesiones
+?>
 	<h2>Alumnos inscritos en el taller</h2>
 <?php
 $boton_taller = false;

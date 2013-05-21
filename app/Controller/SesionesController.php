@@ -48,9 +48,7 @@ var $helpers = array(
 			throw new NotFoundException('Sesion inválido');
 		}
 		$sesion = $this->Sesion->read(null, $id);
-		# -> if( $taller_slug != $sesion['Sesion']['slug_dst'] ) {
-		#		$this->redirect(array('controller' => 'talleres', 'action'=>'index'));
-		#}
+		$sesion['sesiones'] = $this->Sesion->sesiones($sesion['Taller']['id']);
 		$this->set('sesion', $sesion);
 	}// fin ver
 
@@ -70,8 +68,7 @@ var $helpers = array(
 		if ($this->request->is('post')) {
 			$this->Sesion->create();
 			$this->request->data['Sesion']['taller_id'] = $taller_id;
-			$this->request->data['Sesion']['nombre'] = $taller_slug . ' ' .
-			$this->request->data['Sesion']['nombre'];
+			$this->request->data['Sesion']['nombre'] = $taller_slug . ' _ ' . $this->request->data['Sesion']['nombre'];
 			if ($this->Sesion->save($this->request->data)) {
 				$this->Session->setFlash('La sesión fue guardada');
 				$this->redirect(array('controller' => 'talleres', 'action' => 'ver', 'miembro' => false, $taller_slug));
@@ -90,22 +87,25 @@ var $helpers = array(
  * @return void
  */
 	public function miembro_editar($slug = null) {
-		$id = $this->Sesion->primaryKeyBySlug($slug, true);
+		$this->Sesion->primaryKeyBySlug($slug, true);
 		if (!$this->Sesion->exists()) {
 			throw new NotFoundException('Sesion inválida');
 		}
+		$data = $this->Sesion->read(null);
 		if ($this->request->is('post') || $this->request->is('put')) {
+
+			$this->request->data['Sesion']['taller_id'] = $data['Taller']['id'];
+			$this->request->data['Sesion']['nombre'] = $data['Taller']['slug_dst'] . ' _ ' . $data['Sesion']['nombre'];
 			if ($this->Sesion->save($this->request->data)) {
 				$this->Session->setFlash(__('La sesión fue modificada'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('miembro'=>false,'controller'=>'talleres', 'action' => 'ver',$data['Taller']['slug_dst'] ));
 			} else {
-				$this->Session->setFlash(__('El sesion no pudo ser guardado. Por favor, intente de nuevo.'));
+				$this->request->data = $data;
+				$this->Session->setFlash(__('La sesión se pudo guardar. Por favor, intente de nuevo.'));
 			}
 		} else {
-			$this->request->data = $this->Sesion->read(null, $id);
+			$this->request->data = $data;
 		}
-		$talleres = $this->Sesion->Taller->find('list');
-		$this->set(compact('talleres'));
 	}// fin miembro_editar
 
 /**

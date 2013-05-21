@@ -83,6 +83,8 @@ $this->Html->scriptEnd();
 	</dl>
 <br clear='all' />
 <a href='<?php echo Router::url('/contribuciones/',true); ?>' class='boton_naranja'>Lista de Contribuciones</a>
+
+<?php  echo $this->element('redes_sociales'); ?>
 <h2>Mensaje de confirmación:</h2>
 <pre itemprop="description"><?php
 	echo $msg;

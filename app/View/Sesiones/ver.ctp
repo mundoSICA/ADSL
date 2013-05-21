@@ -3,11 +3,15 @@
  * adsl.org.mx
  * Vista:  Sesiones Ver
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
 
 #sección metaDatos
-$this->set('title_for_layout', 'Correo Facil - Sesiones Ver');
+$this->set('title_for_layout', 'ADSL - '. $sesion['Sesion']['nombre']);
 $this->Html->meta('description', $sesion['Sesion']['descripcion'], array('inline' => false));
 $this->Html->meta('keywords', $sesion['Sesion']['keywords'], array('inline' => false));
+
+$sesion['Sesion']['nombre'] = str_replace($sesion['Taller']['slug_dst']. ' _ ','', $sesion['Sesion']['nombre']);
 
 #sección CSS
 #$this->Html->css(array(
@@ -30,75 +34,24 @@ div.pagination{
 }
 </style>
 <div class="row-fluid">
-	<div class="actions span3 well sidebar-nav">
-	<h3>Acciones</h3>
-	<ul class="nav nav-list">
-		<li class='nav-header'><i class='icon-th-list'></i> Sesiones</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-home"></i> Inicio taller',
-			array(
-				'controller'=>'talleres',
-				'action' => 'ver',
-				$sesion['Taller']['slug_dst']
-				),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-star"></i> Calificar',
-			array('action' => 'calificar',$sesion['Sesion']['slug_dst']),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-pencil"></i> Editar Sesion',
-			array(
-			'action' => 'editar',
-			'miembro' => true,
-			$sesion['Sesion']['slug_dst']
-			),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Form->postLink(
-			'<i class="icon-trash"></i> Borrar Sesion',
-			array(
-			'action' => 'borrar',
-			$sesion['Sesion']['slug_dst']
-			),
-			array('escape' => false),
-			'Esta seguro de querer borrar el registro ' . $sesion['Sesion']['slug_dst']
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-plus"></i> Agregar Sesion',
-			array('action' => 'Agregar'),
-			array('escape' => false)
-		); ?>
-		</li>
-
-		<li class='divider'></li>
-		<li class='nav-header'><i class='icon-folder-open'></i> Talleres</li>
-		<li><?php
-			echo $this->Html->link(
-			'<i class="icon-list"></i> Listar Talleres',
-			array('controller' => 'talleres', 'action' => 'index'),
-			array('escape' => false)
+	<div class="actions span3 sidebar-nav">
+	<?php
+	echo $this->Html->menu_sesiones($sesion['Taller']['slug_dst'], $sesion['sesiones'], $sesion['Sesion']['slug_dst']);
+	echo $this->Html->menu_navegacion_general();
+	echo $this->Html->menu_talleres($sesion['Taller']);
+	echo $this->Html->menu_usuario();
+	?>
+<!-- Compartir sección -->
+	<ul class='nav nav-list well'>
+			<li class='nav-header'>
+				<i class="icon-share"></i> Compartir
+			</li>
+			<li class='divider'></li>
+			<?php
+		echo $this->QrCode->url(
+			'/sessiones/ver/'.$sesion['Sesion']['slug_dst'], array('size' => '170x170', 'margin' => 0)
 		);
-		?> </li>
-
-		<li><?php
-			echo $this->Html->link(
-			'<i class="icon-plus"></i> Agregar Taller',
-			array('controller' => 'talleres', 'action' => 'agregar'),
-			array('escape' => false)
-		);
-		?> </li>
+		?>
 	</ul>
 </div>
 
@@ -107,17 +60,12 @@ div.pagination{
 	<h1><?php
 	echo $this->Html->link($sesion['Taller']['nombre'], array('controller' => 'talleres', 'action' => 'ver', $sesion['Taller']['slug_dst']));
 	?>
-	<small><?php echo str_replace(
-				$sesion['Taller']['slug_dst'],
-				'',
-				$sesion['Sesion']['nombre']); ?></small>
+	<small><?php echo $sesion['Sesion']['nombre']; ?></small>
 	</h1>
+	<strong><i class='icon-calendar'> </i> Publicado: </strong>
 	<date><?php echo h($sesion['Sesion']['fecha_publicacion']); ?></date>
 </div>
-<p><?php
-	echo $this->Markdown->parse($sesion['Sesion']['content']);
-?><p>
-<?php echo h($sesion['Sesion']['estrellas']); ?>
+<?php echo $sesion['Sesion']['contenido']; ?>
 
 <!--     -->
 <ul class="thumbnails bootstrap-examples">
@@ -146,52 +94,62 @@ div.pagination{
 		</p>
 	</li>
 
-	<li class="span3">
-<div class="btn-group">
-	<a href="#" class="btn btn-primary"><i class="icon-cog icon-white"></i> Acciones</a>
-	<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
-	<ul class="dropdown-menu">
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-pencil"></i> Editar',
-			array('action' => 'editar', $sesion['Sesion']['slug_dst']),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Form->postLink(
-			'<i class="icon-trash"></i> Borrar',
-			array('action' => 'borrar', $sesion['Sesion']['slug_dst']),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-list"></i> Lista Sesiones',
-			array('action' => 'index'),
-			array('escape' => false)
-		); ?>
-		</li>
-		<li><?php
-		echo $this->Html->link(
-			'<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>',
-			array('action' => 'index'),
-			array('escape' => false)
-		); ?>
-		</li>
-	</ul>
-</div>
-	</li>
 </ul>
-<!--     -->
+
 <div class="pagination pagination-centered">
 	<ul>
-		<li class="disabled"><a href="#">«</a></li>
-		<li class="disabled"><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">»</a></li>
+	<?php
+	$pre = null;
+	$next = null;
+	$current = null;
+	foreach ($sesion['sesiones'] as $index => $s) {
+		//next
+		if($current !== null && $next === null)
+			$next = $index;
+		//current
+		if($s['slug_dst'] == $sesion['Sesion']['slug_dst'])
+			$current = $index;
+		//pre
+		if($current === null)
+			$pre = $index;
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+	//preBoton
+	if($pre !== null) {
+		echo '<li>'.$this->Html->link(
+				'« Anterior',
+				array('action' => 'ver', $sesion['sesiones'][$pre]['slug_dst']),
+				array('title' => $sesion['sesiones'][$pre]['nombre'])
+			).'</li>';
+	} else {
+		echo '<li class="disabled"><a href="#">« Anterior</a></li>';
+	}
+
+	//current
+	foreach ($sesion['sesiones'] as $index => $s) {
+		if($index == $current){
+			echo '<li class="disabled"><a href="#">'.($index+1).'</a></li>';
+		} else {
+			echo '<li>'.$this->Html->link(
+					($index+1),
+					array('action' => 'ver', $sesion['sesiones'][$index]['slug_dst']),
+					array('title' => $sesion['sesiones'][$index]['nombre'])
+				).'</li>';
+		}
+	}
+
+	//nextBoton
+	if($next !== null) {
+		echo '<li>'.$this->Html->link(
+				'Siguiente »',
+				array('action' => 'ver', $sesion['sesiones'][$next]['slug_dst']),
+				array('title' => $sesion['sesiones'][$next]['nombre'])
+			).'</li>';
+	} else {
+		echo '<li class="disabled"><a href="#">Siguiente »</a></li>';
+	}
+	?>
 	</ul>
 </div>
 

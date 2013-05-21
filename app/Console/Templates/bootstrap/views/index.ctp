@@ -16,9 +16,11 @@ $pre4="\n\t\t\t";
  * adsl.org.mx
  * Vista:  <?php echo $titulo."\n"; ?>
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
 
 #sección metaDatos
-$this->set('title_for_layout', 'Correo Facil - <?php echo $titulo; ?>');
+$this->set('title_for_layout', 'ADSL - <?php echo $titulo; ?>');
 $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => false));
 
 #sección CSS
@@ -115,7 +117,7 @@ $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => fal
 						echo $pre3 . "<?php echo \$this->Html->link(";
 						echo $pre4 . "\${$singularVar}['{$modelClass}']['{$field}'],";
 						echo $pre4 . "array('action' => 'ver', \${$singularVar}['{$modelClass}']['{$field}'])";
-						echo $pre3 . "); ?>"
+						echo $pre3 . "); ?>";
 						echo $pre2 . "</td>";
 				} else {
 					echo $pre2 . "<td>";

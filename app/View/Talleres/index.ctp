@@ -3,6 +3,9 @@
  * adsl.org.mx
  * Vista:  Talleres Index
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
+
 #Metadatos
 $this->set('title_for_layout', 'ADSL - Listado de nuestros talleres disponibles '.date('Y-m') );
 $this->Html->meta('description', 'Listado de talleres disponibles '.date('Y-m'), array('inline' => false));
@@ -23,8 +26,8 @@ $img_ancla = $this->Html->image('ancla.svg', array('width'=>14, 'height'=>14, 'a
 	<div class="actions span3 sidebar-nav">
 	<?php
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role']);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres();
+	echo $this->Html->menu_usuario();
 	?>
 <!-- Compartir sección -->
 	<ul class='nav nav-list well'>

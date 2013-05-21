@@ -1,9 +1,15 @@
+<?php
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
+
+
+?>
 <div class="row-fluid">
 	<div class="actions span3 sidebar-nav">
 	<?php
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role']);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres();
+	echo $this->Html->menu_usuario();
 	?>
 </div>
 

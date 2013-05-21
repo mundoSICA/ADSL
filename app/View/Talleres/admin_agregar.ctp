@@ -1,9 +1,14 @@
+<?php
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
+
+?>
 <div class="row-fluid">
 	<div class="actions span3 sidebar-nav">
 	<?php
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role']);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres();
+	echo $this->Html->menu_usuario();
 	?>
 </div>
 
@@ -23,8 +28,10 @@
 		echo $this->Form->input('num_sesiones', array('value'=>1));
 		echo $this->Form->input('requisitos', array('type'=>'textarea','value'=>'Lista de requisitos'));
 		echo $this->Form->input('resumen', array('type'=>'textarea','value'=>'Escriba aquí un breve resumen'));
-		echo "Contenido";
+		echo '<div class="input text required">';
+		echo "<label for='TallerContenido'>Contenido</label>";
 		echo $this->Wysiwyg->textarea('contenido');
+		echo '</div>';
 		echo '<div class="input text required">';
 		echo $this->Form->label('Taller.slide', 'Archivo para el slide(925x250 jpeg)');
 		echo '<input id="TallerSlide" type="file" name="data[Taller][slide]">';

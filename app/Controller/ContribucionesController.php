@@ -99,7 +99,7 @@ function beforeFilter() {
 		$commit_msg .= '<strong>Hash:</strong> ' . $c['id'] . '<br />';
 		$commit_msg .= '<strong>Fecha:</strong> ' . $c['timestamp'] . '<br />';
 		if( strlen($msg) > 5) {
-			$commit_msg .= '<h2>Mensaje:</h2><pre style="background:#EEE;font-size:1.3em;padding:10px">'.$msg.'</pre>';
+			$commit_msg .= '<h2>Mensaje:</h2><pre style="background:#EEE;padding:0 5px 0 5px">'.$msg.'</pre>';
 		}
 		foreach($tipo_cambio as $t=>$t_data) {
 			//$tipo_cambio

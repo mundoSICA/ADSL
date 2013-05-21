@@ -41,12 +41,7 @@ $streaming = Configure::read('streaming');
 				<section>
 					<h2>URL para compartir</h2>
 					<input value='http://ustre.am/GGgd' onfocus='this.select()' style='width:650px;'>
-					    <div id="tweet-btn">
-							<a href="http://twitter.com/share" class="twitter-share-button"
-							data-url="http://t.co/VAYlgQ9R"
-							 data-text="Estoy viendo la trasmisión en vivo de la Academia de Software Libre @academiADSL"
-							 >Compartir por Twitter</a>
-							</div>
+					<?php  echo $this->element('redes_sociales'); ?>
 				</section>
 				<!-- URL generada
 				https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fadsl.org.mx%2Fpages%2Fstreaming&source=tweetbutton&text=Estoy%20viendo%20la%20trasmisi%C3%B3n%20en%20vivo%20de%20la%20Academia%20de%20Software%20Libre%20%40academiADSL&url=http%3A%2F%2Ft.co%2FVAYlgQ9R

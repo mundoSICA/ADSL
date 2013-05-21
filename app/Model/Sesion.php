@@ -13,7 +13,7 @@ class Sesion extends AppModel {
  * @var string
  */
 	public $displayField = 'nombre';
-	public $actsAs = array('Slug'=>array('max_len'=>150, 'extension_active' => true));
+	public $actsAs = array('Slug');
 	public $order = 'Sesion.orden ASC';
 /**
  * Validation rules
@@ -21,6 +21,16 @@ class Sesion extends AppModel {
  * @var array
  */
 	public $validate = array(
+		'taller_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'nombre' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -41,6 +51,16 @@ class Sesion extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		/*'orden' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),*/
 		'fecha_publicacion' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
@@ -66,8 +86,25 @@ class Sesion extends AppModel {
 			'foreignKey' => 'taller_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
 			'counterCache' => 'num_sesiones'
 		)
 	);
+	function sesiones( $taller_id ) {
+		$sesiones = $this->find('list',
+			array(
+				'conditions' => array('Sesion.taller_id' => $taller_id),
+				'fields' => array('Sesion.nombre', 'Sesion.slug_dst'),
+				'recursive' => 0
+			)
+		);
+		$result = array();
+		foreach ($sesiones as $nombre=>$slug)
+		{
+			$result[] = array(
+				'nombre' => $nombre,
+				'slug_dst' => $slug
+			);
+		}
+		return $result;
+	}//end function
 }

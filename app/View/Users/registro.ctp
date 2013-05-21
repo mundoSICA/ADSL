@@ -3,6 +3,8 @@
  * adsl.org.mx
  * Vista:  Users Editar
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
 
 $this->set('title_for_layout', 'ADSL  - Registro de miembros');
 $this->Html->meta('description', 'Registro de miembros, registrate en la Academia de Software Libre', array('inline' => false));
@@ -17,8 +19,8 @@ $this->Html->script(array(
 	<div class="actions span3 sidebar-nav">
 	<?php
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role']);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres();
+	echo $this->Html->menu_usuario();
 	?>
 <!-- Compartir sección -->
 	<ul class='nav nav-list well'>

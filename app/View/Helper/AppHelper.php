@@ -29,6 +29,7 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+	protected static $_userAuth = null;
 
 	/**
 	 * Descripción de la función
@@ -96,6 +97,11 @@ class AppHelper extends Helper {
 			)
 		);
 	}//end function
+	function initAuth( $userAuth ){
+		if (!self::$_userAuth) {
+			self::$_userAuth = $userAuth;
+		}
+	}
 
 	/**
 	 * Genera las opciones para el menu se usuario
@@ -103,7 +109,7 @@ class AppHelper extends Helper {
 	 * @param Array $userAuth El usuario que esta navegando (incluso Internauta)
 	 * @return String $html el Código HTML del menu de usaurio (lista)
 	 */
-	function menu_usuario($userAuth) {
+	function menu_usuario() {
 		$menu = array(
 			'icon'  => 'icon-user',
 			'title' => 'Menu de Usuario',
@@ -111,7 +117,7 @@ class AppHelper extends Helper {
 			'controller'  =>  'users'
 		);
 		// Agregamos accion login ó cerrar sesión
-		if(($userAuth['role'] == 'internauta')){
+		if(self::$_userAuth['role'] == 'internauta'){
 			$menu['links'][] = array(
 				'icon'   => 'icon-off',
 				'msg'    => 'Iniciar Sesión',
@@ -141,7 +147,7 @@ class AppHelper extends Helper {
 				'icon'   => 'icon-eye-open',
 				'msg'    => 'Ver mi perfil',
 				'title'    => 'Ver mi perfil',
-				'action' => 'ver/'. $userAuth['username']
+				'action' => 'ver/'. self::$_userAuth['username']
 			);
 		}
 		return $this->_menu_base($menu);
@@ -152,7 +158,7 @@ class AppHelper extends Helper {
 	 * @param Array $userAuth El usuario que esta navegando (incluso Internauta)
 	 * @return String $html el Código HTML del menu de usaurio (lista)
 	 */
-	function menu_talleres( $user_role, $taller = null) {
+	function menu_talleres($taller = null) {
 		$menu = array(
 			'icon'  => 'icon-folder-open',
 			'title' => 'Talleres',
@@ -176,7 +182,7 @@ class AppHelper extends Helper {
 
 		// Agregamos accion login ó cerrar sesión
 		//role:(admin, miembro, registrado, internauta)
-		if($user_role == 'admin' || $user_role == 'miembro') {
+		if(self::$_userAuth['role'] == 'admin' || self::$_userAuth['role'] == 'miembro') {
 			$menu['links'][] = array(
 				'icon'   => 'icon-plus',
 				'msg'    => 'Agregar Taller',
@@ -184,16 +190,58 @@ class AppHelper extends Helper {
 				'action' => 'agregar',
 				'prefix' => 'admin',
 			);
-			if( isset($taller['Taller']['slug_dst']) ) {
+			if( isset($taller['slug_dst']) ) {
 			$menu['links'][] = array(
 				'icon'   => 'icon-pencil',
 				'msg'    => 'Editar este Taller',
 				'title'    => 'Edita este taller',
-				'action' => 'editar/' . $taller['Taller']['slug_dst'],
+				'action' => 'editar/' . $taller['slug_dst'],
 				'prefix' => 'admin',
 			);
+			if(self::$_userAuth['role'] == 'admin' || self::$_userAuth['id'] == $taller['user_id'])
+				$menu['links'][] = array(
+					'icon'   => 'icon-file',
+					'msg'    => 'Agregar Sesión ',
+					'title'    => 'Edita este taller',
+					'action' => 'agregar/' . $taller['slug_dst'],
+					'controller' => 'sesiones',
+					'prefix' => self::$_userAuth['role'],
+				);
 			}
 		}
+		return $this->_menu_base($menu);
+	}//end function
+
+	function menu_sesiones($taller_slug, &$sesiones, $sesion_slug = null) {
+		if(!count($sesiones))
+			return '';
+		$menu = array(
+			'icon'  => 'icon-book',
+			'title' => 'Sesiones Disponibles',
+			'links'  =>  array(),
+			'controller'  =>  'sesiones'
+		);
+		$i= 0;
+		foreach ($sesiones as $k=>$sesion) {
+			$sesiones[$k]['nombre'] = str_replace($taller_slug. ' _ ', '', $sesion['nombre']);
+			$menu['links'][] = array(
+				'icon'   => 'icon-ok-circle',
+				'msg'    => sprintf('Sesión %02d', ++$i),
+				'title'    => $sesiones[$k]['nombre'],
+				'action' => '/ver/' . $sesiones[$k]['slug_dst'],
+				'desactivado' => ($sesion_slug == $sesiones[$k]['slug_dst'])
+			);
+		}
+		if( $sesion_slug &&
+		(self::$_userAuth['role'] == 'admin' || self::$_userAuth['role'] == 'miembro')
+		)
+			$menu['links'][] = array(
+				'icon'   => 'icon-pencil',
+				'msg'    => 'Editar esta sesión',
+				'title'    => 'Editar esta sesión',
+				'action' => 'editar/' . $sesion_slug,
+				'prefix' => self::$_userAuth['role'],
+			);
 		return $this->_menu_base($menu);
 	}//end function
 
@@ -244,7 +292,13 @@ class AppHelper extends Helper {
 		$html = '';
 		foreach ($menu['links'] as $link)
 		{
+			if(isset($link['desactivado']) && $link['desactivado']){
+					$html .=  '<li>' . "<i class='{$link['icon']}'></i> {$link['msg']}" . '</li>';
+					continue;
+			}
 			$urlInfo = array('controller' => $menu['controller'], 'action' => $link['action']);
+			if(isset($link['controller']))
+				$urlInfo['controller'] = $link['controller'];
 			if(isset($link['prefix'])){
 				$urlInfo[$link['prefix']] = true;
 			} else {
@@ -255,8 +309,7 @@ class AppHelper extends Helper {
 					"<i class='{$link['icon']}'></i> {$link['msg']}",
 					$urlInfo,
 					array('escape' => false, 'title' => $link['title'])
-			) . '</li>'
-			. '<li>';
+			) . '</li>';
 		}
 		return "\n<ul class='nav nav-list well'>
 		<li class='nav-header'>

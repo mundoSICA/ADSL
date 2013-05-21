@@ -5,23 +5,23 @@
  */
 
 #sección metaDatos
-$this->set('title_for_layout', 'Correo Facil - Sesiones Agregar');
+$this->set('title_for_layout', 'ADSL - Sesiones Agregar');
 $this->Html->meta('description', 'Sesiones Agregar', array('inline' => false));
 
 #sección CSS
-$this->Html->css(array(
-						'markitup/set',
-						'markitup/skin',
-						), 'stylesheet', array('inline' => false));
+#$this->Html->css(array(
+#						'sesiones.formulario',
+#						'sesiones.agregar',
+#						), 'stylesheet', array('inline' => false));
 
 #sección Javascript
-$this->Html->script(array(
-											'markitup/jquery.markitup',
-											'markitup/set_markdown',
-											'miembro_sesiones_agregar',
-											), array('inline' => false));
+#$this->Html->script(array(
+#											'sesiones.formulario',
+#											'sesiones.agregar',
+#											), array('inline' => false));
 ?>
 <div class="row-fluid">
+
 <div class="actions span3 well sidebar-nav">
 	<h3>Acciones</h3>
 	<ul class="nav nav-list">
@@ -41,16 +41,14 @@ $this->Html->script(array(
 		<legend>Agregar Sesión</legend>
 	<?php
 		echo $this->Form->input('nombre');
-		echo $this->Form->input('keywords',array('label'=>'Parabras claves(separadas por coma)'));
+		echo $this->Form->input('estado', array('options' => array('edicion', 'publicado', 'sin_comentarios')));
+		echo $this->Form->input('keywords', array('label' => 'Parabras clave (separadas por coma)'));
 		echo $this->Form->input('descripcion');
-		echo $this->Form->input('content', array('id' => 'markItUp'));
 		echo $this->Form->input('fecha_publicacion');
+		echo $this->Wysiwyg->textarea('contenido');
 	?>
 	</fieldset>
-<?php
-	echo $this->Html->link('Cancelar', array('action' => 'index'), array('class'=>'btn btn-danger btn-large'));
-	echo $this->Form->end('Agregar');
-?>
+<?php echo $this->Html->link('Cancelar', array('action' => 'index'), array('class'=>'btn btn-danger btn-large')); ?> | <?php echo $this->Form->end('Enviar'); ?>
 </div>
 </div>
 

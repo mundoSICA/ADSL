@@ -3,6 +3,9 @@
  * adsl.org.mx
  * Vista:  Users Ver
  */
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
+
 
 #sección metaDatos
 $title = 'ADSL  - perfil '.h($user['User']['username']);
@@ -40,8 +43,8 @@ $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/use
 <div class="actions span3 sidebar-nav">
 	<?php
 	echo $this->Html->menu_navegacion_general();
-	echo $this->Html->menu_talleres($userAuth['role']);
-	echo $this->Html->menu_usuario($userAuth);
+	echo $this->Html->menu_talleres();
+	echo $this->Html->menu_usuario();
 	?>
 <!-- Compartir sección -->
 	<ul class='nav nav-list well'>
@@ -104,6 +107,9 @@ $this->Html->meta(array('name' => 'og:image', 'content' => Router::url('/img/use
 		<?php endif; ?>
 	</dl>
 <?php
+
+echo $this->element('redes_sociales');
+
 if( !empty($user['Taller'])):
 ?>
 	<h2>Talleres impartidos</h2>

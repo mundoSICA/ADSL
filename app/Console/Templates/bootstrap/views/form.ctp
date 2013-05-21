@@ -14,8 +14,11 @@ $titulo = $pluralHumanName . ' ' .(strpos($action, 'add')===false?'Editar':'Agre
  * Vista:  <?php echo $titulo."\n"; ?>
  */
 
+#iniciando la autenticación
+$this->Html->initAuth($userAuth);
+
 #sección metaDatos
-$this->set('title_for_layout', 'Correo Facil - <?php echo $titulo; ?>');
+$this->set('title_for_layout', 'ADSL - <?php echo $titulo; ?>');
 $this->Html->meta('description', '<?php echo $titulo; ?>', array('inline' => false));
 
 #sección CSS
